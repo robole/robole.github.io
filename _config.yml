@@ -1,3 +1,15 @@
+# Site settings
+# in the templates available like {{ site.myvariable }}.
+title: Clean portfolio theme for Jekyll powered by Bootstrap 4.
 name: Rob O'Leary
+email: your-email@domain.com
+brand: Rob O'Leary
+headline: Inventor, Engineer and Futurist
+description: > # this means to ignore newlines until "baseurl:"
+  New Site
+baseurl: "" # the subpath of your site, e.g. /blog
+url: "http://example.com" # the base hostname & protocol for your site
+copyright: 2016 Whatever Company, Inc. All Rights Reserved.
 markdown: kramdown
 permalink: /blog/:year/:month/:day/:title
+include: ['_pages']
