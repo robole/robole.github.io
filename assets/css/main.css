@@ -3,6 +3,18 @@ body {
   font-weight: 300;
 }
 
+path {
+  fill: white;
+  stroke: black;
+  stroke-width: 2;
+  stroke-linejoin: round;
+}
+
+path:hover {
+  fill: aliceblue;
+  stroke: lightskyblue;
+}
+
 .navbar, .navbar-inverse {
   border-radius: 0;
   border: none;
@@ -11,12 +23,12 @@ body {
   background-color: #79AFE8;
 }
 
-.navbar-inverse .navbar-nav>li>a{
+.navbar-inverse .navbar-nav>li>a {
   color: #ffffff;
   font-size: 1.5em;
 }
 
-.navbar-inverse .navbar-nav li a:hover{
+.navbar-inverse .navbar-nav li a:hover {
   background-color: #ffffff;
   color: #79AFE8;
   transition: 0.1s all linear;
@@ -40,4 +52,22 @@ body {
 .container-top-image:hover {
   filter: brightness(1.1);
   -webkit-filter: brightness(1.1)
+}
+
+.container-top-name, .container-top-headline {
+  font-family: 'Lobster', cursive;
+}
+
+h1, h2, h3, h4, h5, h6, .container-top-name {
+  color: #0e3054;
+}
+
+.container-top-headline {
+  color: #ffffff;
+}
+
+.container-portfolio {
+  background-color: #79AFE8;
+  margin-top: 1rem;
+  min-height: 15rem;
 }
