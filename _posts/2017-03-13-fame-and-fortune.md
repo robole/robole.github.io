@@ -11,11 +11,10 @@ intro: "Fame, Fortune and Machiavelli"
 
 In [“What do you want out of life?” article](https://qz.com/584874/you-probably-know-to-ask-yourself-what-do-i-want-heres-a-way-better-question/) is raised the argument that getting to fame and fortune is directly related to the amount of pain you are willing to endure to get it.
 
-And rightly so, I've always been of the same opinion.
-And always imagined that the people with the fame and fortune have been trough some serious painful processes to get where they are.
+And rightly so, I've always been of the same opinion.And always imagined that the people with the fame and fortune have been trough some serious painful processes to get where they are.
 To the point that they are a little bit unbalanced compared to other people to be able to endure it continuously.
 
-This makes me wonder why endure the pain to get to the end goal, if most of the times the end goal is to reach a painless place. As a good illustration of what i mean see the ["fisherman and the businessman" story](http://paulocoelhoblog.com/2015/09/04/the-fisherman-and-the-businessman/)
+This makes me wonder why endure the pain to get to the end goal, if most of the times the end goal is to reach a painless place. As a good illustration of what I mean see the ["fisherman and the businessman" story](http://paulocoelhoblog.com/2015/09/04/the-fisherman-and-the-businessman/)
 
 I believe the trading of pain for fame is correct (and right) in general, but I think this view is also naive to a certain extent, there's also a darker side to get to fame, a kind of a shortcut, enter Machiavellianism.
 

@@ -4,7 +4,9 @@ email: robjoeol@gmail.com
 phone: (+49) 1 523 476 7526
 brand: Rob O'Leary
 headline: Designer, Explorer and Humanist
-description: Rob O'Leary Digital Nomad
+description: Rob O'Leary Independent Analyst Programmer Berlin
 copyright: 2012-2017 Rob O'Leary, All Rights Reserved.
+github: https://github.com/robole/
+codepen: https://codepen.io/robjoeol/
 markdown: kramdown
 include: ['_pages']

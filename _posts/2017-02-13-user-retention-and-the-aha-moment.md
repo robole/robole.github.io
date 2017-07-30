@@ -9,11 +9,9 @@ intro: "User Retention and the Aha! moment"
 
 ## What is the _Aha!_ moment ?
 
-Its the moment users decide they are continuing to use the product.
+Its the moment users decide they will continue to use a product, when users "get" the value preposition that the product offers to them.
 
-Aha moment is when users "get" the value preposition that the product offers to them.
-
-It is not trivial to find the exact aha event of the users, but knowing it is  key, and is tightly linked to the product core value proposition.
+It is not trivial to find the exact aha event of the users, but knowing it is key, and is tightly linked to the product core value proposition.
 
 Examples:
     - Twitter: you see the feed of your first contacts and read something interesting
@@ -62,11 +60,7 @@ Try several approaches and optimize the experience using AB testing (always keep
 
 Don't overly spam users, don't keep telling them to do something or other all the time, there's a good balance, there's  a right timing to put the right content in front of users. There is the risk that if you spam them too much to get to their aha moment, that you get them to their no-no moment.
 
-
-
 Most important question to start with and to really understand: **What is your product Aha Moment ?**
-
-
 
 ## References
 - <http://tomergarzberg.com/time-to-aha-the-critical-feel-based-requirement-for-growth/>

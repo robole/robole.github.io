@@ -3,25 +3,7 @@
 {% include head.html %}
 <body>
 	{% include navbar.html %}
-<article>
-  <header>
-    <h2>
-      <a href="{{ page.url }}" rel="bookmark" title="Permanent link to ">{{ page.title }}</a>
-    </h2>
-    <h5><time>{{ page.date | date: '%B' }} {{ page.date | date: '%e' }}, {{ page.date | date: '%Y' }}</time></h5>
-  </header>
-
-  {{ content }}
-
-  <nav id="related">
-    <h3>Related Posts</h3>
-    <ul class="posts">
-      {% for post in site.related_posts limit:5 %}
-        <li><span>{{ post.date | date_to_string }}</span> - <a href="{{ post.url }}">{{ post.title }}</a></li>
-      {% endfor %}
-    </ul>
-  </nav>
-</article>
+  {% include bloglist.html %}
 
 <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>

@@ -25,18 +25,6 @@ footer div.row {
     color: #999;
 }
 
-path {
-  fill: white;
-  stroke: black;
-  stroke-width: 2;
-  stroke-linejoin: round;
-}
-
-path:hover {
-  fill: aliceblue;
-  stroke: lightskyblue;
-}
-
 .navbar, .navbar-inverse {
   border-radius: 0;
   border: none;
