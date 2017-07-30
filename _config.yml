@@ -7,5 +7,4 @@ headline: Designer, Explorer and Humanist
 description: Rob O'Leary Digital Nomad
 copyright: 2012-2017 Rob O'Leary, All Rights Reserved.
 markdown: kramdown
-permalink: /blog/:year/:month/:day/:title
 include: ['_pages']

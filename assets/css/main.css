@@ -1,6 +1,28 @@
 body {
-  font-family: "HelveticaNeue-Light, Helvetica Neue Light, Helvetica Neue, Helvetica, Arial, Lucida Grande, sans-serif";
+  font-family: "Quicksand, Arial, sans-serif";
+  line-height: 1.6;
+  font-size: calc(14px + .5vw);
   font-weight: 300;
+}
+
+#robot{
+  width:100px;
+  height: 100px;
+}
+
+.row {
+    position: relative;
+    min-height: 40em;
+    padding: 10em 0;
+    top: 0;
+}
+
+footer div.row {
+    height: 6em;
+    min-height: 6em;
+    padding: 1.5em 0;
+    text-align: center;
+    color: #999;
 }
 
 path {
@@ -40,7 +62,7 @@ path:hover {
   padding-top: 10rem;
   background-color: #79AFE8;
   text-align: center;
-  position: relative
+  position: relative;
 }
 
 .container-top-image {
@@ -66,8 +88,8 @@ h1, h2, h3, h4, h5, h6, .container-top-name {
   color: #ffffff;
 }
 
-.container-portfolio {
+/*.container-portfolio {
   background-color: #79AFE8;
   margin-top: 1rem;
   min-height: 15rem;
-}
+}*/
