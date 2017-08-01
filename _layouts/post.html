@@ -1,30 +1,50 @@
-<!DOCTYPE html>
-<html lang="en">
-{% include head.html %}
-<body>
-	{% include navbar.html %}
-<article>
-  <header>
-    <h2>
-      <a href="{{ page.url }}" rel="bookmark" title="Permanent link to ">{{ page.title }}</a>
-    </h2>
-    <h5><time>{{ page.date | date: '%B' }} {{ page.date | date: '%e' }}, {{ page.date | date: '%Y' }}</time></h5>
-  </header>
+---
+layout: default
+---
+<div class="post">
+	<h1 class="post-title">{{ page.title }}</h1>
+	<span class="post-date">{{ page.date | date_to_string }}</span> {% if page.tags %} | {% for tag in page.tags %}
+	<a href="{{ site.tag_page }}#{{ tag | slugify }}" class="post-tag">{{ tag }}</a> {% endfor %} {% endif %}
+	<br/>
+	<br/>
+	<article>
+		{{ content }}
+	</article>
+</div>
 
-  {{ content }}
+<div class="related">
+	<h2>Related Posts</h2>
+	<ul class="related-posts">
+		{% for post in site.related_posts limit:3 %}
+		<li>
+			<h3>
+				<a href="{{ site.baseurl }}{{ post.url }}">
+					{{ post.title }}
+					<small>{{ post.date | date_to_string }}</small>
+				</a>
+			</h3>
+		</li>
+		{% endfor %}
+	</ul>
+</div>
 
-  <nav id="related">
-    <h3>Related Posts</h3>
-    <ul class="posts">
-      {% for post in site.related_posts limit:5 %}
-        <li><span>{{ post.date | date_to_string }}</span> - <a href="{{ post.url }}">{{ post.title }}</a></li>
-      {% endfor %}
-    </ul>
-  </nav>
-</article>
-
-<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
-</body>
-</html>
+{% if site.disqus_short_name %}
+<div class="comments">
+	<h2>Comments</h2>
+	<div id="disqus_thread"></div>
+	<script>
+		var disqus_config = function() {
+			this.page.url = '{{ site.url }}{{ page.url }}'; // Replace PAGE_URL with your page's canonical URL variable
+			this.page.identifier = '{{ page.id }}'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+		};
+		(function() {
+			var d = document,
+				s = d.createElement('script');
+			s.src = '//{{ site.disqus_short_name }}.disqus.com/embed.js';
+			s.setAttribute('data-timestamp', +new Date());
+			(d.head || d.body).appendChild(s);
+		})();
+	</script>
+	<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+</div>
+{% endif %}
