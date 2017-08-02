@@ -31,7 +31,7 @@ h1, h2, h3, h4, h5, h6, .container-top-name {
 .row, .content {
   float: none;
   width: 100%;
-  padding: 0 6em;
+  padding: 1em 6em 0em;
 }
 
 .content {
@@ -41,8 +41,8 @@ h1, h2, h3, h4, h5, h6, .container-top-name {
 *[id]:before {
   display: block;
   content: " ";
-  margin-top: -75px;
-  height: 75px;
+  margin-top: -85px;
+  height: 85px;
   visibility: hidden;
 }
 
@@ -60,7 +60,7 @@ h1, h2, h3, h4, h5, h6, .container-top-name {
   font-size: 1.5em;
 }
 
-.navbar-inverse .navbar-nav li a:hover {
+.navbar-inverse .navbar-nav li a:hover, .navbar-inverse .navbar-nav > .active > a, .navbar-inverse .navbar-nav > .active > a:hover {
   background-color: #ffffff;
   color: #79AFE8;
   transition: 0.1s all linear;
@@ -90,6 +90,7 @@ a.navbar-logo:hover{
   background-color: #79AFE8;
   text-align: center;
   position: relative;
+  font-family: 'Lobster', cursive;
 }
 
 .top-image {
@@ -103,17 +104,34 @@ a.navbar-logo:hover{
   -webkit-filter: brightness(1.1)
 }
 
-.top-name, .top-headline {
-  font-family: 'Lobster', cursive;
-}
-
 .top-headline {
   color: #ffffff;
 }
 
+#about {
+  background: url("/assets/img/mountain_river.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: #fac41d;
+  background-size: 60% 100%;
+  color: black;
+}
+
+#about h1 {
+  color:white;
+}
+
 #portfolio {
-  background-color: #79AFE8;
-  margin-top: 1rem;
+  background: url("/assets/img/river_forest.svg");
+  background-repeat: no-repeat;
+  background-color: green;
+  background-size: 60% 100%;
+  background-position: center;
+  color:white;
+}
+
+#portfolio , #portfolio h1{
+  color:white;
 }
 
 #contact {
