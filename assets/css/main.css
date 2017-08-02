@@ -60,7 +60,7 @@ h1, h2, h3, h4, h5, h6, .container-top-name {
   font-size: 1.5em;
 }
 
-.navbar-inverse .navbar-nav li a:hover, .navbar-inverse .navbar-nav > .active > a, .navbar-inverse .navbar-nav > .active > a:hover {
+.navbar-inverse .navbar-nav li a:hover, .navbar-inverse .navbar-nav > .active > a, .navbar-inverse .navbar-nav > .active > a:hover, .navbar-inverse .navbar-nav > .active > a:focus {
   background-color: #ffffff;
   color: #79AFE8;
   transition: 0.1s all linear;
@@ -76,7 +76,7 @@ a.navbar-logo{
   transition: opacity .5s
 }
 
-a.navbar-logo:hover{
+a.navbar-logo:hover, a.navbar-logo:focus{
   text-decoration: none;
 }
 
@@ -135,10 +135,12 @@ a.navbar-logo:hover{
 }
 
 #contact {
-  min-height: 2em;
+  min-height: 3em;
   padding: 1.5em 0;
   background-color: black;
   color: white;
+  text-align: center;
+  font-size: 0.75em;
 }
 
 #contact a {
