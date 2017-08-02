@@ -21,7 +21,7 @@ h1, h2, h3, h4, h5, h6, .container-top-name {
 
 .container {
   position: relative;
-  min-height: 30em;
+  min-height: 50em;
   top: 0;
   width: 100%;
   margin: 0 0;
@@ -113,7 +113,7 @@ a.navbar-logo:hover, a.navbar-logo:focus{
   background-repeat: no-repeat;
   background-position: center;
   background-color: #fac41d;
-  background-size: 60% 100%;
+  background-size: 70% 100%;
   color: black;
 }
 
@@ -125,7 +125,7 @@ a.navbar-logo:hover, a.navbar-logo:focus{
   background: url("/assets/img/river_forest.svg");
   background-repeat: no-repeat;
   background-color: green;
-  background-size: 60% 100%;
+  background-size: 70% 100%;
   background-position: center;
   color:white;
 }
@@ -135,7 +135,7 @@ a.navbar-logo:hover, a.navbar-logo:focus{
 }
 
 #contact {
-  min-height: 3em;
+  min-height: 5em;
   padding: 1.5em 0;
   background-color: black;
   color: white;
