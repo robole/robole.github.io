@@ -1,43 +1,21 @@
 $(document).ready(function () {
-
     // Selecting some DOM elements for further handling
-
     var dom = {
         window: $(window),
         body: $('body'),
-        navItem: $('.nav-item'),
-        navBarLogo: $('.navbar-logo')
+        navBarLogo: $('.home-navbar-logo')
     };
 
-    // Handling the navigation links
-
-    // dom.navItem.click(function () {
-    //     var scrollElement = $(this).find('.nav-link').data('link'),
-    //         scrollPosition = $(scrollElement).offset().top - 100;
-    //
-    //     $('html, body').animate({
-    //         scrollTop: scrollPosition
-    //     }, 500);
-    // });
-
-    // Displaying the logo at the navigation bar
+    // Displaying the logo at the navigation bar on the homepage when scrolling down slightly
     dom.window.scroll(function () {
-      console.log("scroll");
-
         if (dom.window.scrollTop() >= 300) {
-            dom.navBarLogo.addClass('show');
+            dom.navBarLogo.removeClass('hide');
         } else {
-            dom.navBarLogo.removeClass('show');
+            dom.navBarLogo.addClass('hide');
         }
     });
 
-    // Scroll to top on the logo click
-    // dom.navBarLogo.click(function () {
-    //     $('html, body').animate({
-    //         scrollTop: 0
-    //     }, 300);
-    // });
-
+    //animated scroll to page anchor
     $('a[href*=#]:not([href=#])').click(function() {
     if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'')
         || location.hostname == this.hostname) {

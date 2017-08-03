@@ -85,21 +85,20 @@ h1, h2, h3, h4, h5, h6, .container-top-name {
     color: #79AFE8;
 }
 
-a.navbar-logo{
+a.home-navbar-logo, a.navbar-logo{
   font-family: 'Lobster', cursive;
   color: #ffffff;
   font-size: 1.5em;
   cursor: pointer;
-  visibility: hidden;
-  transition: opacity .5s
+  transition: opacity .5s;
 }
 
-a.navbar-logo:hover, a.navbar-logo:focus{
+a.home-navbar-logo:hover, a.home-navbar-logo:focus, a.navbar-logo:hover, a.navbar-logo:focus{
   text-decoration: none;
 }
 
-.navbar-logo.show {
-  visibility: visible;
+.hide{
+    visibility: hidden;
 }
 
 #top {
