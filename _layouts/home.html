@@ -2,11 +2,11 @@
 <html lang="en">
 {% include head.html %}
 
-<body data-spy="scroll" data-target=".navbar">
+<body data-spy="scroll" data-target=".navbar" >
 	{% include home_navbar.html %}
-	{% include top.html %}
-	{% include about.html %}
-	{% include portfolio.html %}
+	<div class="home-container">
+		{% include top.html %} {% include about.html %} {% include portfolio.html %}
+	</div>
 	{% include footer.html %}
 	<script src="/assets/js/vendor/jquery.min.js"></script>
 	<script src="/assets/js/vendor/tether.min.js"></script>

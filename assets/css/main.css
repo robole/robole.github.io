@@ -14,28 +14,27 @@ h1, h2, h3, h4, h5, h6, .container-top-name {
   color: #0e3054;
 }
 
-#robot {
-  width: 100px;
-  height: 100px;
-}
-
 .container {
   position: relative;
-  min-height: 50em;
   top: 0;
   width: 100%;
   margin: 0 0;
   padding: 1em 0;
 }
 
+.home-container .container {
+  position: relative;
+  top: 0;
+  width: 100%;
+  margin: 0 0;
+  padding:1em 0;
+  min-height: 50em;
+}
+
 .row, .content {
   float: none;
   width: 100%;
   padding: 1em 6em 0em;
-}
-
-.content {
-  margin-top: 3em;
 }
 
 *[id]:before {
@@ -57,14 +56,33 @@ h1, h2, h3, h4, h5, h6, .container-top-name {
 
 .navbar-inverse .navbar-nav>li>a {
   color: #ffffff;
-  font-size: 1.5em;
+  float:right!important;
+  font-size: 1em;
 }
 
-.navbar-inverse .navbar-nav li a:hover, .navbar-inverse .navbar-nav > .active > a, .navbar-inverse .navbar-nav > .active > a:hover, .navbar-inverse .navbar-nav > .active > a:focus {
+@media (max-width: 1040px) {
+  .navbar-inverse .navbar-nav>li>a {
+    float:left!important;
+  }
+}
+
+@media (max-width: 544px) {
+  .navbar-inverse .navbar-nav>li>a {
+    float:left!important;
+    font-size: 0.75em;
+  }
+}
+
+.navbar-inverse .navbar-nav li a:hover, .navbar-inverse .navbar-nav > .active > a, .navbar-inverse .navbar-nav > .active > a:hover,
+.navbar-inverse .navbar-nav > .active > a:focus {
   background-color: #ffffff;
   color: #79AFE8;
   transition: 0.1s all linear;
   height: 100%;
+}
+
+.navbar-toggle.collapsed .icon-bar:hover, .navbar-toggle.collapsed .icon-bar:focus {
+    color: #79AFE8;
 }
 
 a.navbar-logo{
@@ -135,7 +153,7 @@ a.navbar-logo:hover, a.navbar-logo:focus{
 }
 
 #contact {
-  min-height: 5em;
+  min-height: 12em;
   padding: 1.5em 0;
   background-color: black;
   color: white;

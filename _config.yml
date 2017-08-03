@@ -6,9 +6,15 @@ brand: Rob O'Leary
 headline: Designer, Explorer and Humanist
 description: Rob O'Leary Independent Analyst Programmer Berlin
 copyright: 2012-2017 Rob O'Leary, All Rights Reserved.
+url: https://robole.github.io/
 github: https://github.com/robole/
 codepen: https://codepen.io/robjoeol/
 markdown: kramdown
 include: ['_pages']
 tag_page: '/blog/tags'
-disqus_short_name: 'your_short_name' # leave blank if you don't want disqus
+
+# Disqus Comments
+disqus:
+    # Leave shortname blank to disable comments site-wide.
+    # Disable comments for any post by adding `comments: false` to that post's YAML Front Matter.
+    shortname: robole-github-io

@@ -2,17 +2,26 @@
 <html lang="en">
 {% include head.html %}
 
-<body data-spy="scroll" data-target=".navbar">
+<body data-spy="scroll" data-target=".navbar" >
 	{% include post_navbar.html %}
-	<div class="container content">
-					{% include post_list.html %}
-					{% include post_comments.html %}
+	{% include post_list.html %}
+
+	{% if site.disqus.shortname %}
+	<div class="container">
+		<div class="row">
+	  {% include post_comments.html %}
+		</div>
 	</div>
+	{% endif %}
+
+
+
 	{% include footer.html %}
 	<script src="/assets/js/vendor/jquery.min.js"></script>
 	<script src="/assets/js/vendor/tether.min.js"></script>
 	<script src="/assets/js/vendor/bootstrap.min.js"></script>
 	<script src="/assets/js/app.js"></script>
+	<script id="dsq-count-scr" src="//robole-github-io.disqus.com/count.js" async></script>
 </body>
 
 </html>

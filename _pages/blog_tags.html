@@ -3,27 +3,28 @@ layout: default
 title: Tags
 permalink: /blog/tags
 ---
-<div class="tags-expo">
-  <h1>Tags</h1>
-  <div class="tags-expo-list">
-    {% for tag in site.tags %}
-    <a href="{{ site.tag_page }}#{{ tag[0] | slugify }}" class="post-tag">{{ tag[0] }}</a>
-    {% endfor %}
-  </div>
-  <hr/>
-  <div class="tags-expo-section">
-    {% for tag in site.tags %}
-    <h2 id="{{ tag[0] | slugify }}">{{ tag[0] }}</h2>
-    <ul class="tags-expo-posts">
-      {% for post in tag[1] %}
+<div class="container tags-expo">
+  <div class="row">
+    <h1>Tags</h1>
+    <div class="tags-expo-list">
+      {% for tag in site.tags %}
+      <a href="{{ site.tag_page }}#{{ tag[0] | slugify }}" class="post-tag">{{ tag[0] }}</a> {% endfor %}
+    </div>
+    <hr/>
+    <div class="tags-expo-section">
+      {% for tag in site.tags %}
+      <h2 id="{{ tag[0] | slugify }}">{{ tag[0] }}</h2>
+      <ul class="tags-expo-posts">
+        {% for post in tag[1] %}
         <a class="post-title" href="{{ site.baseurl }}{{ post.url }}">
-      <li>
-        {{ post.title }}
-      <small class="post-date">{{ post.date | date_to_string }}</small>
-      </li>
-      </a>
+          <li>
+            {{ post.title }}
+            <small class="post-date">{{ post.date | date_to_string }}</small>
+          </li>
+        </a>
+        {% endfor %}
+      </ul>
       {% endfor %}
-    </ul>
-    {% endfor %}
+    </div>
   </div>
 </div>
