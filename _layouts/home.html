@@ -4,14 +4,12 @@
 
 <body data-spy="scroll" data-target=".navbar" >
 	{% include home_navbar.html %}
-	<div class="home-container">
-		{% include top.html %} {% include about.html %} {% include portfolio.html %}
-	</div>
-	{% include footer.html %}
-	<script src="/assets/js/vendor/jquery.min.js"></script>
-	<script src="/assets/js/vendor/tether.min.js"></script>
-	<script src="/assets/js/vendor/bootstrap.min.js"></script>
-	<script src="/assets/js/app.js"></script>
+
+		{% include top.html %}
+		{% include about.html %}
+		{% include portfolio.html %}
+		{% include footer.html %}
+	 	{% include javascripts.html%}
 </body>
 
 </html>

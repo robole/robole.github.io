@@ -6,35 +6,24 @@ body {
   font-weight: 300;
 }
 
+.content{
+    margin: 0;
+    overflow: auto !important;
+    overflow-y: auto !important;
+    overflow-x: hidden !important;
+}
+
 p {
   margin: 1.75em 0 2em;
 }
 
-h1, h2, h3, h4, h5, h6, .container-top-name {
+h1, h2, h3, h4, h5, h6 {
   color: #0e3054;
 }
 
-.container {
-  position: relative;
-  top: 0;
-  width: 100%;
-  margin: 0 0;
-  padding: 1em 0;
-}
-
-.home-container .container {
-  position: relative;
-  top: 0;
-  width: 100%;
-  margin: 0 0;
-  padding:1em 0;
-  min-height: 50em;
-}
-
-.row, .content {
-  float: none;
-  width: 100%;
-  padding: 1em 6em 0em;
+.row{
+  padding-left: 1rem;
+  padding-right: 1rem;
 }
 
 *[id]:before {
@@ -70,6 +59,7 @@ h1, h2, h3, h4, h5, h6, .container-top-name {
   .navbar-inverse .navbar-nav>li>a {
     float:left!important;
     font-size: 0.75em;
+    padding: 0 0.5em;
   }
 }
 
@@ -88,13 +78,19 @@ h1, h2, h3, h4, h5, h6, .container-top-name {
 a.home-navbar-logo, a.navbar-logo{
   font-family: 'Lobster', cursive;
   color: #ffffff;
-  font-size: 1.5em;
+  font-size: 2em;
   cursor: pointer;
-  transition: opacity .5s;
+  transition: all .5s;
 }
 
 a.home-navbar-logo:hover, a.home-navbar-logo:focus, a.navbar-logo:hover, a.navbar-logo:focus{
   text-decoration: none;
+}
+
+@media (max-width: 540px) {
+  a.home-navbar-logo, a.navbar-logo{
+    font-size: 1.25em;
+  }
 }
 
 .hide{
@@ -102,8 +98,8 @@ a.home-navbar-logo:hover, a.home-navbar-logo:focus, a.navbar-logo:hover, a.navba
 }
 
 #top {
-  display: block;
-  padding-top: 10rem;
+  padding-top: 7rem;
+  padding-bottom: 5rem;
   background-color: #79AFE8;
   text-align: center;
   position: relative;
@@ -111,27 +107,58 @@ a.home-navbar-logo:hover, a.home-navbar-logo:focus, a.navbar-logo:hover, a.navba
 }
 
 .top-image {
-  width: 220px;
-  height: 220px;
-  transition: all .3s
+  width: 160px;
+  height: 160px;
+  transition: all .3s;
 }
 
 .top-image:hover {
   filter: brightness(1.1);
-  -webkit-filter: brightness(1.1)
+  -webkit-filter: brightness(1.1);
+}
+
+@media (min-width: 992px) {
+  .top-image {
+    width: 220px;
+    height: 220px;
+  }
+}
+
+.top-name {
+  font-size: 2.5rem;
+  padding-top: .5rem;
+  color: #0e3054
+}
+
+@media (min-width: 544px) {
+  .top-name {
+    padding-top: 1rem;
+    font-size: 4rem
+  }
 }
 
 .top-headline {
   color: #ffffff;
+  font-size: 1.5rem;
+  margin: 1rem;
+}
+
+@media (min-width: 544px) {
+  .top-headline {
+    padding-top: 1rem;
+    font-size: 2.5rem
+  }
 }
 
 #about {
+  min-height: 70rem;
   background: url("/assets/img/mountain_river.svg");
   background-repeat: no-repeat;
   background-position: center;
   background-color: #fac41d;
   background-size: 70% 100%;
   color: black;
+  padding-bottom: 12rem;
 }
 
 #about h1 {
@@ -139,6 +166,7 @@ a.home-navbar-logo:hover, a.home-navbar-logo:focus, a.navbar-logo:hover, a.navba
 }
 
 #portfolio {
+  min-height: 80rem;
   background: url("/assets/img/river_forest.svg");
   background-repeat: no-repeat;
   background-color: green;
@@ -151,8 +179,61 @@ a.home-navbar-logo:hover, a.home-navbar-logo:focus, a.navbar-logo:hover, a.navba
   color:white;
 }
 
+.portfolio-item {
+    text-align: center;
+    position: relative;
+}
+
+.portfolio-item h4, .portfolio-item h5, .portfolio-item>a:hover, .portfolio-item>a:focus {
+  color: white;
+  text-decoration: none;
+}
+
+.portfolio-item-arrow {
+    font-size: 2em;
+    line-height: 1em;
+    color: black;
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    margin: -.5em 0 0 -.5em;
+    visibility: hidden;
+    z-index: 3;
+    -webkit-animation-name: shakeit 0.2s infinite alternate;
+    animation: shakeit 0.2s infinite alternate;
+}
+
+@-webkit-keyframes shakeit {
+  from { -webkit-transform: translateX(0);}
+  to { -webkit-transform: translateX(3px);}
+}
+
+@keyframes shakeit {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(3px);
+  }
+}
+
+.portfolio-item>a:hover .portfolio-item-arrow{
+    visibility: visible;
+}
+
+.portfolio-img {
+  transition: all .3s linear;
+}
+
+
+@media (max-width: 400px) {
+  .portfolio-img {
+    width: 100px;
+  }
+}
+
 #contact {
-  min-height: 12em;
+  min-height: 12rem;
   padding: 1.5em 0;
   background-color: black;
   color: white;
@@ -162,6 +243,10 @@ a.home-navbar-logo:hover, a.home-navbar-logo:focus, a.navbar-logo:hover, a.navba
 
 #contact a {
   color: white;
+}
+
+.post{
+  padding-top: 5rem;
 }
 
 .post-tag {
@@ -176,4 +261,12 @@ a.home-navbar-logo:hover, a.home-navbar-logo:focus, a.navbar-logo:hover, a.navba
   -webkit-transition: all 0.1s ease-in-out;
   -moz-transition: all 0.1s ease-in-out;
   transition: all 0.1s ease-in-out;
+}
+
+#blog{
+  padding-top: 5rem;
+}
+
+.tags-expo{
+  padding-top: 5rem;
 }
