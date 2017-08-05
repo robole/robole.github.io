@@ -46,7 +46,7 @@ h1, h2, h3, h4, h5, h6 {
 .navbar-inverse .navbar-nav>li>a {
   color: #ffffff;
   float:right!important;
-  font-size: 1em;
+  font-size: 1.5em;
 }
 
 @media (max-width: 1040px) {
@@ -58,7 +58,7 @@ h1, h2, h3, h4, h5, h6 {
 @media (max-width: 544px) {
   .navbar-inverse .navbar-nav>li>a {
     float:left!important;
-    font-size: 0.75em;
+    font-size: 1em;
     padding: 0 0.5em;
   }
 }
@@ -152,6 +152,7 @@ a.home-navbar-logo:hover, a.home-navbar-logo:focus, a.navbar-logo:hover, a.navba
 
 #about {
   min-height: 70rem;
+  padding-top: 5rem;
   background: url("/assets/img/mountain_river.svg");
   background-repeat: no-repeat;
   background-position: center;
@@ -167,6 +168,7 @@ a.home-navbar-logo:hover, a.home-navbar-logo:focus, a.navbar-logo:hover, a.navba
 
 #portfolio {
   min-height: 80rem;
+  padding-top: 5rem;
   background: url("/assets/img/river_forest.svg");
   background-repeat: no-repeat;
   background-color: green;
@@ -217,8 +219,19 @@ a.home-navbar-logo:hover, a.home-navbar-logo:focus, a.navbar-logo:hover, a.navba
   }
 }
 
-.portfolio-item>a:hover .portfolio-item-arrow{
+.portfolio-item a:hover .portfolio-item-arrow{
     visibility: visible;
+}
+
+.portfolio-item a{
+  color: white;
+  text-decoration: none;
+  transition: all .3s linear
+}
+
+.portfolio-item a:hover, .portfolio-item a:focus {
+    color: orange;
+    text-decoration: none;
 }
 
 .portfolio-img {
@@ -228,7 +241,7 @@ a.home-navbar-logo:hover, a.home-navbar-logo:focus, a.navbar-logo:hover, a.navba
 
 @media (max-width: 400px) {
   .portfolio-img {
-    width: 100px;
+    width: 200px;
   }
 }
 
@@ -243,6 +256,7 @@ a.home-navbar-logo:hover, a.home-navbar-logo:focus, a.navbar-logo:hover, a.navba
 
 #contact a {
   color: white;
+  text-decoration: none;
 }
 
 .post{
