@@ -8,7 +8,7 @@ permalink: /blog/tags
     <h1>Tags</h1>
     <div class="tags-expo-list">
       {% for tag in site.tags %}
-      <a href="{{ site.tag_page }}#{{ tag[0] | slugify }}" class="post-tag">{{ tag[0] }}</a> {% endfor %}
+      <a href="{{ site.tag_page }}#{{ tag[0] | slugify }}" class="post-tag"><span class="fa fa-tag"></span>{{ tag[0] }}</a> {% endfor %}
     </div>
     <hr/>
     <div class="tags-expo-section">

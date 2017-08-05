@@ -97,8 +97,11 @@ a.home-navbar-logo:hover, a.home-navbar-logo:focus, a.navbar-logo:hover, a.navba
     visibility: hidden;
 }
 
-#top {
+.top-container{
   padding-top: 7rem;
+}
+
+#top {
   padding-bottom: 5rem;
   background-color: #79AFE8;
   text-align: center;
@@ -238,7 +241,6 @@ a.home-navbar-logo:hover, a.home-navbar-logo:focus, a.navbar-logo:hover, a.navba
   transition: all .3s linear;
 }
 
-
 @media (max-width: 400px) {
   .portfolio-img {
     width: 200px;
@@ -283,4 +285,8 @@ a.home-navbar-logo:hover, a.home-navbar-logo:focus, a.navbar-logo:hover, a.navba
 
 .tags-expo{
   padding-top: 5rem;
+}
+
+#disqus_thread{
+  padding-top: 4rem;
 }
