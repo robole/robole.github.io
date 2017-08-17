@@ -312,8 +312,14 @@ a.home-navbar-logo:hover, a.home-navbar-logo:focus, a.navbar-logo:hover, a.navba
   padding-bottom: 5rem;
 }
 
-.cv ul li{
+.cv-tech-list, .cv-history-list{
+  padding-left: 0;
+  -webkit-padding-start: 0;
+}
 
+.cv-history-list > li{
+  padding-top: 2rem;
+  padding-bottom: 4rem;
 }
 
 .cv p, {
@@ -322,7 +328,6 @@ a.home-navbar-logo:hover, a.home-navbar-logo:focus, a.navbar-logo:hover, a.navba
 
 .cv-history-list-date, .cv-tech-category{
   padding: 0;
-  background-color: red;
   -webkit-padding-start: 0;
 }
 
