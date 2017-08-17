@@ -6,6 +6,21 @@ body {
   font-weight: 300;
 }
 
+ul, ol{
+  list-style-type: none;
+}
+
+table{
+  border-collapse: collapse;
+}
+
+td, th{
+  border: 1px solid #999;
+  padding: 0.5rem;
+  text-align: left;
+  vertical-align: top;
+}
+
 .content{
     margin: 0;
     overflow: auto !important;
@@ -289,4 +304,28 @@ a.home-navbar-logo:hover, a.home-navbar-logo:focus, a.navbar-logo:hover, a.navba
 
 #disqus_thread{
   padding-top: 4rem;
+}
+
+.cv{
+  min-height: 70rem;
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+}
+
+.cv ul li{
+
+}
+
+.cv p, {
+  text-align: justify;
+}
+
+.cv-history-list-date, .cv-tech-category{
+  padding: 0;
+  background-color: red;
+  -webkit-padding-start: 0;
+}
+
+.cv-history-points{
+  list-style-type: square;
 }
