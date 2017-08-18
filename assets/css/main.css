@@ -315,11 +315,16 @@ a.home-navbar-logo:hover, a.home-navbar-logo:focus, a.navbar-logo:hover, a.navba
 .cv-tech-list, .cv-history-list{
   padding-left: 0;
   -webkit-padding-start: 0;
+  clear:both;
+}
+
+.cv-history-list > li > span {
+    float:none;
 }
 
 .cv-history-list > li{
-  padding-top: 2rem;
-  padding-bottom: 4rem;
+  clear:both;
+  padding: 1em 0;
 }
 
 .cv p, {
@@ -333,4 +338,21 @@ a.home-navbar-logo:hover, a.home-navbar-logo:focus, a.navbar-logo:hover, a.navba
 
 .cv-history-points{
   list-style-type: square;
+}
+
+.cv-education-table{
+  margin:2em 0;
+}
+
+.cv-tech-list > li > span {
+    float:none;
+}
+
+.cv-tech-list > li{
+  clear:both;
+  padding-bottom: 1em;
+}
+
+.cv-tech-list{
+  margin: 2em 0;
 }
