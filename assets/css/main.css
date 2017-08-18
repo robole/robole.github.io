@@ -23,10 +23,18 @@ td, th{
 
 .content{
     margin: 0;
+    padding: 0 3em;
     overflow: auto !important;
     overflow-y: auto !important;
     overflow-x: hidden !important;
 }
+
+@media (max-width: 544px) {
+  .content {
+    padding: 0 0.2em;
+  }
+}
+
 
 p {
   margin: 1.75em 0 2em;
@@ -73,7 +81,7 @@ h1, h2, h3, h4, h5, h6 {
 @media (max-width: 544px) {
   .navbar-inverse .navbar-nav>li>a {
     float:left!important;
-    font-size: 1em;
+    font-size: 1.2em;
     padding: 0 0.5em;
   }
 }
@@ -274,6 +282,11 @@ a.home-navbar-logo:hover, a.home-navbar-logo:focus, a.navbar-logo:hover, a.navba
 #contact a {
   color: white;
   text-decoration: none;
+}
+
+.footer-item{
+  font-size: 1.2em;
+  padding: 1em 1em;
 }
 
 .post{
