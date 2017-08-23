@@ -1,3 +1,3 @@
 # robole.github.io
 
-Personal website
+My personal website built with jekyll. Feel free to reuse the code, but not the content, I dont want clones out there!
