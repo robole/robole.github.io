@@ -270,6 +270,11 @@ a.home-navbar-logo:hover, a.home-navbar-logo:focus, a.navbar-logo:hover, a.navba
   transition: all .2s linear;
 }
 
+.portfolio-img {
+  width: 400px;
+  height: 400px;
+}
+
 @media (max-width: 400px) {
   .portfolio-img {
     width: 200px;
