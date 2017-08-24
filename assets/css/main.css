@@ -231,6 +231,10 @@ a.home-navbar-logo:hover, a.home-navbar-logo:focus, a.navbar-logo:hover, a.navba
     animation: shakeit 0.2s infinite alternate;
 }
 
+.portfolio-item-arrow.light {
+  color: white;
+}
+
 @-webkit-keyframes shakeit {
   from { -webkit-transform: translateX(0);}
   to { -webkit-transform: translateX(3px);}
@@ -256,17 +260,22 @@ a.home-navbar-logo:hover, a.home-navbar-logo:focus, a.navbar-logo:hover, a.navba
 }
 
 .portfolio-item a:hover, .portfolio-item a:focus {
-    color: orange;
+    color: white;
     text-decoration: none;
 }
 
+.portfolio-item h5{
+  color:orange;
+}
+
 .portfolio-img {
-  transition: all .3s linear;
+  transition: all .2s linear;
 }
 
 @media (max-width: 400px) {
   .portfolio-img {
     width: 200px;
+    height: 200px;
   }
 }
 
