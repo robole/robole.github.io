@@ -29,6 +29,11 @@ td, th{
     overflow-x: hidden !important;
 }
 
+.scrollable {
+    overflow: auto !important;
+    overflow-x: scroll !important;
+}
+
 @media (max-width: 544px) {
   .content {
     padding: 0 0.2em;
