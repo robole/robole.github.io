@@ -386,3 +386,8 @@ a.home-navbar-logo:hover, a.home-navbar-logo:focus, a.navbar-logo:hover, a.navba
 .cv-tech-list{
   margin: 2em 0;
 }
+
+.my-svg{ /* svg into : object, img or inline */
+  display: block;
+  width: 90%; /* only required for <img /> */
+}
