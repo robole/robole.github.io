@@ -143,7 +143,7 @@ a.home-navbar-logo:hover, a.home-navbar-logo:focus, a.navbar-logo:hover, a.navba
   transition: all .3s;
 }
 
-.top-image:hover {
+.top-image{
   filter: brightness(1.1);
   -webkit-filter: brightness(1.1);
 }
@@ -390,4 +390,17 @@ a.home-navbar-logo:hover, a.home-navbar-logo:focus, a.navbar-logo:hover, a.navba
 .my-svg{ /* svg into : object, img or inline */
   display: block;
   width: 90%; /* only required for <img /> */
+}
+
+.java-tutoring p{
+  margin: 0 0 2em;
+}
+
+.java-tutoring ol{
+  list-style-type: decimal;
+  padding-bottom: 1em;
+}
+
+.java-tutoring h1, h2,h3, h4{
+  padding-bottom: 1em;
 }
