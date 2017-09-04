@@ -19,7 +19,7 @@ We can use opacity to fade one image in and fade the other out. This can be achi
 
 Here is a simple example showing Donald Trump yawping!
 
-<iframe height='347' scrolling='no' title='trump yawp' src='//codepen.io/robjoeol/embed/LLzYBY/?height=347&theme-id=dark&default-tab=html,result&embed-version=2' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>See the Pen <a href='https://codepen.io/robjoeol/pen/LLzYBY/'>trump yawp</a> by rob (<a href='https://codepen.io/robjoeol'>@robjoeol</a>) on <a href='https://codepen.io'>CodePen</a>.
-</iframe>
+<p data-height="365" data-theme-id="0" data-slug-hash="LLzYBY" data-default-tab="result" data-user="robjoeol" data-embed-version="2" data-pen-title="trump yawp" class="codepen">See the Pen <a href="https://codepen.io/robjoeol/pen/LLzYBY/">trump yawp</a> by rob (<a href="https://codepen.io/robjoeol">@robjoeol</a>) on <a href="https://codepen.io">CodePen</a>.</p>
+<script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
 
 This technique is not very suitable for more than a few frames, each frame requires a @keyframes block, and these blocks need to be coordinated with each other to make a smooth transition for the animation. An animation library should be used for anything more complex than that!
