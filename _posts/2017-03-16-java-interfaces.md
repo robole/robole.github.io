@@ -17,7 +17,6 @@ The class must provide all of the methods in the interface and identify the inte
 # What are the rules of defining interfaces?
 
 1.	An interface is implicitly abstract. It is considered redundant to state it as so. The below are the same:
-
 ```
 public abstract interface Rollable { }
 public interface Rollable { }
@@ -27,23 +26,7 @@ public interface Rollable { }
 
 3.	All interface methods are implicitly public and abstract. Typing in the abstract modifier is considered redundant.
 
-4.	An interface can only declare constants i.e. all variables defined in an interface must be (are implicitly) public, static, and final, For example all of the below declarations are considered public final static when declared in an interface:
-
-```
-int x = 1;
-
-static int x = 1; // Doesn't show final or public
-
-final int x = 1; // Doesn't show static or public
-
-public static int x = 1; // Doesn't show final
-
-public final int x = 1; // Doesn't show static
-
-static final int x = 1 // Doesn't show public
-
-public static final int x = 1;
-```
+4.	An interface can only declare constants. All variables defined in an interface are implicitly public, static, and final.
 
 5.	An interface can extend one or more other interfaces, but nothing else.
 
