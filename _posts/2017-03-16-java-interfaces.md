@@ -2,7 +2,7 @@
 layout: post
 title: Interfaces in Java - What, Why and How?
 category: java
-tags: [interfaces, java, OO Design]
+tags: [interfaces, Java, OO Design]
 ---
 # What is an interface?
 
@@ -17,10 +17,11 @@ The class must provide all of the methods in the interface and identify the inte
 # What are the rules of defining interfaces?
 
 1.	An interface is implicitly abstract. It is considered redundant to state it as so. The below are the same:
-<code>
+
+```
 public abstract interface Rollable { }
 public interface Rollable { }
-</code>
+```
 
 2.	The public modifier is required if you want the interface to have public rather than default access.
 
@@ -28,7 +29,8 @@ public interface Rollable { }
 
 4.	An interface can only declare constants i.e. all variables defined in an interface must be (are implicitly) public, static, and final, For example all of the below declarations are considered public final static when declared in an interface:
 
-<code>int x = 1;
+```
+int x = 1;
 
 static int x = 1; // Doesn't show final or public
 
@@ -41,17 +43,19 @@ public final int x = 1; // Doesn't show static
 static final int x = 1 // Doesn't show public
 
 public static final int x = 1;
-</code>
+```
 
 5.	An interface can extend one or more other interfaces, but nothing else.
 
 6.	Interface methods cannot be marked as static, final, stricfp, or native.
 
 7.	An interface cannot implement another interface or class.
-How do you code to an interface, rather than to an object?
+
+# How do you code to an interface, rather than to an object?
+
 Consider the simple example of a class Car that implements interface Vehicle. Interface Vehicle has a single method called start(). Class Car will implement the interface by providing a start() method. Other functionality in the Car class has been left out for the sake of clarity.
 
-<code>
+```
 interface Vehicle {
   public void start();
 }
@@ -62,28 +66,28 @@ class Car implements Vehicle{
      //implementing code here
    }
 }
-</code>
+```
 
 Having laid the foundations of the Car object, we can create another object called Valet. It is the Valet's job to start the Car and bring it to the restaurant patron. The Valet object can be written without interfaces, as follows:
 
-<code>
+```
 class Valet
 {
    public Car getCar( Car c)
    { ... }
 }
-</code>
+```
 
 The Valet object has a method called getCar that returns a Car object. This code example satisfies the functional requirements of the system, but it forever links the Valet object with that of the Car. In this situation, the two objects are said to be tightly coupled. The Valet object requires knowledge of the Car object and has access to all public methods and variables contained within that object. It is best to avoid such tight coupling of code because it increases dependencies and reduces flexibility.
 To code the Valet object using interfaces, the following implementation could be used:
 
-<code>
+```
 class Valet
 {
    public Vehicle getVehicle( Vehicle c)
 	 {  ...  }
 }
-</code>
+```
 
 While the code changes are fairly minor -- changing the references from Car to Vehicle -- the effects on the development cycle are considerable. Using the second implementation, the Valet has knowledge only of the methods and variables defined in the Vehicle interface. Any other public methods and data contained in the specific implementation of the Vehicle interface are hidden from the user of the Vehicle object.
 
@@ -110,8 +114,6 @@ Coding to interfaces rather than to objects provides higher efficiency in the va
 -	Integration: there is the ability to quickly connect classes or subsystems together, due to their well-established interfaces
 -	Testing: interfaces help isolate bugs because they limit the scope of a possible logic error to a given subset of methods
 
-http://www.javaworld.com/javaworld/jw-08-1999/jw-08-interfaces.html?page=2
-
 # What if two interface methods clash in implementation?
 
 If two interfaces have the same method signature, they effectively declare the same method, regardless of any other intentions. Any concrete class that implements both interfaces can only provide one implementation of a given method signature, so there is no ambiguity about how the Java compiler deals with this case, only a potentially difficult design decision.
@@ -120,4 +122,8 @@ If two interface methods have a clash over their method signatures and intended 
 
 # Can you give an example of multiple inheritance with interfaces?
 
-To illustrate multiple inheritance, consider a bat, which is a mammal that flies. We might have two interfaces: Mammal, which has a method suckleInfant(Mammal), and Flyer, which has a method fly(). These types would be declared in interfaces as below...
+To illustrate multiple inheritance, consider a bat, which is a mammal that flies. We might have two interfaces: Mammal, which has a method suckleInfant(Mammal), and Flyer, which has a method fly().
+
+# Addtional Reading
+
+[Use interfaces to effectively enforce development contracts while maintaining loose coupling of code](https://www.javaworld.com/article/2076468/core-java/smarter-java-development.html)

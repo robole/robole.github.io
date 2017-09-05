@@ -2,7 +2,7 @@
 layout: post
 title: "Class Diagrams - Typical Format and Best Practices"
 category: UML
-tags: [class diagrams, UML, OO Design]
+tags: [class diagrams, UML, OO Design, Java]
 ---
 Class diagrams are used to show the structure and content of our application.
 
@@ -63,7 +63,9 @@ Typically, attributes are private; or protected if we want subclasses to inherit
 
 The only time that attributes are made public is for constants (values cannot be changed), which are usually written as follows:
 
-<code>public static int PI = 3.14;<code>
+```
+public static int PI = 3.14;
+```
 
 ## Operations
 
