@@ -1,0 +1,333 @@
+---
+layout: post
+title: "Java 1.1 - Declaration & Access Control"
+category: UML
+tags: [class diagrams, UML, OO Design]
+---
+# Identifiers (Objective 1.3)
+-	Identifiers can only begin with a letter, an underscore, or a currency character.
+-	After the first character, identifiers can also include digits.
+-	Characters such as #%^ cannot be in an identifier.
+-	Identifiers can be of any length.
+-	Identifiers are case-sensitive.
+-	Java’s built-in keywords (reserved words that have defined meaning in Java) must not be used as identifiers:
+
+|    keywords                                                                                 |
+|-----------------|----------------|------------------|------------------|--------------------|
+|    abstract     |    continue    |    for           |    new           |    switch          |
+|    assert (3)   |    default     |    goto (1)      |    package       |    synchronized    |
+|    boolean      |    do          |    if            |    private       |    this            |
+|    break        |    double      |    implements    |    protected     |    throw           |
+|    byte         |    else        |    import        |    public        |    throws          |
+|    case         |    enum (4)    |    instanceof    |    return        |    transient       |
+|    catch        |    extends     |    int           |    short         |    try             |
+|    char         |    final       |    interface     |    static        |    void            |
+|    class        |    finally     |    long          |    strictfp (2)  |    volatile        |
+|    const (1)    |    float       |    native        |    super         |    while           |
+
+<p>
+(1)	 	not used
+(2)	 	added in 1.2
+(3) 	added in 1.4
+(4)	 	added in 5.0
+</p>
+
+
+-	*true*, *false*, and *null* might seem like keywords, but they are actually literals; you also cannot use them as identifiers in your programs.
+
+-	Oracle’s coding convention dictates that camelCase is used for identifiers (except constants), the first letter of inner words in compound identifiers should be capitalised e.g. myVariable, PrintWriter.
+-	Classes should have their first letter capitalized e.g Dog
+-	Methods should have their first letter in lower case, typically verb-noun pairs e.g. doCalculation
+-	Javabean methods must start with: set, get, is, add, or remove depending on the method's purpose
+-	add... or remove... method must end in ...Listener.
+-	Variables should have their first letter in lower case, they should be kept short if possible e.g. myString
+-	Constants are created using static and final. They should be in upper case with underscores as word separators e.g. MAX_NUMBER
+
+# Declaration Rules (Objective 1.1)
+
+-	A source code file can have only one public class.
+-	If the source file contains a public class, the filename must match the public class name.
+
+-	A file can have only one package statement, but multiple imports.
+-	The package statement (if any) must be the first (non-comment) line in a source file.
+-	The import statements (if any) must come after the package and before the class declaration.
+-	package and import statements apply to all classes in the file.
+-	A file can have more than one nonpublic class.
+-	Files with no public classes have no naming restrictions.
+
+# Class Access Modifiers (Objective 1.1)
+-	Classes can only have public, or default access (when no access modifier is provided).
+-	A class with default access can be seen only by classes within the same package.
+-	A class with public access can be seen by all classes from all packages.
+-	Class visibility revolves around whether code in one class can:
+-	Create an instance of another class
+-	Subclass another class
+
+# Class Modifiers (Nonaccess) (Objective 1.2)
+-	Classes can also be modified with final, abstract, or strictfp.
+
+-	A final class cannot be subclassed.
+-	An abstract class cannot be instantiated.
+-	Strictfp means that any method code in the class will conform to the IEEE 754 standard rules for floating points to remain platform independent.
+
+-	A class cannot be both final and abstract.
+
+-	A single abstract method in a class means the whole class must be abstract.
+-	An abstract class can have both abstract and nonabstract methods.
+-	The first concrete class to extend an abstract class must implement all of its abstract methods.
+
+# Interface Implementation (Objective 1.2)
+-	An interface is like a 100% abstract class that can be implemented by any class from any inheritance tree.
+
+-	Interface methods are by default public and abstract—explicit declaration of these modifiers is optional.
+-	Interface methods cannot be static, final, strictfp, or native.
+-	Interfaces can have constants, which are always implicitly public, static, and final
+
+-	Interfaces can extend one or more other interfaces.
+-	Interfaces CANNOT extend a class
+-	Interfaces CANNOT implement an interface.
+
+-	A class implementing an interface can be abstract.
+-	An abstract implementing class does not have to implement the interface methods, it is up to the first concrete subclass.
+
+-	A legal concrete class which implements an interface has the following properties:
+-	It provides concrete implementations for all the interface's methods.
+-	The methods it must implement must be public.
+-	It must follow all legal override rules for the methods it implements (see chap 2).
+
+# Member Access Modifiers (Objectives 1.3 and 1.4)
+-	Instance variables and methods are known as "members."
+-	Member access comes in two forms:
+-	Code in one class can access a member of another class.
+-	A subclass can inherit a member of its superclass.
+
+-	Private = accessed in same class only
+-	Default = accessed only by classes in the same package.
+-	Protected = accessed by package plus kids (subclasses)
+-	Public = accessed by all
+-	If a class cannot be accessed, its members cannot be accessed. e.g. the Employee class will only be accessible in the EmpOne package.
+
+```
+package EmpOne;
+class Employee	//default access
+{
+  public int empid;
+  public int age;
+  public  Employee(int id,int age){
+				this.empid=id;
+				this.age=age;
+  }
+}
+package EmpTwo;
+import EmpOne.Employee; //Compiler error
+class  Test{   
+	public static void main(String[] args) {
+		Employee x1 = new Employee(1,21);
+//Employee must be public to be accessed
+		System.out.println("The age of Employee x1 is "+x1.age);
+	}
+}
+```
+
+-	A public class needs to be imported if it is to be used outside of its package.
+-	Members accessed without the dot operator (.) must belong to the same class.
+
+# Local Variables (Objective 1.3)
+-	Local variable declarations cannot have access modifiers.
+-	final is the only modifier available to local variables.
+-	Local variables do NOT get default values, so they must be initialized before being used. You don’t have to initialize it if you don’t use it!
+
+
+# Other Modifiers—Members (Objective 1.3)
+-	final methods cannot be overridden in a subclass.
+
+-	abstract methods end in a semicolon; they do NOT have curly braces.
+
+-	Abstract methods must be implemented by a subclass, so they must be inheritable, therefore:
+-	abstract methods cannot be private.
+-	abstract methods cannot be final.
+
+-	The native modifier applies only to methods, it marks a method as having platform-dependent code.
+-	A native method CANNOT have a method body.
+-	The strictfp modifier applies only to classes and methods.
+
+-	The synchronized modifier applies only to methods and code blocks.
+-	synchronized methods can have any access control and can also be marked final.
+
+# Methods with var-args (Objective 1.4)
+-	As of Java 5, methods can declare a parameter that accepts from zero to many arguments, called a var-arg method.
+-	Var-arg can also take an array of the specified type.
+
+
+-	A var-arg parameter is declared with the syntax “type... name”, the spacing between the variable type, the ellipsis and the variable name is unimportant  e.g.
+
+```
+doStuff(int... x){ }	//legal
+doStuff(int...x){ }	//legal
+doStuff(int ... x){ }	//legal
+doStuff(int ...x){ }	//legal
+```
+
+-	You can have only one var-arg parameter in a method.
+-	The var-arg must be the last  parameter in the method's signature
+
+# Variable Declarations (Objective 1.3)
+
+|     Data    Type     |     Width    (bits)     |     Default    Value     |     Min – Max Range                                             |
+|----------------------|-------------------------|--------------------------|-----------------------------------------------------------------|
+|    boolean           |    not applicable       |    false                 |    -                                                            |
+|    byte              |    8                    |    0                     |    -128 to  127                                                 |
+|    short             |    16                   |    0                     |    -32,768 to 32,767                                            |
+|    char              |    16                   |    0  (‘\u0000’)         |    0 to 65,535                                                  |
+|    int               |    32                   |    0                     |    -2,147,483,648 to 2,147,483,647                              |
+|    long              |    64                   |    0L                    |    -9,223,372,036.854,775,808 to   9,223,372,036,854,775,807    |
+|    float             |    32                   |    0.0f                  |    -                                                            |
+|    double            |    64                   |    0.0d                  |    -                                                            |
+
+-	All six number types in Java (byte, short, int, long, float, double)  are signed, meaning they can be negative or positive. The leftmost bit (the most significant bit) is used to represent the sign, where a 1 means negative and 0 means positive, the rest of the bits represent the value using two's complement notation.
+
+-	Instance variables can:
+-	have any access control
+-	be marked final, transient, or volatile
+
+-	Instance variables CANNOT be: abstract, synchronized, native, or strictfp.
+-	Instance variables CANNOT be marked ‘final volatile’.
+
+-	It is legal to declare a local variable with the same name as an instance variable, this is called "shadowing."
+-	final variables have the following properties:
+-	final reference variables cannot refer to a different value once it has been assigned.
+-	A blank final instance variable must be definitely assigned at the end of every constructor of the class in which it is declared; otherwise a compiler error occurs.
+```
+class  Test1{  
+	Test1(){} //compiler error
+	final int i;
+}
+class  Test2{  
+	Test2(){}
+	final int i =5; //legal
+}
+```
+
+-	There is no such thing as a final object. An object reference marked final does not mean the object itself is immutable.
+-	The transient modifier applies to instance and static variables.
+-	The volatile modifier applies only to instance variables (not to static variables).
+
+-	A volatile variable’s value is always held in main memory so that it can be accessed by different threads, it effectively synchronizes all cached copies of variables with main memory.
+
+# Array Declarations (Objective 1.3)
+-	Arrays can hold primitives or objects, but the array itself is always an object.
+-	When you declare an array, the brackets can be to the left or right of the variable name e.g. int[] key; or int key [];
+-	It is never legal to include the size of an array in the declaration.
+-	An array of objects can hold any object that passes the IS-A (or instanceof) test for the declared type of the array e.g. if Horse extends Animal, then a Horse object can go into an Animal array.
+
+# Static Variables and Methods (Objective 1.4)
+-	They belong to a class.
+-	There is only one copy of a static variable and all instances share it.
+-	An object reference is not needed in order to use static members of the class.
+-	Static methods do NOT have direct access to non-static members.
+
+# Enums (Objective 1.3)
+-	An enum specifies a list of constant values assigned to a type.
+-	It lets you restrict a variable to having one of only a few pre-defined values.
+
+```
+enum CoffeeSize{BIG, HUGE, OVERWHELMING}
+```
+
+-	An enum’s constants must be the first statement.
+-	An enum is NOT a String or an int; an enum’s constant type is the enumtype e.g. BIG has a type of CoffeeSize.
+-	If more code follows the constant types, they must be terminated with a semi-colon:
+
+```
+enum CoffeeSize{
+	BIG, HUGE, OVERWHELMING;	//semi-colon required here
+	public String getLidCode(){
+		return "B";}
+}
+```
+
+-	An enum can be declared outside or inside a class; but NOT in a method.
+-	An enum that is NOT enclosed in a class can be declared with only the public or default modifier.
+-	Enums can contain constructors, methods, variables, and constant class bodies.
+-	Enum constants can send arguments to the enum constructor, using the syntax BIG(8), where the int literal 8 is passed to the enum constructor.
+-	A constant specific class body can redefine a method for that constant, it overrides the method defined in the enum.
+
+```
+enum CoffeeSize {
+BIG(8),
+HUGE(10),
+OVERWHELMING(16) { // starts a code block "body" for OVERWHELMING
+	public String getLidCode() {
+	// overrides the method defined in CoffeeSize
+		return "A";}
+}; // semicolon is required
+
+private int ounces;
+
+CoffeeSize(int ounces) {
+this.ounces = ounces;}
+
+public String getLidCode() {
+// this method is overridden  for the OVERWHELMING constant
+	return "B"; // default value we want to return
+}
+public int getOunces() {
+	return ounces;
+}
+}
+```
+
+-	You can think of the CoffeeSize enums as existing in an array of type CoffeeSize, you can iterate through the values of an enum by invoking the values() method on the enum type.
+
+```
+for(CoffeeSize cs: CoffeeSize.values())
+System.out.println(cs + " " + cs.getOunces());
+
+prints:
+BIG 8
+HUGE 10
+OVERWHELMING 16
+```
+
+-	The semicolon at the end of an enum declaration is optional.  
+
+```
+enum Foo { ONE, TWO, THREE}	//legal
+enum Foo { ONE, TWO, THREE};	//legal
+```
+
+-	Enums can be compared using either equals() or ==.
+
+```
+enum Days {M, T, W, TH, F, SA, SU};
+
+Days d1 = Days.TH;
+Days d2 = Days.M;
+if(d1.equals(Days.TH)) System.out.println("d1 is equal to Days.TH");
+System.out.println( d1 == Days.TH ?"d1 == Days.TH" : "d1 != d2. ");
+
+prints:	d1 is equal to Days.TH
+d1 == Days.TH
+```
+
+-	If an enum is used in a case statement, they should NOT use the class prefix. Everywhere else they should have prefix (e.g. CoffeeSize.BIG), unless the enum is in the same class
+```
+CoffeeSize c = CoffeeSize.OVERWHELMING;
+switch (c){
+case CoffeeSize.BIG: System.out.println("im big"); //compiler error
+case HUGE: System.out.println("im huge");
+case OVERWHELMING: System.out.println("im overwhelming");
+}
+```
+
+-	ordinal() returns the ordinal position of the enum, the same as an array position e.g.
+```
+Days d1 = Days.Th;
+System.out.println(d1.ordinal());	// would return 3
+```
+
+-	valueOf() can be used to parse a String (case-sensitive) to an enum type e.g.
+```
+Days d = Enum.valueOf(Day.class, "M");
+System.out.println(d); //prints: M
+```
