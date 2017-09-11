@@ -107,6 +107,6 @@ If two interface methods have a clash over their method signatures and intended 
 
 To illustrate multiple inheritance, consider a bat, which is a mammal that flies. We might have two interfaces: Mammal, which has a method suckleInfant(Mammal), and Flyer, which has a method fly().
 
-# Addtional Reading
+# Additional Reading
 
 [Use interfaces to effectively enforce development contracts while maintaining loose coupling of code](https://www.javaworld.com/article/2076468/core-java/smarter-java-development.html)
