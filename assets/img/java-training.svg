@@ -15,7 +15,7 @@
    enable-background="new 0 0 64 64"
    xml:space="preserve"
    id="svg196"
-   sodipodi:docname="java-tutoring.svg"
+   sodipodi:docname="java-training.svg"
    inkscape:version="0.92.1 r15371"><metadata
      id="metadata202"><rdf:RDF><cc:Work
          rdf:about=""><dc:format>image/svg+xml</dc:format><dc:type
@@ -33,17 +33,17 @@
      inkscape:window-height="837"
      id="namedview198"
      showgrid="false"
-     inkscape:zoom="5.1121298"
-     inkscape:cx="20.475565"
-     inkscape:cy="39.724715"
+     inkscape:zoom="4.7585738"
+     inkscape:cx="26.398651"
+     inkscape:cy="45.201816"
      inkscape:window-x="-8"
      inkscape:window-y="-8"
      inkscape:window-maximized="1"
      inkscape:current-layer="svg196"
      inkscape:pagecheckerboard="true" /><rect
-     style="opacity:1;fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:2.29743552;stroke-linecap:round;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:stroke fill markers"
+     style="opacity:1;fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:2.22870302;stroke-linecap:round;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:stroke fill markers"
      id="rect4687"
-     width="78.046005"
+     width="73.445999"
      height="80.836983"
      x="-9.3429794"
      y="-0.041051056" /><g
@@ -238,6 +238,7 @@
      font-family="'MyriadPro-Bold'"
      font-size="11px"
      id="tspan90">A</tspan></text>
+
 
 </g><g
      id="g114"
