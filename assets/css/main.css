@@ -286,6 +286,10 @@ a.home-navbar-logo:hover, a.home-navbar-logo:focus, a.navbar-logo:hover, a.navba
   }
 }
 
+.portfolio-invoicing{
+  background-size: 70px 70px;
+}
+
 #contact {
   min-height: 12rem;
   padding: 1.5em 0;
