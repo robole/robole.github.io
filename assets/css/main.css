@@ -223,7 +223,7 @@ a.home-navbar-logo:hover, a.home-navbar-logo:focus, a.navbar-logo:hover, a.navba
 .portfolio-item-arrow {
     font-size: 2em;
     line-height: 1em;
-    color: black;
+    color: green;
     position: absolute;
     top: 40%;
     left: 50%;
@@ -272,18 +272,17 @@ a.home-navbar-logo:hover, a.home-navbar-logo:focus, a.navbar-logo:hover, a.navba
 }
 
 .portfolio-img {
-  transition: all .2s linear;
-}
-
-.portfolio-img {
   width: 400px;
   height: 400px;
+  background-position: 50% 50%;
+  transition: all .2s linear;
 }
 
 @media (max-width: 400px) {
   .portfolio-img {
     width: 200px;
     height: 200px;
+    background-size: 200px 200px;
   }
 }
 
@@ -403,4 +402,14 @@ a.home-navbar-logo:hover, a.home-navbar-logo:focus, a.navbar-logo:hover, a.navba
 
 .java-tutoring h1, h2,h3, h4{
   padding-bottom: 1em;
+}
+
+.tree-clip{
+  -webkit-clip-path: polygon(48% 100%, 48% 96%, 0% 95%, 52% 1%, 100% 95%, 52% 96%, 52% 100%);
+clip-path: polygon(48% 100%, 48% 96%, 0% 95%, 52% 1%, 100% 95%, 52% 96%, 52% 100%);
+}
+
+.tree-clip1{
+  -webkit-clip-path: polygon(45% 100%, 45% 93%, 0% 93%, 21% 51%, 0% 51%, 51% 1%, 100% 51%, 81% 52%, 100% 93%, 52% 93%, 52% 100%);
+  clip-path: polygon(45% 100%, 45% 93%, 0% 93%, 21% 51%, 0% 51%, 51% 1%, 100% 51%, 81% 52%, 100% 93%, 52% 93%, 52% 100%);
 }
