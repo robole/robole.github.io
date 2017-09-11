@@ -391,16 +391,16 @@ a.home-navbar-logo:hover, a.home-navbar-logo:focus, a.navbar-logo:hover, a.navba
   width: 90%; /* only required for <img /> */
 }
 
-.java-tutoring p{
+.java-training p{
   margin: 0 0 2em;
 }
 
-.java-tutoring ol{
+.java-training ol{
   list-style-type: decimal;
   padding-bottom: 1em;
 }
 
-.java-tutoring h1, h2,h3, h4{
+.java-training h1, h2,h3, h4{
   padding-bottom: 1em;
 }
 
