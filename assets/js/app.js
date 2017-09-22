@@ -23,7 +23,7 @@ $(document).ready(function () {
 
     // Displaying the logo at the navigation bar on the homepage when scrolling down slightly
     dom.window.scroll(function () {
-        if (dom.window.scrollTop() >= 300) {
+        if (dom.window.scrollTop() >= 400) {
             dom.navBarLogo.removeClass('hide');
         } else {
             dom.navBarLogo.addClass('hide');
