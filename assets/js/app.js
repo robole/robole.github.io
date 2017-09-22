@@ -6,6 +6,21 @@ $(document).ready(function () {
         navBarLogo: $('.home-navbar-logo')
     };
 
+    $(window).scroll(function() {
+    if ($(this).scrollTop() > 20) {
+      $('#toTopBtn').fadeIn();
+    } else {
+      $('#toTopBtn').fadeOut();
+    }
+  });
+
+  $('#toTopBtn').click(function() {
+    $("html, body").animate({
+      scrollTop: 0
+    }, 1000);
+    return false;
+  });
+
     // Displaying the logo at the navigation bar on the homepage when scrolling down slightly
     dom.window.scroll(function () {
         if (dom.window.scrollTop() >= 300) {
