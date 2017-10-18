@@ -7,14 +7,14 @@ body {
 }
 
 #toTopBtn {
-display: none;
-position: fixed;
-font-size: 2em;
-line-height: 2em;
-color:black;
-bottom: 5%;
-right: 5%;
-z-index: 100;
+  display: none;
+  position: fixed;
+  font-size: 2em;
+  line-height: 2em;
+  color:black;
+  bottom: 5%;
+  right: 5%;
+  z-index: 100;
 }
 
 .toTopArrow{
@@ -54,7 +54,6 @@ td, th{
     padding: 0 0.2em;
   }
 }
-
 
 p {
   margin: 1.75em 0 2em;
@@ -218,7 +217,7 @@ a.home-navbar-logo:hover, a.home-navbar-logo:focus, a.navbar-logo:hover, a.navba
   background-repeat: no-repeat;
   background-color: green;
   background-position: center;
-  color:white;
+  color: white;
 }
 
 #portfolio , #portfolio h1{
@@ -308,7 +307,7 @@ a.home-navbar-logo:hover, a.home-navbar-logo:focus, a.navbar-logo:hover, a.navba
 #contact {
   min-height: 12rem;
   padding: 1.5em 0;
-  background-color: black;
+  background-color: #453008;
   color: white;
   text-align: center;
   font-size: 0.75em;
