@@ -9,7 +9,7 @@ body {
 #toTopBtn {
   display: none;
   position: fixed;
-  font-size: 2em;
+  font-size: 3em;
   line-height: 2em;
   color:black;
   bottom: 5%;
@@ -117,16 +117,25 @@ h1, h2, h3, h4, h5, h6 {
     color: #79AFE8;
 }
 
+
+a:visited, a:hover, a:active, a:link  {
+  text-decoration: none;
+}
+
+a:active, a:link, a:visited{
+  color:#002FFF;
+}
+
+a:hover{
+  color:#FF00D0;
+}
+
 a.home-navbar-logo, a.navbar-logo{
   font-family: 'Lobster', cursive;
   color: #ffffff;
   font-size: 2em;
   cursor: pointer;
   transition: all .5s;
-}
-
-a.home-navbar-logo:hover, a.home-navbar-logo:focus, a.navbar-logo:hover, a.navbar-logo:focus{
-  text-decoration: none;
 }
 
 @media (max-width: 540px) {
@@ -231,7 +240,6 @@ a.home-navbar-logo:hover, a.home-navbar-logo:focus, a.navbar-logo:hover, a.navba
 
 .portfolio-item h4, .portfolio-item h5, .portfolio-item>a:hover, .portfolio-item>a:focus {
   color: white;
-  text-decoration: none;
 }
 
 .portfolio-item-arrow {
