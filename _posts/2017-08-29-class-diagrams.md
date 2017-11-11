@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: scrollable_post
 title: "Class Diagrams - Typical Format and Best Practices"
 category: UML
 tags: [class diagrams, UML, OO Design, Java]

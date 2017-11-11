@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+{% include head.html %}
+
+<body data-spy="scroll" data-target=".navbar" >
+	<div id="toTopBtn" title="Return to top of page"><span class="fa fa-chevron-circle-up toTopArrow"></span></div>
+	{% include post_navbar.html %}
+	{% include scrollable_post_list.html %}
+
+	{% if site.disqus.shortname %}
+	<div class="container">
+		<div class="row">
+	  {% include post_comments.html %}
+		</div>
+	</div>
+	{% endif %}
+ {% include footer.html %}
+ {% include javascripts.html%}
+ <script id="dsq-count-scr" src="//robole-github-io.disqus.com/count.js" async></script>
+</body>
+</html>
