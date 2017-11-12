@@ -9,7 +9,7 @@ body {
 #toTopBtn {
   display: none;
   position: fixed;
-  font-size: 3em;
+  font-size: 2.5em;
   line-height: 2em;
   color:black;
   bottom: 5%;
@@ -123,7 +123,7 @@ a:visited, a:hover, a:active, a:link  {
 }
 
 a:active, a:link, a:visited{
-  color:#002FFF;
+  color:#0D00FF;
 }
 
 a:hover{
