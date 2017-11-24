@@ -351,6 +351,7 @@ a.home-navbar-logo, a.navbar-logo{
 
 #blog{
   padding-top: 5rem;
+  min-height: 70rem;
 }
 
 .tags-expo{
