@@ -8,15 +8,17 @@ tags: [interfaces, Java, OO Design]
 
 An interface defines a contract for what a class can do, without saying anything about how the class will do it.
 
-It’s basically a list of related method declarations without implementations. A class that implements the interface agrees to implement all of the methods defined in the interface, thereby agreeing to certain behaviour. Java interfaces are analogous to protocols (an agreed-upon behaviour). Implementing an interface allows a class to become more formal about the behaviour it promises to provide.
+It’s basically a list of related method declarations without implementations. A class that implements the interface agrees to implement all of the methods defined in the interface, thereby agreeing to certain behaviour. 
 
 # What must a class do to implement an interface?
 
-The class must provide all of the methods in the interface and identify the interface in its implements clause.
+The class must identify the interface in its implements clause and implement
+all of the methods specified in the interface.
 
 # What are the rules of defining interfaces?
 
 1.	An interface is implicitly abstract. It is considered redundant to state it as so. The below are the same:
+
 ```
 public abstract interface Rollable { }
 public interface Rollable { }
@@ -24,15 +26,13 @@ public interface Rollable { }
 
 2.	The public modifier is required if you want the interface to have public rather than default access.
 
-3.	All interface methods are implicitly public and abstract. Typing in the abstract modifier is considered redundant.
+3.	An interface can only declare constants. All variables defined in an interface are implicitly public, static, and final.
 
-4.	An interface can only declare constants. All variables defined in an interface are implicitly public, static, and final.
+4.	An interface can extend one or more other interfaces, but nothing else.
 
-5.	An interface can extend one or more other interfaces, but nothing else.
+5.	Interface methods cannot be marked as static, final, stricfp, or native.
 
-6.	Interface methods cannot be marked as static, final, stricfp, or native.
-
-7.	An interface cannot implement another interface or class.
+6.	An interface cannot implement another interface or class.
 
 # How do you code to an interface, rather than to an object?
 
