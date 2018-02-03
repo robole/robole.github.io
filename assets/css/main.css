@@ -427,7 +427,7 @@ a.home-navbar-logo, a.navbar-logo{
   padding-bottom: 1em;
 }
 
-.java-training h1, h2,h3, h4{
+.java-training h1, .java-training h2, .java-training h3, .java-training h4{
   padding-bottom: 1em;
 }
 
