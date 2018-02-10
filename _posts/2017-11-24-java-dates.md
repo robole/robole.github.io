@@ -61,8 +61,8 @@ These "local" date representations are *without timezones*.
 ## Amount of time
 
 To specify an amount of time, we can use:
-- [Duration](https://docs.oracle.com/javase/8/docs/api/java/time/Duration.html): Is time-based (seconds with nanosecond accuracy).
-- [Period](https://docs.oracle.com/javase/8/docs/api/java/time/Period.html):  Is date-based (years, months, days).
+- [Duration](https://docs.oracle.com/javase/8/docs/api/java/time/Duration.html) is time-based (seconds with nanosecond accuracy).
+- [Period](https://docs.oracle.com/javase/8/docs/api/java/time/Period.html) is date-based (years, months, days).
 
 # Which class should I use?
 
@@ -222,7 +222,7 @@ public class ExampleFormatter {
  ```
 ## Get a particular day
 
-The [TemporalAdjusters](https://docs.oracle.com/javase/8/docs/api/java/time/temporal/TemporalAdjuster.html) class contains a standard set of adjusters, available as static methods. These include:
+The [TemporalAdjusters](https://docs.oracle.com/javase/8/docs/api/java/time/temporal/TemporalAdjuster.html) class contains a standard set of adjusters, which are available as static methods. These include:
 
 - finding the first or last day of the month
 - finding the first day of next month
@@ -239,7 +239,7 @@ System.out.printf("first Monday of Month: %s%n", date.with(TemporalAdjusters.fir
 
 # Java 7 and below
 
-In short, don't waste your time doing it this way!
+In short, don't waste your time doing it this way! But you may need to maintain code that uses these classes.
 
 Some of the issues are:
  -  Some of the classes have poor API design. For example, years in <code>java.util.Date</code> start at 1900, months start at 1, and days start at 0. This is not very intuitive!
