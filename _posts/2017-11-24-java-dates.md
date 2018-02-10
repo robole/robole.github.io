@@ -9,9 +9,7 @@ published: true
 Dates were so badly realised in Java that a lot people started to use
 external libraries such as [Joda Time](http://www.joda.org/joda-time/).
 
-It was only in Java 8, that this has been addressed in the <code>java.time</code> package.
-
-The classes are immutable to ensure thread-safety. We use static methods to get new objects when there is a manipulation of a value.
+It was only in Java 8, that this has been addressed in the <code>java.time</code> package. The classes are immutable to ensure thread-safety.
 
 # Key temporal classes
 
@@ -37,20 +35,20 @@ These rules change more often than you might expect. Be sure to keep your date-t
 
 Use proper time zone names. These names take the form of continent, a SLASH, and a city or region. Avoid the 3-4 letter codes such as 'EST' or 'IST'. They are neither standardized nor unique. They further confuse the messiness of DST.
 
+[Here](http://www.javadb.com/list-possible-timezones-or-zoneids-in-java/) is a list of the long version of all the zone IDs.
+
 ```
-ZoneId z = ZoneId.of( “Africa/Tunis” ) ;
+ZoneId z = ZoneId.of( “Africa/Johannesburg” ) ;
 ```
 
 ## ZonedDateTime
 
 >ZonedDateTime = Instant + ZoneId
 
-[Here](>ZonedDateTime = Instant + ZoneId) is a list of the long version of all the zone IDs.
-
 
 ```
 ZonedDateTime now = ZonedDateTime.ofInstant(Instant.now(), ZoneId.of("Europe/Dublin"));
-        System.out.print(now); //current time in Dublin
+System.out.print(now); //current time in Dublin
 ```
 
 ## Local representations
@@ -120,8 +118,8 @@ These methods are available in <code>LocalDate</code>, <code>LocalTime</code>, <
 
 ```
 LocalDate christmas2017 = LocalDate.of(2017, 12, 25 );
-        LocalDate christmas2018 = LocalDate.of(2018, 12, 25 );
-        System.out.println(christmas2017.isBefore(christmas2018)); //true
+LocalDate christmas2018 = LocalDate.of(2018, 12, 25 );
+System.out.println(christmas2017.isBefore(christmas2018)); //true
 ```
 
 ## Difference between 2 dates
@@ -184,13 +182,13 @@ Adding a <code>Duration</code> to a <code>ZonedDateTime</code>, time differences
 Adding a <code>Period</code> to a <code>ZonedDateTime</code>, the time differences are observed.
 
 ## Parsing dates
-Use [parse(CharSequence text)](https://docs.oracle.com/javase/8/docs/api/java/time/LocalDate.html#parse-java.lang.CharSequence-) for dates in the format of "yyyy-mm-dd".
+Use <code>parse(CharSequence text)</code> for dates in the format of "yyyy-mm-dd".
 
 ```
 LocalDate a = LocalDate.parse("2018-02-01");
 System.out.println(a.toString());
 ```
-To parse a date in another format, use the second version, which requires a <code>DateTimeFormatter</code>, through which you can specify the format: [LocalDate parse(CharSequence text, DateTimeFormatter formatter)](https://docs.oracle.com/javase/8/docs/api/java/time/LocalDate.html#parse-java.lang.CharSequence-java.time.format.DateTimeFormatter-)
+To parse a date in another format, use the second version, which requires a <code>DateTimeFormatter</code>, through which you can specify the format: <code>parse(CharSequence text, DateTimeFormatter formatter)</code>
 
 ```
 DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
