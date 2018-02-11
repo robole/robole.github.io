@@ -29,6 +29,11 @@ table{
   border-collapse: collapse;
 }
 
+code{
+  background-color: #d6d6c2;
+  color: #2e2e1f
+}
+
 td, th{
   border: 1px solid #999;
   padding: 0.5rem;
