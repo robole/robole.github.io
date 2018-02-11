@@ -84,7 +84,7 @@ But for presentation to users you need to adjust into a time zone expected by th
 
 For recording something like a birthday, you might use a <code>LocalDate</code>, because most people observe their birthday on the same day, whether they are in their birth city or somewhere else.
 
-Why would you use OffsetDateTime instead of ZonedDateTime? If you are writing complex software that models its own rules for date and time calculations based on geographic locations, or if you are storing time-stamps in a database that track only absolute offsets from Greenwich/UTC time, then you might want to use OffsetDateTime. Also, XML and other network formats define date-time transfer as OffsetDateTime or OffsetTime.
+Why would you use OffsetDateTime instead of ZonedDateTime? It would be for special cases. If you are writing complex software that models its own rules for date and time calculations based on geographic locations. 
 
 |Class/Enum|Year|Month|Day|Hours|Minutes|Seconds|Zone Offset|Zone ID|toString()|
 |-----|--|--|--|--|--|--|--|--|------|
