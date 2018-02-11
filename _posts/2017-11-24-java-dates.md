@@ -25,7 +25,7 @@ System.out.println(a); //2018-02-10T17:06:04.194Z
 ## ZoneId 🌎🌍
 A [ZoneId](https://docs.oracle.com/javase/8/docs/api/java/time/ZoneId.html) is a time zone.
 
-A time zone is a set of rules for handling adjustments and anomalies as practiced by a local community or region. The most common rule applied is Daylight Saving Time (DST). The offset from UTC can vary throughout the year. A time zone has the history of past rules, present rules, and rules confirmed for the near future. 📏
+A time zone is a set of rules for handling adjustments and anomalies as practiced by a country or region. The most common rule applied is Daylight Saving Time (DST). A time zone has the history of past rules, present rules, and rules confirmed for the near future. 📏
 
 These rules change more often than you might expect. Be sure to keep your date-time library's rules, usually a copy of the 'tz' database, up to date. Keeping up-to-date is easier than ever now in Java 8 with Oracle releasing a [Timezone Updater Tool](http://www.oracle.com/technetwork/java/javase/tzupdater-readme-136440.html).
 
@@ -46,7 +46,7 @@ For example, Paris is one hour ahead of Greenwich/UTC in winter and two hours ah
 
 You're unlikely to use this class directly or it's related classes: [OffsetDateTime](https://docs.oracle.com/javase/8/docs/api/java/time/OffsetDateTime.html), and [OffsetTime](https://docs.oracle.com/javase/8/docs/api/java/time/OffsetTime.html).
 
-## ZonedDateTime 🌎⏲️
+## ZonedDateTime 🌎📅
 
 [ZonedDateTime](https://docs.oracle.com/javase/8/docs/api/java/time/ZonedDateTime.html) is a date-time with a time-zone. Think..
 
@@ -58,20 +58,20 @@ ZonedDateTime now = ZonedDateTime.ofInstant(Instant.now(), ZoneId.of("Europe/Dub
 System.out.print(now); //current time in Dublin
 ```
 
-## Local representations 🏘️⏲️
+## Local representations 🏠️
 
 These "local" date representations are *without timezones*.
 - [LocalDate](https://docs.oracle.com/javase/8/docs/api/java/time/LocalDate.html) stores a date only ('2010-12-03'),
 - [LocalTime](https://docs.oracle.com/javase/8/docs/api/java/time/LocalTime.html) stores a time only ('18:00'),  
 - [LocalDateTime](https://docs.oracle.com/javase/8/docs/api/java/time/LocalDateTime.html) stores a date and time ('2010-12-03T11:30').
 
-## Amount of time ⏱️
+## Amount of time ⌚⏱️
 
 To specify an amount of time, we can use:
 - [Duration](https://docs.oracle.com/javase/8/docs/api/java/time/Duration.html) is time-based (seconds with nanosecond accuracy).
 - [Period](https://docs.oracle.com/javase/8/docs/api/java/time/Period.html) is date-based (years, months, days).
 
-# Which class should I use? 🤔
+# Which class should I use? 🤓
 
 When choosing a temporal-based class, you first identify what aspects of time you need to represent:
 - Do you need a time zone?
@@ -105,9 +105,9 @@ Why would you use OffsetDateTime instead of ZonedDateTime? If you are writing co
 ^ does not store the value but has methods to access these values
 
 
-# Using Dates ⏲️
+# Using Dates 📅
 
-## Creating a date 🐣⏲️
+## Creating a date 🐣📅
 
 We use these static methods to get an instance. You can get the current date via <code>now()</code>; or a fixed date using <code>of()</code>.
 
@@ -118,7 +118,7 @@ System.out.println(now.toString()); //current date
 ZonedDateTime date = ZonedDateTime.of(2017, 12, 31, 23, 59, 59, 0,  ZoneId.systemDefault());
 System.out.println(date.toString()); //2017-11-25
  ```
-## Comparing dates ⚖️⏲️
+## Comparing dates 🔎📅
 Use <code>int compareTo(ChronoLocalDate other)</code> to assert the equality of dates by returning a comparsion number, which can be: negative (before); zero (equal); or positive (after).
 
 The self-explanatory <code>boolean isAfter(ChronoLocalDate other)</code>, <code>boolean isBefore(ChronoLocalDate other)</code>, and <code>boolean isBefore(ChronoLocalDate other)</code> could be more convenient if you want a more specific test.
@@ -161,7 +161,7 @@ public class Test {
 }
  ```
 
-## Adding and subtracting time units from dates and times ➕➖⏲️
+## Adding and subtracting time units from dates and times ➕➖📅
 To add time units, you can:
 - use the general form: <code> plus(long amountToAdd,TemporalUnit unit)</code>;
 - Or specific forms that (predictably) vary for each class:
@@ -190,7 +190,7 @@ Adding a <code>Duration</code> to a <code>ZonedDateTime</code>, time differences
 
 Adding a <code>Period</code> to a <code>ZonedDateTime</code>, the time differences are observed.
 
-## Parsing dates 🗓️📥📤
+## Parsing dates 🔁📅️
 Use <code>parse(CharSequence text)</code> for dates in the format of "yyyy-mm-dd".
 
 ```
@@ -205,7 +205,7 @@ LocalDate a = LocalDate.parse("01/02/2018", formatter);
 System.out.println(a.toString()); //2018-02-01
 ```
 
-## Formatting dates 🗓️🗂️
+## Formatting dates 📅️📁️
 
 [DateTimeFormatter](https://docs.oracle.com/javase/8/docs/api/java/time/format/DateTimeFormatter.html) provides methods for parsing and printing dates using predefined constants (e.g. ISO_LOCAL_DATE), and [patterns](https://docs.oracle.com/javase/8/docs/api/java/time/format/DateTimeFormatter.html#patterns) (e.g. yyyy-MMM-dd).
 
@@ -229,7 +229,7 @@ public class ExampleFormatter {
     }
 }
  ```
-## Get a particular day 🗓️🎯
+## Get a particular day 🎣📅️
 
 The [TemporalAdjusters](https://docs.oracle.com/javase/8/docs/api/java/time/temporal/TemporalAdjuster.html) class contains a standard set of adjusters, which are available as static methods. These include:
 
@@ -246,7 +246,7 @@ System.out.printf("first day of Month: %s%n", date.with(TemporalAdjusters.firstD
 System.out.printf("first Monday of Month: %s%n", date.with(TemporalAdjusters.firstInMonth(DayOfWeek.MONDAY)));
 ```
 
-# Java 7 and below 🗓️👴👵
+# Java 7 and below 📅️👴👵
 
 In short, don't waste your time doing it this way! But you may need to maintain code that uses these classes.
 
@@ -298,7 +298,7 @@ public class Test {
     }
 }
 ```
-# Example application 🗓️📲
+# Example application 📅️💾
 
 📚 [Library - overdue books](https://github.com/robole/library-redi)
 
