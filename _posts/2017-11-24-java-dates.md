@@ -65,13 +65,13 @@ These "local" date representations are *without timezones*.
 - [LocalTime](https://docs.oracle.com/javase/8/docs/api/java/time/LocalTime.html) stores a time only ('18:00'),  
 - [LocalDateTime](https://docs.oracle.com/javase/8/docs/api/java/time/LocalDateTime.html) stores a date and time ('2010-12-03T11:30').
 
-## Amount of time ⌚⏱️
+## Amount of time ⌚
 
 To specify an amount of time, we can use:
 - [Duration](https://docs.oracle.com/javase/8/docs/api/java/time/Duration.html) is time-based (seconds with nanosecond accuracy).
 - [Period](https://docs.oracle.com/javase/8/docs/api/java/time/Period.html) is date-based (years, months, days).
 
-# Which class should I use? 🤓
+# Which class should I use? 😟😃
 
 When choosing a temporal-based class, you first identify what aspects of time you need to represent:
 - Do you need a time zone?
@@ -131,7 +131,7 @@ LocalDate christmas2018 = LocalDate.of(2018, 12, 25 );
 System.out.println(christmas2017.isBefore(christmas2018)); //true
 ```
 
-## Difference between 2 dates
+## Difference between 2 dates 🕒..🕕
 Use the time units in [java.time.temporal.ChronoUnit](https://docs.oracle.com/javase/8/docs/api/java/time/temporal/ChronoUnit.html) and <code>between(..)</code>.
 
 For example, to get the logical calendar days between 2 dates, you can use <code>DAYS.between(Temporal temporal1Inclusive, Temporal temporal2Exclusive)</code>.
