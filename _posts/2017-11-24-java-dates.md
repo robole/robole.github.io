@@ -15,7 +15,7 @@ It was only in Java 8, that this has been addressed in the <code>java.time</code
 
 ## Instant 💻⚡
 
-An [Instant](https://docs.oracle.com/javase/8/docs/api/java/time/Instant.html) is a moment on the timeline in [UTC](https://en.wikipedia.org/wiki/Coordinated_Universal_Time), a count of nanoseconds since the epoch of the first moment of 1970 UTC. It is essentially a timestamp ("machine time").
+An [Instant](https://docs.oracle.com/javase/8/docs/api/java/time/Instant.html) is a moment on the timeline in [UTC](https://en.wikipedia.org/wiki/Coordinated_Universal_Time). It is a count of nanoseconds since the first moment of 1970 UTC (unix epoch time). It is essentially a timestamp (often referred to as "machine time").
 
 ```
 Instant a = Instant.now();
@@ -84,7 +84,7 @@ But for presentation to users you need to adjust into a time zone expected by th
 
 For recording something like a birthday, you might use a <code>LocalDate</code>, because most people observe their birthday on the same day, whether they are in their birth city or somewhere else.
 
-Why would you use OffsetDateTime instead of ZonedDateTime? It would be for special cases. If you are writing complex software that models its own rules for date and time calculations based on geographic locations. 
+Why would you use OffsetDateTime instead of ZonedDateTime? It would be for special cases. If you are writing complex software that models its own rules for date and time calculations based on geographic locations.
 
 |Class/Enum|Year|Month|Day|Hours|Minutes|Seconds|Zone Offset|Zone ID|toString()|
 |-----|--|--|--|--|--|--|--|--|------|
