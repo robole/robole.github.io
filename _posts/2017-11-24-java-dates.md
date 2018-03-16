@@ -25,6 +25,10 @@ System.out.println(a); //2018-02-10T17:06:04.194Z
 ## ZoneId 🌎🌍
 A [ZoneId](https://docs.oracle.com/javase/8/docs/api/java/time/ZoneId.html) is a time zone.
 
+```
+ZoneId z = ZoneId.of( “Africa/Johannesburg”) ;
+```
+
 A time zone is a set of rules for handling adjustments and anomalies as practiced by a country or region. The most common rule applied is Daylight Saving Time (DST). A time zone has the history of past rules, present rules, and rules confirmed for the near future. 📏
 
 These rules change more often than you might expect. Be sure to keep your date-time library's rules, usually a copy of the 'tz' database, up to date. Keeping up-to-date is easier than ever now in Java 8 with Oracle releasing a [Timezone Updater Tool](http://www.oracle.com/technetwork/java/javase/tzupdater-readme-136440.html).
@@ -33,11 +37,15 @@ Use complete time zone names, as much as possible. These names take the form of 
 
 <img src="https://upload.wikimedia.org/wikipedia/commons/9/9a/Daylightsavings.svg" alt="Daylight saving, turning back time!" height="400px" width="100%" />
 
-[Here](http://www.javadb.com/list-possible-timezones-or-zoneids-in-java/) is a list of the long version of all the zone IDs.
+[Here](https://gist.githubusercontent.com/robole/9b28d3d5edc450f2c95aa94b152c79cb/raw/b796cbb01c15eea6e8983254cff808161736dd0f/ZoneIds) is a list of the long version of all the zone IDs. The code below is how you can print them out for yourself!
+```
+List<String> zoneList = new ArrayList<>(ZoneId.getAvailableZoneIds());
+Collections.sort(zoneList);
+for(int i = 0; i < zoneList.size(); i++){
+    System.out.println(zoneList.get(i));
+}
+```
 
-```
-ZoneId z = ZoneId.of( “Africa/Johannesburg” ) ;
-```
 ## ZoneOffset ➕➖🌎
 
 [ZoneOffset](https://docs.oracle.com/javase/8/docs/api/java/time/ZoneOffset.html) is an offset from UTC, such as +02:00.
