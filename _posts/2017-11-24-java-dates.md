@@ -15,7 +15,7 @@ It was only in Java 8, that this has been addressed in the <code>java.time</code
 
 ## Instant 💻⚡
 
-An [Instant](https://docs.oracle.com/javase/8/docs/api/java/time/Instant.html) is a moment on the timeline in [UTC](https://en.wikipedia.org/wiki/Coordinated_Universal_Time). It is a count of nanoseconds since the first moment of 1970 UTC (unix epoch time). It is essentially a timestamp (often referred to as "machine time").
+An [Instant](https://docs.oracle.com/javase/8/docs/api/java/time/Instant.html) is a moment on the timeline in [UTC](https://en.wikipedia.org/wiki/Coordinated_Universal_Time). It is a count in nanoseconds since the first moment of 1970 UTC (unix epoch time). It is essentially a timestamp (often referred to as "machine time").
 
 ```
 Instant a = Instant.now();
@@ -37,7 +37,7 @@ Use complete time zone names, as much as possible. These names take the form of 
 
 <img src="https://upload.wikimedia.org/wikipedia/commons/9/9a/Daylightsavings.svg" alt="Daylight saving, turning back time!" height="400px" width="100%" />
 
-[Here](https://gist.githubusercontent.com/robole/9b28d3d5edc450f2c95aa94b152c79cb/raw/b796cbb01c15eea6e8983254cff808161736dd0f/ZoneIds) is a list of the long version of all the zone IDs. The code below is how you can print them out for yourself!
+[Here](https://gist.githubusercontent.com/robole/9b28d3d5edc450f2c95aa94b152c79cb/raw/b796cbb01c15eea6e8983254cff808161736dd0f/ZoneIds) is a list of the long version of all the zone IDs. The code prints them all out, if you want to do it yourself!
 ```
 List<String> zoneList = new ArrayList<>(ZoneId.getAvailableZoneIds());
 Collections.sort(zoneList);
