@@ -20,7 +20,7 @@ For example, Toyota and Ford are both types of cars, so you can represent them u
 
 In a class diagram, we represent a class using a rectangle with 3 sections.
 
-![class](/assets/img/post-2017-08-29-class.png)
+![class](/assets/img/blog/2017-08-29-uml/post-2017-08-29-class.png)
 
 The class name is put in the top section and is typically formatted as following:
 
@@ -35,7 +35,7 @@ The properties of a class are referred to as attributes. Example attributes for 
 
 Attributes can have a data type to tell us how we would use the attribute e.g. we can do arithmetic on numbers. In a statically-typed language like Java, it is required to have an explicit data type for each attribute.
 
-![class](/assets/img/post-2017-08-29-class-attributes.png)
+![class](/assets/img/blog/2017-08-29-uml/post-2017-08-29-class-attributes.png)
 
 Attributes are listed in the second section typically in the form of:
 
@@ -71,7 +71,7 @@ public static int PI = 3.14;
 
 An action that can be performed by the class. Also know as method.
 
-![class](/assets/img/post-2017-08-29-class-operations.png)
+![class](/assets/img/blog/2017-08-29-uml/post-2017-08-29-class-operations.png)
 
 Operations are listed in the third section of the rectangle typically in the form of:
 
@@ -101,7 +101,7 @@ Usage: The dependency relationship is not used too often really. But a common us
 
 The dependency is represented as a dotted line with an arrow on one end between classes.
 
-![class dependency](/assets/img/post-2017-08-29-class-dependency.png)
+![class dependency](/assets/img/blog/2017-08-29-uml/post-2017-08-29-class-dependency.png)
 
 ### Associations
 
@@ -111,7 +111,7 @@ Usage: If you find yourself saying that a class works with an object of another 
 
 The association is shown using a simple line connecting two classes. Navigability is often applied to an association relationship to describe which class contains the attribute that supports the relationship.
 
-![class association](/assets/img/post-2017-08-29-class-association.png)
+![class association](/assets/img/blog/2017-08-29-uml/post-2017-08-29-class-association.png)
 
 ### Aggregation
 
@@ -121,7 +121,7 @@ Usage: Usually, it is the judgement of the modeller to decide if it is an associ
 
 Aggregation is shown by using an empty diamond arrowhead next to the owning class.
 
-![class aggregation](/assets/img/post-2017-08-29-class-aggregation.png)
+![class aggregation](/assets/img/blog/2017-08-29-uml/post-2017-08-29-class-aggregation.png)
 
 ### Composition
 
@@ -129,7 +129,7 @@ Composition is similar to aggregation, but has a "destructive" relationship. If 
 
 Usage: It is a strong "whole-part" relationship where the parts live and die with the whole. For example, a Line Item is part of an Order, delete the Order, then the Line Item is deleted too. An engine is part of a Car.
 
-![class aggregation](/assets/img/post-2017-08-29-class-composition.png)
+![class aggregation](/assets/img/blog/2017-08-29-uml/post-2017-08-29-class-composition.png)
 
 The term "has a" to describe a relationship, when you find yourself stating that a class has a part that is an object of another class, usually indicates that the relationship is likely to be one of association, aggregation, or composition. You can follow the broad advice above to choose the most appropriate option.
 
@@ -141,7 +141,7 @@ Usage: We use this when we want to share common attributes and operations in a f
 
 A solid line with a closed arrow is used to show that the target class is a more general type of another class.
 
-![class generalization](/assets/img/post-2017-08-29-class-generalization.png)
+![class generalization](/assets/img/blog/2017-08-29-uml/post-2017-08-29-class-generalization.png)
 
 ## Interface
 
@@ -153,14 +153,14 @@ There are two representations for an interface; which one you should use depends
 
 1. This is similar to a class but has with the stereotype «interface» in the name section. The relationship is represented as a dotted line with a closed arrow pointing to the interface, this relationship is sometimes referred to as a realization relationship type. Use this when you want to show more details.
 
-![class interface detailed](/assets/img/post-2017-08-29-class-interface1.png)
+![class interface detailed](/assets/img/blog/2017-08-29-uml/post-2017-08-29-class-interface1.png)
 
 2. This is called the ball-and-socket notation because of it's appearance. This representation shows less detail for the interface but is more convenient for showing relationships to classes. It is often used in addition to the first representation in situations where an interface is implemented by many classes.
 
-![class interface less detailed](/assets/img/post-2017-08-29-class-interface2.png)
+![class interface less detailed](/assets/img/blog/2017-08-29-uml/post-2017-08-29-class-interface2.png)
 
 ## Note
 
 You can put a note on any part of a UML diagram. Connect the note to the relevant bit with a dashed line, as shown in the example below.
 
-![note attached to class](/assets/img/class-diagram-note.png)
+![note attached to class](/assets/img/blog/2017-08-29-uml/class-diagram-note.png)

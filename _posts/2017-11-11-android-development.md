@@ -16,7 +16,7 @@ Android Studio is the official IDE for Android, so I obediently decided to use i
 6. The AVD loaded this time but it didn't display the program properly.
 7. I created a new AVD with a smaller screen size and it worked, but it gave a warning that there can be stability issues with my graphics device driver.
 
-![android hello world](/assets/img/2017-11-11-android-post/android-hello-world.png) ![device driver warning](/assets/img/2017-11-11-android-post/android-avd-driver-warning.png)
+![android hello world](/assets/img/blog/2017-11-11-android/android-hello-world.png) ![device driver warning](/assets/img/blog/2017-11-11-android/android-avd-driver-warning.png)
 
 # Pick a tutorial/book and try other people's code
 
@@ -27,12 +27,12 @@ You need to have the version of the Android SDK installed on your computer that 
 
 So, I changed the version numbers manually in build.gradle (highlighted fields) and synchronised the project. Then it ran!
 
-![android gradle build update](/assets/img/2017-11-11-android-post/android-gradle-build.png)
+![android gradle build update](/assets/img/blog/2017-11-11-android/android-gradle-build.png)
 
 You can also download code samples directly in Android Studio on various different features.
 
-![android studio import code sample](/assets/img/2017-11-11-android-post/import-code-samples.png)
-![android studio import code sample options](/assets/img/2017-11-11-android-post/import-code-samples-options.png)
+![android studio import code sample](/assets/img/blog/2017-11-11-android/import-code-samples.png)
+![android studio import code sample options](/assets/img/blog/2017-11-11-android/import-code-samples-options.png)
 
 
 # How to run the app on my phone

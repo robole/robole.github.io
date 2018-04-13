@@ -1,0 +1,20 @@
+.Media {
+  display: flex;
+  align-items: flex-start;
+  line-height: 1.3;
+}
+
+.Media-figure {
+  margin-right: 1rem;
+}
+
+.Media-body {
+  flex: 1;
+  p {
+    margin-bottom: 0;
+  }
+}
+
+.text-small {
+  font-size: 0.8em;
+}

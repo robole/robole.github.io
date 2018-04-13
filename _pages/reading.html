@@ -4,27 +4,15 @@ title: Reading
 permalink: /reading
 ---
 <div class="top-container content">
-<script>
-var request = new XMLHttpRequest();
-var params = "action=something";
-request.open('GET', "https://www.goodreads.com/shelf/list.xml?key=RBUy1EBMk4WTM53sJZVDQ&user_id=15065423-rob", true);
-request.onreadystatechange = function() {if (request.readyState==4) console.log(request);};
-request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-request.setRequestHeader("Content-length", params.length);
-request.setRequestHeader("Access-Control-Allow-Headers", "x-requested-with");
-request.send(params);
-
-$.ajax({
-    url: 'https://www.goodreads.com/shelf/list.xml?key=RBUy1EBMk4WTM53sJZVDQ&user_id=15065423-rob',
-    method: 'GET',
-    success: function(data){
-      console.log($.parseXML(data));
-      console.log('success: '+ data);
-    },
-    error: function(data){
-      console.log("error");
-      console.log(data);
-    }
-  });
-</script>
+  <iframe style="position: relative; top: 0; left: 0; width: 100%; height: 100%;" src="https://flickrembed.com/cms_embed.php?source=flickr&layout=responsive&input=www.flickr.com/photos/157429326@N07/albums/72157692242126334&sort=0&by=album&theme=default&scale=fill&limit=10&skin=default&autoplay=true" scrolling="no" frameborder="0" allowFullScreen="true" webkitallowfullscreen="true" mozallowfullscreen="true"></iframe><div style="position: absolute; padding-bottom: 60%; overflow: auto; -webkit-overflow-scrolling:touch;"><small style="display: block; text-align: center; position: absolute; bottom: 0; left: 0; right: 0; margin-left: auto; margin-right: auto;">Powered by <a href="https://flickrembed.com">flickr embed</a>.</small></div><div style="position:absolute; top:-70px; display:block; text-align:center; z-index:-1;"><a rel="nofollow" href=""></a></div>
+  :+1:!
+  <ul>
+  {% for member in site.data.members %}
+    <li>
+      <a href="https://github.com/{{ member.github }}">
+        {{ member.name }}
+      </a>
+    </li>
+  {% endfor %}
+  </ul>
 </div>

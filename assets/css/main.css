@@ -44,6 +44,9 @@ td, th{
 .content{
     margin: 0;
     padding: 0 3em;
+    min-height: 70rem;
+    padding-top: 5rem;
+    padding-bottom: 5rem;
     overflow: auto !important;
     overflow-y: auto !important;
     overflow-x: hidden !important;
@@ -365,12 +368,6 @@ a.home-navbar-logo, a.navbar-logo{
 
 #disqus_thread{
   padding-top: 4rem;
-}
-
-.cv{
-  min-height: 70rem;
-  padding-top: 5rem;
-  padding-bottom: 5rem;
 }
 
 .cv-tech-list, .cv-history-list{

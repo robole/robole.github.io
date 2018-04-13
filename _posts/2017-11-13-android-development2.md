@@ -27,7 +27,7 @@ They are put into particular directories.
   strings resource file in the app/src/main/res/values folder as normal, and your French resource file in a new folder called app/src/main/res/values-fr. If the device is set to French, it will use the strings in the app/src/main/res/values-fr folder. If the device is set to any other language, it will use the strings in app/src/main/res/values.
 
 This is the directory structure:
-![android directory structure](/assets/img/2017-11-11-android-post/android-directory-structure.png)
+![android directory structure](/assets/img/blog/2017-11-11-android/android-directory-structure.png)
 
 - java (app/src/main/java): our activities and classes go here.
 - generated (app/build/generated): contains auto generated files. You can see R.java inside
