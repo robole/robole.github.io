@@ -4,7 +4,30 @@ title: Reading
 permalink: /reading
 ---
 <div class="top-container content">
-  <iframe style="position: relative; top: 0; left: 0; width: 100%; height: 100%;" src="https://flickrembed.com/cms_embed.php?source=flickr&layout=responsive&input=www.flickr.com/photos/157429326@N07/albums/72157692242126334&sort=0&by=album&theme=default&scale=fill&limit=10&skin=default&autoplay=true" scrolling="no" frameborder="0" allowFullScreen="true" webkitallowfullscreen="true" mozallowfullscreen="true"></iframe><div style="position: absolute; padding-bottom: 60%; overflow: auto; -webkit-overflow-scrolling:touch;"><small style="display: block; text-align: center; position: absolute; bottom: 0; left: 0; right: 0; margin-left: auto; margin-right: auto;">Powered by <a href="https://flickrembed.com">flickr embed</a>.</small></div><div style="position:absolute; top:-70px; display:block; text-align:center; z-index:-1;"><a rel="nofollow" href=""></a></div>
+  <div class="gallery"></div>
+<script>
+var endpoint = "https://api.flickr.com/services/rest/"
+var apiKey = "4912feac8c866a2c76b84eca4bb55442";
+var photosetId = "72157692999185315";
+var extras = "url_sq,url_t,url_s,url_m,url_o";
+var method = "flickr.photosets.getPhotos";
+
+var request = endpoint+"?method="+method+
+            "&api_key="+apiKey+
+            "&photoset_id="+photosetId+
+            "&extras="+extras+
+            "&format=json&jsoncallback=?";
+$.getJSON(request,buildGallery);
+
+function buildGallery(data,result){
+    if(result=="success"){
+        var photos = data.photoset.photo;
+        for(var i=0; i<photos.length; i++){
+            $('<img class="gallery_image" >').attr("src",photos[i].url_m).appendTo(".gallery");
+        }
+    }
+}
+</script>
   :+1:!
   <ul>
   {% for member in site.data.members %}
