@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Animated Flipbook Effect &#128376;"
+title: "Animated Flipbook Effect :spider_web:"
 category: animation
 tags: [animation, CSS, SVG]
 ---
