@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Android Development - Fundamentals 🤖☕"
+title: "Android Development - Fundamentals &#129302;☕"
 category: android
 tags: [android, mobile app, Java]
 published: false
