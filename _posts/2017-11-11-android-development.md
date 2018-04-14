@@ -1,6 +1,6 @@
 ---
-layout: post
-title: Android Development - Getting Started &#129302;☕
+layout: scrollable_post
+title: "Android Development - Getting Started &#129302; ☕"
 category: UML
 tags: [android, mobile app, Java]
 ---
