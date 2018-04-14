@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Interfaces in Java - What, Why and How?
+title: Interfaces in Java - What, Why and How?☕
 category: java
 tags: [interfaces, Java, OO Design]
 ---
@@ -8,7 +8,7 @@ tags: [interfaces, Java, OO Design]
 
 An interface defines a contract for what a class can do, without saying anything about how the class will do it.
 
-It’s basically a list of related method declarations without implementations. A class that implements the interface agrees to implement all of the methods defined in the interface, thereby agreeing to certain behaviour. 
+It’s basically a list of related method declarations without implementations. A class that implements the interface agrees to implement all of the methods defined in the interface, thereby agreeing to certain behaviour.
 
 # What must a class do to implement an interface?
 
