@@ -13,7 +13,7 @@
    version="1.1"
    id="svg4675"
    shape-rendering="crispEdges"
-   inkscape:version="0.92.1 r15371"
+   inkscape:version="0.92.3 (2405546, 2018-03-11)"
    sodipodi:docname="metro-app-cover.svg">
   <defs
      id="defs4669" />
@@ -24,9 +24,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.00392157"
      inkscape:pageshadow="2"
-     inkscape:zoom="3.4310172"
-     inkscape:cx="181.57902"
-     inkscape:cy="179.72344"
+     inkscape:zoom="1.1526073"
+     inkscape:cx="352.19111"
+     inkscape:cy="262.37483"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -46,7 +46,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -71,148 +71,162 @@
      transform="translate(0,-191.16665)"
      style="display:inline">
     <rect
-       style="opacity:1;fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:5.72976378;stroke-linecap:round;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:stroke fill markers"
+       style="opacity:1;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:6.09259843;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:normal"
        id="rect4587"
-       width="218.88213"
-       height="245.64117"
-       x="96.480438"
-       y="300.15579" />
+       width="223.05571"
+       height="272.49191"
+       x="95.191162"
+       y="246.11392" />
+    <rect
+       style="opacity:1;fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:3.40535426;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:stroke fill markers"
+       id="rect5016"
+       width="199.26331"
+       height="223.47496"
+       x="106.72688"
+       y="265.8924" />
     <ellipse
-       style="opacity:1;fill:#00ff00;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:1.75748026;stroke-linecap:round;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:29.63149643;stroke-opacity:1;paint-order:stroke fill markers"
+       style="opacity:1;fill:#00ff00;fill-opacity:1;fill-rule:nonzero;stroke:#b1ff91;stroke-width:1.75748031;stroke-linecap:round;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:29.63149643;stroke-opacity:1;paint-order:stroke fill markers"
        id="path4924"
-       cx="136.07735"
-       cy="332.40717"
+       cx="134.60695"
+       cy="284.37921"
        rx="4.8834252"
        ry="5.1547265" />
     <text
        xml:space="preserve"
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10.66666698px;line-height:20px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.99999994px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       x="148.17606"
-       y="336.22565"
+       x="146.70566"
+       y="288.19769"
        id="text4928"><tspan
          sodipodi:role="line"
          id="tspan4926"
-         x="148.17606"
-         y="336.22565"
+         x="146.70566"
+         y="288.19769"
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10.66666698px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;stroke-width:0.99999994px">二重橋前駅 Nijubashimae</tspan></text>
     <text
        xml:space="preserve"
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10.66666698px;line-height:20px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.99999994px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       x="151.01543"
-       y="359.93091"
+       x="149.54503"
+       y="311.90295"
        id="text4934"><tspan
          sodipodi:role="line"
          id="tspan4932"
-         x="151.01543"
-         y="359.93091"
+         x="149.54503"
+         y="311.90295"
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10.66666698px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;stroke-width:0.99999994px">towards 各停Meijijingu-Mae</tspan><tspan
          sodipodi:role="line"
-         x="151.01543"
-         y="379.93091"
+         x="149.54503"
+         y="331.90295"
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10.66666698px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;stroke-width:0.99999994px"
          id="tspan5024">12 mins, 4 stops</tspan></text>
-    <ellipse
-       style="opacity:1;fill:#00ff00;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:1.75748026;stroke-linecap:round;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:29.63149643;stroke-opacity:1;paint-order:stroke fill markers"
-       id="path4924-7"
-       cx="136.40918"
-       cy="398.15851"
-       rx="4.8834252"
-       ry="5.1547265" />
     <text
        xml:space="preserve"
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10.66666698px;line-height:20px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.99999994px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       x="146.92361"
-       y="403.17004"
+       x="145.45322"
+       y="355.14209"
        id="text4953"><tspan
          sodipodi:role="line"
          id="tspan4951"
-         x="146.92361"
-         y="403.17004"
+         x="145.45322"
+         y="355.14209"
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10.66666698px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;stroke-width:0.99999994px">表参道駅 Omote-sando</tspan></text>
-    <ellipse
-       style="opacity:1;fill:#ff6600;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:1.75748026;stroke-linecap:round;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:29.63149643;stroke-opacity:1;paint-order:stroke fill markers"
-       id="path4924-7-5"
-       cx="136.74098"
-       cy="431.28891"
-       rx="4.8834252"
-       ry="5.1547265" />
     <text
        xml:space="preserve"
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10.66666698px;line-height:20px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:none;fill-opacity:1;stroke:none;stroke-width:0.99999994px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       x="147.09087"
-       y="438.50623"
+       x="145.62047"
+       y="390.47827"
        id="text4982"><tspan
          sodipodi:role="line"
          id="tspan4980"
-         x="147.09087"
-         y="438.50623"
+         x="145.62047"
+         y="390.47827"
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10.66666698px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;fill:none;stroke-width:0.99999994px">change to platform 2</tspan></text>
     <text
        xml:space="preserve"
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10.66666698px;line-height:20px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.99999994px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       x="145.76396"
-       y="436.01224"
+       x="144.29356"
+       y="387.98428"
        id="text4953-0"><tspan
          sodipodi:role="line"
          id="tspan4951-9"
-         x="145.76396"
-         y="436.01224"
+         x="144.29356"
+         y="387.98428"
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10.66666698px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;stroke-width:0.99999994px">表参道駅 Omote-sando</tspan></text>
     <text
        xml:space="preserve"
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10.66666698px;line-height:20px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.99999994px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       x="145.85884"
-       y="457.76285"
+       x="144.38844"
+       y="409.73489"
        id="text5006"><tspan
          sodipodi:role="line"
          id="tspan5004"
-         x="145.85884"
-         y="457.76285"
+         x="144.38844"
+         y="409.73489"
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10.66666698px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;stroke-width:0.99999994px">towards 各停Shibuya</tspan><tspan
          sodipodi:role="line"
-         x="145.85884"
-         y="477.76285"
+         x="144.38844"
+         y="429.73489"
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10.66666698px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;stroke-width:0.99999994px"
          id="tspan5012">1 min, 1 stop</tspan></text>
     <text
        xml:space="preserve"
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10.66666698px;line-height:20px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.99999994px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       x="146.10971"
-       y="507.2865"
+       x="144.63931"
+       y="459.25854"
        id="text5010"><tspan
          sodipodi:role="line"
          id="tspan5008"
-         x="146.10971"
-         y="507.2865"
+         x="144.63931"
+         y="459.25854"
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10.66666698px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;stroke-width:0.99999994px">各停Shibuya</tspan></text>
-    <rect
-       style="opacity:1;fill:none;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:3.40535426;stroke-linecap:round;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:stroke fill markers"
-       id="rect5016"
-       width="199.26331"
-       height="223.47496"
-       x="105.74333"
-       y="310.85294" />
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1.00157475;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:1.00157475, 2.00314951;stroke-dashoffset:0;stroke-opacity:1"
+       d="M 134.4286,355.83008 V 377.39803"
+       id="path4577"
+       inkscape:connector-curvature="0" />
     <ellipse
-       style="opacity:1;fill:#ff6600;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:1.75748026;stroke-linecap:round;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:29.63149643;stroke-opacity:1;paint-order:stroke fill markers"
-       id="path4924-7-4"
-       cx="137.11316"
-       cy="502.50903"
+       style="opacity:1;fill:#ff6600;fill-opacity:1;fill-rule:nonzero;stroke:#8f2d14;stroke-width:1.75748026;stroke-linecap:round;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:29.63149643;stroke-opacity:1;paint-order:stroke fill markers"
+       id="path4924-7-5"
+       cx="134.96384"
+       cy="382.79465"
        rx="4.8834252"
        ry="5.1547265" />
     <path
-       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1.00157475;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:1.00157475, 2.00314951;stroke-dashoffset:0;stroke-opacity:1"
-       d="M 135.89899,403.85802 V 425.42597"
-       id="path4577"
-       inkscape:connector-curvature="0" />
-    <path
        style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       d="M 136.19045,437.08432 136.48191,497.12482"
+       d="M 134.72006,389.05638 135.01152,449.09688"
        id="path4579"
        inkscape:connector-curvature="0" />
     <path
        style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       d="M 136.02103,391.66915 V 338.08511 338.08511"
+       d="M 134.55064,343.64121 V 290.05717 290.05717"
        id="path4589"
        inkscape:connector-curvature="0" />
+    <ellipse
+       style="opacity:1;fill:#1a1a18;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1.36442041;stroke-linecap:round;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:stroke fill markers"
+       id="path843"
+       cx="208.40839"
+       cy="506.00031"
+       rx="13.405976"
+       ry="12.59905" />
+    <rect
+       style="opacity:1;fill:#1a1a18;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0.94110236;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:normal"
+       id="rect860"
+       width="7.6685567"
+       height="7.6685567"
+       x="204.29034"
+       y="502.2114" />
+    <ellipse
+       style="display:inline;opacity:1;fill:#00ff00;fill-opacity:1;fill-rule:nonzero;stroke:#b1ff91;stroke-width:1.75748026;stroke-linecap:round;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:29.63149643;stroke-opacity:1;paint-order:stroke fill markers"
+       id="path4924-7"
+       cx="134.51266"
+       cy="349.76047"
+       rx="4.8834252"
+       ry="5.1547265" />
+    <ellipse
+       style="display:inline;opacity:1;fill:#ff6600;fill-opacity:1;fill-rule:nonzero;stroke:#8f2d14;stroke-width:1.75748026;stroke-linecap:round;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:29.63149643;stroke-opacity:1;paint-order:stroke fill markers"
+       id="path4924-7-5-3"
+       cx="135.27335"
+       cy="451.90567"
+       rx="4.8834252"
+       ry="5.1547265" />
   </g>
 </svg>
