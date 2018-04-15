@@ -15,8 +15,7 @@ from the top down, then you can flip through them to "run" the animation! So,
 it's a series of overlayed images with different poses, cycle through the
 images to create the animation. What is the best way to do this on the web?  
 
-The qaulity of a SVG will not degrade on resizing. So, it is a good choice.
-
+The quality of a SVG will not degrade on resizing. So, it is a good choice.
 
 We can use opacity to fade one image in, and fade the other out. This can be
 achieved easily with CSS animation.  
@@ -28,5 +27,5 @@ Here is a simple example showing Donald Trump yawping!
 
 This technique is not very suitable for more than a few poses (frames),
 each frame requires a @keyframes block, and these blocks need to be coordinated
-with each other to make a smooth transition for the animation. An animation 
+with each other to make a smooth transition for the animation. An animation
 library should be used for anything more complex than that!
