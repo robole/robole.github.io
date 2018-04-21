@@ -25,3 +25,4 @@ goodreads:
 
 plugins:
   - jemoji
+  - jekyll-feed
