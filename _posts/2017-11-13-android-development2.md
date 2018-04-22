@@ -16,9 +16,7 @@ that is the starting point of our app. Each activity you create must have an ent
 
 # How does an app do stuff?
 
-A task is two or more activities chained together. We use an intent to pass a message
-between activities to chain them together.
-
+A task is two or more activities chained together. We use an intent to pass a message between activities to chain them together.
 
 # How is our project organised?
 
