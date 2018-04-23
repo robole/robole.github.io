@@ -357,6 +357,10 @@ a.home-navbar-logo, a.navbar-logo{
   min-height: 80rem;
 }
 
+.blog-heading{
+  margin-left: 20px;
+}
+
 .tags-expo{
   padding-top: 5rem;
 }
