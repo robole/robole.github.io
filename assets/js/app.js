@@ -49,4 +49,29 @@ $(document).ready(function () {
     }
 });
 
+function rotatePortraitMask() {
+                adjectives = $(".adjective-list li");
+                listItem = $(".adjective-list li.highlighted");
+                index = listItem.index();
+                console.log(index);
+                //reset index when it not found or is on last element
+                if(index == -1 || index == adjectives.length -1){
+                  index = 0;
+                }
+                else{
+                  index++;
+                }
+
+                //swap the image source
+                source = "/assets/img/" + adjectives[index].textContent + ".svg";
+                $("#portrait").attr("src", source);
+
+                adjectives.each(function() {
+                  $(this).removeClass("highlighted");
+                });
+
+                $(".adjective-list").children().eq(index).addClass("highlighted");
+  }
+  rotatePortraitMask();
+  setInterval(rotatePortraitMask, 2000);
 });
