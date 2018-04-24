@@ -5,6 +5,16 @@
            src="/assets/img/top/blank.svg" id="portrait"
            class="top-image img-circle">
           <h1 class="top-name">{{ site.brand }}</h1>
+          <!--put here for performance, script loads this
+          into #portrait-->
+          <div class="masks">
+            <img style="visibility:hidden;width:0px;height:0px"
+            src="/assets/img/top/Designer.svg"/>
+            <img style="visibility:hidden;width:0px;height:0px"
+            src="/assets/img/top/Explorer.svg"/>
+            <img style="visibility:hidden;width:0px;height:0px"
+            src="/assets/img/top/Humanist.svg"/>
+          </div>
       <col-md-12>
   </div>
     <div class="row">
@@ -14,9 +24,6 @@
         <li>Explorer</li>,
         <li>Humanist</li>
       </ul>
-      <img style="visibility:hidden;width:0px;height:0px" src="/assets/img/top/Designer.svg"/>
-      <img style="visibility:hidden;width:0px;height:0px" src="/assets/img/top/Humanist.svg"/>
-      <img style="visibility:hidden;width:0px;height:0px" src="/assets/img/top/Explorer.svg"/>
       </col-md-12>
 </div>
 </header>

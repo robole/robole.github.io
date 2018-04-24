@@ -1,21 +1,8 @@
 $(document).ready(function(){
-  masks = getMasks();
-
-  function getMasks(){
-    adjectives = $(".adjective-list li");
-    arr = new Array(adjectives.length);
-    index = 0;
-    for(i =0; i < adjectives.length;i++) {
-      img = new Image();
-      img.src = "/assets/img/top/" + adjectives[i].textContent + ".svg";
-      arr[i] = img;
-    }
-    return arr;
-  }
-
   function swapPortraitMask() {
                 adjectives = $(".adjective-list li");
                 listItem = $(".adjective-list li.highlighted");
+                masks = $(".masks img")
                 index = listItem.index();
 
                 //reset index when it not found or is on last element
