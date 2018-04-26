@@ -7,7 +7,8 @@ var flickr = (function(){
   var exports = {};
 
   exports.addGallery = function (photoSetId, cssSelector){
-    console.log("css" + cssSelector);
+    $(cssSelector).append("<div id='loading-msg'>loading gallery..</div>");
+
     var request = endpoint+"?method="+method+
                 "&api_key="+apiKey+
                 "&photoset_id="+photoSetId+
@@ -16,11 +17,11 @@ var flickr = (function(){
 
     $.getJSON(request,function(data){
           var photos = data.photoset.photo;
+          $("#loading-msg").remove();
           for(var i=0; i<photos.length; i++){
-              $('<img class="gallery_image" >').attr("src",photos[i].url_m).appendTo(cssSelector);
+              $('<img class="gallery-img" />').attr("src",photos[i].url_m).appendTo(cssSelector);
       }
     });
   }
-
   return exports;
 })();
