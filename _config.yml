@@ -27,3 +27,4 @@ goodreads:
 plugins:
   - jemoji
   - jekyll-feed
+  - rouge

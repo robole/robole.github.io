@@ -412,19 +412,10 @@ a.home-navbar-logo, a.navbar-logo{
   padding-bottom: 1em;
 }
 
-.tree-clip{
-  -webkit-clip-path: polygon(48% 100%, 48% 96%, 0% 95%, 52% 1%, 100% 95%, 52% 96%, 52% 100%);
-clip-path: polygon(48% 100%, 48% 96%, 0% 95%, 52% 1%, 100% 95%, 52% 96%, 52% 100%);
-}
-
-.tree-clip1{
-  -webkit-clip-path: polygon(45% 100%, 45% 93%, 0% 93%, 21% 51%, 0% 51%, 51% 1%, 100% 51%, 81% 52%, 100% 93%, 52% 93%, 52% 100%);
-  clip-path: polygon(45% 100%, 45% 93%, 0% 93%, 21% 51%, 0% 51%, 51% 1%, 100% 51%, 81% 52%, 100% 93%, 52% 93%, 52% 100%);
-}
-
-img.gallery_image {
+.gallery-image {
     width:49%;
     margin-right:3px;
+    vertical-align: top;
 }
 
 .highlighted{
@@ -441,30 +432,4 @@ img.gallery_image {
 
 .adjective-list li{
   display: inline-block;
-}
-
-#human1{
-  -webkit-animation: from-left 2s 1 linear;
-}
-
-#human2{
-  -webkit-animation: from-right 2s 1 linear;
-}
-#lightbulb{
-    -webkit-animation: appear 2s 1 linear;
-}
-
-@keyframes from-left {
-  from {-webkit-transform: translateX(0) }
-  to {-webkit-transform: translateX(10px)}
-}
-
-@keyframes appear {
-  from {opacity: 0) }
-  to {opacity: 1}
-}
-
-@keyframes from-right {
-  from {-webkit-transform: translateX(0) }
-      to {-webkit-transform: translateX(-10px)}
 }
