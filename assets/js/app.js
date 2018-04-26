@@ -2,7 +2,7 @@ $(document).ready(function(){
   function swapPortraitMask() {
                 adjectives = $(".adjective-list li");
                 listItem = $(".adjective-list li.highlighted");
-                masks = $(".masks img")
+                masks = $(".masks img");
                 index = listItem.index();
 
                 //reset index when it not found or is on last element
@@ -66,8 +66,9 @@ $(window).on("load", function(){
   .not('[href="#"]')
   .not('[href="#0"]')
   .click(function() {
-  if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'')
-  || location.hostname == this.hostname) {
+  if (location.pathname.replace(/^\//,'') ==
+      this.pathname.replace(/^\//,'') ||
+      location.hostname == this.hostname) {
       var target = $(this.hash);
       target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
          if (target.length) {
