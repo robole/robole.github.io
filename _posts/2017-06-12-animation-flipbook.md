@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Animated Flipbook Effect :spider_web:"
-category: animation
+category: web design
 tags: [animation, CSS, SVG]
 ---
 

@@ -1,7 +1,7 @@
 ---
 layout: scrollable_post
 title: "Dates in Java 📅☕"
-category: java
+category: programming
 tags: [Java, "date-time api", dates]
 published: true
 ---
@@ -17,7 +17,7 @@ It was only in Java 8, that this has been addressed in the <code>java.time</code
 
 An [Instant](https://docs.oracle.com/javase/8/docs/api/java/time/Instant.html) is a moment on the timeline in [UTC](https://en.wikipedia.org/wiki/Coordinated_Universal_Time). It is a count in nanoseconds since the first moment of 1970 UTC (unix epoch time). It is essentially a timestamp (often referred to as "machine time").
 
-```
+```java
 Instant a = Instant.now();
 System.out.println(a); //2018-02-10T17:06:04.194Z
 ```
@@ -25,7 +25,7 @@ System.out.println(a); //2018-02-10T17:06:04.194Z
 ## ZoneId 🌎🌍
 A [ZoneId](https://docs.oracle.com/javase/8/docs/api/java/time/ZoneId.html) is a time zone.
 
-```
+```java
 ZoneId z = ZoneId.of( “Africa/Johannesburg”) ;
 ```
 
@@ -38,7 +38,7 @@ Use complete time zone names, as much as possible. These names take the form of 
 <img src="https://upload.wikimedia.org/wikipedia/commons/9/9a/Daylightsavings.svg" alt="Daylight saving, turning back time!" height="400px" width="100%" />
 
 [Here](https://gist.githubusercontent.com/robole/9b28d3d5edc450f2c95aa94b152c79cb/raw/b796cbb01c15eea6e8983254cff808161736dd0f/ZoneIds) is a list of the long version of all the zone IDs. The code prints them all out, if you want to do it yourself!
-```
+```java
 List<String> zoneList = new ArrayList<>(ZoneId.getAvailableZoneIds());
 Collections.sort(zoneList);
 for(int i = 0; i < zoneList.size(); i++){
@@ -61,7 +61,7 @@ You're unlikely to use this class directly or it's related classes: [OffsetDateT
 >ZonedDateTime = Instant + ZoneId
 
 
-```
+```java
 ZonedDateTime now = ZonedDateTime.ofInstant(Instant.now(), ZoneId.of("Europe/Dublin"));
 System.out.print(now); //current time in Dublin
 ```
@@ -119,13 +119,14 @@ Why would you use OffsetDateTime instead of ZonedDateTime? It would be for speci
 
 We use these static methods to get an instance. You can get the current date via <code>now()</code>; or a fixed date using <code>of()</code>.
 
- ```
+ ```java
 Instant now = Instant.now();
 System.out.println(now.toString()); //current date
 
 ZonedDateTime date = ZonedDateTime.of(2017, 12, 31, 23, 59, 59, 0,  ZoneId.systemDefault());
 System.out.println(date.toString()); //2017-11-25
  ```
+
 ## Comparing dates 🔎📅
 Use <code>int compareTo(ChronoLocalDate other)</code> to assert the equality of dates by returning a comparsion number, which can be: negative (before); zero (equal); or positive (after).
 
@@ -133,7 +134,7 @@ The self-explanatory <code>boolean isAfter(ChronoLocalDate other)</code>, <code>
 
 These methods are available in <code>LocalDate</code>, <code>LocalTime</code>, <code>LocalDateTime</code>, and <code>ZonedDateTime</code> (but the datatype of the parameter is <code>ChronoZonedDateTime</code>).
 
-```
+```java
 LocalDate christmas2017 = LocalDate.of(2017, 12, 25 );
 LocalDate christmas2018 = LocalDate.of(2018, 12, 25 );
 System.out.println(christmas2017.isBefore(christmas2018)); //true
@@ -144,7 +145,7 @@ Use the time units in [java.time.temporal.ChronoUnit](https://docs.oracle.com/ja
 
 For example, to get the logical calendar days between 2 dates, you can use <code>DAYS.between(Temporal temporal1Inclusive, Temporal temporal2Exclusive)</code>.
 
-```
+```java
 import java.time.LocalDate;
 
 import static java.time.temporal.ChronoUnit.DAYS;
@@ -182,7 +183,7 @@ To subtract time units, you can:
   - <code>minusDays(long days)</code>
   - <code>minusSeconds(long seconds]</code>
 
-```
+```java
 public class Test {
 
     public static void main(String[] args){
@@ -201,13 +202,13 @@ Adding a <code>Period</code> to a <code>ZonedDateTime</code>, the time differenc
 ## Parsing dates 🔁📅️
 Use <code>parse(CharSequence text)</code> for dates in the format of "yyyy-mm-dd".
 
-```
+```java
 LocalDate a = LocalDate.parse("2018-02-01");
 System.out.println(a.toString());
 ```
 To parse a date in another format, use the second version, which requires a <code>DateTimeFormatter</code>, through which you can specify the format: <code>parse(CharSequence text, DateTimeFormatter formatter)</code>
 
-```
+```java
 DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 LocalDate a = LocalDate.parse("01/02/2018", formatter);
 System.out.println(a.toString()); //2018-02-01
@@ -219,7 +220,7 @@ System.out.println(a.toString()); //2018-02-01
 
 More complex formatting can be done with [DateTimeFormatterBuilder](https://docs.oracle.com/javase/8/docs/api/java/time/format/DateTimeFormatterBuilder.html).
 
- ```
+ ```java
 import java.time.LocalDate;
 import java.time.Month;
 import java.time.format.DateTimeFormatter;
@@ -248,7 +249,7 @@ The [TemporalAdjusters](https://docs.oracle.com/javase/8/docs/api/java/time/temp
 - finding the first or last day-of-week within a month, such as "first Wednesday in June"
 - finding the next or previous day-of-week, such as "next Thursday"
 
-```
+```java
 LocalDate date = LocalDate.of(2000, Month.OCTOBER, 15);
 System.out.printf("first day of Month: %s%n", date.with(TemporalAdjusters.firstDayOfMonth()));
 System.out.printf("first Monday of Month: %s%n", date.with(TemporalAdjusters.firstInMonth(DayOfWeek.MONDAY)));
@@ -272,7 +273,7 @@ use [Calendar](https://docs.oracle.com/javase/7/docs/api/java/util/Calendar.html
 
 You can create a Date using <code>java.util.Date</code> in 2 forms:
 
-```
+```java
 Date now = Date(); //this moment
 Date someDate = Date(1511563121308); //ms since 1970 = 24.11.2017 23:39
 ```
@@ -282,13 +283,13 @@ than now! So..
 Really, Date is used as the type to transfer a date between Calendar
 and [SimpleDateFormat](https://docs.oracle.com/javase/7/docs/api/java/text/SimpleDateFormat.html):
 - Calendar is an abstract class for creating and manipulating a specific date. There is a static method for creating an instance:
-```
+```java
 Calendar rightNow = Calendar.getInstance();
 ```
 - GregorianCalendar is a concrete class for creating and manipulating a specific date, in the Gregorian standard that is followed by most countries in the world.
 - SimpleDateFormat is to format and parse a dates e.g. dd.mm.yyyy for German dates.
 
-```
+```java
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -316,7 +317,7 @@ To see if the book was returned late, in <code>getDaysLate()</code>, we want to 
 
 This is a good example of how to use temporal classes for storing dates, and making calculations based on them.
 
-```
+```java
 public class Loan {
     private Book book;
     private Instant loanDate;

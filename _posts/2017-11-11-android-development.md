@@ -1,7 +1,7 @@
 ---
 layout: scrollable_post
 title: "Android Development - Getting Started :alien:☕"
-category: UML
+category: programming
 tags: [android, mobile app, Java]
 ---
 # Setting up the environment and making a "Hello World" program

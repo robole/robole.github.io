@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Interfaces in Java - What, Why and How?☕
-category: java
+category: programming
 tags: [interfaces, Java, OO Design]
 ---
 # What is an interface?

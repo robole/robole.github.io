@@ -11,6 +11,7 @@ url: https://robole.github.io/
 github: https://github.com/robole/
 codepen: https://codepen.io/robjoeol/
 markdown: kramdown
+highlighter: rouge
 include: ['_pages']
 tag_page: '/blog/tags'
 
@@ -27,4 +28,3 @@ goodreads:
 plugins:
   - jemoji
   - jekyll-feed
-  - rouge
