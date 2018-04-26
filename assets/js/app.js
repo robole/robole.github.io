@@ -26,16 +26,6 @@ $(document).ready(function(){
 }); //ready()
 
 $(window).on("load", function(){
-  // Displaying the logo at the navigation bar on the homepage
-  //when scrolling down slightly
-  $(window).scroll(function () {
-      if ($(window).scrollTop() >= 280) {
-          $('.home-navbar-logo').removeClass('hide');
-      } else {
-          $('.home-navbar-logo').addClass('hide');
-      }
-  });
-
   //displaying arrow to jump to top of page
   $(window).scroll(function() {
     if ($(this).scrollTop() > 20) {
