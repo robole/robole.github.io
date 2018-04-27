@@ -19,7 +19,7 @@ all of the methods specified in the interface.
 
 1.	An interface is implicitly abstract. It is considered redundant to state it as so. The below are the same:
 
-```
+```java
 public abstract interface Rollable { }
 public interface Rollable { }
 ```
@@ -38,7 +38,7 @@ public interface Rollable { }
 
 Consider the simple example of a class Car that implements interface Vehicle. Interface Vehicle has a single method called start(). Class Car will implement the interface by providing a start() method. Other functionality in the Car class has been left out for the sake of clarity.
 
-```
+```java
 interface Vehicle {
   public void start();
 }
@@ -53,22 +53,24 @@ class Car implements Vehicle{
 
 Having laid the foundations of the Car object, we can create another object called Valet. It is the Valet's job to start the Car and bring it to the restaurant patron. The Valet object can be written without interfaces, as follows:
 
-```
+```java
 class Valet
 {
-   public Car getCar( Car c)
-   { ... }
+   public Car getCar( Car c){
+     ...
+   }
 }
 ```
 
 The Valet object has a method called getCar that returns a Car object. This code example satisfies the functional requirements of the system, but it forever links the Valet object with that of the Car. In this situation, the two objects are said to be tightly coupled. The Valet object requires knowledge of the Car object and has access to all public methods and variables contained within that object. It is best to avoid such tight coupling of code because it increases dependencies and reduces flexibility.
 To code the Valet object using interfaces, the following implementation could be used:
 
-```
+```java
 class Valet
 {
-   public Vehicle getVehicle( Vehicle c)
-	 {  ...  }
+   public Vehicle getVehicle( Vehicle c){  
+     ...  
+   }
 }
 ```
 
