@@ -1,7 +1,7 @@
 ---
 layout: scrollable_post
 title: "Dates in Java 📅☕"
-category: programming
+category: java
 tags: [Java, "date-time api", dates]
 published: true
 ---
@@ -38,6 +38,7 @@ Use complete time zone names, as much as possible. These names take the form of 
 <img src="https://upload.wikimedia.org/wikipedia/commons/9/9a/Daylightsavings.svg" alt="Daylight saving, turning back time!" height="400px" width="100%" />
 
 [Here](https://gist.githubusercontent.com/robole/9b28d3d5edc450f2c95aa94b152c79cb/raw/b796cbb01c15eea6e8983254cff808161736dd0f/ZoneIds) is a list of the long version of all the zone IDs. The code prints them all out, if you want to do it yourself!
+
 ```java
 List<String> zoneList = new ArrayList<>(ZoneId.getAvailableZoneIds());
 Collections.sort(zoneList);
