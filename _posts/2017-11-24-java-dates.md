@@ -353,9 +353,7 @@ public class Loan {
         return days;
     }
 }
-
 ```
 
 # Additional Reading
-
-[Oracle Tutorial: Date-Time API](https://docs.oracle.com/javase/tutorial/datetime/iso/index.html)
+- [Oracle Tutorial: Date-Time API](https://docs.oracle.com/javase/tutorial/datetime/iso/index.html)
