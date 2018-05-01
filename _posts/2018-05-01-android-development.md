@@ -1,6 +1,6 @@
 ---
 layout: scrollable_post
-title: "Android Development - Getting Started :alien:☕"
+title: "Android Development - Getting Started 👽☕"
 category: programming
 tags: [android, mobile app, Java]
 ---
