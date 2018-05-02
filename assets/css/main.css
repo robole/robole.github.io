@@ -432,3 +432,8 @@ a.home-navbar-logo, a.navbar-logo{
 .adjective-list li{
   display: inline-block;
 }
+
+.table-key{
+  font-size: 0.5em;
+  color: black;
+}
