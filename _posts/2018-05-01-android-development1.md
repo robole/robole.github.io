@@ -1,8 +1,8 @@
 ---
 layout: scrollable_post
 title: "Android Development - Getting Started 👽☕"
-category: programming
-tags: [android, mobile app, Java]
+category: android
+tags: [mobile, Java]
 ---
 # Setting up the environment and making a "Hello World" program
 
@@ -29,8 +29,8 @@ It's good to be clear on what android version number you need installed, and how
 ## Android Version Numbers
 
 In the gradle file (usually in *project folder\app\build.gradle*), there are a few different version numbers that you can specify:
-- *compileSdkVersion* : Version that your app is compiled against during development. This means you can use Android API features included in that version (and lower). Generally, it is recommended to try to pick the lowest version that satisfies all of the features you need!
-- *minSdkVersion* : Lowest version that can run the app.
+- *compileSdkVersion* : Version that your app is compiled against during development. This means you can use Android API features included in that version (and lower).
+- *minSdkVersion* : Lowest version that can run the app. Generally, it is recommended to try to pick the lowest version that satisfies all of the features you need!
 - *targetSdkVersion* : Highest version that can be used run the app. This is usually the version you test the app against. If you do not specify the *targetSdkVersion*, it defaults to the *minSdkVersion*.
 
 Generally, this is followed:
