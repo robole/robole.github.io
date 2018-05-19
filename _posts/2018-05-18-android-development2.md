@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: scrollable_post
 title: "Android Development - Fundamentals 👽☕"
 category: android
 tags: [mobile, Java]
@@ -7,7 +7,7 @@ published: true
 ---
 # What do I need to install to get started?
 
-You can read my previous post [Android Development - Getting Started]({{ site.baseurl }}{% post_url 2018-05-01-android-development1 %}) to do this.
+You can read my previous post [Android Development - Getting Started]({{ site.baseurl }}{% post_url 2018-05-01-android-development1 %}).
 
 # How do I make an app?
 
@@ -52,7 +52,7 @@ by the build process. We don't change these manually. *R.java* contains the IDs 
 
 # Activity
 
-An activity represents a single user screen. You extend ```android.app.Activity``` or a subclass.
+An activity represents a single user screen, and is a single defined thing that the user can do. You extend ```android.app.Activity``` or a subclass.
 
 ## Configure the manifest
 
@@ -116,7 +116,7 @@ Once you externalize your app resources, you can access them using resource IDs 
 
 # Exercise: Make a temperature conversion app
 
-We want to make an app that will convert the temperatures from celsius to farenheit.
+We want to make an app that will convert a temperature from celsius to farenheit, and the other way around.
 
 ## Create a new project
 
@@ -134,7 +134,7 @@ We want to make an app that will convert the temperatures from celsius to farenh
 <tbody>
 <tr>
 <td><p>Application Name</p></td>
-<td ><p>Temperature Converter</p></td>
+<td ><p>Temperature Conversion</p></td>
 </tr>
 <tr>
 <td ><p>Package name</p></td>
@@ -145,12 +145,12 @@ We want to make an app that will convert the temperatures from celsius to farenh
 <td><p >Latest Android release</p></td>
 </tr>
 <tr>
-<td ><p >Template</p></td>
-<td ><p >Empty Activity</p></td>
+<td><p>Template</p></td>
+<td><p>Empty Activity</p></td>
 </tr>
 <tr>
-<td ><p >Activity</p></td>
-<td ><p >MainActivity</p></td>
+<td><p >Activity</p></td>
+<td><p >MainActivity</p></td>
 </tr>
 <tr>
 <td ><p >Layout</p></td>
@@ -170,7 +170,7 @@ Open *res/values/strings.xml*, and add the String definitions to the file as des
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Temperature Converter</string>
+    <string name="app_name">Temperature Conversion</string>
     <string name="celsius">Celsius</string>
     <string name="fahrenheit">Fahrenheit</string>
     <string name="calc">Calculate</string>
@@ -184,17 +184,15 @@ This is roughly what we want.
 ![layout](/assets/img/blog/2017-11-13-android2/layout-design.png)
 
 Open our layout file *res/layout/activity_main.xml* in
-the Text view, and delete everything.
+the "text view", and delete everything.
 
-We want a simple layout, so we add a ```LinearLayout``` element, which organizes everything in a horizontal or
-vertical line. We can want everything to be organized vertically, so we set this property ```android:orientation="vertical"```. You
-can switch to the "design view" to add the views to layout
-then.
+We want a simple layout, so we add a ```LinearLayout``` element as the root, which organizes everything in a horizontal or vertical line. We can want everything to
+be organized vertically, so we set this property ```android:orientation="vertical"```. You
+can switch to the "design view" to add the views to this layout then.
 
 A simple way of organizing the view components is to drag
 and drop them onto the "Component Tree view".  So you can
-see the order we want them arranged in. The radio buttons
-are children of the radio button group.
+see the order we want them arranged in. We make the radio buttons children of the radio button group.
 
 ![component tree](/assets/img/blog/2017-11-13-android2/component-tree.png)
 
