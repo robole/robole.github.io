@@ -155,9 +155,61 @@ String value1 = getIntent().getStringExtra("Value1");
 # Exercise: Login
 
 Create a basic login.
-- The first screen shows a username and password, with a login button. If the username and password are correct, it will which will show the main screen. If they are incorrect, a ```Toast``` will tell the user.
-- The second screen has a ```TextView``` saying "Welcome username!", where username is the value from screen one.
+- *LoginActivity*: Typical login screen. If the *username* and *password* are correct, it will which will show the *HomeActivity*. If they are incorrect, a ```Toast``` will tell the user. Can have a single username of "admin" with a password of "password".
 
+<img src="/assets/img/blog/2018-05-20-android3/login1.png" height="400px"/>
+
+- *HomeActivity*: Has a ```TextView``` saying "Welcome [username]!", where *[username]* is the value passed from *LoginActivity*.
+
+<img src="/assets/img/blog/2018-05-20-android3//login2.png" height="400px"/>
+
+The completed code is [here](https://github.com/robole/login-basic).
+
+
+```java
+public class LoginActivity extends Activity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_login);
+    }
+
+     public void onClick(View view){
+         EditText username = (EditText) findViewById(R.id.username_input);
+         EditText pass = (EditText) findViewById(R.id.password_input);
+
+         String username_text = username.getText().toString();
+         String pass_text = pass.getText().toString();
+
+         if(username_text.equals("admin") && pass_text.equals("password")){
+             Intent i = new Intent(this, HomeActivity.class);
+             i.putExtra("username", username_text);
+             startActivity(i);
+         }
+         else{
+             Toast.makeText(this, "Incorrect username and password combination",
+                     Toast.LENGTH_LONG).show();
+         }
+
+     }
+}
+```
+
+```java
+public class HomeActivity extends Activity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_home);
+        TextView welcome = (TextView) findViewById(R.id.welcome);
+
+        String username = this.getIntent().getStringExtra("username");
+        welcome.setText("Welcome " + username + "!");
+    }
+}
+```
 
 # References
 - [Vogella: Android Intents](http://www.vogella.com/tutorials/AndroidIntent/article.html)

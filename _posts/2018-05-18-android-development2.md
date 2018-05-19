@@ -15,12 +15,12 @@ The core elements of an app are:
 - A *layout* defines the appearance of a screen. It is defined in a XML file. Android Studio has a "text view" to show
 the XML source.
 
-![android studio text view](/assets/img/blog/2017-11-13-android2/text-view.png)
+![android studio text view](/assets/img/blog/2018-05-18-android2/text-view.png)
 
 - A *view* is an UI element such as a button that can be added to a *layout*. Android Studio provides a "design view" to create a layout in a visual way so you can add the view elements directly onto a screen, it provides a palette
 of view elements to choose from.
 
-![android studio design view](/assets/img/blog/2017-11-13-android2/design-view-example.png)
+![android studio design view](/assets/img/blog/2018-05-18-android2/design-view-example.png)
 
 - An *activity* represents a single user screen. Activities are usually associated with one *layout*, and they’re written in Java. We have a main activity that is the starting point of our app.
 - *AndroidManifest.xml* contains all the essential application data.
@@ -41,7 +41,7 @@ A task is when two or more *activities* are chained together. We use an *intent*
 
 Typically, assets are organized into different directories based on their purpose.
 
-![android directory structure](/assets/img/blog/2017-11-13-android2/android-directory-structure.png)
+![android directory structure](/assets/img/blog/2018-05-18-android2/android-directory-structure.png)
 
 - java files (*app/src/main/java*): our activities and classes
 that we define go here.
@@ -59,7 +59,7 @@ An activity represents a single user screen, and is a single defined thing that 
 Each activity you create must have an entry in *AndroidManifest.xml*.
 Android Studio does this for you when you create a new activity using it's wizard (as below).
 
-![new wizard](/assets/img/blog/2017-11-13-android2/new-wizard.png)
+![new wizard](/assets/img/blog/2018-05-18-android2/new-wizard.png)
 
 The only required attribute for the activity element is ```android:name```, which specifies the class name of the activity.
 
@@ -181,7 +181,7 @@ Open *res/values/strings.xml*, and add the String definitions to the file as des
 
 This is roughly what we want.
 
-![layout](/assets/img/blog/2017-11-13-android2/layout-design.png)
+![layout](/assets/img/blog/2018-05-18-android2/layout-design.png)
 
 Open our layout file *res/layout/activity_main.xml* in
 the "text view", and delete everything.
@@ -194,7 +194,7 @@ A simple way of organizing the view components is to drag
 and drop them onto the "Component Tree view".  So you can
 see the order we want them arranged in. We make the radio buttons children of the radio button group.
 
-![component tree](/assets/img/blog/2017-11-13-android2/component-tree.png)
+![component tree](/assets/img/blog/2018-05-18-android2/component-tree.png)
 
 ```xml
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -257,7 +257,7 @@ For the radio buttons:
 2. We can use the string values from our static resources by making a reference like this ```android:text="@string/celsius"``` for the first radio button (highlighted below), and do similar for the second radio button.
 3. Make the first radio button checked with ```android:checked ="true"```
 
-![edit properties](/assets/img/blog/2017-11-13-android2/edit-properties.png)
+![edit properties](/assets/img/blog/2018-05-18-android2/edit-properties.png)
 
 For our ```EditText```:
 1. We set ```android:inputType="numberSigned|numberDecimal"```. This changes the keyboard that is used to input the value.
@@ -287,7 +287,7 @@ the onClick method, which we will create in our
 ```
 This is what the complete layout looks like.
 
-![edit properties](/assets/img/blog/2017-11-13-android2/complete-layout.png)
+![edit properties](/assets/img/blog/2018-05-18-android2/complete-layout.png)
 
 ```xml
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
