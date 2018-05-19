@@ -18,13 +18,29 @@ Android Studio is the official IDE for Android, so I obediently decided to use i
 
 ![android hello world](/assets/img/blog/2017-11-11-android/android-hello-world.png) ![device driver warning](/assets/img/blog/2017-11-11-android/android-avd-driver-warning.png)
 
-# Pick a tutorial/book and try other people's code
+# Pick a tutorial or book
 
 I started with [Head First Android](http://shop.oreilly.com/product/0636920029045.do) to get a fundamental grasp of the Android way of doing things. The code samples from the book can be found in [this github repo](https://github.com/dogriffiths/HeadFirstAndroid) organized by chapter.  
 
-You need to have the version of the Android SDK installed on your computer that is contained in the build.gradle file of a sample project ("project folder\app\build.gradle"). I didn't want to download more versions of the Android SDK and gobble up my disk space, so I tried to update the version numbers through Android Studio to use the most recent version that I had installed on my PC (version 27), but it wouldn't save the updates in build.gradle!
+# Using someone else's project
 
-So, I changed the version numbers manually in build.gradle (highlighted fields) and synchronised the project. Then it ran!
+It's good to be clear on what android version number you need installed, and how to set it in the build process.
+
+## Android Version Numbers
+
+In the gradle file (usually in *project folder\app\build.gradle*), there are a few different version numbers that you can specify:
+- *compileSdkVersion* : Version that your app is compiled against during development. This means you can use Android API features included in that version (and lower). Generally, it is recommended to try to pick the lowest version that satisfies all of the features you need!
+- *minSdkVersion* : Lowest version that can run the app.
+- *targetSdkVersion* : Highest version that can be used run the app. This is usually the version you test the app against. If you do not specify the *targetSdkVersion*, it defaults to the *minSdkVersion*.
+
+Generally, this is followed:
+> minSdkVersion = targetSdkVersion <= compileSdkVersion
+
+If you want to offer different features based on the android version used at runtime, you can do this:
+
+> minSdkVersion <= targetSdkVersion <= compiledSdkVersion (highest possible)
+
+You need to have a version of the Android SDK installed on your computer that supports the *compileSdkVersion* in build.gradle (equal to or higher than this version number). I changed the version numbers (highlighted fields) and synchronised the project to compile and run the project I downloaded.
 
 ![android gradle build update](/assets/img/blog/2017-11-11-android/android-gradle-build.png)
 
@@ -32,7 +48,6 @@ You can also download code samples directly in Android Studio on various differe
 
 ![android studio import code sample](/assets/img/blog/2017-11-11-android/import-code-samples.png)
 ![android studio import code sample options](/assets/img/blog/2017-11-11-android/import-code-samples-options.png)
-
 
 # How to run the app on my phone
 

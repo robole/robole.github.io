@@ -11,6 +11,13 @@
     "author": "Platon"},
     {"text": "Creativity is allowing yourself to make mistakes. Art is knowing
       which ones to keep",
-    "author": "Scott Adams"}
+    "author": "Scott Adams"},
+    {"text": "Perfection is achieved, not when there is nothing more to add,
+      but when there is nothing left to take away.",
+    "author" : "Antoine de Saint-Exupery"},
+    {"text" : "If you always do what you’ve always done,
+      you’ll always get what you’ve always got.",
+      "author" : "Henry Ford"
+    }
   ]
 }
