@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: scrollable_post
 title: "Android Development - Intents 👽☕"
 category: android
 tags: [mobile, Java]
@@ -51,13 +51,13 @@ In the previous example, how does Android know which apps can display a webpage?
 Intent filters provide the ability to evaluate if an activity can satisfy an intent. This process is known as intent resolution.
 
 To make sure it’s the right activity for the intent, the intent filter provides three criteria:
-- Action: This is what the intent needs to do, such as dialling a phone number. An action is simply a string constant describing what is being accomplished.
+- **Action**: This is what the intent needs to do, such as dialling a phone number. An action is simply a string constant describing what is being accomplished.
   - ```ACTION_VIEW```: When we want to show something to the user, such as view a photo in a gallery app.
   - ```ACTION_SEND```: Also known as the share action, you should use this when you want to share with another app.
   - ```ACTION_DIAL```: Dial a number.
   - ```ACTION_WEB_SEARCH```: Web search.
-- Data: The type of data the intent can accept. This ranges from specific file paths, to ports, to MIME types such as images and video. You can set one or more attributes to control how strict or lenient you are with the data from an intent that your app can handle.
-- Category: This is an additional criterion to specify which actions can respond to an implicit intent. An intent filter must include a category of ```android.intent.category.DEFAULT``` if it’s to receive implicit intents. Any number of categories can be placed in an intent. Common categories:
+- **Data**: The type of data the intent can accept. This ranges from specific file paths, to ports, to MIME types such as images and video. You can set one or more attributes to control how strict or lenient you are with the data from an intent that your app can handle.
+- **Category**: This is an additional criterion to specify which actions can respond to an implicit intent. An intent filter must include a category of ```android.intent.category.DEFAULT``` if it’s to receive implicit intents. Any number of categories can be placed in an intent. Common categories:
   - ```CATEGORY_LAUNCHER```: The activity is the initial activity of a task and is listed in the system's application launcher.
   - ```CATEGORY_BROWSABLE```: The target activity allows itself to be started by a web browser to display data referenced by a link, such as an image or an e-mail message.
 
@@ -143,20 +143,16 @@ The data in an intent can be used by the receiving component. You use ```getExtr
 
 ```
 Bundle extras = getIntent().getExtras();
-
-// get data via the key
 String value1 = extras.getString("Value1");
-if (value1 != null) {
-    // do something with the data
-}
 ```
 
 There is also some convenience methods to retrieve a single
 value such as ```getStringExtra(..) ```, ```getIntExtra(..)```.
 
 ```
-// get data via the key
-String value1 = getIntent().getStringExtra("Value1");
+Intent intent = getIntent();
+String value1 = intent.getStringExtra("Value1");
+int value2 = intent.getIntExtra("Value2");
 ```
 
 # Exercise: Login
