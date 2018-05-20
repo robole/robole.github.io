@@ -6,8 +6,6 @@ tags: [mobile, Java]
 published: true
 ---
 
-# Intents
-
 An intent is an "intention" to perform an action. It is basically a message that allows us to request functionality
 from other components.
 
@@ -16,7 +14,7 @@ different *tasks*.
 
 Intents are objects of ```android.content.Intent```.
 
-## Explicit Intents
+# Explicit Intents
 
 Are used to call a __specific component__. If we want
 ```ActivityOne``` to launch ```ActivityTwo``` when a button is
@@ -29,16 +27,24 @@ Intent i = new Intent(this, ActivityTwo.class);
 startActivity(i);
 ```
 
-## Implicit Intents
+# Implicit Intents
 
 Are used when you know what you want to do, but you do not
 want to specify exactly which component should be used. Android evaluates the request at runtime to choose a component.
 
 Implicit intents can give the user an option to choose between a list of apps. This is a common scenario when you need to do something like open a hyperlink for a webpage, a list of external apps are shown to the user.
 
-<img src="http://media02.hongkiat.com/push-content-android-pushbullet/link-complete-action.jpg" height="400px"/>
+```java
+//view a webpage using an implicit intent
+String url = "http://www.example.com";
+Intent i = new Intent(Intent.ACTION_VIEW);
+i.setData(Uri.parse(url));
+startActivity(i);
+```
 
-## Intent filters
+<img src="http://media02.hongkiat.com/push-content-android-pushbullet/link-complete-action.jpg" width="400px" height="300px"/>
+
+# Intent filters
 
 In the previous example, how does Android know which apps can display a webpage?
 
@@ -47,7 +53,7 @@ Intent filters provide the ability to evaluate if an activity can satisfy an int
 To make sure it’s the right activity for the intent, the intent filter provides three criteria:
 - Action: This is what the intent needs to do, such as dialling a phone number. An action is simply a string constant describing what is being accomplished.
   - ```ACTION_VIEW```: When we want to show something to the user, such as view a photo in a gallery app.
-  - ```ACTION_SEND```: Also known as the share intent, you should use this when you have some data that the user can share with another app.
+  - ```ACTION_SEND```: Also known as the share action, you should use this when you want to share with another app.
   - ```ACTION_DIAL```: Dial a number.
   - ```ACTION_WEB_SEARCH```: Web search.
 - Data: The type of data the intent can accept. This ranges from specific file paths, to ports, to MIME types such as images and video. You can set one or more attributes to control how strict or lenient you are with the data from an intent that your app can handle.
@@ -57,28 +63,6 @@ To make sure it’s the right activity for the intent, the intent filter provide
 
 If Android finds a single match for an implicit intent, it starts the component, and passes it the intent. If it finds multiple matches, it asks the user to pick one.
 
-## What if you want the user to choose every time?
-
-If multiple apps can respond to an intent and the user might want to use a different app each time, you should explicitly show a chooser dialog. The chooser dialog asks the user to select which app to use for the action (the user cannot select a default app for the action).
-
-For example, when your app performs "share" with the ```ACTION_SEND```, users may want to share using a different app depending on their current situation.
-
-To show the chooser, create an intent using ```createChooser()``` and pass it to ```startActivity()```, as shown in the following example.
-
-```java
-Intent sendIntent = new Intent(Intent.ACTION_SEND);
-...
-
-// Always use string resources for UI text.
-// This says something like "Share this photo with"
-String title = getResources().getString(R.string.chooser_title);
-
-//if no activities are resolved for this intent, a
-//message will be shown informing the user
-Intent chooser = Intent.createChooser(sendIntent, title);
-
-startActivity(chooser);
-```
 ## Example: Main Activity
 
 We have seen this already. This is the entry point to our app.
@@ -120,6 +104,29 @@ We have seen this already. This is the entry point to our app.
 </activity>
 ```
 
+# What if you want the user to choose an app every time in response to an implicit intent?
+
+If multiple apps can respond to an intent and the user might want to use a different app each time, you should explicitly show a chooser dialog. The chooser dialog asks the user to select which app to use for the action (the user cannot select a default app for the action).
+
+For example, when your app performs "share" with the ```ACTION_SEND```, users may want to share using a different app depending on their current situation.
+
+To show the chooser, create an intent using ```createChooser()``` and pass it to ```startActivity()```, as shown in the following example.
+
+```java
+Intent sendIntent = new Intent(Intent.ACTION_SEND);
+...
+
+// Always use string resources for UI text.
+// This says something like "Share this photo with"
+String title = getResources().getString(R.string.chooser_title);
+
+//if no activities are resolved for this intent, a
+//message will be shown informing the user
+Intent chooser = Intent.createChooser(sendIntent, title);
+
+startActivity(chooser);
+```
+
 # Passing data between Activities
 
 An intent can have data that is stored in a ```Bundle```. You add data directly to the ```Bundle``` via the overloaded ```putExtra()``` methods of an intent.
@@ -132,7 +139,7 @@ i.putExtra("Value1", "This value one for ActivityTwo ");
 i.putExtra("Value2", 2.0);
 ```
 
-The data in an intent can be used by the receiving component. You use ```getExtras()``` to retrieve values.
+The data in an intent can be used by the receiving component. You use ```getExtras()``` to retrieve all of the values in the ```Bundle```.
 
 ```
 Bundle extras = getIntent().getExtras();
@@ -145,7 +152,7 @@ if (value1 != null) {
 ```
 
 There is also some convenience methods to retrieve a single
-pair such as ```getStringExtra(..) ```.
+value such as ```getStringExtra(..) ```, ```getIntExtra(..)```.
 
 ```
 // get data via the key
@@ -159,7 +166,7 @@ Create a basic login.
 
 <img src="/assets/img/blog/2018-05-20-android3/login1.png" height="400px"/>
 
-- *HomeActivity*: Has a ```TextView``` saying "Welcome [username]!", where *[username]* is the value passed from *LoginActivity*.
+- *HomeActivity*: Has a ```TextView``` saying "Welcome [username]!", where [username] is the value passed from *LoginActivity*.
 
 <img src="/assets/img/blog/2018-05-20-android3//login2.png" height="400px"/>
 
