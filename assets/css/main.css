@@ -437,3 +437,12 @@ a.home-navbar-logo, a.navbar-logo{
   font-size: 0.5em;
   color: black;
 }
+
+/* portfolio: java training
+*/
+.java-training-projects {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 2rem;
+  grid-auto-rows: minmax(200px, auto);
+}
