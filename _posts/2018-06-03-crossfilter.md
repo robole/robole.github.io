@@ -5,13 +5,13 @@ category: web
 tags: [javascript]
 ---
 
-[Crossfilter](https://square.github.io/crossfilter/) is for doing fast multi-dimensional filtering on big datasets.
+[Crossfilter](https://square.github.io/crossfilter/) is for doing fast multi-dimensional filtering on big datasets. It claims t support 1 million rows.
 
-It is regularly used with D3 for creating co-ordinated charts based on the same dataset. This is what lead me to it anyway.
+It is regularly used with D3 for creating co-ordinated charts based on the same dataset. This is what lead me to it!
 
-[This tutorial](http://animateddata.co.uk/articles/crossfilter/ was the most useful I found that was example-led, and didn't overdo it. But there was some blank spots in the explanations.
+[This tutorial](http://animateddata.co.uk/articles/crossfilter/) was the most useful I found that was example-led, and didn't overdo it. But there was some blank spots in the explanations that I had to find in the [API](https://github.com/square/crossfilter/wiki/API-Reference), which is well-written.
 
-I wanted to look at journey routes for Ireland from this csv file to discover how to use it properly.
+I wanted to look at a dataset of travel routes in Ireland to discover how to use it properly with D3.
 
 ```
 id,origin,destination,journey_time,daily_frequency
@@ -25,7 +25,7 @@ id,origin,destination,journey_time,daily_frequency
 
 # Dimensions and Filters
 
-A dimension is what fields you want to examine your dataset by. You can apply a filter to it based on values, or you can write a custom function.
+A dimension is what fields you want to examine your dataset by. You can apply a filter to it based on values, and you can write a custom function.
 
 You can explore the code here to see a working example of what is explained below.
 
@@ -50,7 +50,7 @@ var results = idDim.top(Infinity));
 2,Cork,Limerick,90,10
 ```
 
-When looking at results of the filter, you can use ```top()``` and ```bottom()``` to control the number of items in the result set by providing a number as a parameter e.g. ```top(Infinity)``` shows everything.
+When looking at results of the filter, you can use ```top(k)``` and ```bottom(k)``` to control the number of items in the result set by providing a number as a parameter,  ```top(Infinity)``` shows everything.
 
 ## Multiple value filter (origin = "Cork" OR "Roscommon")
 
@@ -71,7 +71,7 @@ var results = idDim.top(Infinity));
 5,Roscommon,Sligo,45,4
 ```
 
-## Aggregate Dimension
+## Composite Dimension
 
 So if I want to find any route where "Cork" is the *origin* or the *destination*, it would be cool if I could make a origin-destination dimension and search in that. We can do this! :-D
 
@@ -121,11 +121,11 @@ var results = idDim.top(Infinity));
 
 # Aggregate Functions
 
-I won't go into it as I think the tutorial I mentioned already covers it well, but there are functions for getting totals based on your filters.
+Crossfilter offers a lot more for aggregating data to compute totals and similar. I won't go into it as my focus was on filtering, and using in conjunction with D3.
 
 # Conclusion
 
-It looks like a worthwhile library for allowing filtering in the browser. I will use in a project and report back!
+It looks like a worthwhile library. I will use in a project and report back on it's success!
 
 # References
 
