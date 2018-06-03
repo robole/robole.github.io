@@ -1,15 +1,15 @@
 ---
 layout: post
 title: "Interactive filtering in the browser with Crossfilter and D3 💫✏️"
-category: web
-tags: [javascript, data visualization]
+category: data visualization
+tags: [javascript, data visualization, d3, crossfilter]
 ---
 
-[Crossfilter](https://square.github.io/crossfilter/) is for doing fast multi-dimensional filtering on big datasets. It claims t support 1 million rows.
+[Crossfilter](https://square.github.io/crossfilter/) can perform fast multi-dimensional filtering on big datasets. It claims to work well on 1 million rows and more!
 
 It is regularly used with D3 for creating co-ordinated charts based on the same dataset. This is what lead me to it!
 
-[This tutorial](http://animateddata.co.uk/articles/crossfilter/) was the most useful I found that was example-led, and didn't overdo it. But there was some blank spots in the explanations that I had to find in the [API](https://github.com/square/crossfilter/wiki/API-Reference), which is well-written.
+[This tutorial](http://animateddata.co.uk/articles/crossfilter/) was the most useful I found that was example-led. But there was some blank spots in the explanations that I had to find in the [API](https://github.com/square/crossfilter/wiki/API-Reference), which is well-written.
 
 I wanted to look at a dataset of travel routes in Ireland to discover how to use it properly with D3.
 
@@ -25,7 +25,7 @@ id,origin,destination,journey_time,daily_frequency
 
 # Dimensions and Filters
 
-A dimension is what fields you want to examine your dataset by. You can apply a filter to it based on values, and you can write a custom function.
+A *dimension* is whatever fields you want to examine your dataset by. You can apply a filter to a dimension providing a value, a range of values, or you can write a custom filter function.
 
 You can explore the code here to see a working example of what is explained below.
 
@@ -96,7 +96,7 @@ var results = originDestinationDim.top(Infinity);
 
 ## Filters are cumulative
 
-If you apply filters on different dimensions, the filters are applied to the dataset, so when you retrieve results from any dimension, you get the cumulative result. Here I apply 2 filters: *origin* or *destination* of "Cork", exclude *id* of 0, and I get 3 items based on them.
+If you apply filters on different dimensions, the filters are applied to the dataset, so when you retrieve results from any dimension, you get the cumulative result. Here I apply 2 filters: *origin* or *destination* of "Cork", and exclude the *id* of 0, and I get 3 items based on them from the *idDim*.
 
 ```javascript
 var cf = crossfilter(data);
@@ -121,11 +121,11 @@ var results = idDim.top(Infinity));
 
 # Aggregate Functions
 
-Crossfilter offers a lot more for aggregating data to compute totals and similar. I won't go into it as my focus was on filtering, and using in conjunction with D3.
+Crossfilter offers a lot more for aggregating data if you want counts and totals. I won't go into it as my focus was on filtering, and using it in conjunction with D3.
 
 # Conclusion
 
-It looks like a worthwhile library. I will use in a project and report back on it's success!
+It looks like a worthwhile library. I will use in a project and report back on it's success (I hope)!
 
 # References
 
