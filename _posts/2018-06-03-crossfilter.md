@@ -1,8 +1,8 @@
 ---
 layout: post
-title: "Does Crossfilter.js make a happy filter? 💫✏️"
+title: "Interactive filtering in the browser with Crossfilter and D3 💫✏️"
 category: web
-tags: [javascript]
+tags: [javascript, data visualization]
 ---
 
 [Crossfilter](https://square.github.io/crossfilter/) is for doing fast multi-dimensional filtering on big datasets. It claims t support 1 million rows.
