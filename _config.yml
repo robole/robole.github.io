@@ -21,10 +21,7 @@ disqus:
     # Disable comments for any post by adding `comments: false` to that post's YAML Front Matter.
     shortname: robole-github-io
 
-goodreads:
-  userid: 15065423-rob
-  api_key: RBUy1EBMk4WTM53sJZVDQ
-
 plugins:
   - jemoji
   - jekyll-feed
+  - jekyll-gist

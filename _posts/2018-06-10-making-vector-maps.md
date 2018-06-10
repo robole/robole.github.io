@@ -61,7 +61,8 @@ I reduced the filesize from 130KB to 12KB with the simplification!
 
 Use D3.js to show the final result!
 
-![final map](/assets/img/blog/2018-06-10-maps/result.png)
+<p data-height="578" data-theme-id="light" data-slug-hash="qKReXy" data-default-tab="result" data-user="robjoeol" data-embed-version="2" data-pen-title="SVG map of Ireland with cities " class="codepen">See the Pen <a href="https://codepen.io/robjoeol/pen/qKReXy/">SVG map of Ireland with cities </a> by rob (<a href="https://codepen.io/robjoeol">@robjoeol</a>) on <a href="https://codepen.io">CodePen</a>.</p>
+<script async src="https://static.codepen.io/assets/embed/ei.js"></script>
 
 # References
 
