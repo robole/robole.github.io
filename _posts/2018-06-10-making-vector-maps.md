@@ -54,8 +54,7 @@ You can use [toposimplify](https://github.com/topojson/topojson-simplify/blob/ma
 
 # Result
 
-Use D3.js to show the final result! You can read [Mike Bostock's tutorial]
-(https://bost.ocks.org/mike/map/) to learn more on that.
+Use D3.js to show the final result! You can read [Mike Bostock's tutorial](https://bost.ocks.org/mike/map/) to learn more on that.
 
 <p data-height="578" data-theme-id="light" data-slug-hash="qKReXy" data-default-tab="result" data-user="robjoeol" data-embed-version="2" data-pen-title="SVG map of Ireland with cities " class="codepen">See the Pen <a href="https://codepen.io/robjoeol/pen/qKReXy/">SVG map of Ireland with cities </a> by rob (<a href="https://codepen.io/robjoeol">@robjoeol</a>) on <a href="https://codepen.io">CodePen</a>.</p>
 <script async src="https://static.codepen.io/assets/embed/ei.js"></script>
