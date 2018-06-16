@@ -219,12 +219,12 @@ a.home-navbar-logo, a.navbar-logo{
 }
 
 #portfolio figcaption{
-  font-size: 3rem;
+  font-size: calc(18px + .5vw);
 }
 
 .portfolio-item h2{
   color:orange;
-  font-size: 2rem;
+  font-size: calc(14px + .5vw);
 }
 
 #portfolio-filter-button {
@@ -243,7 +243,7 @@ a.home-navbar-logo, a.navbar-logo{
 
 .portfolio-item {
     text-align: center;
-    width: 35%;
+    width: 37.5%;
 }
 
 .portfolio-item:after {
@@ -254,9 +254,8 @@ a.home-navbar-logo, a.navbar-logo{
 
 /* ---- isotope ---- */
 .gutter-sizer {
-  width: 30%;
+  width: 25%;
 }
-
 
 @media (max-width: 544px) {
   .portfolio-item {
