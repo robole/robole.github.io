@@ -69,4 +69,23 @@ $(window).on("load", function(){
       }
     }
   });
+
+  // init Isotope
+  var $grid = $('.portfolio-grid').isotope({
+    itemSelector: '.portfolio-item',
+    percentPosition: true,
+    masonry: {
+      gutter: '.gutter-sizer'
+    }
+  });
+
+  // bind filter button click
+  $('#portfolio-type-filter').on( 'click', 'button', function() {
+    var filterValue = $( this ).attr('data-filter');
+    $("#portfolio-type-filter button").each(function(){
+      $(this).removeClass("selected-filter");
+    });
+    $(this).addClass("selected-filter");
+    $grid.isotope({ filter: filterValue });
+  });
 });//load()

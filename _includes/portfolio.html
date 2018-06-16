@@ -2,11 +2,39 @@
   <div class="row">
     <div class="col-md-12">
       <h1>Portfolio</h1>
+      <button id="portfolio-filter-button" data-toggle="collapse"
+        data-target="#filter-collapse" title="Filter">
+          <i class="fa fa-filter"></i> Filter</button>
+    </div>
+  </div>
+  <div id="filter-collapse" class="collapse row">
+    <div class="col-md-12">
+      Type:
+      <div id="portfolio-type-filter" class="btn-group">
+        <button type="button" class="btn btn-default btn-lg selected-filter"
+        data-filter="*">All</button>
+        <button type="button" class="btn btn-default btn-lg"
+        data-filter=".animation"
+        >Animation</button>
+        <button type="button" class="btn btn-default btn-lg"
+        data-filter=".data-visualisation"
+        >Data Visualisation</button>
+        <button type="button" class="btn btn-default btn-lg"
+        data-filter=".desktop-application"
+        >Desktop Application</button>
+        <button type="button" class="btn btn-default btn-lg"
+        data-filter=".professional-training"
+        >Professional Training</button>
+        <button type="button" class="btn btn-default btn-lg"
+        data-filter=".web-application"
+        >Web Application</button>
+      </div>
     </div>
   </div>
   <div class="row">
-    <div class="col-xs-12 col-sm-12 col-md-6">
-      <article class="portfolio-item">
+    <div class="portfolio-grid">
+      <div class="gutter-sizer"></div>
+      <article class="portfolio-item data-visualisation">
         <figure>
           <a href="/frequency-punchcard">
           <img style="background-image:url(/assets/img/portfolio/frequency-punchcard.svg)" src="/assets/img/tree-400x400.png" class="portfolio-img" alt="frequency punchcard">
@@ -16,11 +44,9 @@
           <figcaption>Frequency Punchcard</figcaption>
           </a>
         </figure>
-        <h5>Data Visualisation | D3.js</h5>
+        <h2>Data Visualisation | D3.js</h2>
       </article>
-    </div>
-  <div class="col-xs-12 col-sm-12 col-md-6">
-    <article class="portfolio-item">
+     <article class="portfolio-item ux-design">
       <figure>
         <a href="/metro-app">
         <img style="background-image:url(assets/img/portfolio/metro-app-cover.svg)" src="/assets/img/tree-400x400.png" class="portfolio-img" alt="metro app">
@@ -30,13 +56,9 @@
         <figcaption>Metro App</figcaption>
         </a>
       </figure>
-      <h5>UX Design | Adobe XD</h5>
+      <h2>UX Design | Adobe XD</h2>
     </article>
-  </div>
-  </div>
-  <div class="row">
-    <div class="col-xs-12 col-sm-12 col-md-6">
-      <article class="portfolio-item">
+    <article class="portfolio-item professional-training">
         <a href="/java-training">
         <figure>
           <img style="background-image:url(/assets/img/portfolio/java-training.svg)" src="/assets/img/tree-400x400.png" class="portfolio-img" alt="java file">
@@ -46,11 +68,9 @@
           <figcaption>Java Training</figcaption>
           </a>
         </figure>
-        <h5>Professional Training | Java</h5>
+        <h2>Professional Training | Java</h2>
       </article>
-    </div>
-    <div class="col-xs-12 col-sm-12 col-md-6">
-      <article class="portfolio-item">
+      <article class="portfolio-item animation">
         <figure>
           <a href="/berlin-boxing-bear">
           <img style="background-image:url(assets/img/portfolio/berlin-boxing-bear.gif)" src="/assets/img/tree-400x400.png" class="portfolio-img" alt="berlin boxing bear animation">
@@ -60,13 +80,9 @@
           <figcaption>Berlin Boxing Bear</figcaption>
           </a>
         </figure>
-        <h5>Animation | Greensock.js</h5>
+        <h2>Animation | Greensock.js</h2>
       </article>
-    </div>
-  </div>
-    <div class="row">
-      <div class="col-xs-12 col-sm-12 col-md-6">
-        <article class="portfolio-item">
+      <article class="portfolio-item web-application">
           <figure>
             <a href="/berlin-mural-map">
             <img style="background-image:url(assets/img/portfolio/berlin-mural-map-400x400.png" src="/assets/img/tree-400x400.png" class="portfolio-img" alt="berlin mural map">
@@ -76,11 +92,9 @@
             <figcaption>Berlin Mural Map</figcaption>
             </a>
           </figure>
-          <h5>Web Application | MongoDB, Express, NodeJS</h5>
+          <h2>Web Application | MongoDB, Express, NodeJS</h2>
         </article>
-      </div>
-      <div class="col-xs-12 col-sm-12 col-md-6">
-        <article class="portfolio-item">
+        <article class="portfolio-item desktop-application">
           <figure>
             <a href="/invoicing-framing-business">
               <img style="background-image:url(/assets/img/portfolio/invoicing-cover.svg)" src="/assets/img/tree-400x400.png" class="portfolio-img portfolio-invoicing" alt="frame experts studio"/>
@@ -90,13 +104,9 @@
             <figcaption>Invoicing for a Framing Business</figcaption>
             </a>
           </figure>
-          <h5>Desktop Application | VBA</h5>
+          <h2>Desktop Application | VBA</h2>
         </article>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-xs-12 col-sm-12 col-md-6">
-        <article class="portfolio-item">
+        <article class="portfolio-item data-visualisation">
           <a href="/distance-table">
           <figure>
             <img style="background-image:url(/assets/img/portfolio/distance-table.svg)"
@@ -108,11 +118,9 @@
             <figcaption>Distance Table</figcaption>
             </a>
           </figure>
-          <h5>Data Visualisation | D3.js</h5>
+          <h2>Data Visualisation | D3.js</h2>
         </article>
-      </div>
-      <div class="col-xs-12 col-sm-12 col-md-6">
-        <article class="portfolio-item">
+        <article class="portfolio-item data-visualisation">
           <a href="/map-selector">
           <figure>
             <img style="background-image:url(/assets/img/portfolio/map-selector.svg)" src="/assets/img/tree-400x400.png" class="portfolio-img" alt="map selector" />
@@ -122,8 +130,8 @@
             <figcaption>Map Selector</figcaption>
             </a>
           </figure>
-          <h5>Data Visualisation | D3.js</h5>
+          <h2>Data Visualisation | D3.js</h2>
         </article>
-      </div>
     </div>
+  </div>
 </section>
