@@ -222,6 +222,11 @@ a.home-navbar-logo, a.navbar-logo{
   font-size: calc(18px + .5vw);
 }
 
+.portfolio-item h3{
+  color:orange;
+  font-size: calc(35px + .5vw);
+}
+
 .portfolio-item h2{
   color:orange;
   font-size: calc(14px + .5vw);
@@ -257,7 +262,7 @@ a.home-navbar-logo, a.navbar-logo{
   width: 25%;
 }
 
-@media (max-width: 544px) {
+@media (max-width: 750px) {
   .portfolio-item {
     width: 100%;
   }
@@ -476,7 +481,7 @@ a.home-navbar-logo, a.navbar-logo{
 */
 .java-training-projects {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr) ) ;
   grid-gap: 2rem;
   grid-auto-rows: minmax(200px, auto);
 }
