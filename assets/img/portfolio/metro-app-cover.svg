@@ -16,7 +16,12 @@
    inkscape:version="0.92.3 (2405546, 2018-03-11)"
    sodipodi:docname="metro-app-cover.svg">
   <defs
-     id="defs4669" />
+     id="defs4669">
+    <inkscape:path-effect
+       effect="spiro"
+       id="path-effect843"
+       is_visible="true" />
+  </defs>
   <sodipodi:namedview
      id="base"
      pagecolor="#ffffff"
@@ -24,9 +29,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.00392157"
      inkscape:pageshadow="2"
-     inkscape:zoom="1.1526073"
-     inkscape:cx="352.19111"
-     inkscape:cy="262.37483"
+     inkscape:zoom="3.0976321"
+     inkscape:cx="173.57696"
+     inkscape:cy="236.04072"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -46,7 +51,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title />
+        <dc:title></dc:title>
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -71,7 +76,7 @@
      transform="translate(0,-191.16665)"
      style="display:inline">
     <rect
-       style="opacity:1;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:6.09259843;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:normal"
+       style="opacity:1;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:6.09259844;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:normal"
        id="rect4587"
        width="223.05571"
        height="272.49191"
@@ -84,8 +89,13 @@
        height="223.47496"
        x="106.72688"
        y="265.8924" />
+    <path
+       style="display:inline;fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1.07149005px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="M 134.85507,447.44893 V 385.92956 385.92956"
+       id="path4589-5"
+       inkscape:connector-curvature="0" />
     <ellipse
-       style="opacity:1;fill:#00ff00;fill-opacity:1;fill-rule:nonzero;stroke:#b1ff91;stroke-width:1.75748031;stroke-linecap:round;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:29.63149643;stroke-opacity:1;paint-order:stroke fill markers"
+       style="opacity:1;fill:#00ff00;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1.75748031;stroke-linecap:round;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:29.63149643;stroke-opacity:1;paint-order:stroke fill markers"
        id="path4924"
        cx="134.60695"
        cy="284.37921"
@@ -179,22 +189,17 @@
          y="459.25854"
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10.66666698px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;stroke-width:0.99999994px">各停Shibuya</tspan></text>
     <path
-       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1.00157475;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:1.00157475, 2.00314951;stroke-dashoffset:0;stroke-opacity:1"
-       d="M 134.4286,355.83008 V 377.39803"
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1.01901627;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:1.01901633, 2.03803266;stroke-dashoffset:0;stroke-opacity:1"
+       d="M 134.65687,353.81686 V 376.14253"
        id="path4577"
        inkscape:connector-curvature="0" />
     <ellipse
-       style="opacity:1;fill:#ff6600;fill-opacity:1;fill-rule:nonzero;stroke:#8f2d14;stroke-width:1.75748026;stroke-linecap:round;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:29.63149643;stroke-opacity:1;paint-order:stroke fill markers"
+       style="opacity:1;fill:#ff6600;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1.75748026;stroke-linecap:round;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:29.63149643;stroke-opacity:1;paint-order:stroke fill markers"
        id="path4924-7-5"
        cx="134.96384"
        cy="382.79465"
        rx="4.8834252"
        ry="5.1547265" />
-    <path
-       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       d="M 134.72006,389.05638 135.01152,449.09688"
-       id="path4579"
-       inkscape:connector-curvature="0" />
     <path
        style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
        d="M 134.55064,343.64121 V 290.05717 290.05717"
@@ -215,14 +220,14 @@
        x="204.29034"
        y="502.2114" />
     <ellipse
-       style="display:inline;opacity:1;fill:#00ff00;fill-opacity:1;fill-rule:nonzero;stroke:#b1ff91;stroke-width:1.75748026;stroke-linecap:round;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:29.63149643;stroke-opacity:1;paint-order:stroke fill markers"
+       style="display:inline;opacity:1;fill:#00ff00;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1.75748026;stroke-linecap:round;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:29.63149643;stroke-opacity:1;paint-order:stroke fill markers"
        id="path4924-7"
        cx="134.51266"
-       cy="349.76047"
+       cy="347.76047"
        rx="4.8834252"
        ry="5.1547265" />
     <ellipse
-       style="display:inline;opacity:1;fill:#ff6600;fill-opacity:1;fill-rule:nonzero;stroke:#8f2d14;stroke-width:1.75748026;stroke-linecap:round;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:29.63149643;stroke-opacity:1;paint-order:stroke fill markers"
+       style="display:inline;opacity:1;fill:#ff6600;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1.75748026;stroke-linecap:round;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:29.63149643;stroke-opacity:1;paint-order:stroke fill markers"
        id="path4924-7-5-3"
        cx="135.27335"
        cy="451.90567"
