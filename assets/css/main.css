@@ -1,5 +1,12 @@
 * { box-sizing: border-box; }
 
+@font-face {
+    font-family: dusha_plusregular;
+    src: url(../fonts/dusha.ttf) format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}
+
 body {
   position: relative;
   font-family: Quicksand, Arial, sans-serif;
@@ -484,4 +491,8 @@ a.home-navbar-logo, a.navbar-logo{
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr) ) ;
   grid-gap: 2rem;
   grid-auto-rows: minmax(200px, auto);
+}
+
+.world-cup{
+  font-family: dusha_plusregular, verdana;
 }
