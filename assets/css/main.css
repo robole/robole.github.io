@@ -211,6 +211,7 @@ a.home-navbar-logo, a.navbar-logo{
   color:white;
 }
 
+/*### Portfolio ###*/
 #portfolio {
   min-height: 80rem;
   padding-top: 5rem;
@@ -275,6 +276,7 @@ a.home-navbar-logo, a.navbar-logo{
   }
 }
 
+/* hover interaction*/
 .portfolio-item h4, .portfolio-item h5,
 .portfolio-item>a:hover, .portfolio-item>a:focus {
   color: white;
@@ -340,6 +342,13 @@ a.home-navbar-logo, a.navbar-logo{
   background-size: 70px 70px;
   background-repeat: repeat;
 }
+
+.fantasy-football-img{
+  width:300px;
+  height:300px;
+}
+
+/* ### Footer ###*/
 
 #contact {
   min-height: 12rem;
