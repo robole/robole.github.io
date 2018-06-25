@@ -496,3 +496,8 @@ a.home-navbar-logo, a.navbar-logo{
 .world-cup{
   font-family: dusha_plusregular, verdana;
 }
+
+figcaption{
+  font-size: calc(8px + .5vw);
+  font-weight: bold;
+}
