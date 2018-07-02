@@ -21,8 +21,10 @@ $(document).ready(function(){
 
                 $(".adjective-list").children().eq(index).addClass("highlighted");
   }
-  swapPortraitMask();
-  setInterval(swapPortraitMask, 2000);
+  if($("#portrait").length > 0){
+    swapPortraitMask();
+    setInterval(swapPortraitMask, 2000);
+  }
 }); //ready()
 
 $(window).on("load", function(){

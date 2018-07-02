@@ -506,6 +506,10 @@ a.home-navbar-logo, a.navbar-logo{
   font-family: dusha_plusregular, verdana;
 }
 
+#portfolio figcaption.world-cup{
+  font-size: calc(24px + .5vw);
+}
+
 figcaption{
   font-size: calc(8px + .5vw);
   font-weight: bold;
