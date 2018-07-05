@@ -348,6 +348,12 @@ a.home-navbar-logo, a.navbar-logo{
   height:300px;
 }
 
+@media (max-width:768px){
+  #worldcup-home{
+    width:100%;
+  }
+}
+
 /* ### Footer ###*/
 
 #contact {
@@ -497,9 +503,9 @@ a.home-navbar-logo, a.navbar-logo{
 */
 .java-training-projects {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr) ) ;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr) ) ;
   grid-gap: 2rem;
-  grid-auto-rows: minmax(200px, auto);
+  grid-auto-rows: minmax(300px, auto);
 }
 
 .world-cup{
