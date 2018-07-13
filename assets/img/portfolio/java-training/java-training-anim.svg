@@ -48,12 +48,6 @@
      inkscape:current-layer="svg27" />
   <style>
   <![CDATA[
-svg{
-  position:absolute;
-  left:200px;
-  top:0;
-  width:400px;
-}
 
 #plant{
   animation-name:grow;
