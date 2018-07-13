@@ -51,35 +51,35 @@
 
 #plant{
 animation-name:grow;
-animation-duration:10s;
+animation-duration:6s;
 animation-iteration-count: infinite;
 transform-origin: center center;
 }
 
 #can{
 animation-name:tip;
-animation-duration:10s;
+animation-duration:6s;
 animation-iteration-count: infinite;
 transform-origin: center center;
 }
 
 #water{
 animation-name:pour;
-animation-duration:10s;
+animation-duration:6s;
 animation-iteration-count: infinite;
 transform-origin: center center;
 }
 
 #hand{
 animation-name:throw;
-animation-duration:10s;
+animation-duration:6s;
 animation-iteration-count: infinite;
 transform-origin: center center;
 }
 
 #seed{
 animation-name:throw-seed;
-animation-duration:10s;
+animation-duration:6s;
 animation-iteration-count: infinite;
 transform-origin: center center;
 }
