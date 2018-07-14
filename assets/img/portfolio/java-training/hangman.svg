@@ -10,8 +10,7 @@
    version="1.1"
    x="0px"
    y="0px"
-   viewBox="0 0 90 90"
-   enable-background="new 0 0 90 90"
+   viewBox="0 0 100 100"
    xml:space="preserve"
    id="svg10"
    sodipodi:docname="hangman.svg"
@@ -32,8 +31,8 @@
    inkscape:window-height="837"
    id="namedview12"
    showgrid="false"
-   inkscape:zoom="3.6880822"
-   inkscape:cx="41.682122"
+   inkscape:zoom="3.5909119"
+   inkscape:cx="24.058171"
    inkscape:cy="33.129492"
    inkscape:window-x="-8"
    inkscape:window-y="-8"
@@ -43,9 +42,9 @@
    id="rect844"
    width="1.4143445"
    height="9.5468311"
-   x="51.105919"
-   y="6.1610112" /><g
-   transform="matrix(0.75764713,0,0,0.75764713,8.5503522,0.09103935)"
+   x="59.181862"
+   y="15.907839" /><g
+   transform="matrix(0.75764713,0,0,0.75764713,16.626295,9.8378672)"
    id="g4-8"><path
      inkscape:connector-curvature="0"
      d="M 61.676,9.665 C 63.655,9.665 65.259,8.061 65.259,6.083 65.259,4.105 63.655,2.5 61.676,2.5 H 25.062 C 23.084,2.5 21.479,4.104 21.479,6.083 V 83.918 C 21.479,85.897 23.083,87.5 25.062,87.5 27.041,87.5 28.644,85.897 28.644,83.918 V 25.245 L 43.712,10.177 C 43.862,10.027 43.976,9.851 44.052,9.665 59.228477,9.6434447 50.721336,9.665 61.676,9.665 Z M 28.644,20.801 V 9.665 H 39.779 Z"
@@ -53,30 +52,32 @@
      sodipodi:nodetypes="cssssssscscccccc"
      style="fill:#895002;fill-opacity:1" /></g><g
    id="g4"
-   transform="matrix(0.75764713,0,0,0.75764713,7.4342064,-0.98842295)"><path
+   transform="matrix(0.75764713,0,0,0.75764713,15.510149,8.7584049)"><path
      d="M 63.543,27.88 59.416,27.878 C 60.166,27.109 60.634,26.062 60.634,24.903 60.634,23.796 60.2,22.795 59.508,22.037 59.50821,22.047651 58.386621,21.087314 58.09,21.006 57.563,20.774 56.984,20.639 56.369,20.639 54.016,20.639 52.107,22.548 52.107,24.904 52.107,26.092 52.597,27.166 53.383,27.939 50.729,28.252 49.078,30.553 49.078,33.408 V 46.496 C 49.078,49.04 52.439,49.04 52.439,46.496 V 33.758 H 53.509 L 53.503,68.322 C 53.503,69.641 54.575,70.712 55.892,70.712 57.213,70.712 58.283,69.642 58.283,68.322 L 58.288,48.274 H 59.35 L 59.346,68.322 C 59.346,69.641 60.416,70.712 61.735,70.712 63.054,70.712 64.125,69.642 64.125,68.322 L 64.133,33.758 H 65.184 V 46.495 C 65.184,49.057 68.527,49.057 68.521,46.495 V 33.484 C 68.521,30.653 66.855,27.88 63.543,27.88 Z"
      id="path2"
      inkscape:connector-curvature="0"
      sodipodi:nodetypes="ccsccsscssscccsccccscccscsc" /></g><text
    xml:space="preserve"
    style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:13.33333302px;line-height:20px;font-family:Calibri;-inkscape-font-specification:'Calibri, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-   x="4.9517012"
-   y="83.009964"
+   x="8.5719519"
+   y="92.199829"
    id="text2324"><tspan
      sodipodi:role="line"
      id="tspan2322"
-     x="4.9517012"
-     y="83.009964">H A N G M A N</tspan></text>
+     x="8.5719519"
+     y="92.199829">H A N G M A N</tspan></text>
+
 
 <text
    xml:space="preserve"
    style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10.66666698px;line-height:20px;font-family:Calibri;-inkscape-font-specification:'Calibri, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-   x="6.6676984"
-   y="84.065956"
+   x="10.287949"
+   y="93.255821"
    id="text2328"><tspan
      sodipodi:role="line"
      id="tspan2326"
-     x="6.6676984"
-     y="84.065956">_  _   _  _   _   _   _</tspan></text>
+     x="10.287949"
+     y="93.255821">_  _   _  _   _   _   _</tspan></text>
+
 
 </svg>
