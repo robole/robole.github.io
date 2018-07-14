@@ -250,7 +250,7 @@ a.home-navbar-logo, a.navbar-logo{
 
 .selected-filter{
   background-color: #d4d4d4;
-  boder-color: #8c8c8c;
+  border-color: #8c8c8c;
   color: #333;
 }
 
@@ -292,7 +292,6 @@ a.home-navbar-logo, a.navbar-logo{
     margin: -.5em 0 0 -.5em;
     visibility: hidden;
     z-index: 3;
-    -webkit-animation-name: shakeit 0.2s infinite alternate;
     animation: shakeit 0.2s infinite alternate;
 }
 
@@ -335,7 +334,7 @@ a.home-navbar-logo, a.navbar-logo{
   background-position: 50% 50%;
   background-size: 100% 100%;
   background-repeat: no-repeat;;
-  transition: all .2s linear;*/
+  transition: all .2s linear;
 }
 
 .portfolio-invoicing{
@@ -425,7 +424,7 @@ a.home-navbar-logo, a.navbar-logo{
   padding: 1em 0;
 }
 
-.cv p, {
+.cv p {
   text-align: justify;
 }
 
@@ -480,7 +479,7 @@ a.home-navbar-logo, a.navbar-logo{
 
 .highlighted{
   background-color: #ffffff;
-  color: color: #0e3054;
+  color: #0e3054;
 }
 
 .adjective-list{
