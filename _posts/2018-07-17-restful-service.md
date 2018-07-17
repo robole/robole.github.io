@@ -157,10 +157,11 @@ To get the user by id, we want to be able to specify the id inside the address p
 For example, we navigate to [http://localhost:8080/users/2](http://localhost:8080/users/2) to get the user with
 an id of 2. This is a common convention, and is favoured in designing a rest API.
 
-We put the variable name within curly brackets in our ```@RequestMapping``` annotation, and
-we declare it using the ```@PathVariable``` annotation in our method signature. We
-search through our ```ArrayList``` to find any matches, there should only be one, but
-somebody you be naughty and add  more than one user with the same id as it is!
+```javascript
+[{"id":2,"name":"Angela Merkel","age":20}]
+```
+
+We put the variable name within curly brackets as part of our ```@RequestMapping``` annotation, and we declare it using the ```@PathVariable``` annotation in our method signature. We search through our ```ArrayList``` to find any matches, there should only be one user with an *id*, but somebody could be naughty and add more than one user with the same *id* because wedo not restrict this!
 
 ```java
 //for GET to http://localhost:8080/users
@@ -178,10 +179,6 @@ somebody you be naughty and add  more than one user with the same id as it is!
    }
 ```
 
-```javascript
-[{"id":2,"name":"Angela Merkel","age":20}]
-```
-
 # Method using a parameter
 
 To get the user by name, we want to be able to specify a parameter at the end of
@@ -191,6 +188,10 @@ to get the user with a name of "rob oleary". A browser may add "%20" or "+" for 
 space in the address like this: http://localhost:8080/user?name=rob+oleary,
 spaces in web addresses are considered [unsafe](https://stackoverflow.com/questions/497908/is-a-url-allowed-to-contain-a-space). Usually, it is "+" for a parameter value. It is just to note this, you don't need to
 do anything differently, it will work either way!
+
+```javascript
+[{"id":1,"name":"Rob OLeary","age":21}]
+```
 
 We add a ```params``` to our ```@RequestMapping``` to speficy the parameter name. We need to indicate an unique path, so Spring can map the request to the correct method,
 that is why we need to include that here. We specify ```@RequestParam``` in our method
@@ -210,10 +211,6 @@ signature, and we can use this variable inside our method.
 
         return filteredUsers;
     }
-```
-
-```javascript
-[{"id":1,"name":"Rob OLeary","age":21}]
 ```
 
 # Next step
