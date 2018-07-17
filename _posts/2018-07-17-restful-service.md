@@ -144,7 +144,7 @@ Easy peasy!
 
 ## Run the application
 
-Run the ```Application``` class. We get the following result when we navigate to
+When we run our project, we get the following result when we navigate to
 [http://localhost:8080/users](http://localhost:8080/users):
 
 ```javascript
