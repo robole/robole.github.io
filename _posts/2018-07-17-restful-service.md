@@ -88,9 +88,13 @@ The Controller is responsible for matching a HTTP request with a java method tha
 provides a response.
 
 We annotate our Controller with ```@RestController```, and we add methods to
-handle respond to the HTTP actions. I have created an ```ArrayList``` of users to have
-some data to return. The ```get()``` method returns all of the users when
-the address http://localhost:8080/users is navigated to.
+handle the responses. Spring is going to transform the data into JSON before it is
+returned.
+
+I have created an ```ArrayList``` of users to have
+some data to return. The ```getUsers()``` method returns all of the users when
+the address http://localhost:8080/users is navigated to. This is specified by
+ ```@RequestMapping```.
 
 ```java
 import com.roboleary.model.User;
@@ -116,9 +120,6 @@ public class UserController {
     }
   }
 ```
-
-The @RequestMapping annotation specifies that it is Get HTTP requests to */users*
-will be responded to by ```getUsers()```.
 
 ## Create a class with a main()
 
