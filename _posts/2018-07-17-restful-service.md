@@ -93,8 +93,7 @@ returned.
 
 I have created an ```ArrayList``` of users to have
 some data to return. The ```getUsers()``` method returns all of the users when
-the address http://localhost:8080/users is navigated to. This is specified by
- ```@RequestMapping```.
+the address http://localhost:8080/users is navigated to. This is specified in ```@RequestMapping```.
 
 ```java
 import com.roboleary.model.User;
