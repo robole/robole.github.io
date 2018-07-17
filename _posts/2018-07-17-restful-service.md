@@ -93,7 +93,7 @@ returned.
 
 I have created an ```ArrayList``` of users to have
 some data to return. The ```getUsers()``` method returns all of the users when
-the address http://localhost:8080/users is navigated to. This is specified in ```@RequestMapping```.
+the address [http://localhost:8080/users](http://localhost:8080/users) is navigated to. This is specified in ```@RequestMapping```.
 
 ```java
 import com.roboleary.model.User;
@@ -123,8 +123,8 @@ public class UserController {
 ## Create a class with a main()
 
 Spring Boot simplifies the creation of an application. We only need to annotate
-our *Application* class with ```@SpringBootApplication```, and in the main() method
-we use the static method  ````SpringApplication.run()``` to launch the application.
+a class with ```@SpringBootApplication```, and in ```main()```
+we call the static method  ```SpringApplication.run()``` to launch the application.
 Spring Boot will package the application and run it in an embedded web server to
 create our web services for us.
 
@@ -134,7 +134,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
 public class DemoApplication {
-
 	public static void main(String[] args) {
 		SpringApplication.run(DemoApplication.class, args);
 	}
