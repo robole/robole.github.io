@@ -125,7 +125,7 @@ we call the static method  ```SpringApplication.run()``` to launch the applicati
 Spring Boot will package the application and run it in an embedded web server to
 create our web services for us.
 
-```
+```java
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
