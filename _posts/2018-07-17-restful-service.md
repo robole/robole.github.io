@@ -67,11 +67,11 @@ to look at the [Model-View-Controller (MVC)](https://blog.codinghorror.com/under
 design pattern to understand what you're doing, because all implementations follow it, as far as I know!
 
 You may also see the use of the following design patterns in an example,
-you can skip learning them if your objective is just to understand REST,
-but it's just to reassure that you're not leaving something out:
-- [Data Access Object](https://www.tutorialspoint.com/design_pattern/data_access_object_pattern.htm) / [Repository](http://blog.sapiensworks.com/post/2014/06/02/The-Repository-Pattern-For-Dummies.aspx) layer: controls access to the stored data, so
+you *should* skip learning them if your objective is just to understand REST,
+but I mention them here if it is something you want to return to:
+- [Data Access Object layer](https://www.tutorialspoint.com/design_pattern/data_access_object_pattern.htm) / [Repository layer](http://blog.sapiensworks.com/post/2014/06/02/The-Repository-Pattern-For-Dummies.aspx) : controls access to the stored data, so
 other parts of the application do not know about the source of the data.
-- *Service* layer: keeps business logic separate from everything else, this is all the client interacts with.
+- [Service layer](https://martinfowler.com/eaaCatalog/serviceLayer.html): business logic goes here.
 
 Over time, Spring is also adding new annotations, usually for convenience, so you may see some variations there also. I will mention these variations
 where applicable.
