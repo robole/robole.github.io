@@ -36,7 +36,7 @@ There is one caveat though, Chrome and Edge have a bug with using ```position: s
 
 You can also use it to make sticky headers on the side and top for easy cross-referencing!  So it kind of mimics frozen rows in Excel!
 
-<p data-height="265" data-theme-id="0" data-slug-hash="ejexqj" data-default-tab="result" data-user="robjoeol" data-pen-title="Table Zoom 🧐🔍" class="codepen">See the Pen <a href="https://codepen.io/robjoeol/pen/ejexqj/">Table Zoom 🧐🔍</a> by rob (<a href="https://codepen.io/robjoeol">@robjoeol</a>) on <a href="https://codepen.io">CodePen</a>.</p>
+<p data-height="417" data-theme-id="0" data-slug-hash="KBQbNG" data-default-tab="result" data-user="robjoeol" data-pen-title="Cell Zoom 🔍" class="codepen">See the Pen <a href="https://codepen.io/robjoeol/pen/KBQbNG/">Cell Zoom 🔍</a> by rob (<a href="https://codepen.io/robjoeol">@robjoeol</a>) on <a href="https://codepen.io">CodePen</a>.</p>
 <script async src="https://static.codepen.io/assets/embed/ei.js"></script>
 
 # Browser Support
