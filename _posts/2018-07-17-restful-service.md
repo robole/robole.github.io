@@ -5,8 +5,7 @@ category: programming
 tags: [rest, Java, Spring]
 published: true
 ---
-I want to go a bit beyond the trivial [Hello World example](http://spring.io/guides/gs/rest-service/) from the Spring website to
-build a simple [restful service](http://spring.io/understanding/REST) that is closer to something you would realistically build. I have seen other tutorials
+I want to go a bit beyond the trivial [Hello World example](http://spring.io/guides/gs/rest-service/) from the Spring website to build a simple [restful service](http://spring.io/understanding/REST) that is closer to something you would realistically build. I have seen other tutorials
 that can overwhelm beginners with some aspects that are not explained, and
 could be excluded.
 
@@ -18,48 +17,48 @@ table below.
 The default local address for your Spring Boot application will be: ```http://localhost:8080```, so the address
 to get all users would be ```http://localhost:8080/users``` for example.
 
-<table class="tg">
+<table>
   <tr>
-    <th class="tg-yw4l">HTTP Method</th>
-    <th class="tg-yw4l">Address</th>
-    <th class="tg-yw4l">Action</th>
+    <th>HTTP Method</th>
+    <th>Address</th>
+    <th>Action</th>
   </tr>
   <tr>
-    <td class="tg-yw4l">GET</td>
-    <td class="tg-yw4l">/users</td>
-    <td class="tg-yw4l"><a href="#create-a-controller">Get all users</a></td>
+    <td>GET</td>
+    <td>/users</td>
+    <td><a href="#create-a-controller">Get all users</a></td>
   </tr>
   <tr>
-    <td class="tg-yw4l">GET</td>
-    <td class="tg-yw4l">/users/{id}</td>
-    <td class="tg-yw4l"><a href="#get-user-by-id">Get users by id</a></td>
+    <td>GET</td>
+    <td>/users/{id}</td>
+    <td><a href="#get-user-by-id">Get users by id</a></td>
   </tr>
   <tr>
-    <td class="tg-yw4l">GET</td>
-    <td class="tg-yw4l">/users?name=rob+oleary</td>
-    <td class="tg-yw4l"><a href="#get-user-by-name">Get user by name</a></td>
+    <td>GET</td>
+    <td>/users?name=rob+oleary</td>
+    <td><a href="#get-user-by-name">Get user by name</a></td>
   </tr>
   <tr>
-    <td class="tg-yw4l">POST</td>
-    <td class="tg-yw4l">/users</td>
-    <td class="tg-yw4l"><a href="#add-a-new-user">Add a new user</a></td>
+    <td>POST</td>
+    <td>/users</td>
+    <td><a href="#add-a-new-user">Add a new user</a></td>
   </tr>
   <tr>
-    <td class="tg-yw4l">PUT</td>
-    <td class="tg-yw4l">/users</td>
-    <td class="tg-yw4l"><a href="#update-a-user">Update a user</a></td>
+    <td>PUT</td>
+    <td>/users</td>
+    <td><a href="#update-a-user">Update a user</a></td>
   </tr>
   <tr>
-    <td class="tg-yw4l">DELETE</td>
-    <td class="tg-yw4l">/users/{id}</td>
-    <td class="tg-yw4l"><a href="#delete-a-user">Delete a user</a></td>
+    <td>DELETE</td>
+    <td>/users/{id}</td>
+    <td><a href="#delete-a-user">Delete a user</a></td>
   </tr>
 </table>
 
 # Understanding REST in Spring
 
 Spring is evolving version by version, so its worth noting that you may
-encounter some differences in different tutorials, and code. I would always suggest looking at the most recent tutorial you can find!
+encounter some differences in different tutorials, and code. I would always suggest looking at the most recent tutorial that you can find!
 
 A common issue when beginning to learn REST in Spring is that tutorials
 expect you to know the [design patterns](https://en.wikipedia.org/wiki/Software_design_pattern) that are being implicitly used. Bigger applications are divided into layers with particular responsibilities, this makes it easier to maintain
@@ -70,13 +69,14 @@ design pattern to understand what you're doing, because all implementations foll
 You may also see the use of the following design patterns in an example,
 you can skip learning them if your objective is just to understand REST,
 but it's just to reassure that you're not leaving something out:
-- [Data Access Object](https://www.tutorialspoint.com/design_pattern/data_access_object_pattern.htm) layer (Repository layer): controls access to the stored data, so
+- [Data Access Object](https://www.tutorialspoint.com/design_pattern/data_access_object_pattern.htm) / [Repository](http://blog.sapiensworks.com/post/2014/06/02/The-Repository-Pattern-For-Dummies.aspx) layer: controls access to the stored data, so
 other parts of the application do not know about the source of the data.
-- *Service* layer: keeps business logic separate.
+- *Service* layer: keeps business logic separate from everything else, this is all the client interacts with.
 
-Over time, Spring is also adding annotations for convenience, so
-you may see some variations there also. I will mention these variations
+Over time, Spring is also adding new annotations, usually for convenience, so you may see some variations there also. I will mention these variations
 where applicable.
+
+Don't be daunted by what I just mentioned, it is more straightforward than you think!
 
 # Getting Started
 
@@ -137,8 +137,7 @@ handle the different requests. Spring is going to transform the data into JSON f
 
 I have created an ```ArrayList``` of users to have
 some data to return. ```getUsers()``` returns all of the users
-for the address [http://localhost:8080/users](http://localhost:8080/users). We
-specify this in the ```@RequestMapping```.
+for the address [http://localhost:8080/users](http://localhost:8080/users). We specify this in the ```@RequestMapping```.
 
 ```java
 import com.roboleary.model.User;
@@ -190,8 +189,7 @@ or this:
 
 ## Create a class to start a Spring Boot application
 
-Spring Boot simplifies the creation of an application. We only need to annotate
-a class with ```@SpringBootApplication```, and in ```main()```
+Spring Boot simplifies the creation of an application. We only need to annotate a class with ```@SpringBootApplication```, and in ```main()```
 we call the static method  ```SpringApplication.run()``` to launch the application. Spring Boot will package the application and run it in an embedded web server to create our web services for us.
 
 ```java
@@ -216,8 +214,8 @@ You can run the ```DemoApplication``` class, and test it in the browser.
 
 # Get user by id
 
-To get the user by id, we want to be able to specify the id inside the address path. For example, we navigate to [http://localhost:8080/users/2](http://localhost:8080/users/2) to get
-the user with an id of 2. This is a common convention, and is favoured in
+To get the user by id, we want to be able to specify the id inside the address path, this is called a __path variable__. For example, we navigate to [http://localhost:8080/users/2](http://localhost:8080/users/2) to get
+the user with an id of 2. This is a common convention in
 designing a rest API. We expect to get this response:
 
 ```javascript
@@ -225,8 +223,7 @@ designing a rest API. We expect to get this response:
 ```
 
 We put the variable name within curly brackets as part of our ```@RequestMapping``` annotation, and we declare it using the ```@PathVariable``` annotation in our method signature. We search through our ```ArrayList``` to find any user with that id,
-there should only be one user with an *id*, but somebody could be naughty and
-add more than one user with the same *id* because we do not stop them!
+there should only be one user with an *id*, but somebody could be naughty and add more than one user with the same *id*, because we do not stop them!
 
 ```java
 @RequestMapping(method=GET, value="/users/{id}")
@@ -258,7 +255,7 @@ differently, it will work either way! We expect to get this response:
 ```
 
 We need to add ```params``` to our ```@RequestMapping``` to specify the parameter name. We need this to define an unique path, so Spring can map the request to the correct method with certainty. We specify ```@RequestParam``` in our method signature, and we can use this variable inside our method to search for the user with that name. We use
-```equalsIgnoreCase()``` to accept whatever mix of big and small letters.
+```equalsIgnoreCase()``` to accept whatever mix of big and small letters we get from the client.
 
 ```java
 //for GET to http://localhost:8080/user?name=rob oleary
@@ -278,7 +275,9 @@ public List<User> getUsersByName(@RequestParam(value="name") String name){
 
 # Add a new user
 
-It is a POST request, we add the user to our ```ArrayList```. We use ```ResponseEntity``` as our method return type, it is a wrapper class where we can optionally include things such as: the status code (outcome of event), and headers to give the client some information about what
+- HTTP POST
+
+We add the user to our ```ArrayList```. We use ```ResponseEntity``` as our method return type, it is a wrapper class where we can optionally include things such as: the status code (outcome of event), and headers to give the client some information about what
 happened.
 
 We return a status code of HttpStatus.CREATED (HTTP code of 201). There is
@@ -294,10 +293,12 @@ public ResponseEntity add(@RequestBody User u) {
 
 # Update a user
 
-PUT updates a user, if there is no user found, it will add it. It is idempotent, which means if you run the operation multiple times, the result
+- HTTP PUT
+
+Updates a user if there is no user found, or add a new user. It is idempotent, which means if you run the operation multiple times, the result
 is the same.
 
-We return different status codes depending on whether we add or update.
+We return different status codes depending on whether we updated or added a user.
 
 ```java
 @PutMapping(value="users")
@@ -321,13 +322,15 @@ public ResponseEntity addOrUpdate(@RequestBody User u) {
 
 # Partial update of a user
 
-PATCH is used when we update some fields of an object. This can be important when we use a database as it is more efficient to only update what has changed, rather than replacing an entire object. As we are doing everything
-in memory with an ```ArrayList```, there is no benefit to this, so I have not
-included a method.
+- HTTP PATCH
+
+PATCH is used when we update some fields of an object. This can be important when we use a database as it is more efficient to only update what has changed, rather than replacing an entire object. As we are doing everything in memory with an ```ArrayList```, there is no benefit to this, so I have not included a method.
 
 # Delete a user
 
-We remove the user from our ```ArrayList``` and  return a status code to
+- HTTP DELETE
+
+We remove the user from our ```ArrayList```, and  return a status code to
 indicate if the user was found or not.
 
 ```java
@@ -352,7 +355,9 @@ public ResponseEntity delete(@PathVariable("id") Long id) {
 }
 ```
 
-# How to test your application
+# How to verify (test) your application
+
+This is just to verify your code works really. If you want to unit test your code, this is a separate topic.
 
 As mentioned previously, GET methods can be tested in your browser.
 
@@ -360,20 +365,18 @@ To test the other methods, you need a rest client like [Postman](https://www.get
 [cURL](https://curl.haxx.se/).
 
 I will show you one example using Postman here. To add a new user, we
-make a POST request like below, we put the JSON of the user in the request body,and set the header *Content-Type* to "application/json" (you can see
-it as "JSON(application/json)" in orange text in the picture).
+make a POST request like below, we put the JSON of the new user in the request body, and set the header *Content-Type* to "application/json" (you can see it chosen as "JSON(application/json)" in orange text in the picture).
 
 ![post request](/assets/img/blog/2018-07-17-restful-service/post.png)
 
 # Conclusion
 
 Congratulations on building your first REST application. It is a lot
-to learn at the beginning, but once you conquer this, it is
-the major part of building a REST API.
+to learn at the beginning, but once you conquer this, you will be able to build a complete REST API yourself. The completed code is available [here](https://github.com/robole/user-spring-rest).
 
 # Next steps
 
-You may want to learn how to write tests for your application using
+You may want to learn how to unit test for your application using
 MockMVC.
 
 And later, you probably want to use a database to have long-term data.

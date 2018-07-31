@@ -1,7 +1,7 @@
 ---
 layout: post
-title: Sticky headers ☕
-category: frontend
+title: Sticky headers 💫✏️
+category: web
 tags: [HTML, CSS]
 published: true
 ---
