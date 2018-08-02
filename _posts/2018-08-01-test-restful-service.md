@@ -5,14 +5,14 @@ category: unit testing
 tags: [rest, Java, Spring, unit testing]
 published: true
 ---
-Spring MVC provides good support for testing your RESTful web services. Most developers use the ```spring-boot-starter-test``` dependency, which imports a compatible collection of testing libraries:
+Spring MVC provides good support for testing your RESTful web services. Most developers use the ```spring-boot-starter-test``` dependency, which imports a compatible collection of testing libraries that offer different capabilities:
 - JUnit: The de-facto standard for unit testing Java applications.
 - Spring Test & Spring Boot Test: Utilities and integration test support for Spring Boot applications.
-- AssertJ: A fluent assertion library.
-- Hamcrest: A library for checking conditions in your code via existing matchers classes.
-- Mockito: A Java mocking framework.
+- AssertJ: A library to write fluent style of assertions.
+- Hamcrest: For checking conditions in your code via matchers classes.
+- Mockito: Mocking framework.
 - JSONassert: An assertion library for JSON.
-- JsonPath: XPath for JSON.
+- JsonPath: You can select data from JSON.
 
 ## Maven dependency
 ```xml
@@ -23,14 +23,14 @@ Spring MVC provides good support for testing your RESTful web services. Most dev
 </dependency>
 ```
 
-Of course, everyone has a slight variation on how they prefer to test. And there are other libraries available too, [Rest-assued](https://github.com/rest-assured/rest-assured) is a popular alternative.
+Don't be intimidated by the list, they offer the power to write short tests. I should mention that everyone has a slight variation on how they use these libraries, and have different preferences on how they like to test. So, you may see some different approaches, and contradictory opinions!
 
-The goal is to find a way that is easy to understand and that you are comfortable with.
+The goal is to find a way that you understand, and are comfortable with. So, I hope this is it!
 
 # What am I testing?
 
 We can define 2 broad levels of testing for our application:
-1. Unit tests: we want to test each unit in isolation by excluding the surrounding infrastructure, and mocking dependencies. True unit tests typically run extremely quickly.
+1. Unit tests: we want to test each class in isolation by excluding the surrounding infrastructure, and mocking dependencies. True unit tests typically run extremely quickly.
 2. Integration testing: we test all of the components working together, no mocking. You may also see this referred to as end-to-end testing, but some strategies consider end-to-end testing as a more complete testing stage.
 
 I summarised how I define them in more detail below:
@@ -140,7 +140,7 @@ public void getAllUsers() throws Exception {
 }
 ```
 
-But you're more likely to see this shortened syntax combing the execution and verification together. Methods are chained together, and static imports enable us to call methods without an object.
+But you're more likely to see this shortened syntax, which is in a fluent assertion style (using AssertJ) with methods chained together.
 
 ```java
 @Test
@@ -155,9 +155,9 @@ public void getAllUsers() throws Exception {
 }
 ```
 
-We use a static import of ```org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get``` to be able to create a mock GET request through ```get()```.
+Static imports are used to allow us to call methods without an object. For example, ```static import org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;``` enables us to create a mock GET request through ```get()```.
 
-Assertions are run against the result with ```andExpect()```. The tests use the static method ```MockMvcResultMatchers.jsonPath()``` to validate the structure and contents of the JSON responses. $ is the root of the JSON.
+Some of the assertions use ```jsonPath()``` to validate the structure and contents of the JSON in the response body. *$* is the root of the JSON.
 
 The other test methods are similar to this and can be found in the source code.
 
@@ -167,7 +167,7 @@ Each test can be named to follow a convention such as: *class name* + *IT* e.g. 
 
 Most integration tests are written for the top layer, in our case our controller. In many enterprise applications, the top layer is the service layer.
 
-Some tutorials such as [this one](http://www.baeldung.com/integration-testing-in-spring) on Baeldung.com use a ```WebApplicationContext``` and ````MockMVC```, and exclude the web server. I will include an embedded web server, because my interpretation of integration testing is that it is part of the environment. It's a small difference in the code, so you can decide for yourself!
+Some tutorials such as [this one](http://www.baeldung.com/integration-testing-in-spring) on Baeldung.com use a ```WebApplicationContext``` and ````MockMVC```, and exclude the web server. I will include an embedded web server, because my interpretation of integration testing is that you are testing how everything works together in the *real environment*. It's a small difference in the code, so you can decide for yourself!
 
 ## Test class configuration
 

@@ -368,17 +368,17 @@ make a POST request like below, we put the JSON of the new user in the request b
 
 ![post request](/assets/img/blog/2018-07-17-restful-service/post.png)
 
-# Conclusion
+# Source code
 
-Congratulations on building your first REST application. It is a lot
-to learn at the beginning, but once you conquer this, you will be able to build a complete REST API yourself. The completed code is available [here](https://github.com/robole/user-spring-rest).
+Available [here](https://github.com/robole/user-spring-rest) on github.  
 
 # Next steps
 
-If you want a comprehensive tutorial that includes: error handling; testing; building a HATEOAS REST service; and adding security; you can look at [this tutorial](https://spring.io/guides/tutorials/bookmarks/) from the Spring website.
+If you want to learn about unit testing and intgeration of this application, you
+can read [this post]({{ site.baseurl }}{% post_url 2018-08-01-test-restful-service %}).
 
-You may want to learn how to unit test for your application using
-MockMVC.
-
-And later, you probably want to use a database to have long-term data.
+You probably want to use a database to have long-term data.
 You can use Spring Data Rest for this. You can look at my [library example](https://github.com/robole/library-rest-minimum) to explore this.
+
+If you want a comprehensive tutorial on building a complete rest service that includes: using a database with JPA; error handling; testing; building a HATEOAS REST service; and adding security, you can look at [this tutorial](https://spring.io/guides/tutorials/bookmarks/) from the Spring website.
+I found the testing section to be very poor, they are confusing unit testing with integration testing, so I would skip this section.
