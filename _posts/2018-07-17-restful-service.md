@@ -214,29 +214,30 @@ You can run the ```DemoApplication``` class, and test it in the browser.
 
 # Get user by id
 
-To get the user by id, we want to be able to specify the id inside the address path, this is called a __path variable__. For example, we navigate to [http://localhost:8080/users/2](http://localhost:8080/users/2) to get
-the user with an id of 2. This is a common convention in
-designing a rest API. We expect to get this response:
+To get the user by id, we want to be able to specify the id inside the address path, this is called a __path variable__.
+
+For example, we navigate to [http://localhost:8080/users/2](http://localhost:8080/users/2) to get
+the user with an id of 2, and we expect to get this response:
 
 ```javascript
 [{"id":2,"name":"Angela Merkel","age":20}]
 ```
 
-We put the variable name within curly brackets as part of our ```@RequestMapping``` annotation, and we declare it using the ```@PathVariable``` annotation in our method signature. We search through our ```ArrayList``` to find any user with that id,
-there should only be one user with an *id*, but somebody could be naughty and add more than one user with the same *id*, because we do not stop them!
+We put the variable name within curly brackets as part of our ```@RequestMapping``` annotation, and we declare it using the ```@PathVariable``` annotation in our method signature. We search through our ```ArrayList``` to find the first user with that id.
 
 ```java
 @RequestMapping(method=GET, value="/users/{id}")
-public List<User> getUsersById(@PathVariable("id") Long id){
-   List<User> filteredUsers = new ArrayList<User>();
+public User getUsersById(@PathVariable("id") Long id){
+    User found = null;
 
-   for(User user: users){
-       if(user.getId() == id){
-           filteredUsers.add(user);
-       }
-   }
+    for(User user: users){
+        if(user.getId() == id){
+            found = user;
+            break;
+        }
+    }
 
-   return filteredUsers;
+    return found;
 }
 ```
 
@@ -246,8 +247,8 @@ To get the user by name, we want to be able to specify a parameter at the end of
 [http://localhost:8080/users?name=rob oleary](http://localhost:8080/users?name=rob oleary)
 to get the user with a name of "rob oleary".
 
-A browser may add "%20" or "+" for the space in the address like this: http://localhost:8080/user?name=rob+oleary,
-spaces in web addresses are considered [unsafe](https://stackoverflow.com/questions/497908/is-a-url-allowed-to-contain-a-space). It is just to note this, you don't need to do anything
+A browser may add "+" for the space in the address like this: http://localhost:8080/user?name=rob+oleary,
+spaces in web addresses are considered [unsafe](https://stackoverflow.com/questions/497908/is-a-url-allowed-to-contain-a-space). You don't need to do anything
 differently, it will work either way! We expect to get this response:
 
 ```javascript
@@ -277,11 +278,9 @@ public List<User> getUsersByName(@RequestParam(value="name") String name){
 
 - HTTP POST
 
-We add the user to our ```ArrayList```. We use ```ResponseEntity``` as our method return type, it is a wrapper class where we can optionally include things such as: the status code (outcome of event), and headers to give the client some information about what
-happened.
+We add the user to our ```ArrayList```. We use ```ResponseEntity``` as our method return type, it is a wrapper class where we can optionally include things such as: the status code (outcome of action), and headers to give the client some information about the action.
 
-We return a status code of HttpStatus.CREATED (HTTP code of 201). There is
-no opportunity for their to be a failure to add a new user to our ```ArrayList```, but you should consider this if you use a database.
+We return a status code of HttpStatus.CREATED, which is HTTP code of 201. There is no opportunity for there to be a failure to add a new user to our ```ArrayList```, but you should consider this if you use a database.
 
 ```java
 @PostMapping(value="users")
@@ -295,7 +294,7 @@ public ResponseEntity add(@RequestBody User u) {
 
 - HTTP PUT
 
-Updates a user if there is no user found, or add a new user. It is idempotent, which means if you run the operation multiple times, the result
+Updates a user; or add a new user if there is no user found. It is idempotent, which means if you run the operation multiple times, the result
 is the same.
 
 We return different status codes depending on whether we updated or added a user.
@@ -324,7 +323,7 @@ public ResponseEntity addOrUpdate(@RequestBody User u) {
 
 - HTTP PATCH
 
-PATCH is used when we update some fields of an object. This can be important when we use a database as it is more efficient to only update what has changed, rather than replacing an entire object. As we are doing everything in memory with an ```ArrayList```, there is no benefit to this, so I have not included a method.
+PATCH is used when we update some fields of an object. This can be important when we use a database as it is more efficient to only update what has changed, rather than replacing an entire object. As we are doing everything in memory with an ```ArrayList```, there is no benefit to this, so __I have not included a method__.
 
 # Delete a user
 
@@ -375,6 +374,8 @@ Congratulations on building your first REST application. It is a lot
 to learn at the beginning, but once you conquer this, you will be able to build a complete REST API yourself. The completed code is available [here](https://github.com/robole/user-spring-rest).
 
 # Next steps
+
+If you want a comprehensive tutorial that includes: error handling; testing; building a HATEOAS REST service; and adding security; you can look at [this tutorial](https://spring.io/guides/tutorials/bookmarks/) from the Spring website.
 
 You may want to learn how to unit test for your application using
 MockMVC.
