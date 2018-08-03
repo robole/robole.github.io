@@ -79,7 +79,7 @@ We will re-use our simplified User example from [this previous post]({{ site.bas
 # How do I test?
 
 Every test case should have following three steps:
- - Preparation: We set all data required to execute a method under test. You can include preparation that is common to every test method in a "setUp" method annotated with ```@Before``` (JUnit4) or ```@BeforeClass```(JUnit5). Our test data is already inside the controller, so we skip this!
+ - Preparation: We set all data required to execute a method under test. You can include preparation that is common to every test method in a "setUp" method annotated with ```@Before``` (JUnit4) or ```@BeforeClass``` (JUnit5). Our test data is already inside the controller, so we skip this!
  - Execution: Execute the actual method under test. In our example, we will create a request which will cause a method in our controller class to be executed.
  - Verification: We check the expected behaviour of the method under test. For example, check if the response returned from the controller has the correct status code.
 
