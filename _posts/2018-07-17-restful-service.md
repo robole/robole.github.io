@@ -71,7 +71,7 @@ you *should* skip learning them if your objective is just to understand REST,
 but I mention them here if it is something you want to return to:
 - [Data Access Object layer](https://www.tutorialspoint.com/design_pattern/data_access_object_pattern.htm) / [Repository layer](http://blog.sapiensworks.com/post/2014/06/02/The-Repository-Pattern-For-Dummies.aspx) : controls access to the stored data, so
 other parts of the application do not know about the source of the data.
-- [Service layer](https://martinfowler.com/eaaCatalog/serviceLayer.html): business logic goes here.
+- [Service layer](https://martinfowler.com/eaaCatalog/serviceLayer.html): business logic goes here, and it may use multiple repositories. For example, a Book Service might use the user repository and book repository to offer functionality such as "search for my books", and validate if the user is logged in.
 
 Over time, Spring is also adding new annotations, usually for convenience, so you may see some variations there also. I will mention these variations
 where applicable.

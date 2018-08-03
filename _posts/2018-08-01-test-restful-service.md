@@ -56,7 +56,7 @@ I summarised how I define them in more detail below:
 </tr>
 <tr>
 <td>Uses JUnit, a mocking framework, and maybe additional libraries for testing assertions.</td>
-<td>Can use same libraries as unit testing, but also may use a dedicated integration testing framework such as <a href="http://arquillian.org">Arquillian</a> or <a href="http://www.dbunit.org">DbUnit</a>).</td>
+<td>Can use same libraries as unit testing, but also may use a dedicated integration testing framework such as <a href="http://arquillian.org">Arquillian</a> or <a href="http://www.dbunit.org">DbUnit</a>.</td>
 </tr>
 <tr>
 <td>Mostly used by developers.</td>
@@ -142,7 +142,7 @@ public void getAllUsers() throws Exception {
 }
 ```
 
-But you're more likely to see this shortened syntax, which is in a fluent assertion style (using AssertJ) with methods chained together.
+But you're more likely to see this shortened syntax with methods chained together.
 
 ```java
 @Test
@@ -214,7 +214,7 @@ public void getUserById() throws Exception {
 }
 ```
 
-The test case is very similar to the equivalent unit test, we are just using ```TestRestTemplate``` instead of ```MockMvc```. Because we do not have other layers in our application, the additional part we are testing is the environment. But when you have an enterprise application there is usually: a repository layer; a database; and maybe a service layer, thenyou get more benefit from integration testing to see if they work together.
+The test case is very similar to the equivalent unit test, we are just using ```TestRestTemplate``` instead of ```MockMvc```. Because we do not have other layers in our application, the additional part we are testing is the environment. But when you have an enterprise application there is usually: a repository layer; a database; and maybe a service layer, then you get more benefit from integration testing to see if they work together.
 
 # Source code
 
