@@ -5,7 +5,7 @@ category: unit testing
 tags: [rest, Java, Spring, unit testing]
 published: true
 ---
-Spring MVC provides good support for testing your RESTful web services. Most developers use the ```spring-boot-starter-test``` dependency, which imports a compatible collection of testing libraries that offer different capabilities:
+Spring MVC provides good support for testing your RESTful web services. The ```spring-boot-starter-test``` dependency is very convenient to use, it imports a compatible collection of testing libraries that work together well and offer different capabilities:
 - JUnit: The de-facto standard for unit testing Java applications.
 - Spring Test & Spring Boot Test: Utilities and integration test support for Spring Boot applications.
 - AssertJ: A library to write fluent style of assertions.
@@ -23,15 +23,17 @@ Spring MVC provides good support for testing your RESTful web services. Most dev
 </dependency>
 ```
 
-Don't be intimidated by the list, they offer the power to write short tests. I should mention that everyone has a slight variation on how they use these libraries, and have different preferences on how they like to test. So, you may see some different approaches, and contradictory opinions!
+Don't be intimidated by the list, they offer the power to write short tests without needing to know a lot about each library.
+
+I should mention that everyone has a slight variation on how they use these libraries, and have some different preferences on how they like to test. So, you may see some different approaches, and contradictory opinions!
 
 The goal is to find a way that you understand, and are comfortable with. So, I hope this is it!
 
 # What am I testing?
 
 We can define 2 broad levels of testing for our application:
-1. Unit tests: we want to test each class in isolation by excluding the surrounding infrastructure, and mocking dependencies. True unit tests typically run extremely quickly.
-2. Integration testing: we test all of the components working together, no mocking. You may also see this referred to as end-to-end testing, but some strategies consider end-to-end testing as a more complete testing stage.
+1. Unit tests: we want to test each class/unit in isolation by excluding the surrounding infrastructure, and mocking dependencies. True unit tests typically run extremely quickly.
+2. Integration testing: we test everything working together, no mocking. You may also see this referred to as end-to-end testing, but some testing strategies consider end-to-end testing as a more complete testing stage.
 
 I summarised how I define them in more detail below:
 
@@ -42,11 +44,11 @@ I summarised how I define them in more detail below:
 </tr>
 <tr>
 <td>A single class/unit is tested in isolation</td>
-<td>One or more components are tested</td>
+<td>We test everything together.</td>
 </tr>
 <tr>
 <td>Easy to write and verify.</td>
-<td>Setup of integration test might be complicated,</td>
+<td>Setup of integration test might be complicated.</td>
 </tr>
 <tr>
 <td>All dependencies are mocked if needed.</td>
@@ -54,15 +56,15 @@ I summarised how I define them in more detail below:
 </tr>
 <tr>
 <td>Uses JUnit, a mocking framework, and maybe additional libraries for testing assertions.</td>
-<td>May use dedicated integration testing framework such as <a href="http://arquillian.org">Arquillian</a> or <a href="http://www.dbunit.org">DbUnit</a>).</td>
+<td>Can use same libraries as unit testing, but also may use a dedicated integration testing framework such as <a href="http://arquillian.org">Arquillian</a> or <a href="http://www.dbunit.org">DbUnit</a>).</td>
 </tr>
 <tr>
 <td>Mostly used by developers.</td>
 <td>Useful to QA, DevOps, and Help Desk employees.</td>
 </tr>
 <tr>
-<td>A failed unit test is always a regression if the business has not changed.</td>
-<td>A failed integration test can mean that the code is still correct but the environment has changed.</td>
+<td>A failed unit test is always a regression (undesirable change in our code) if the business has not changed.</td>
+<td>A failed integration test can mean that the code is still correct, but the environment has changed.</td>
 </tr>
 <tr>
 <td>Unit tests in an enterprise application should last about 5 minutes</td>
@@ -72,18 +74,18 @@ I summarised how I define them in more detail below:
 
 # Example Application
 
-We will re-use our simplified User example from [this previous post]({{ site.baseurl }}{% post_url 2018-07-17-restful-service %}). It has a *model* and a *controller* only, and has some default data inside the controller, which is there just for the purpose of demonstration, you wouldn't do that in a complete application.
+We will re-use our simplified User example from [this previous post]({{ site.baseurl }}{% post_url 2018-07-17-restful-service %}). It has a *model* and a *controller* only, and has some default data inside the controller, which is there just for the purpose of demonstration, and wouldn't be in a complete application.
 
 # How do I test?
 
 Every test case should have following three steps:
- - Preparation: We set all data required to execute a method under test. You can include preparation that is common to every test method in a ```setUp()``` method annotated with @Before (JUnit4) or @BeforeClass (JUnit5). Our test data is already inside the controller, we are kind of cheating!
- - Execution: Execute the actual method under test. In our example, we will create a request which will cause a method in a controller class to be executed.
- - Verification: We check the expected behaviour of the method under test. For example, check if the response returned from a controller has the correct status code.
+ - Preparation: We set all data required to execute a method under test. You can include preparation that is common to every test method in a "setUp" method annotated with ```@Before``` (JUnit4) or ```@BeforeClass```(JUnit5). Our test data is already inside the controller, so we skip this!
+ - Execution: Execute the actual method under test. In our example, we will create a request which will cause a method in our controller class to be executed.
+ - Verification: We check the expected behaviour of the method under test. For example, check if the response returned from the controller has the correct status code.
 
  Often overlooked points for test cases are:
- - Independence: we want a test case to be self-contained. If something is modified in one test, it should not impact another test case. So, all test cases should begin in a known state. This means that it is probably necessary to write test initialization code that ensures that the external resource is in a known state.
- - Configuration should be minimal: Specific to integration tests. If a database is used, we should only require that it is installed on the machine it is being tested on, we should allow the rest to be the default.
+ - Independence: We want a test case to be self-contained. If data is modified in one test, it should not impact another test case. So, all test cases should begin in a known state. This means that it is probably necessary to write test initialization code that ensures that the external resource is in a known state.
+ - Configuration should be minimal: Specific to integration tests. If a database is used, we should only require that it is installed on the machine it is being tested on, we should not go too far with custom properties.
 
 # Unit testing
 
@@ -114,13 +116,13 @@ public class UserControllerTest {
 ```
 Other examples that you may have seen use a ```WebApplicationContext``` or other annotations that may load a complete application context, which uses more resources and gets further away from being a unit test.
 
-You can see that it runs quickly.
+You can see that it runs quickly. However, for some reason, it is a bit slow to return when something is not found!
 
 ![unit tst](/assets/img/blog/2018-08-01-test-restful-service/unit-test.png)
 
 ## Test methods
 
-The slightly longer version is this:
+The slightly longer version is this, but may be clearer to understand the steps:
 
 ```java
 @Test
@@ -157,7 +159,7 @@ public void getAllUsers() throws Exception {
 
 Static imports are used to allow us to call methods without an object. For example, ```static import org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;``` enables us to create a mock GET request through ```get()```.
 
-Some of the assertions use ```jsonPath()``` to validate the structure and contents of the JSON in the response body. *$* is the root of the JSON.
+Some of the assertions use ```jsonPath()``` to validate the structure and contents of the JSON in the response body. *$* is the root of the JSON and you can select fields with the dot notation.
 
 The other test methods are similar to this and can be found in the source code.
 
@@ -165,7 +167,7 @@ The other test methods are similar to this and can be found in the source code.
 
 Each test can be named to follow a convention such as: *class name* + *IT* e.g. *UserControllerIT*. You can put them in the same folder as unit test if you want, or keep them separate.
 
-Most integration tests are written for the top layer, in our case our controller. In many enterprise applications, the top layer is the service layer.
+Most integration tests are written for the top layer, in our case our controller. In enterprise applications, the top layer tends to be the service layer.
 
 Some tutorials such as [this one](http://www.baeldung.com/integration-testing-in-spring) on Baeldung.com use a ```WebApplicationContext``` and ````MockMVC```, and exclude the web server. I will include an embedded web server, because my interpretation of integration testing is that you are testing how everything works together in the *real environment*. It's a small difference in the code, so you can decide for yourself!
 
@@ -212,7 +214,7 @@ public void getUserById() throws Exception {
 }
 ```
 
-The test case is very similar to the equivalent unit test, we are just using ```TestRestTemplate``` instead of ```MockMvc```. Because we do not have other layers in our application, we are not testing something extra here really besides the environment. When you include a repository layer, a database, and maybe a service layer, you get more benefit from integration testing.
+The test case is very similar to the equivalent unit test, we are just using ```TestRestTemplate``` instead of ```MockMvc```. Because we do not have other layers in our application, the additional part we are testing is the environment. But when you have an enterprise application there is usually: a repository layer; a database; and maybe a service layer, thenyou get more benefit from integration testing to see if they work together.
 
 # Source code
 
@@ -220,6 +222,6 @@ Available [here](https://github.com/robole/user-spring-rest) on github.
 
 # References
 
-- [Bytestree - RESTful Web Services Unit Testing with Spring Boot](http://www.bytestree.com/spring/restful-web-services-unit-testing-spring-boot/): A decent example but it does not use a standalone MockMVC setup, and each test method is not independent (like a lot others)! :-O
+- [Bytestree - RESTful Web Services Unit Testing with Spring Boot](http://www.bytestree.com/spring/restful-web-services-unit-testing-spring-boot/): A decent example but it does not use a standalone MockMVC setup, and each test method is not independent! :-O
 - [Baeldung - Integration Testing in Spring](http://www.baeldung.com/integration-testing-in-spring): If you do not want to use an embedded web server for your integration test you can follow this.
-- [Bytestree - RESTful Web Services Integration Testing with Spring Boot](http://www.bytestree.com/spring/restful-web-services-integration-testing-spring-boot/): additional example. Test methods are not independent here also! :-O
+- [Bytestree - RESTful Web Services Integration Testing with Spring Boot](http://www.bytestree.com/spring/restful-web-services-integration-testing-spring-boot/): Additional example. Test methods are not independent here also! :-O
