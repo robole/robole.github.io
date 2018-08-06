@@ -519,3 +519,8 @@ figcaption{
   font-size: calc(8px + .5vw);
   font-weight: bold;
 }
+
+.fa-rss-square{
+  color:orange;
+  font-size: 1.1em;
+}
