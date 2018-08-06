@@ -2,7 +2,7 @@
 
 @font-face {
     font-family: Gabriola;
-    src: url(../fonts/Gabriola.ttf) format('truetype');
+    src: url(../fonts/gabriola.woff) format('woff');
     font-weight: bold;
     font-style: normal;
 }
