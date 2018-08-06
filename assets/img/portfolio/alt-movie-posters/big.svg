@@ -1,11 +1,5 @@
 <svg xmlns:osb="http://www.openswatchbook.org/uri/2009/osb" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1152 864" id="svg77">
 	<defs id="defs2">
-		<style>
-			@font-face {
-				font-family: Gabriola;
-				src: url(../fonts/gabriola.woff);
-			}
-		</style>
 		<linearGradient id="linearGradient2470" osb:paint="solid">
 			<stop offset="0" id="stop2468"/>
 		</linearGradient>
