@@ -1,10 +1,5 @@
 * { box-sizing: border-box; }
 
-@font-face {
-    font-family: Gabriola;
-    src: url(../fonts/gabriola.woff);
-}
-
 @font-face{
   font-family: dusha_plusregular;
   src: url(../fonts/dusha.ttf) format('truetype');
