@@ -1,10 +1,17 @@
 * { box-sizing: border-box; }
 
 @font-face {
-    font-family: dusha_plusregular;
-    src: url(../fonts/dusha.ttf) format('truetype');
+    font-family: Gabriola;
+    src: url(../fonts/Gabriola.ttf) format('truetype');
     font-weight: bold;
     font-style: normal;
+}
+
+@font-face{
+  font-family: dusha_plusregular;
+  src: url(../fonts/dusha.ttf) format('truetype');
+  font-weight: bold;
+  font-style: normal;
 }
 
 body {
