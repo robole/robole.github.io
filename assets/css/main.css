@@ -524,3 +524,8 @@ figcaption{
   color:orange;
   font-size: 1.1em;
 }
+
+/* book cover page */
+.book-cover{
+  width:50%;
+}
