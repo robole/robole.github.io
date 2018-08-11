@@ -526,6 +526,12 @@ figcaption{
 }
 
 /* book cover page */
-.book-cover{
-  width:50%;
+@media(min-width: 500px){
+  .book-cover{
+    width:50%;
+  }
+
+  .movie-poster{
+    width:50%;
+  }
 }
