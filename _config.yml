@@ -14,10 +14,7 @@ markdown: kramdown
 highlighter: rouge
 include: ['_pages', '.htaccess']
 tag_page: '/blog/tags'
-# File: _config.yml
-webrick:
-  headers:
-    Cache-Control: public, max-age=31536000
+
 # Disqus Comments
 disqus:
     # Leave shortname blank to disable comments site-wide.
