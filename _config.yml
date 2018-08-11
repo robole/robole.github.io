@@ -12,7 +12,7 @@ github: https://github.com/robole/
 codepen: https://codepen.io/robjoeol/
 markdown: kramdown
 highlighter: rouge
-include: ['_pages']
+include: ['_pages', '.htaccess']
 tag_page: '/blog/tags'
 
 # Disqus Comments
