@@ -5,14 +5,7 @@ category: testing
 tags: [rest, Java, Spring, unit testing, integration testing, testing]
 published: true
 ---
-Spring MVC provides good support for testing your RESTful web services. The ```spring-boot-starter-test``` dependency is very convenient to use, it imports a compatible collection of testing libraries that work together well and offer different capabilities:
-- JUnit: The de-facto standard for unit testing Java applications.
-- Spring Test & Spring Boot Test: Utilities and integration test support for Spring Boot applications.
-- AssertJ: A library to write fluent style of assertions.
-- Hamcrest: For checking conditions in your code via matchers classes.
-- Mockito: Mocking framework.
-- JSONassert: An assertion library for JSON.
-- JsonPath: You can select data from JSON.
+Spring MVC provides good support for testing your RESTful web services. The ```spring-boot-starter-test``` dependency is convenient to use, it combines a compatible collection of testing libraries that work together well and offer different capabilities. They offer the power to write short tests without needing to know a lot about each library.
 
 ## Maven dependency
 ```xml
@@ -23,11 +16,7 @@ Spring MVC provides good support for testing your RESTful web services. The ```s
 </dependency>
 ```
 
-Don't be intimidated by the list, they offer the power to write short tests without needing to know a lot about each library.
-
-I should mention that everyone has a slight variation on how they use these libraries, and have some different preferences on how they like to test. So, you may see some different approaches, and contradictory opinions!
-
-The goal is to find a way that you understand, and are comfortable with. So, I hope this is it!
+I should mention that people have variations on how they use these libraries, and have some different preferences on how they like to test. So, you may see some different approaches, and contradictory opinions! The goal is to find a way that you understand, and are comfortable with. So, I hope this is it!
 
 # What am I testing?
 
@@ -37,7 +26,7 @@ We can define 2 broad levels of testing for our application:
 
 I summarised how I define them in more detail below:
 
-<table and="" class="zebra" width="100%" border="0">
+<table width="100%" border="0">
 <tbody><tr>
 <th>Unit test</th>
 <th>Integration test</th>
@@ -74,7 +63,7 @@ I summarised how I define them in more detail below:
 
 # Example Application
 
-We will re-use our simplified User example from [this previous post]({{ site.baseurl }}{% post_url 2018-07-17-restful-service %}). It has a *model* and a *controller* only, and has some default data inside the controller, which is there just for the purpose of demonstration, and wouldn't be in a complete application.
+We will re-use our User example from [this previous post]({{ site.baseurl }}{% post_url 2018-07-17-restful-service %}). It has a *model* and a *controller* only, and has some default data inside the controller, which is there just for the purpose of demonstration, and wouldn't be in a complete application.
 
 # How do I test?
 
@@ -85,7 +74,7 @@ Every test case should have following three steps:
 
  Often overlooked points for test cases are:
  - Independence: We want a test case to be self-contained. If data is modified in one test, it should not impact another test case. So, all test cases should begin in a known state. This means that it is probably necessary to write test initialization code that ensures that the external resource is in a known state.
- - Configuration should be minimal: Specific to integration tests. If a database is used, we should only require that it is installed on the machine it is being tested on, we should not go too far with custom properties.
+ - Configuration should be minimal: We should not go too far with custom properties to replicate the exact conditions. If you want to do this, then this falls under end-to-end testing where the production environment is essentially replicated.
 
 # Unit testing
 
@@ -96,8 +85,8 @@ Typically, in a maven project, your tests are put into *src/test/java*. Each tes
 ## Test class configuration
 
 We need to do 2 things to set-up our test class:
-- add ```@RunWith(SpringRunner.class)``` to class : this adds JUnit4 support for the test runner.
-- Create a [StandaloneMockMVCBuilder](https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/test/web/servlet/setup/StandaloneMockMvcBuilder.html) in ```setUp()```: This builder creates the minimum infrastructure required to serve requests with the controllers we provide to. Before each test, this is run and creates a new ```UserController```, so we a consistent state each time.
+- add ```@RunWith(SpringRunner.class)``` to the test class: so it is identified as class to test by the test runner.
+- Create a [StandaloneMockMVCBuilder](https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/test/web/servlet/setup/StandaloneMockMvcBuilder.html): This builder creates the minimum infrastructure required to serve requests with the controllers we provide to. Before each test, this is run and creates a new ```UserController```, this ensures we have a consistent state each time.
 
 ```java
 @RunWith(SpringRunner.class)
@@ -118,7 +107,7 @@ Other examples that you may have seen use a ```WebApplicationContext``` or other
 
 You can see that it runs quickly. However, for some reason, it is a bit slow to return when something is not found!
 
-![unit tst](/assets/img/blog/2018-08-01-test-restful-service/unit-test.png)
+![unit test](/assets/img/blog/2018-08-01-test-restful-service/unit-test.png)
 
 ## Test methods
 
@@ -167,9 +156,9 @@ The other test methods are similar to this and can be found in the source code.
 
 Each test can be named to follow a convention such as: *class name* + *IT* e.g. *UserControllerIT*. You can put them in the same folder as unit test if you want, or keep them separate.
 
-Most integration tests are written for the top layer, in our case our controller. In enterprise applications, the top layer tends to be the service layer.
+Most integration tests are written for the top layer, in our case our controller.
 
-Some tutorials such as [this one](http://www.baeldung.com/integration-testing-in-spring) on Baeldung.com use a ```WebApplicationContext``` and ````MockMVC```, and exclude the web server. I will include an embedded web server, because my interpretation of integration testing is that you are testing how everything works together in the *real environment*. It's a small difference in the code, so you can decide for yourself!
+Some tutorials such as [this one](http://www.baeldung.com/integration-testing-in-spring) on Baeldung.com use a ```WebApplicationContext``` and ```MockMVC```, and exclude the web server. I will include an embedded web server, because my interpretation of integration testing is that you are testing how everything works together in a simple version of the *real environment*. It's a small difference in the code, so you can decide for yourself!
 
 ## Test class configuration
 
@@ -214,7 +203,7 @@ public void getUserById() throws Exception {
 }
 ```
 
-The test case is very similar to the equivalent unit test, we are just using ```TestRestTemplate``` instead of ```MockMvc```. Because we do not have other layers in our application, the additional part we are testing is the environment. But when you have an enterprise application there is usually: a repository layer; a database; and maybe a service layer, then you get more benefit from integration testing to see if they work together.
+The test case is very similar to the equivalent unit test, we are just using ```TestRestTemplate``` instead of ```MockMvc```. Because we do not have other layers in our application, the additional part we are testing is the environment. But when you have an enterprise application there is usually other components such as: a repository layer; a database; and maybe a service layer, and in this case, you get more benefit from integration testing to see if they work together as expected.
 
 # Source code
 
