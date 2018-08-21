@@ -232,7 +232,7 @@ a.home-navbar-logo, a.navbar-logo{
 
 .portfolio-item h3{
   color:orange;
-  font-size: calc(35px + .5vw);
+  font-size: calc(25px + .5vw);
 }
 
 .portfolio-item h2{
@@ -526,7 +526,7 @@ figcaption{
 }
 
 /* book cover page */
-@media(min-width: 500px){
+@media(min-width: 750px){
   .book-cover{
     width:50%;
   }
