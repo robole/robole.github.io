@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: scrollable_post
 title: Sticky headers 💫✏️
 category: web
 tags: [HTML, CSS]
