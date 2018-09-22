@@ -6,10 +6,11 @@ layout: null
   <channel>
     <title>{{ site.title }}</title>
     <description>{{ site.description }}</description>
-    <link type="application/atom+xml" href="{{site.url}}/feed.xml" rel="self"/>
+    <link type="application/atom+xml" href="{{site.url}}feed.xml" rel="self"/>
     <updated>{{ site.time | date: "%Y-%m-%dT%H:%M:%SZ" }}</updated>
     <id>{{ site.baseurl }}/</id>
     <rights>{{ site.copyright }}</rights>
+    <logo>{{ site.url }}assets/img/top/portrait.jpg</logo>
     {% for post in site.posts limit:20 %}
       {% unless post.draft %}
         <item>
