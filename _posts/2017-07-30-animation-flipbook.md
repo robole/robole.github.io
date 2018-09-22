@@ -1,8 +1,8 @@
 ---
 layout: post
-title: "Animated Flipbook Effect 💫✏️"
-category: web design
-tags: [animation, CSS, SVG]
+title: "Animated Flipbook Effect 💻"
+category: web
+tags: [animation, CSS, SVG, web]
 ---
 
 A useful technique to have at one's disposal would be a quick way to create a

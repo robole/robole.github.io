@@ -1,8 +1,8 @@
 ---
 layout: post
-title: "Identify footballer from photo on hover 💫✏️"
+title: "Identify footballer from photo on hover 💻"
 category: web
-tags: [football, css, javascript]
+tags: [football, css, javascript, web]
 published: true
 ---
 The idea was to create a cool transition to single out a  footballer's face in pre-match photo when hovering over his name.

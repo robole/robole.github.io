@@ -1,7 +1,7 @@
 ---
 layout: post
-title: "Android Development - List Views & Adapters 👽☕"
+title: "Android Development - (4) List Views & Adapters 👽"
 category: android
-tags: [mobile, Java]
+tags: [mobile, Java, programming]
 published: false
 ---

@@ -1,8 +1,8 @@
 ---
 layout: scrollable_post
-title: "Android Development - Getting Started 👽☕"
+title: "Android Development - (1) Getting Started 👽"
 category: android
-tags: [mobile, Java]
+tags: [mobile, java, android, programming]
 ---
 # Setting up the environment and making a "Hello World" program
 

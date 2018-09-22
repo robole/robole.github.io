@@ -1,8 +1,8 @@
 ---
 layout: post
-title: "Makings custom vector maps 💫✏️"
+title: "Makings your own custom vector maps 💻"
 category: programming
-tags: [svg, gdal]
+tags: [svg, gdal, maps, mapshaper]
 ---
 # Objective
 

@@ -1,8 +1,8 @@
 ---
 layout: scrollable_post
-title: Sticky headers 💫✏️
+title: Sticky headers 💻
 category: web
-tags: [HTML, CSS]
+tags: [HTML, CSS, web]
 published: true
 ---
 CSS introduced the property ```position: sticky``` in 2012, one obvious application of this is for making sticky headers.

@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Spring HATEOAS 📅☕"
+title: "Spring HATEOAS ☕"
 category: java
 tags: [Java, Spring Rest, HATEOAS, Hypermedia]
 published: false

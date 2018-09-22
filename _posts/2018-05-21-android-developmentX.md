@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Android Development - X 👽☕"
+title: "Android Development - X 👽"
 category: android
 tags: [mobile, Java]
 published: false

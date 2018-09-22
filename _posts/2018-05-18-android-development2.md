@@ -1,8 +1,8 @@
 ---
 layout: scrollable_post
-title: "Android Development - Fundamentals 👽☕"
+title: "Android Development - (2) Fundamentals 👽"
 category: android
-tags: [mobile, Java]
+tags: [mobile, java, android]
 published: true
 ---
 # What do I need to install to get started?

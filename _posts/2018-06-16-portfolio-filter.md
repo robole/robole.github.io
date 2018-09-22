@@ -1,8 +1,8 @@
 ---
 layout: post
-title: "Portfolio filter 💫✏️"
+title: "Portfolio filter with isotope.js 💻"
 category: web
-tags: [javascript, isotope.js]
+tags: [javascript, isotope.js, web]
 published: true
 ---
 A filter on a personal portfolio is a standard feature. I wanted to try a javascript library that could do this with some transitions to create a slick experience, and have flexibility to pick the set of values you can filter on.

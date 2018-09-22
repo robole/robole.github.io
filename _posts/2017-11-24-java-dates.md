@@ -1,6 +1,6 @@
 ---
 layout: scrollable_post
-title: "Dates in Java 📅☕"
+title: "Dates in Java ☕"
 category: java
 tags: [Java, "date-time api", dates]
 published: true

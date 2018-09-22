@@ -6,10 +6,11 @@ phone: (+49) 1 523 476 7526
 brand: Rob O'Leary
 headline: Designer, Explorer, Humanist
 description: Navigate with your brightest ideas
-copyright: ©Rob O'Leary
+copyright: © Rob O'Leary 2019
 url: https://robole.github.io/
 github: https://github.com/robole/
 codepen: https://codepen.io/robjoeol/
+linkedin: https://linkedin.com/in/robert-oleary
 markdown: kramdown
 highlighter: rouge
 include: ['_pages', '.htaccess']

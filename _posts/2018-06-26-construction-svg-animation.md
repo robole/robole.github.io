@@ -1,8 +1,8 @@
 ---
 layout: post
-title: "SVG phased creation animation 💫✏️"
+title: "SVG phased creation animation 💻"
 category: web
-tags: [SVG, javascript]
+tags: [SVG, javascript, web]
 published: true
 ---
 When I was editing a SVG today I noticed that if you push a background layer to the foreground, it can create an effect of concealing some incremental additions, dependent on how you organically added and ordered the layers in the first place.

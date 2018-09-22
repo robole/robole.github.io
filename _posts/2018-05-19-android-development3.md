@@ -1,6 +1,6 @@
 ---
 layout: scrollable_post
-title: "Android Development - Intents 👽☕"
+title: "Android Development - (3) Intents 👽"
 category: android
 tags: [mobile, Java]
 published: true

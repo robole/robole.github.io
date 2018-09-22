@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Trump Bobblehead 💫✏️"
+title: "Trump bobblehead animation 💻"
 category: animation
 tags: [animation, css]
 published: true
