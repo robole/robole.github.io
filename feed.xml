@@ -2,25 +2,25 @@
 layout: null
 ---
 <?xml version="1.0" encoding="utf-8"?>
-<feed version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
+<feed xmlns="http://www.w3.org/2005/Atom">
     <title>{{ site.title }}</title>
-    <description>{{ site.description }}</description>
-    <atom:link type="application/rss+xml" href="{{site.url}}feed.xml" rel="self"/>
-    <updated>{{ site.time | date_to_rfc822 }}</updated>
+    <link type="application/atom+xml" href="{{site.url}}/feed.xml" rel="self"/>
+    <updated>{{ site.time | date_to_xmlschema }}</updated>
     <id>{{ site.url }}/</id>
     <rights>{{ site.copyright }}</rights>
-    <logo>{{ site.url }}assets/img/top/portrait.jpg</logo>
+    <logo>{{ site.url }}/assets/img/top/portrait.jpg</logo>
     {% for post in site.posts limit:20 %}
       {% unless post.draft %}
-        <item>
+        <entry>
           <title>{{ post.title | xml_escape }}</title>
-          <description>{{ post.content | strip_html | xml_escape | truncatewords: 50 }}</description>
-          <pubDate>{{ post.date | date_to_rfc822 }}</pubDate>
-          <updated>{{ post.date | date_to_rfc822 }}</updated>
-          <guid isPermaLink="true">{{ site.url }}{{ post.id }}</guid>
-        </item>
+          <link rel="alternate" href="{{ site.url }}{{post.url}}"/>
+          <summary type="html">{{ post.content | strip_html | xml_escape | truncatewords: 50 }}</summary>
+          <updated>{{ post.date | date_to_xmlschema }}</updated>
+          <id>{{ site.url }}{{ post.id }}</id>
+          <author>
+              <name>{{site.author}}</name>
+          </author>
+        </entry>
       {% endunless %}
     {% endfor %}
-  </channel>
 </feed>
