@@ -374,6 +374,11 @@ a.home-navbar-logo, a.navbar-logo{
   padding: 1em 1em;
 }
 
+.copyright{
+  padding-top:2em;
+  font-size: 0.8em;
+}
+
 .post{
   padding-top: 5rem;
 }

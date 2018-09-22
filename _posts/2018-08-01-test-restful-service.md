@@ -3,6 +3,7 @@ layout: post
 title: Testing a RESTful Web Service in Spring for beginners ☕
 category: testing
 tags: [rest, Java, Spring, unit testing, integration testing, testing]
+images: http://images.carsondellosa.com/media/cd/images/product/large/188028.jpg
 published: true
 ---
 Spring MVC provides good support for testing your RESTful web services. The ```spring-boot-starter-test``` dependency is convenient to use, it combines a compatible collection of testing libraries that work together well and offer different capabilities. They offer the power to write short tests without needing to know a lot about each library.
