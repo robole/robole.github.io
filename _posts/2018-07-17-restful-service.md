@@ -5,16 +5,13 @@ category: programming
 tags: [rest, Java, Spring]
 published: true
 ---
-I want to go a bit beyond the trivial [Hello World example](http://spring.io/guides/gs/rest-service/) from the Spring website to build a simple [restful service](http://spring.io/understanding/REST) that is closer to something you would realistically build. I have seen other tutorials
-that can overwhelm beginners with some aspects that are not explained, and
-could be excluded.
+I want to go a bit beyond the trivial [Hello World example](http://spring.io/guides/gs/rest-service/) from the Spring website to build a simple [restful service](http://spring.io/understanding/REST) that is closer to something you would realistically build. I have seen other tutorials that can overwhelm beginners with some aspects that are not explained, and could be excluded.
 
 # What you’ll build
 
-You’ll build a service that can perform the actions specified in the
-table below.
+You’ll build a service for a *user*, something that is core thing in a lot of web applications. The table below summarises the actions we create for our *user*/
 
-The default local address for your Spring Boot application will be: ```http://localhost:8080```, so the address
+The default local address for your Spring Boot application should be: ```http://localhost:8080```, so the address
 to get all users would be ```http://localhost:8080/users``` for example.
 
 <table>
@@ -58,10 +55,10 @@ to get all users would be ```http://localhost:8080/users``` for example.
 # Understanding REST in Spring
 
 Spring is evolving version by version, so its worth noting that you may
-encounter some differences in different tutorials, and code. I would always suggest looking at the most recent tutorial that you can find!
+see some differences between tutorials. I would always suggest looking at the most recent tutorial that you can find!
 
-A common issue when beginning to learn REST in Spring is that tutorials
-expect you to know the [design patterns](https://en.wikipedia.org/wiki/Software_design_pattern) that are being implicitly used. Bigger applications are divided into layers with particular responsibilities, this makes it easier to maintain
+A more common issue when beginning to learn REST in Spring is that tutorials
+expect you to know the [design patterns](https://en.wikipedia.org/wiki/Software_design_pattern) that are being implicitly used, even though this is a [good tutorial](). Bigger applications are divided into layers with particular responsibilities, this makes it easier to maintain
 them. You can learn design patterns separately beyond this, but you need
 to look at the [Model-View-Controller (MVC)](https://blog.codinghorror.com/understanding-model-view-controller/)
 design pattern to understand what you're doing, because all implementations follow it, as far as I know!
@@ -72,9 +69,6 @@ but I mention them here if it is something you want to return to:
 - [Data Access Object layer](https://www.tutorialspoint.com/design_pattern/data_access_object_pattern.htm) / [Repository layer](http://blog.sapiensworks.com/post/2014/06/02/The-Repository-Pattern-For-Dummies.aspx) : controls access to the stored data, so
 other parts of the application do not know about the source of the data.
 - [Service layer](https://martinfowler.com/eaaCatalog/serviceLayer.html): business logic goes here, and it may use multiple repositories. For example, a Book Service might use the user repository and book repository to offer functionality such as "search for my books", and validate if the user is logged in.
-
-Over time, Spring is also adding new annotations, usually for convenience, so you may see some variations there also. I will mention these variations
-where applicable.
 
 Don't be daunted by what I just mentioned, it is more straightforward than you think!
 
@@ -378,7 +372,6 @@ If you want to learn about unit testing and intgeration of this application, you
 can read [this post]({{ site.baseurl }}{% post_url 2018-08-01-test-restful-service %}).
 
 You probably want to use a database to have long-term data.
-You can use Spring Data Rest for this. You can look at my [library example](https://github.com/robole/library-rest-minimum) to explore this.
+You can use Spring Data Rest for this. You can look at my [library example](https://github.com/robole/library-rest-minimum) to explore this, or look at [this javacodegeeks tutorial](https://www.javacodegeeks.com/2018/08/restful-api-spring-rest-data-jpa-h2.html).
 
-If you want a comprehensive tutorial on building a complete rest service that includes: using a database with JPA; error handling; testing; building a HATEOAS REST service; and adding security, you can look at [this tutorial](https://spring.io/guides/tutorials/bookmarks/) from the Spring website.
-I found the testing section to be very poor, they are confusing unit testing with integration testing, so I would skip this section.
+If you want a more comprehensive tutorial on building a complete RESTful service that includes: using a database with JPA; error handling; testing; building a HATEOAS REST service; and adding security, you can look at [this tutorial](https://spring.io/guides/tutorials/bookmarks/) from the Spring website. I found the testing section to be a bit poor, they are confusing unit testing with integration testing, so I would skip this section.
