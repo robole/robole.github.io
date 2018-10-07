@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: scrollable_post
 title: "Makings your own custom vector maps 💻"
 category: programming
 tags: [svg, gdal, maps, mapshaper]

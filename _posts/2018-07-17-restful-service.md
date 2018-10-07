@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: scrollable_post
 title: Building a RESTful Web Service in Spring for beginners ☕
 category: programming
 tags: [rest, Java, Spring]
