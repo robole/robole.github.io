@@ -356,28 +356,48 @@ a.home-navbar-logo, a.navbar-logo{
 /* ### Footer ###*/
 
 #contact {
-  min-height: 12rem;
-  padding: 1.5em 0;
+  min-height: 20rem;
   background-color: #331a00;
+}
+
+#contact p {
+  padding: 1.75em 0 2em;
+}
+
+#contact h1{
+  padding-bottom: 1em;
+}
+
+#contact *{
   color: white;
-  text-align: center;
-  font-size: 0.75em;
 }
 
 #contact a {
-  color: white;
   text-decoration: none;
 }
 
+#contact ul{
+  list-style-type: none;
+  display: inline-block;
+  margin:0;
+  padding:0;
+}
+
+#contact ul li{
+  display:inline-block;
+  padding-right: 0.5em;
+}
+
+#contact .social{
+  font-size: 2em;
+}
+
 .footer-item{
-  font-size: 1.2em;
+  font-size: 2em;
   padding: 1em 1em;
 }
 
-.copyright{
-  padding-top:2em;
-  font-size: 0.8em;
-}
+/* ### Blog ### */
 
 .post{
   padding-top: 5rem;
