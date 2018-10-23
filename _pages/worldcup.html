@@ -15,30 +15,21 @@ permalink: /portfolio/worldcup
 </ol>
 <h2 class="world-cup">Motivation</h2>
 <p>The <a href="https://www.fifa.com/worldcup/">official Fifa website</a>
-  has a poor mobile user experience. It can be improved upon generally. I
-  didn't see any other single website that offered a good guide to the world
-  cup, along with live scores, and results. I wanted to
-  see if I could make a happy home for all of that.</p>
-<p>There are not many good APIs for world cup data.<i class="em-svg em-unicorn_face"></i> This was addressed
-  partially through this <a href="https://worldcup.sfg.io/">REST
-    API</a> by the people at <a href="https://softwareforgood.com/soccer-good/">Software
-      for Good</a></i>. It scrapes data from the Fifa website and has been made availabe for
-    free. It is well designed, but the performance is a bit sluggish. The data
-    available is predominantly for matches, I will re-use some of it, and blend
-    it with my own API.🍹</p>
+  has a poor mobile user experience. I will tweak their design to render
+  well on all devices.</p>
+<p>There is a free <a href="https://worldcup.sfg.io/">REST API</a>
+  by the people at <a href="https://softwareforgood.com/soccer-good/">Software
+    for Good</a></i>. It scrapes data from the Fifa website, the data
+    available is predominantly for matches, I will blend it with my
+    API to provide a more complete dataset.🍹</p>
 <h2 class="world-cup">Finished Application</h2>
 <p>You can <a href="https://worldcup-nirvana.herokuapp.com/">try it!</a></p>
-<p>It is hosted on heroku using a free account. The website sleeps
-after 30 minutes of inactivity. <i class="em-svg em-female_zombie"
-></i> So, it may take 2 minutes for the website to appear for you! Of course,
-when you pay for full account services, everything
-will work at light speed.<i class="em-svg em-money_mouth_face"></i></p>
+<p>It is hosted on heroku using a free account, so the website sleeps
+after 30 minutes of inactivity <i class="em-svg em-female_zombie"
+></i>, it will take 2 minutes for the website to appear for you!</p>
 <img id="worldcup-home" src="/assets/img/portfolio/worldcup/homepage.png" alt="homepage"/>
-<h2 class="world-cup">Design</h2>
-<p>TODO: INCLUDE DESIGN LATER!</p>
-<h3 class="world-cup">Dream Team</h2>
-I made a prototype for making a dream team as I wanted to experiment with some variations
-of the layout to find a good balance between the style and functionality.
-<p data-height="1000" data-theme-id="dark" data-slug-hash="mKKKaP" data-default-tab="result" data-user="robjoeol" data-embed-version="2" data-pen-title="Team Manager World Cup 2018" class="codepen">See the Pen <a href="https://codepen.io/robjoeol/pen/mKKKaP/">Team Manager World Cup 2018</a> by rob (<a href="https://codepen.io/robjoeol">@robjoeol</a>) on <a href="https://codepen.io">CodePen</a>.</p>
-<script async src="https://static.codepen.io/assets/embed/ei.js"></script>
+<h2 class="world-cup">Tech Stack</h2>
+<p>I wanted to try <em>Spring Data Rest</em>, which reduces boilerplate. I wanted to see how
+practical it is to build a complete app. I chose Postgres as Heroku supports it
+on its free tier. Vanilla javascript was sufficient for the front-end.</p>
 </div>

@@ -230,7 +230,7 @@ a.home-navbar-logo, a.navbar-logo{
   font-size: calc(18px + .5vw);
 }
 
-.portfolio-item h3{
+.portfolio-item h3 i{
   color:orange;
   font-size: calc(25px + .5vw);
 }
@@ -361,19 +361,18 @@ a.home-navbar-logo, a.navbar-logo{
 }
 
 #contact p {
+  color: white;
   padding: 1.75em 0 2em;
 }
 
 #contact h1{
-  padding-bottom: 1em;
-}
-
-#contact *{
   color: white;
+  padding-bottom: 1em;
 }
 
 #contact a {
   text-decoration: none;
+  color: white;
 }
 
 #contact ul{
@@ -385,16 +384,28 @@ a.home-navbar-logo, a.navbar-logo{
 
 #contact ul li{
   display:inline-block;
-  padding-right: 0.5em;
+  margin-right: 0.5em;
+  width:2em;
+  height:2em;
+  font-size:1.5em;
+  border-radius: 50%;
+  background:white;
 }
 
-#contact .social{
-  font-size: 2em;
+#contact .fa-linkedin{
+  color:blue;
+  padding:.5em .5em;
 }
 
-.footer-item{
-  font-size: 2em;
-  padding: 1em 1em;
+#contact .fa-rss-square{
+  color:orange;
+  padding:.3em .3em;
+  font-size:1.25em;
+}
+
+ #contact .fa-github, #contact .fa-codepen{
+  color:black;
+  padding:.5em .5em;
 }
 
 /* ### Blog ### */
@@ -523,8 +534,7 @@ a.home-navbar-logo, a.navbar-logo{
   color: black;
 }
 
-/* portfolio: java training
-*/
+/* ### portfolio: java training ###*/
 .java-training-projects {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr) ) ;
@@ -532,6 +542,12 @@ a.home-navbar-logo, a.navbar-logo{
   grid-auto-rows: minmax(300px, auto);
 }
 
+.java-class{
+  width:70%;
+  padding-bottom:1rem;
+}
+
+/* ### portfolio: world cup ###*/
 .world-cup{
   font-family: dusha_plusregular, verdana;
 }
