@@ -16,11 +16,11 @@
    version="1.1"
    id="svg8"
    inkscape:version="0.92.3 (2405546, 2018-03-11)"
-   sodipodi:docname="the-darkest-hour.svg"
+   sodipodi:docname="darkest-hour.svg"
    enable-background="new"
    inkscape:export-filename="D:\Graphic Design\Alternative Movie Posters\The darkest hour\the darkest hour.png"
-   inkscape:export-xdpi="254"
-   inkscape:export-ydpi="254">
+   inkscape:export-xdpi="126.99999"
+   inkscape:export-ydpi="126.99999">
   <defs
      id="defs2">
     <inkscape:path-effect
@@ -55,12 +55,12 @@
        inkscape:collect="always"
        xlink:href="#linearGradient4632"
        id="radialGradient4636"
-       cx="199.27379"
-       cy="139.96722"
-       fx="199.27379"
-       fy="139.96722"
+       cx="177.84404"
+       cy="148.20027"
+       fx="177.84404"
+       fy="148.20027"
        r="200"
-       gradientTransform="matrix(0.69275197,0.01260128,-0.01307138,0.71859597,68.809862,32.516516)"
+       gradientTransform="matrix(0.69147873,0.01739466,-0.019925,0.79206538,78.851793,15.044798)"
        gradientUnits="userSpaceOnUse"
        spreadMethod="pad" />
   </defs>
@@ -71,9 +71,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="2.9650978"
-     inkscape:cx="1444.9849"
-     inkscape:cy="38.777789"
+     inkscape:zoom="0.70272814"
+     inkscape:cx="770.98826"
+     inkscape:cy="144.10875"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -116,65 +116,59 @@
        sodipodi:nodetypes="csccccsssscccsscssscscscssssssscccssssc" />
     <g
        aria-label="THE DARKEST HOUR"
-       transform="matrix(0.26458333,0,0,0.26458333,56.392429,26.645387)"
+       transform="matrix(0.26458333,0,0,0.26458333,46.80808,26.911619)"
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:97.33333588px;line-height:20px;font-family:'Franklin Gothic Heavy';-inkscape-font-specification:'Franklin Gothic Heavy, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:2.89133859;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        id="flowRoot828">
-      <path
-         d="M 95.554037,949.57888 V 998.91091 H 76.686198 V 949.57888 H 63.236328 V 934.03786 H 109.00391 V 949.57888 Z"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:97.33333588px;font-family:'Franklin Gothic Heavy';-inkscape-font-specification:'Franklin Gothic Heavy, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:2.89133859;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-         id="path826" />
-      <path
-         d="M 169.74219,934.03786 V 998.91091 H 149.82878 V 973.67458 H 134.62044 V 998.91091 H 114.70703 V 934.03786 H 134.62044 V 957.89594 H 149.82878 V 934.03786 Z"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:97.33333588px;font-family:'Franklin Gothic Heavy';-inkscape-font-specification:'Franklin Gothic Heavy, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:2.89133859;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-         id="path828" />
-      <path
-         d="M 229.86264,983.41742 V 998.91091 H 181.0534 V 934.03786 H 229.86264 V 949.00857 H 200.5866 V 958.41872 H 224.25457 V 972.81911 H 200.5866 V 983.41742 Z"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:97.33333588px;font-family:'Franklin Gothic Heavy';-inkscape-font-specification:'Franklin Gothic Heavy, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:2.89133859;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-         id="path830" />
-      <path
-         d="M 262.03777,998.91091 V 934.03786 H 287.13152 Q 303.48048,934.03786 311.60743,943.73318 319.73439,953.42849 319.73439,966.16547 319.73439,980.70844 310.98959,989.83344 302.29233,998.91091 288.3672,998.91091 Z M 281.95118,983.98773 H 287.13152 Q 292.07423,983.98773 295.44858,979.1876 298.87045,974.38747 298.87045,966.11794 298.87045,959.03656 295.82879,953.90375 292.83465,948.77094 287.13152,948.77094 H 281.95118 Z"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:97.33333588px;font-family:'Franklin Gothic Heavy';-inkscape-font-specification:'Franklin Gothic Heavy, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:2.89133859;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-         id="path832" />
-      <path
-         d="M 361.98504,998.91091 358.32553,986.12641 H 340.931 L 337.03386,998.91091 H 320.87501 L 340.931,934.03786 H 361.98504 L 382.27866,998.91091 Z M 344.30535,971.96365 H 354.85613 L 349.58074,953.14333 Z"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:97.33333588px;font-family:'Franklin Gothic Heavy';-inkscape-font-specification:'Franklin Gothic Heavy, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:2.89133859;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-         id="path834" />
-      <path
-         d="M 446.20119,998.91091 H 424.10158 L 414.6439,974.10232 H 408.37046 V 998.91091 H 388.45705 V 934.03786 H 422.34312 Q 433.55927,934.03786 439.73765,939.31325 445.96356,944.54112 445.96356,953.14333 445.96356,958.75141 443.68231,963.07628 441.40106,967.35362 434.46226,970.63292 Z M 408.37046,960.22471 H 416.87763 Q 420.63218,960.22471 422.91343,958.65635 425.19468,957.08799 425.19468,954.04633 425.19468,947.82042 417.54299,947.82042 H 408.37046 Z"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:97.33333588px;font-family:'Franklin Gothic Heavy';-inkscape-font-specification:'Franklin Gothic Heavy, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:2.89133859;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-         id="path836" />
-      <path
-         d="M 514.06839,998.91091 H 492.25394 L 481.03779,974.38747 474.33662,983.94021 V 998.91091 H 455.56383 V 934.03786 H 474.33662 V 960.84255 L 492.25394,934.03786 H 510.12373 L 493.72725,957.75336 Z"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:97.33333588px;font-family:'Franklin Gothic Heavy';-inkscape-font-specification:'Franklin Gothic Heavy, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:2.89133859;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-         id="path838" />
-      <path
-         d="M 568.24808,983.41742 V 998.91091 H 519.43883 V 934.03786 H 568.24808 V 949.00857 H 538.97204 V 958.41872 H 562.64001 V 972.81911 H 538.97204 V 983.41742 Z"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:97.33333588px;font-family:'Franklin Gothic Heavy';-inkscape-font-specification:'Franklin Gothic Heavy, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:2.89133859;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-         id="path840" />
-      <path
-         d="M 569.38869,980.13812 587.87632,976.8113 Q 590.2051,984.6531 599.85289,984.6531 607.362,984.6531 607.362,980.66091 607.362,978.56977 605.60354,977.42914 603.8926,976.24099 599.42515,975.33799 582.3633,972.0587 577.51565,966.78331 572.66799,961.50792 572.66799,954.37901 572.66799,945.20648 579.60679,939.12315 586.59312,933.03982 599.66278,933.03982 619.48114,933.03982 625.84963,948.96104 L 609.35809,953.95127 Q 606.79169,947.44021 598.94989,947.44021 592.43882,947.44021 592.43882,951.47992 592.43882,953.28591 593.91213,954.28396 595.38544,955.282 599.61526,956.185 611.25914,958.65635 616.15432,960.55739 621.0495,962.45844 624.3288,967.06846 627.60809,971.63096 627.60809,977.85687 627.60809,987.69477 619.62372,993.82562 611.63934,999.90896 598.66473,999.90896 574.94924,999.90896 569.38869,980.13812 Z"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:97.33333588px;font-family:'Franklin Gothic Heavy';-inkscape-font-specification:'Franklin Gothic Heavy, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:2.89133859;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-         id="path842" />
-      <path
-         d="M 662.63479,949.57888 V 998.91091 H 643.76695 V 949.57888 H 630.31708 V 934.03786 H 676.08466 V 949.57888 Z"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:97.33333588px;font-family:'Franklin Gothic Heavy';-inkscape-font-specification:'Franklin Gothic Heavy, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:2.89133859;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-         id="path844" />
-      <path
-         d="M 761.15627,934.03786 V 998.91091 H 741.24286 V 973.67458 H 726.03453 V 998.91091 H 706.12111 V 934.03786 H 726.03453 V 957.89594 H 741.24286 V 934.03786 Z"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:97.33333588px;font-family:'Franklin Gothic Heavy';-inkscape-font-specification:'Franklin Gothic Heavy, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:2.89133859;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-         id="path846" />
-      <path
-         d="M 800.50785,999.90896 Q 786.82035,999.90896 778.17061,990.83148 769.5684,981.75401 769.5684,966.54568 769.5684,952.00271 777.79041,942.54502 786.05994,933.03982 800.69796,933.03982 814.24288,933.03982 822.75004,941.97471 831.30473,950.90961 831.30473,965.83279 831.30473,981.27875 822.70252,990.59385 814.1003,999.90896 800.50785,999.90896 Z M 800.4128,985.17589 Q 805.45056,985.17589 807.63676,980.80349 809.87048,976.38357 809.87048,964.69216 809.87048,947.77289 800.79301,947.77289 791.00265,947.77289 791.00265,967.06846 791.00265,985.17589 800.4128,985.17589 Z"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:97.33333588px;font-family:'Franklin Gothic Heavy';-inkscape-font-specification:'Franklin Gothic Heavy, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:2.89133859;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-         id="path848" />
-      <path
-         d="M 892.37569,934.03786 V 977.00141 Q 892.37569,989.2156 885.10421,994.58604 877.88025,999.90896 866.23637,999.90896 853.97465,999.90896 846.51306,994.77615 839.099,989.64333 839.099,978.04698 V 934.03786 H 859.34509 V 975.7182 Q 859.34509,980.37575 861.29366,982.51443 863.28975,984.6531 867.61462,984.6531 871.2266,984.6531 873.50785,983.13227 875.83663,981.56391 876.26436,979.61534 876.73963,977.66677 876.73963,972.01117 V 934.03786 Z"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:97.33333588px;font-family:'Franklin Gothic Heavy';-inkscape-font-specification:'Franklin Gothic Heavy, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:2.89133859;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-         id="path850" />
-      <path
-         d="M 960.81319,998.91091 H 938.71358 L 929.2559,974.10232 H 922.98246 V 998.91091 H 903.06905 V 934.03786 H 936.95512 Q 948.17127,934.03786 954.34965,939.31325 960.57556,944.54112 960.57556,953.14333 960.57556,958.75141 958.29431,963.07628 956.01306,967.35362 949.07426,970.63292 Z M 922.98246,960.22471 H 931.48962 Q 935.24418,960.22471 937.52543,958.65635 939.80668,957.08799 939.80668,954.04633 939.80668,947.82042 932.15499,947.82042 H 922.98246 Z"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:97.33333588px;font-family:'Franklin Gothic Heavy';-inkscape-font-specification:'Franklin Gothic Heavy, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:2.89133859;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-         id="path852" />
+      <g
+         aria-label="DARKEST HOUR"
+         transform="translate(-180.82395,-69.527439)"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:122.66667175px;line-height:20px;font-family:'Franklin Gothic Heavy';-inkscape-font-specification:'Franklin Gothic Heavy, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         id="flowRoot843">
+        <path
+           d="M 286.11719,1076.9407 V 994.29422 H 318.08594 Q 338.91406,994.29422 349.26758,1006.6458 359.62109,1018.9973 359.62109,1035.2239 359.62109,1053.7513 348.48047,1065.3763 337.40039,1076.9407 319.66016,1076.9407 Z M 311.48633,1057.929 H 318.08594 Q 324.38281,1057.929 328.68164,1051.8138 333.04102,1045.6985 333.04102,1035.1634 333.04102,1026.1419 329.16602,1019.6028 325.35156,1013.0638 318.08594,1013.0638 H 311.48633 Z"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:124px;font-family:'Franklin Gothic Heavy';-inkscape-font-specification:'Franklin Gothic Heavy, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start"
+           id="path851" />
+        <path
+           d="M 413.44727,1076.9407 408.78516,1060.6536 H 386.625 L 381.66016,1076.9407 H 361.07422 L 386.625,994.29422 H 413.44727 L 439.30078,1076.9407 Z M 390.92383,1042.6106 H 404.36523 L 397.64453,1018.6341 Z"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:124px;font-family:'Franklin Gothic Heavy';-inkscape-font-specification:'Franklin Gothic Heavy, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start"
+           id="path853" />
+        <path
+           d="M 520.73633,1076.9407 H 492.58203 L 480.5332,1045.3352 H 472.54102 V 1076.9407 H 447.17188 V 994.29422 H 490.3418 Q 504.63086,994.29422 512.50195,1001.0149 520.43359,1007.6751 520.43359,1018.6341 520.43359,1025.7786 517.52734,1031.2884 514.62109,1036.7376 505.78125,1040.9153 Z M 472.54102,1027.6556 H 483.37891 Q 488.16211,1027.6556 491.06836,1025.6575 493.97461,1023.6595 493.97461,1019.7845 493.97461,1011.8528 484.22656,1011.8528 H 472.54102 Z"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:124px;font-family:'Franklin Gothic Heavy';-inkscape-font-specification:'Franklin Gothic Heavy, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start"
+           id="path855" />
+        <path
+           d="M 607.19727,1076.9407 H 579.40625 L 565.11719,1045.6985 556.58008,1057.8684 V 1076.9407 H 532.66406 V 994.29422 H 556.58008 V 1028.4427 L 579.40625,994.29422 H 602.17187 L 581.2832,1024.5071 Z"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:124px;font-family:'Franklin Gothic Heavy';-inkscape-font-specification:'Franklin Gothic Heavy, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start"
+           id="path857" />
+        <path
+           d="M 676.2207,1057.2024 V 1076.9407 H 614.03906 V 994.29422 H 676.2207 V 1013.3665 H 638.92383 V 1025.3548 H 669.07617 V 1043.7005 H 638.92383 V 1057.2024 Z"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:124px;font-family:'Franklin Gothic Heavy';-inkscape-font-specification:'Franklin Gothic Heavy, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start"
+           id="path859" />
+        <path
+           d="M 677.67383,1053.0247 701.22656,1048.7864 Q 704.19336,1058.7766 716.48437,1058.7766 726.05078,1058.7766 726.05078,1053.6907 726.05078,1051.0266 723.81055,1049.5735 721.63086,1048.0598 715.93945,1046.9095 694.20312,1042.7317 688.02734,1036.011 681.85156,1029.2903 681.85156,1020.2083 681.85156,1008.5227 690.69141,1000.7727 699.5918,993.02274 716.24219,993.02274 741.49023,993.02274 749.60352,1013.3059 L 728.59375,1019.6634 Q 725.32422,1011.3684 715.33398,1011.3684 707.03906,1011.3684 707.03906,1016.5149 707.03906,1018.8157 708.91602,1020.0872 710.79297,1021.3587 716.18164,1022.5091 731.01562,1025.6575 737.25195,1028.0794 743.48828,1030.5013 747.66602,1036.3743 751.84375,1042.1868 751.84375,1050.1184 751.84375,1062.6516 741.67187,1070.4622 731.5,1078.2122 714.9707,1078.2122 684.75781,1078.2122 677.67383,1053.0247 Z"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:124px;font-family:'Franklin Gothic Heavy';-inkscape-font-specification:'Franklin Gothic Heavy, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start"
+           id="path861" />
+        <path
+           d="M 796.4668,1014.0931 V 1076.9407 H 772.42969 V 1014.0931 H 755.29492 V 994.29422 H 813.60156 V 1014.0931 Z"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:124px;font-family:'Franklin Gothic Heavy';-inkscape-font-specification:'Franklin Gothic Heavy, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start"
+           id="path863" />
+        <path
+           d="M 921.98047,994.29422 V 1076.9407 H 896.61133 V 1044.7903 H 877.23633 V 1076.9407 H 851.86719 V 994.29422 H 877.23633 V 1024.6888 H 896.61133 V 994.29422 Z"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:124px;font-family:'Franklin Gothic Heavy';-inkscape-font-specification:'Franklin Gothic Heavy, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start"
+           id="path865" />
+        <path
+           d="M 972.11328,1078.2122 Q 954.67578,1078.2122 943.65625,1066.6477 932.69727,1055.0833 932.69727,1035.7083 932.69727,1017.1809 943.17187,1005.1321 953.70703,993.02274 972.35547,993.02274 989.61133,993.02274 1000.4492,1004.4056 1011.3477,1015.7884 1011.3477,1034.8001 1011.3477,1054.4778 1000.3887,1066.345 989.42969,1078.2122 972.11328,1078.2122 Z M 971.99219,1059.4427 Q 978.41016,1059.4427 981.19531,1053.8723 984.04102,1048.2415 984.04102,1033.347 984.04102,1011.7923 972.47656,1011.7923 960.00391,1011.7923 960.00391,1036.3743 960.00391,1059.4427 971.99219,1059.4427 Z"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:124px;font-family:'Franklin Gothic Heavy';-inkscape-font-specification:'Franklin Gothic Heavy, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start"
+           id="path867" />
+        <path
+           d="M 1089.1504,994.29422 V 1049.0286 Q 1089.1504,1064.5891 1079.8867,1071.4309 1070.6836,1078.2122 1055.8496,1078.2122 1040.2285,1078.2122 1030.7227,1071.6731 1021.2773,1065.1341 1021.2773,1050.3606 V 994.29422 H 1047.0703 V 1047.3938 Q 1047.0703,1053.3274 1049.5527,1056.052 1052.0957,1058.7766 1057.6055,1058.7766 1062.207,1058.7766 1065.1133,1056.8391 1068.0801,1054.8411 1068.625,1052.3587 1069.2305,1049.8763 1069.2305,1042.6712 V 994.29422 Z"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:124px;font-family:'Franklin Gothic Heavy';-inkscape-font-specification:'Franklin Gothic Heavy, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start"
+           id="path869" />
+        <path
+           d="M 1176.3379,1076.9407 H 1148.1836 L 1136.1348,1045.3352 H 1128.1426 V 1076.9407 H 1102.7734 V 994.29422 H 1145.9434 Q 1160.2324,994.29422 1168.1035,1001.0149 1176.0352,1007.6751 1176.0352,1018.6341 1176.0352,1025.7786 1173.1289,1031.2884 1170.2227,1036.7376 1161.3828,1040.9153 Z M 1128.1426,1027.6556 H 1138.9805 Q 1143.7637,1027.6556 1146.6699,1025.6575 1149.5762,1023.6595 1149.5762,1019.7845 1149.5762,1011.8528 1139.8281,1011.8528 H 1128.1426 Z"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:124px;font-family:'Franklin Gothic Heavy';-inkscape-font-specification:'Franklin Gothic Heavy, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start"
+           id="path871" />
+      </g>
     </g>
     <ellipse
        style="opacity:1;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:0.16573988;stroke-linecap:round;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:fill markers stroke"
