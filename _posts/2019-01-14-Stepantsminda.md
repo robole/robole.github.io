@@ -9,5 +9,5 @@ published: true
 <script src="/assets/js/flickr-gallery.js"></script>
 <div class="Stepantsminda"></div>
 <script>
-  flickr.addGallery("72157706001333095", ".Stepantsminda");
+  flickr.addGallery("72157676393295007", ".Stepantsminda");
 </script>
