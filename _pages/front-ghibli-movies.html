@@ -1,0 +1,367 @@
+---
+layout: default
+title: Alternative Posters
+permalink: /frontend/ghibli
+---
+<style>
+:root{
+  --bg-color:#219ce8;
+  --bg-mid: #0127ae;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+#root {
+  font-family: "Merriweather", 'Montserrat', helvetica, arial, sans-serif;
+  background: url("../assets/img/frontend/ghibli/ghibli-clouds.svg");
+  background-position: top left;
+  background-repeat: no-repeat;
+  background-attachment:fixed;
+  background-size: cover;
+  font-size: calc(.75em + .5vw);
+}
+
+
+.logo{
+  display:block;
+  filter: invert(100%);
+}
+
+button{
+  position: absolute;
+  width:20%;
+  height: 100%;
+  background: none;
+  color:white;
+  opacity:.7;
+  padding: 10% 5px;
+  font-size: 800%;
+  border:none;
+  z-index: 1;
+}
+
+button:hover{
+  background: white;
+  opacity:0.3;
+  color:black;
+}
+
+button#prev{
+  left:10px;
+}
+
+button#next{
+  right:10px;
+}
+
+.card {
+  position: absolute;
+  display: grid;
+  grid-template-columns: 33.33% 33.33% 33.33%;
+  border-radius: 12px;
+  background: linear-gradient(to right, var(--bg-mid) 70%, transparent 100%);
+  color:white;
+  width: 80%;
+  margin:0 10%;
+  box-shadow: 0px 0px 65px -12px white;
+
+}
+
+.active {
+  opacity: 1;
+}
+
+.card:not(.active){
+  opacity:0;
+}
+
+.card:hover {
+  transform: translate3D(0, -2px, 0);
+}
+
+.card.next.active{
+  animation: drift-next 1.5s forwards;
+}
+
+.card.previous.active{
+  animation: drift-previous 1.5s forwards;
+}
+
+@keyframes drift-previous {
+  0%{
+    transform: translateX(-150%) skewX(45deg);
+  }
+  100%{
+    transform: translateX(0) skewX(0deg);
+  }
+}
+
+@keyframes drift-next {
+  0%{
+    transform: translateX(150%) skewX(-45deg);
+  }
+  100%{
+    transform: translateX(0) skewX(0deg);
+  }
+}
+
+.card img {
+  grid-column: 1;
+  grid-row: 1 / span 4;
+  height:300px;
+  margin:10% 25%;
+}
+
+.card h1 {
+  grid-column: 2 / span 2;
+  grid-row: 1;
+  text-transform: uppercase;
+  padding-top:10px;
+}
+
+.card h2 {
+  grid-column: 2 / span 2;
+  grid-row: 2;
+}
+
+.genre{
+  grid-column: 2 / span 2;
+  grid-row: 3;
+  margin:0;
+}
+
+.card p {
+  grid-column: 1 / span 2 ;
+  grid-row: 5 ;
+  padding-left: 12%;
+  text-align: justify;
+}
+
+.reviews{
+  grid-column: 2 / span 2 ;
+  grid-row: 4 ;
+}
+
+.tomatoScore{
+  color:Tomato;
+  font-size: 1.1em;
+  margin-right: 2em;
+}
+
+.imdbScore{
+  background-color: gold;
+  border: 1px gold solid;
+  color:black;
+  border-radius: 5px;
+  padding: 0.1em .5em;
+  font-weight: bold;
+}
+
+.imdbScore a{
+  text-decoration: none;
+  color:black;
+}
+
+.rating{
+  border-right: 2px white solid;
+  border-left: 2px white solid;
+  border-radius: 2px;
+  margin-right: 1em;
+}
+
+
+@media screen and (max-width: 1100px) {
+  .card > *{
+    margin-left: 20px;
+  }
+
+  .card h1 {
+    grid-column: 1 / span 3;
+    grid-row: 1;
+    margin-left: 20px;
+  }
+
+  .card img {
+    grid-column: 1 / span 3;
+    grid-row: 2 ;
+    height:300px;
+    margin:0;
+    margin-left: 20px;
+  }
+
+  .card h2 {
+    grid-column: 1 / span 3;
+    grid-row: 3;
+  }
+
+  .genre{
+    grid-column: 1 / span 3;
+    grid-row: 4;
+  }
+
+  .reviews{
+    grid-column: 1 / span 3 ;
+    grid-row: 5;
+    padding: 10px 0;
+  }
+
+  .card p {
+    grid-column: 1 / span 3 ;
+    grid-row: 6 ;
+    padding:0;
+    margin-right:10px;
+  }
+
+  button{
+    padding: 10% 5px;
+
+  }
+}
+</style>
+<img src="https://upload.wikimedia.org/wikipedia/en/c/ca/Studio_Ghibli_logo.svg" class="logo"/>
+<div id="root" class="container-fluid content">
+  <button id="prev" onclick="movePrevious()">&lt;</button>
+  <button id="next" onclick="moveNext()">&gt;</button>
+  <div id="card-holder">
+  </div>
+</div>
+<script>
+const app = document.getElementById('root');
+const container = document.getElementById('card-holder');
+const numOfMovies = 2; //limit calls
+
+getMovies();
+
+function getMovies(){
+  var request = new XMLHttpRequest();
+  request.open('GET', 'https://ghibliapi.herokuapp.com/films', true);
+  request.onload = function() {
+    var data = JSON.parse(this.response);
+    if (request.status >= 200 && request.status < 400) {
+      for(i = 0; i < data.length;i++) {
+        if(i === numOfMovies){
+          break;
+        }
+        movie = data[i];
+        const card = document.createElement('div');
+
+        if(i > 0){
+          card.setAttribute('class', 'card');
+        }
+        else{
+          card.setAttribute('class', 'card active next');
+        }
+
+        const title = document.createElement('h1');
+        title.textContent = movie.title;
+
+        const subtitle = document.createElement('h2');
+        const year = document.createElement('span');
+        year.setAttribute("class","year");
+        year.textContent = movie.release_date;
+        const runtime = document.createElement('span');
+        runtime.setAttribute("class","runtime");
+
+        const reviews = document.createElement('div');
+        reviews.setAttribute("class","reviews");
+        const tomatoScore = document.createElement('span');
+        tomatoScore.setAttribute("class", "tomatoScore");
+        tomatoScore.textContent = "🍅" + movie.rt_score;
+        reviews.appendChild(tomatoScore);
+
+        const imdbScore = document.createElement('span');
+        imdbScore.setAttribute("class", "imdbScore");
+
+        const poster = document.createElement('img');
+        const genre = document.createElement('h3');
+        genre.setAttribute("class","genre");
+
+        const rating = document.createElement('span');
+        rating.setAttribute("class","rating");
+
+        getStats(movie.title, movie.release_date).then(function(response) {
+            var res = JSON.parse(response);
+            poster.setAttribute('src', res.Poster);
+            rating.textContent = res.Rated;
+            subtitle.appendChild(rating);
+            subtitle.appendChild(year);
+            subtitle.appendChild(runtime);
+            genre.textContent = res.Genre;
+            imdbScore.innerHTML = "<a href='https://www.imdb.com/title/" + res.imdbID + "' title='IMDB'/>" + res.imdbRating + "</a>";
+            reviews.appendChild(imdbScore);
+        }, function(error) {
+            console.error("Failed!", error);
+        })
+
+        const description = document.createElement('p')
+        movie.description = movie.description;
+        description.textContent = `${movie.description}`;
+
+        container.appendChild(card)
+        card.appendChild(poster);
+        card.appendChild(title);
+        card.appendChild(subtitle);
+        card.appendChild(genre);
+        card.appendChild(reviews);
+        card.appendChild(description);
+      };
+    } else {
+      const errorMessage = document.createElement('marquee')
+      errorMessage.textContent = `Gah, it's not working!`
+      app.appendChild(errorMessage)
+    }
+  }
+
+  request.send();
+}
+
+
+function getStats(title, year) {
+  const url = "https://www.omdbapi.com/?apikey=b75cd6a3&t=" + title + "&y=" + year;
+  // Return a new promise.
+  return new Promise(function(resolve, reject) {
+    var req = new XMLHttpRequest();
+    req.open('GET', url);
+
+    req.onload = function() {
+      if (req.status == 200) {
+        resolve(req.response);
+      }
+      else {
+        // Otherwise reject with the status text
+        // which will hopefully be a meaningful error
+        reject(Error(req.statusText));
+      }
+    };
+
+    //Handle network errors
+    req.onerror = function() {
+      reject(Error("Network Error"));
+    };
+
+    req.send();
+  });
+}
+
+function moveNext(){
+  var cards = document.getElementsByClassName("card");
+  var activeCard = document.querySelector(".active");
+  nextCard = activeCard.nextElementSibling;
+  if(nextCard !== null){
+    activeCard.setAttribute("class", "card");
+    nextCard.setAttribute("class", "card active next");
+  }
+}
+
+function movePrevious(){
+  var cards = document.getElementsByClassName("card");
+  var activeCard = document.querySelector(".active");
+  nextCard = activeCard.previousElementSibling;
+  if(nextCard !== null){
+    activeCard.setAttribute("class", "card");
+    nextCard.setAttribute("class", "card active previous");
+  }
+}
+</script>
