@@ -13,50 +13,66 @@ permalink: /frontend/ghibli
   box-sizing: border-box;
 }
 
-#root {
+.app {
   font-family: "Merriweather", 'Montserrat', helvetica, arial, sans-serif;
   background: url("../assets/img/frontend/ghibli/ghibli-clouds.svg");
-  background-position: top left;
   background-repeat: no-repeat;
-  background-attachment:fixed;
   background-size: cover;
   font-size: calc(.75em + .5vw);
+  color:white;
+  padding: 5em 0;
 }
 
+.app h1, .app h2, .app h3{
+  color:white;
+}
+.app header{
+  min-height: 20rem;
+}
 
-.logo{
-  display:block;
+.app #carousel{
+  position:relative;
+  min-height: 80rem;
+  margin:20px;
+  overflow: visible;
+}
+
+.app footer{
+  min-height: 20rem;
+}
+
+.app .logo{
+  height: inherit;
   filter: invert(100%);
 }
 
-button{
+.app button{
   position: absolute;
   width:20%;
   height: 100%;
   background: none;
   color:white;
   opacity:.7;
-  padding: 10% 5px;
   font-size: 800%;
   border:none;
   z-index: 1;
 }
 
-button:hover{
+.app button:hover{
   background: white;
   opacity:0.3;
   color:black;
 }
 
-button#prev{
+.app button#prev{
   left:10px;
 }
 
-button#next{
+.app button#next{
   right:10px;
 }
 
-.card {
+.app .card {
   position: absolute;
   display: grid;
   grid-template-columns: 33.33% 33.33% 33.33%;
@@ -64,47 +80,19 @@ button#next{
   background: linear-gradient(to right, var(--bg-mid) 70%, transparent 100%);
   color:white;
   width: 80%;
+  height:100%;
   margin:0 10%;
   box-shadow: 0px 0px 65px -12px white;
-
+  transform-origin: center center;
+  transition: opacity 1s;
 }
 
 .active {
-  opacity: 1;
-}
-
-.card:not(.active){
   opacity:0;
 }
 
-.card:hover {
-  transform: translate3D(0, -2px, 0);
-}
-
-.card.next.active{
-  animation: drift-next 1.5s forwards;
-}
-
-.card.previous.active{
-  animation: drift-previous 1.5s forwards;
-}
-
-@keyframes drift-previous {
-  0%{
-    transform: translateX(-150%) skewX(45deg);
-  }
-  100%{
-    transform: translateX(0) skewX(0deg);
-  }
-}
-
-@keyframes drift-next {
-  0%{
-    transform: translateX(150%) skewX(-45deg);
-  }
-  100%{
-    transform: translateX(0) skewX(0deg);
-  }
+.card:not(.active){
+  opacity:1;
 }
 
 .card img {
@@ -118,7 +106,6 @@ button#next{
   grid-column: 2 / span 2;
   grid-row: 1;
   text-transform: uppercase;
-  padding-top:10px;
 }
 
 .card h2 {
@@ -173,6 +160,10 @@ button#next{
 
 
 @media screen and (max-width: 1100px) {
+  .app #carousel{
+    min-height: 100rem;
+  }
+
   .card > *{
     margin-left: 20px;
   }
@@ -213,23 +204,24 @@ button#next{
     padding:0;
     margin-right:10px;
   }
-
-  button{
-    padding: 10% 5px;
-
-  }
 }
+
 </style>
-<img src="https://upload.wikimedia.org/wikipedia/en/c/ca/Studio_Ghibli_logo.svg" class="logo"/>
-<div id="root" class="container-fluid content">
+<div class="app container-fluid content">
+<header>
+  <img src="https://upload.wikimedia.org/wikipedia/en/c/ca/Studio_Ghibli_logo.svg" alt="studio gihbli logo" class="logo"/>
+</header>
+<div id="carousel">
   <button id="prev" onclick="movePrevious()">&lt;</button>
   <button id="next" onclick="moveNext()">&gt;</button>
-  <div id="card-holder">
+  <div id="cards">
   </div>
 </div>
+<footer></footer>
+</div>
 <script>
-const app = document.getElementById('root');
-const container = document.getElementById('card-holder');
+const app = document.getElementById('carousel');
+const cards = document.getElementById('cards');
 const numOfMovies = 2; //limit calls
 
 getMovies();
@@ -299,7 +291,7 @@ function getMovies(){
         movie.description = movie.description;
         description.textContent = `${movie.description}`;
 
-        container.appendChild(card)
+        cards.appendChild(card)
         card.appendChild(poster);
         card.appendChild(title);
         card.appendChild(subtitle);
