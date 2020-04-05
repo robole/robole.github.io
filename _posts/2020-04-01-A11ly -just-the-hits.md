@@ -5,6 +5,11 @@ category: programming
 tags: [accessibility, a11y, HTML]
 published: true
 ---
+
+Accessibility (A11y) refers to the creation of digital content that can be used by everyone.  
+
+<blockquote>The Web is fundamentally designed to work for all people, whatever their hardware, software, language, location, or ability. - <abbr title="World Wide Web Consortium">W3C</abbr></blockquote>
+
 How do you make accessible websites?
 
 1. Use specific HTML elements for their intended purpose whenever you can. Use `<div>` and `<span>` as last resorts.
@@ -21,4 +26,4 @@ How do you make accessible websites?
 12. Use colour palettes with a high contrast ratio. A constrast ratio of 4.5:1 between text and the background should be your aim.
 13. Don’t use colour alone to make critical information understandable.
 14. Clickable areas should be at least 48x48dp (physical size of 9mm).
-15. Learn about ARIA.
+15. Learn about ARIA (in the next post).

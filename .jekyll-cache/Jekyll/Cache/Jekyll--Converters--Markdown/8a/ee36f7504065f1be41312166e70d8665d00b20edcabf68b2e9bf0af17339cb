@@ -1,9 +1,13 @@
-I"Î<p>How do you make accessible websites?</p>
+I"Ç	<p>A11y (accessibility) refers to the creation of digital content that can be used by everyone.</p>
+
+<blockquote>The Web is fundamentally designed to work for all people, whatever their hardware, software, language, location, or ability. - <abbr title="World Wide Web Consortium">W3C</abbr></blockquote>
+
+<p>How do you make accessible websites?</p>
 
 <ol>
   <li>Use specific HTML elements for their intended purpose whenever you can. Use <code class="highlighter-rouge">&lt;div&gt;</code> and <code class="highlighter-rouge">&lt;span&gt;</code> as last resorts.</li>
   <li>Use headings and donâ€™t skip levels.</li>
-  <li>Organise your content into regions with elements such as : <code class="highlighter-rouge">&lt;header&gt;</code>, <code class="highlighter-rouge">&lt;main&gt;</code>, <code class="highlighter-rouge">&lt;nav&gt;</code>, <code class="highlighter-rouge">&lt;aside&gt;</code>, <code class="highlighter-rouge">&lt;footer&gt;</code>, <code class="highlighter-rouge">&lt;section&gt;</code>, and <code class="highlighter-rouge">&lt;article&gt;</code>.</li>
+  <li>Organise your content into regions with elements such as : <code class="highlighter-rouge">&lt;header&gt;</code>, <code class="highlighter-rouge">&lt;main&gt;</code>, <code class="highlighter-rouge">&lt;nav&gt;</code>, <code class="highlighter-rouge">&lt;aside&gt;</code>, <code class="highlighter-rouge">&lt;footer&gt;</code>, and <code class="highlighter-rouge">&lt;section&gt;</code>.</li>
   <li>Have your HTML ordered to match the visible order in the Browser. CSS can move elements anywhere and it will confuse assistive technology!</li>
   <li>Use clear language and avoid things that may be difficult to be read aloud.</li>
   <li>Consider the size of your navigation, the number of links, and the length of the text.</li>
