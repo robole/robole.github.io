@@ -1,0 +1,117 @@
+I"#<h1 id="what-is-an-interface">What is an interface?</h1>
+
+<p>An interface defines a contract for what a class can do, without saying anything about how the class will do it.</p>
+
+<p>It’s basically a list of related method declarations without implementations. A class that implements the interface agrees to implement all of the methods defined in the interface, thereby agreeing to certain behaviour.</p>
+
+<h1 id="what-must-a-class-do-to-implement-an-interface">What must a class do to implement an interface?</h1>
+
+<p>The class must identify the interface in its implements clause and implement
+all of the methods specified in the interface.</p>
+
+<h1 id="what-are-the-rules-of-defining-interfaces">What are the rules of defining interfaces?</h1>
+
+<ol>
+  <li>An interface is implicitly abstract. It is considered redundant to state it as so. The below are the same:</li>
+</ol>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">abstract</span> <span class="kd">interface</span> <span class="nc">Rollable</span> <span class="o">{</span> <span class="o">}</span>
+<span class="kd">public</span> <span class="kd">interface</span> <span class="nc">Rollable</span> <span class="o">{</span> <span class="o">}</span>
+</code></pre></div></div>
+
+<ol>
+  <li>
+    <p>The public modifier is required if you want the interface to have public rather than default access.</p>
+  </li>
+  <li>
+    <p>An interface can only declare constants. All variables defined in an interface are implicitly public, static, and final.</p>
+  </li>
+  <li>
+    <p>An interface can extend one or more other interfaces, but nothing else.</p>
+  </li>
+  <li>
+    <p>Interface methods cannot be marked as static, final, stricfp, or native.</p>
+  </li>
+  <li>
+    <p>An interface cannot implement another interface or class.</p>
+  </li>
+</ol>
+
+<h1 id="how-do-you-code-to-an-interface-rather-than-to-an-object">How do you code to an interface, rather than to an object?</h1>
+
+<p>Consider the simple example of a class Car that implements interface Vehicle. Interface Vehicle has a single method called start(). Class Car will implement the interface by providing a start() method. Other functionality in the Car class has been left out for the sake of clarity.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">interface</span> <span class="nc">Vehicle</span> <span class="o">{</span>
+  <span class="kd">public</span> <span class="kt">void</span> <span class="nf">start</span><span class="o">();</span>
+<span class="o">}</span>
+
+<span class="kd">class</span> <span class="nc">Car</span> <span class="kd">implements</span> <span class="nc">Vehicle</span><span class="o">{</span>
+   <span class="kd">public</span> <span class="kt">void</span> <span class="nf">start</span><span class="o">()</span>
+   <span class="o">{</span>
+     <span class="c1">//implementing code here</span>
+   <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>Having laid the foundations of the Car object, we can create another object called Valet. It is the Valet’s job to start the Car and bring it to the restaurant patron. The Valet object can be written without interfaces, as follows:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">Valet</span>
+<span class="o">{</span>
+   <span class="kd">public</span> <span class="nc">Car</span> <span class="nf">getCar</span><span class="o">(</span> <span class="nc">Car</span> <span class="n">c</span><span class="o">){</span>
+     <span class="o">...</span>
+   <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>The Valet object has a method called getCar that returns a Car object. This code example satisfies the functional requirements of the system, but it forever links the Valet object with that of the Car. In this situation, the two objects are said to be tightly coupled. The Valet object requires knowledge of the Car object and has access to all public methods and variables contained within that object. It is best to avoid such tight coupling of code because it increases dependencies and reduces flexibility.
+To code the Valet object using interfaces, the following implementation could be used:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">Valet</span>
+<span class="o">{</span>
+   <span class="kd">public</span> <span class="nc">Vehicle</span> <span class="nf">getVehicle</span><span class="o">(</span> <span class="nc">Vehicle</span> <span class="n">c</span><span class="o">){</span>  
+     <span class="o">...</span>  
+   <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>While the code changes are fairly minor – changing the references from Car to Vehicle – the effects on the development cycle are considerable. Using the second implementation, the Valet has knowledge only of the methods and variables defined in the Vehicle interface. Any other public methods and data contained in the specific implementation of the Vehicle interface are hidden from the user of the Vehicle object.</p>
+
+<h1 id="should-you-define-all-classes-in-terms-of-interfaces">Should you define all classes in terms of interfaces?</h1>
+
+<p>Some say you should define all classes in terms of interfaces, but I think this recommendation seems a bit extreme.</p>
+
+<p>In Java when you add a new method to an interface, you break all your clients. When you have an abstract class, you can add a new method and provide a default implementation in it. All the clients will continue to work.</p>
+
+<p>As always there is a trade-off, an interface gives you freedom with regard to the base class; an abstract class gives you the freedom to add new methods later. In the light of evolution you should consider whether an abstract class is sufficient.</p>
+
+<h1 id="why-use-interfaces">Why use interfaces?</h1>
+
+<p>Interfaces are mainly used to provide polymorphic behaviour. Interfaces help to break up the complex designs and clear the dependencies between objects. This helps to make your software more flexible. You use an interface to define a protocol of behaviour that can be implemented by any class anywhere in the class hierarchy.</p>
+
+<p>Interfaces are useful for the following:</p>
+
+<ul>
+  <li>Capturing similarities between unrelated classes without artificially forcing a class relationship. It is often used for peripheral abilities of classes.</li>
+  <li>Declaring methods that one or more classes have to implement</li>
+  <li>Revealing an object’s programming interface without revealing its class. Objects such as these are called anonymous objects and can be useful when shipping a package of classes to other developers.
+Coding to interfaces rather than to objects provides higher efficiency in the various phases of a system’s lifecycle:</li>
+  <li>Design: the methods of an object can be quickly specified and published to all affected developers</li>
+  <li>Development: the Java compiler guarantees that all methods of the interface are implemented with the correct signature and that all changes to the interface are immediately visible to other developers</li>
+  <li>Integration: there is the ability to quickly connect classes or subsystems together, due to their well-established interfaces</li>
+  <li>Testing: interfaces help isolate bugs because they limit the scope of a possible logic error to a given subset of methods</li>
+</ul>
+
+<h1 id="what-if-two-interface-methods-clash-in-implementation">What if two interface methods clash in implementation?</h1>
+
+<p>If two interfaces have the same method signature, they effectively declare the same method, regardless of any other intentions. Any concrete class that implements both interfaces can only provide one implementation of a given method signature, so there is no ambiguity about how the Java compiler deals with this case, only a potentially difficult design decision.</p>
+
+<p>If two interface methods have a clash over their method signatures and intended behaviour, it would preferable to rename one of the interface methods to indicate a more distinct purpose.</p>
+
+<h1 id="can-you-give-an-example-of-multiple-inheritance-with-interfaces">Can you give an example of multiple inheritance with interfaces?</h1>
+
+<p>To illustrate multiple inheritance, consider a bat, which is a mammal that flies. We might have two interfaces: Mammal, which has a method suckleInfant(Mammal), and Flyer, which has a method fly().</p>
+
+<h1 id="additional-reading">Additional Reading</h1>
+
+<p><a href="https://www.javaworld.com/article/2076468/core-java/smarter-java-development.html">Use interfaces to effectively enforce development contracts while maintaining loose coupling of code</a></p>
+:ET

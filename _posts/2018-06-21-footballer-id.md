@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Identify footballer from photo on hover 💻"
+title: "Identify a footballer from photo on hover with clip-path 💻"
 category: web
 tags: [football, css, javascript, web]
 published: true

@@ -1,0 +1,217 @@
+I"�O<p>An intent is an “intention” to perform an action. It is basically a message that allows us to request functionality
+from other components.</p>
+
+<p>Intents allow us to chain independent components to accomplish
+different <em>tasks</em>.</p>
+
+<p>Intents are objects of <code class="highlighter-rouge">android.content.Intent</code>.</p>
+
+<h1 id="explicit-intents">Explicit Intents</h1>
+
+<p>Are used to call a <strong>specific component</strong>. If we want
+<code class="highlighter-rouge">ActivityOne</code> to launch <code class="highlighter-rouge">ActivityTwo</code> when a button is
+clicked, this is an explicit intent.</p>
+
+<p><img src="https://www.tutorialspoint.com/android/images/intent1.jpg" alt="explicit intent" /></p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">Intent</span> <span class="n">i</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Intent</span><span class="o">(</span><span class="k">this</span><span class="o">,</span> <span class="nc">ActivityTwo</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
+<span class="n">startActivity</span><span class="o">(</span><span class="n">i</span><span class="o">);</span>
+</code></pre></div></div>
+
+<h1 id="implicit-intents">Implicit Intents</h1>
+
+<p>Are used when you know what you want to do, but you do not
+want to specify exactly which component should be used. Android evaluates the request at runtime to choose a component.</p>
+
+<p>Implicit intents can give the user an option to choose between a list of apps. This is a common scenario when you need to do something like open a hyperlink for a webpage, a list of external apps are shown to the user.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">//view a webpage using an implicit intent</span>
+<span class="nc">String</span> <span class="n">url</span> <span class="o">=</span> <span class="s">"http://www.example.com"</span><span class="o">;</span>
+<span class="nc">Intent</span> <span class="n">i</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Intent</span><span class="o">(</span><span class="nc">Intent</span><span class="o">.</span><span class="na">ACTION_VIEW</span><span class="o">);</span>
+<span class="n">i</span><span class="o">.</span><span class="na">setData</span><span class="o">(</span><span class="nc">Uri</span><span class="o">.</span><span class="na">parse</span><span class="o">(</span><span class="n">url</span><span class="o">));</span>
+<span class="n">startActivity</span><span class="o">(</span><span class="n">i</span><span class="o">);</span>
+</code></pre></div></div>
+
+<p><img src="http://media02.hongkiat.com/push-content-android-pushbullet/link-complete-action.jpg" width="400px" height="300px" /></p>
+
+<h1 id="intent-filters">Intent filters</h1>
+
+<p>In the previous example, how does Android know which apps can display a webpage?</p>
+
+<p>Intent filters provide the ability to evaluate if an activity can satisfy an intent. This process is known as intent resolution.</p>
+
+<p>To make sure it’s the right activity for the intent, the intent filter provides three criteria:</p>
+<ul>
+  <li><strong>Action</strong>: This is what the intent needs to do, such as dialling a phone number. An action is simply a string constant describing what is being accomplished.
+    <ul>
+      <li><code class="highlighter-rouge">ACTION_VIEW</code>: When we want to show something to the user, such as view a photo in a gallery app.</li>
+      <li><code class="highlighter-rouge">ACTION_SEND</code>: Also known as the share action, you should use this when you want to share with another app.</li>
+      <li><code class="highlighter-rouge">ACTION_DIAL</code>: Dial a number.</li>
+      <li><code class="highlighter-rouge">ACTION_WEB_SEARCH</code>: Web search.</li>
+    </ul>
+  </li>
+  <li><strong>Data</strong>: The type of data the intent can accept. This ranges from specific file paths, to ports, to MIME types such as images and video. You can set one or more attributes to control how strict or lenient you are with the data from an intent that your app can handle.</li>
+  <li><strong>Category</strong>: This is an additional criterion to specify which actions can respond to an implicit intent. An intent filter must include a category of <code class="highlighter-rouge">android.intent.category.DEFAULT</code> if it’s to receive implicit intents. Any number of categories can be placed in an intent. Common categories:
+    <ul>
+      <li><code class="highlighter-rouge">CATEGORY_LAUNCHER</code>: The activity is the initial activity of a task and is listed in the system’s application launcher.</li>
+      <li><code class="highlighter-rouge">CATEGORY_BROWSABLE</code>: The target activity allows itself to be started by a web browser to display data referenced by a link, such as an image or an e-mail message.</li>
+    </ul>
+  </li>
+</ul>
+
+<p>If Android finds a single match for an implicit intent, it starts the component, and passes it the intent. If it finds multiple matches, it asks the user to pick one.</p>
+
+<h2 id="example-main-activity">Example: Main Activity</h2>
+
+<p>We have seen this already. This is the entry point to our app.</p>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;activity</span> <span class="na">android:name=</span><span class="s">"MainActivity"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;intent-filter&gt;</span>
+        <span class="nt">&lt;action</span> <span class="na">android:name=</span><span class="s">"android.intent.action.MAIN"</span> <span class="nt">/&gt;</span>
+        <span class="nt">&lt;category</span> <span class="na">android:name=</span><span class="s">"android.intent.category.LAUNCHER"</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;/intent-filter&gt;</span>
+<span class="nt">&lt;/activity&gt;</span>
+</code></pre></div></div>
+
+<h2 id="example-open-a-webpage">Example: Open a webpage</h2>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;activity</span> <span class="na">android:name=</span><span class="s">".BrowserActivitiy"</span>
+          <span class="na">android:label=</span><span class="s">"@string/app_name"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;intent-filter&gt;</span>
+     <span class="nt">&lt;action</span> <span class="na">android:name=</span><span class="s">"android.intent.action.VIEW"</span> <span class="nt">/&gt;</span>
+     <span class="nt">&lt;data</span> <span class="na">android:scheme=</span><span class="s">"http"</span><span class="nt">/&gt;</span>
+     <span class="nt">&lt;category</span> <span class="na">android:name=</span><span class="s">"android.intent.category.DEFAULT"</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;/intent-filter&gt;</span>
+<span class="nt">&lt;/activity&gt;</span>
+</code></pre></div></div>
+<h2 id="example-get-an-image">Example: Get an image</h2>
+
+<ul>
+  <li>Restrict to images only using the <em>mimeType</em>.</li>
+</ul>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;activity</span>
+    <span class="na">android:name=</span><span class="s">".GetImageActivity"</span>
+    <span class="na">android:label=</span><span class="s">"@string/app_name"</span> <span class="nt">&gt;</span>
+    <span class="nt">&lt;intent-filter&gt;</span>
+      <span class="nt">&lt;action</span> <span class="na">android:name=</span><span class="s">"android.intent.action.SEND"</span> <span class="nt">/&gt;</span>
+      <span class="nt">&lt;data</span> <span class="na">android:mimeType=</span><span class="s">"image/*"</span> <span class="nt">/&gt;</span>
+      <span class="nt">&lt;category</span> <span class="na">android:name=</span><span class="s">"android.intent.category.DEFAULT"</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;/intent-filter&gt;</span>
+<span class="nt">&lt;/activity&gt;</span>
+</code></pre></div></div>
+
+<h1 id="what-if-you-want-the-user-to-choose-an-app-every-time-in-response-to-an-implicit-intent">What if you want the user to choose an app every time in response to an implicit intent?</h1>
+
+<p>If multiple apps can respond to an intent and the user might want to use a different app each time, you should explicitly show a chooser dialog. The chooser dialog asks the user to select which app to use for the action (the user cannot select a default app for the action).</p>
+
+<p>For example, when your app performs “share” with the <code class="highlighter-rouge">ACTION_SEND</code>, users may want to share using a different app depending on their current situation.</p>
+
+<p>To show the chooser, create an intent using <code class="highlighter-rouge">createChooser()</code> and pass it to <code class="highlighter-rouge">startActivity()</code>, as shown in the following example.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">Intent</span> <span class="n">sendIntent</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Intent</span><span class="o">(</span><span class="nc">Intent</span><span class="o">.</span><span class="na">ACTION_SEND</span><span class="o">);</span>
+<span class="o">...</span>
+
+<span class="c1">// Always use string resources for UI text.</span>
+<span class="c1">// This says something like "Share this photo with"</span>
+<span class="nc">String</span> <span class="n">title</span> <span class="o">=</span> <span class="n">getResources</span><span class="o">().</span><span class="na">getString</span><span class="o">(</span><span class="no">R</span><span class="o">.</span><span class="na">string</span><span class="o">.</span><span class="na">chooser_title</span><span class="o">);</span>
+
+<span class="c1">//if no activities are resolved for this intent, a</span>
+<span class="c1">//message will be shown informing the user</span>
+<span class="nc">Intent</span> <span class="n">chooser</span> <span class="o">=</span> <span class="nc">Intent</span><span class="o">.</span><span class="na">createChooser</span><span class="o">(</span><span class="n">sendIntent</span><span class="o">,</span> <span class="n">title</span><span class="o">);</span>
+
+<span class="n">startActivity</span><span class="o">(</span><span class="n">chooser</span><span class="o">);</span>
+</code></pre></div></div>
+
+<h1 id="passing-data-between-activities">Passing data between Activities</h1>
+
+<p>An intent can have data that is stored in a <code class="highlighter-rouge">Bundle</code>. You add data directly to the <code class="highlighter-rouge">Bundle</code> via the overloaded <code class="highlighter-rouge">putExtra()</code> methods of an intent.</p>
+
+<p>Data is stored as key/value pairs. The key is always of type String. As value, you can use the primitive data types (int, float, …​), and objects of type <code class="highlighter-rouge">String</code>, <code class="highlighter-rouge">Bundle</code>, <code class="highlighter-rouge">Parcelable</code> and <code class="highlighter-rouge">Serializable</code>. You can read <a href="http://alexzh.com/uncategorized/passing-object-by-intent/">this</a> to know how to pass a custom object of <code class="highlighter-rouge">Parcelable</code> and <code class="highlighter-rouge">Serializable</code>.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Intent i = new Intent(this, ActivityTwo.class);
+i.putExtra("Value1", "This value one for ActivityTwo ");
+i.putExtra("Value2", 2.0);
+</code></pre></div></div>
+
+<p>The data in an intent can be used by the receiving component. You use <code class="highlighter-rouge">getExtras()</code> to retrieve all of the values in the <code class="highlighter-rouge">Bundle</code>.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Bundle extras = getIntent().getExtras();
+String value1 = extras.getString("Value1");
+</code></pre></div></div>
+
+<p>There is also some convenience methods to retrieve a single
+value such as <code class="highlighter-rouge">getStringExtra(..)</code>, <code class="highlighter-rouge">getIntExtra(..)</code>.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Intent intent = getIntent();
+String value1 = intent.getStringExtra("Value1");
+int value2 = intent.getIntExtra("Value2");
+</code></pre></div></div>
+
+<h1 id="exercise-login">Exercise: Login</h1>
+
+<p>Create a basic login.</p>
+<ul>
+  <li><em>LoginActivity</em>: Typical login screen. If the <em>username</em> and <em>password</em> are correct, it will which will show the <em>HomeActivity</em>. If they are incorrect, a <code class="highlighter-rouge">Toast</code> will tell the user. Can have a single username of “admin” with a password of “password”.</li>
+</ul>
+
+<p><img src="/assets/img/blog/2018-05-20-android3/login1.png" height="400px" /></p>
+
+<ul>
+  <li><em>HomeActivity</em>: Has a <code class="highlighter-rouge">TextView</code> saying “Welcome [username]!”, where [username] is the value passed from <em>LoginActivity</em>.</li>
+</ul>
+
+<p><img src="/assets/img/blog/2018-05-20-android3//login2.png" height="400px" /></p>
+
+<p>The completed code is <a href="https://github.com/robole/login-basic">here</a>.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">LoginActivity</span> <span class="kd">extends</span> <span class="nc">Activity</span> <span class="o">{</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">onCreate</span><span class="o">(</span><span class="nc">Bundle</span> <span class="n">savedInstanceState</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kd">super</span><span class="o">.</span><span class="na">onCreate</span><span class="o">(</span><span class="n">savedInstanceState</span><span class="o">);</span>
+        <span class="n">setContentView</span><span class="o">(</span><span class="no">R</span><span class="o">.</span><span class="na">layout</span><span class="o">.</span><span class="na">activity_login</span><span class="o">);</span>
+    <span class="o">}</span>
+
+     <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onClick</span><span class="o">(</span><span class="nc">View</span> <span class="n">view</span><span class="o">){</span>
+         <span class="nc">EditText</span> <span class="n">username</span> <span class="o">=</span> <span class="o">(</span><span class="nc">EditText</span><span class="o">)</span> <span class="n">findViewById</span><span class="o">(</span><span class="no">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">username_input</span><span class="o">);</span>
+         <span class="nc">EditText</span> <span class="n">pass</span> <span class="o">=</span> <span class="o">(</span><span class="nc">EditText</span><span class="o">)</span> <span class="n">findViewById</span><span class="o">(</span><span class="no">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">password_input</span><span class="o">);</span>
+
+         <span class="nc">String</span> <span class="n">username_text</span> <span class="o">=</span> <span class="n">username</span><span class="o">.</span><span class="na">getText</span><span class="o">().</span><span class="na">toString</span><span class="o">();</span>
+         <span class="nc">String</span> <span class="n">pass_text</span> <span class="o">=</span> <span class="n">pass</span><span class="o">.</span><span class="na">getText</span><span class="o">().</span><span class="na">toString</span><span class="o">();</span>
+
+         <span class="k">if</span><span class="o">(</span><span class="n">username_text</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="s">"admin"</span><span class="o">)</span> <span class="o">&amp;&amp;</span> <span class="n">pass_text</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="s">"password"</span><span class="o">)){</span>
+             <span class="nc">Intent</span> <span class="n">i</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Intent</span><span class="o">(</span><span class="k">this</span><span class="o">,</span> <span class="nc">HomeActivity</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
+             <span class="n">i</span><span class="o">.</span><span class="na">putExtra</span><span class="o">(</span><span class="s">"username"</span><span class="o">,</span> <span class="n">username_text</span><span class="o">);</span>
+             <span class="n">startActivity</span><span class="o">(</span><span class="n">i</span><span class="o">);</span>
+         <span class="o">}</span>
+         <span class="k">else</span><span class="o">{</span>
+             <span class="nc">Toast</span><span class="o">.</span><span class="na">makeText</span><span class="o">(</span><span class="k">this</span><span class="o">,</span> <span class="s">"Incorrect username and password combination"</span><span class="o">,</span>
+                     <span class="nc">Toast</span><span class="o">.</span><span class="na">LENGTH_LONG</span><span class="o">).</span><span class="na">show</span><span class="o">();</span>
+         <span class="o">}</span>
+
+     <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">HomeActivity</span> <span class="kd">extends</span> <span class="nc">Activity</span> <span class="o">{</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">onCreate</span><span class="o">(</span><span class="nc">Bundle</span> <span class="n">savedInstanceState</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kd">super</span><span class="o">.</span><span class="na">onCreate</span><span class="o">(</span><span class="n">savedInstanceState</span><span class="o">);</span>
+        <span class="n">setContentView</span><span class="o">(</span><span class="no">R</span><span class="o">.</span><span class="na">layout</span><span class="o">.</span><span class="na">activity_home</span><span class="o">);</span>
+        <span class="nc">TextView</span> <span class="n">welcome</span> <span class="o">=</span> <span class="o">(</span><span class="nc">TextView</span><span class="o">)</span> <span class="n">findViewById</span><span class="o">(</span><span class="no">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">welcome</span><span class="o">);</span>
+
+        <span class="nc">String</span> <span class="n">username</span> <span class="o">=</span> <span class="k">this</span><span class="o">.</span><span class="na">getIntent</span><span class="o">().</span><span class="na">getStringExtra</span><span class="o">(</span><span class="s">"username"</span><span class="o">);</span>
+        <span class="n">welcome</span><span class="o">.</span><span class="na">setText</span><span class="o">(</span><span class="s">"Welcome "</span> <span class="o">+</span> <span class="n">username</span> <span class="o">+</span> <span class="s">"!"</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h1 id="references">References</h1>
+<ul>
+  <li><a href="http://www.vogella.com/tutorials/AndroidIntent/article.html">Vogella: Android Intents</a></li>
+  <li><a href="https://www.raywenderlich.com/160019/android-intents-tutorial-2">Ray Wenderlich: Intents Tutorial - May 2017</a></li>
+  <li><a href="https://developer.android.com/guide/components/intents-filters">Google Guides: Intents and Intent Filters</a></li>
+</ul>
+:ET

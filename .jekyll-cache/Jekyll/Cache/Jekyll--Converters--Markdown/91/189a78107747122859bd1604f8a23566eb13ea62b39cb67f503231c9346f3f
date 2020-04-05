@@ -1,0 +1,559 @@
+I"�<h1 id="encapsulation-is-a-has-a-objective-51">Encapsulation, IS-A, HAS-A (Objective 5.1)</h1>
+
+<ul>
+  <li>Encapsulation is the bundling of data with the methods that operate on that data. It results in a self-contained and complete entity</li>
+  <li>Information-hiding is a design principle that strives to shield client classes from the internal workings of a class</li>
+  <li>It is common to use the term encapsulation to refer to encapsulation AND information hiding.</li>
+  <li>Classes that use information-hiding properly have two features:
+    <ul>
+      <li>Instance variables should be kept shielded to outside classes (usually with the private modifier).</li>
+      <li>Getter and setter methods provide access to instance variables.</li>
+    </ul>
+  </li>
+  <li>IS-A, “inherits from”, and “is a subtype of “ are all equivalent expressions.</li>
+  <li>IS-A refers to class inheritance (extends) or interface implementation (implements).</li>
+  <li>HAS-A means an instance of one class “has a” object reference of another class.</li>
+  <li>HAS-A relationships always rely on  member variables (including static).</li>
+</ul>
+
+<h1 id="inheritance-objective-55">Inheritance (Objective 5.5)</h1>
+<ul>
+  <li>Inheritance allows a class to inherit public and protected members of a superclass, and default members within the same package.</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Alpha</span> <span class="o">{</span>
+	<span class="kt">int</span> <span class="n">over1</span> <span class="o">=</span> <span class="mi">1</span><span class="o">;</span>
+	<span class="kd">protected</span> <span class="kt">int</span> <span class="n">over2</span> <span class="o">=</span> <span class="mi">2</span><span class="o">;</span>
+	<span class="kd">public</span> <span class="kt">int</span> <span class="n">over3</span> <span class="o">=</span> <span class="mi">3</span><span class="o">;</span>
+
+	<span class="kt">int</span> <span class="nf">getOver1</span><span class="o">(){</span>
+		<span class="k">return</span> <span class="n">over</span><span class="o">;</span>
+	<span class="o">}</span>
+
+	<span class="kd">protected</span> <span class="kt">int</span> <span class="nf">getOver2</span><span class="o">(){</span>
+		<span class="k">return</span> <span class="n">over2</span><span class="o">;</span>
+	<span class="o">}</span>
+
+	<span class="kd">public</span> <span class="kt">int</span> <span class="nf">getOver3</span><span class="o">(){</span>
+		<span class="k">return</span> <span class="n">over3</span><span class="o">;</span>
+	<span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">Beta</span> <span class="kd">extends</span> <span class="nc">Alpha</span> <span class="o">{</span>
+  <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span> <span class="n">args</span><span class="o">[]){</span>
+    <span class="nc">Alpha</span> <span class="n">a</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Alpha</span><span class="o">();</span>
+    <span class="nc">Alpha</span> <span class="n">b</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Beta</span><span class="o">();</span>
+    <span class="nc">Beta</span> <span class="n">c</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Beta</span><span class="o">();</span>
+
+    <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">a</span><span class="o">.</span><span class="na">getOver1</span><span class="o">());</span>	<span class="c1">//prints 1</span>
+    <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">b</span><span class="o">.</span><span class="na">getOver1</span><span class="o">());</span>	<span class="c1">//prints 4</span>
+    <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">c</span><span class="o">.</span><span class="na">getOver1</span><span class="o">());</span>	<span class="c1">//prints 4</span>
+    <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">a</span><span class="o">.</span><span class="na">getOver2</span><span class="o">());</span>	<span class="c1">//prints 2</span>
+    <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">b</span><span class="o">.</span><span class="na">getOver2</span><span class="o">());</span>	<span class="c1">//prints 5</span>
+    <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">c</span><span class="o">.</span><span class="na">getOver2</span><span class="o">());</span>	<span class="c1">//prints 5</span>
+    <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">a</span><span class="o">.</span><span class="na">getOver3</span><span class="o">());</span>	<span class="c1">//prints 3</span>
+    <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">b</span><span class="o">.</span><span class="na">getOver3</span><span class="o">());</span>	<span class="c1">//prints 6</span>
+    <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">c</span><span class="o">.</span><span class="na">getOver3</span><span class="o">());</span>	<span class="c1">//prints 6</span>
+  <span class="o">}</span>
+
+  <span class="c1">//overriding Alpha methods</span>
+  <span class="kt">int</span> <span class="nf">getOver1</span><span class="o">(){</span>
+    <span class="k">return</span> <span class="mi">4</span><span class="o">;</span>
+  <span class="o">}</span>
+
+  <span class="kd">protected</span> <span class="kt">int</span> <span class="nf">getOver2</span><span class="o">(){</span>
+    <span class="k">return</span> <span class="mi">5</span><span class="o">;</span>
+  <span class="o">}</span>
+
+  <span class="kd">public</span> <span class="kt">int</span> <span class="nf">getOver3</span><span class="o">(){</span>
+    <span class="k">return</span> <span class="mi">6</span><span class="o">;</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<ul>
+  <li>Static members are inherited.</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Animal</span> <span class="o">{</span>
+	<span class="kd">static</span> <span class="nc">String</span> <span class="n">name</span> <span class="o">=</span> <span class="s">"animal"</span><span class="o">;</span>
+	<span class="kd">static</span> <span class="nc">String</span> <span class="nf">getName</span><span class="o">(){</span>
+		<span class="k">return</span> <span class="n">name</span><span class="o">;}</span>
+<span class="o">}</span>
+
+<span class="kd">class</span> <span class="nc">Dog</span> <span class="kd">extends</span> <span class="nc">Animal</span> <span class="o">{</span>
+	<span class="kd">static</span> <span class="nc">String</span> <span class="n">name</span> <span class="o">=</span> <span class="s">"dog"</span><span class="o">;</span>
+	<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span> <span class="n">args</span><span class="o">[]){</span>
+		<span class="nc">Animal</span> <span class="n">a</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Dog</span><span class="o">();</span>
+		<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">a</span><span class="o">.</span><span class="na">getName</span><span class="o">());</span> <span class="c1">//prints: animal</span>
+		<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">a</span><span class="o">.</span><span class="na">name</span><span class="o">);</span><span class="c1">// prints: animal</span>
+		<span class="nc">Dog</span> <span class="n">d</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Dog</span><span class="o">();</span>
+		<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">d</span><span class="o">.</span><span class="na">getName</span><span class="o">());</span> <span class="c1">//prints: animal</span>
+		<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">d</span><span class="o">.</span><span class="na">name</span><span class="o">);</span> <span class="c1">//prints: dog</span>
+		<span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<ul>
+  <li>For subclasses outside of the package of its superclass, its protected members cannot be accessed by a superclass reference.</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">pkga</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">clasA</span><span class="o">{</span>
+      <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">doThis</span><span class="o">(){}</span>
+ <span class="o">}</span>
+</code></pre></div></div>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">pkgb</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">pkga.clasA</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">clasB</span> <span class="kd">extends</span> <span class="n">clasA</span><span class="o">{</span>
+      <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span> <span class="n">args</span><span class="o">[]){</span>
+           <span class="n">clasA</span> <span class="n">ca</span> <span class="o">=</span> <span class="k">new</span> <span class="n">clasB</span><span class="o">();</span>
+           <span class="n">ca</span><span class="o">.</span><span class="na">doThis</span><span class="o">();</span> <span class="c1">///compiler error: class not visible</span>
+     <span class="k">new</span> <span class="nf">clasB</span><span class="o">().</span><span class="na">doThis</span><span class="o">();</span> <span class="c1">//legal</span>
+      <span class="o">}</span>
+ <span class="o">}</span>
+</code></pre></div></div>
+
+<ul>
+  <li>All classes are subclasses of type Object, therefore they inherit Object’s methods.</li>
+</ul>
+
+<h1 id="polymorphism-objective-52">Polymorphism (Objective 5.2)</h1>
+
+<ul>
+  <li>Polymorphism allows objects to treated in a substitutable way.</li>
+  <li>A reference variable is always of a single unchangeable type, but it can refer to a subtype object.</li>
+  <li>A reference variable can be declared as a class type or an interface type. If the variable is declared as an interface type, it can reference any object of any class that implements that interface.</li>
+  <li>The reference variable’s type determines which methods can be called on that reference!</li>
+  <li>At runtime, ONLY instance methods are dynamically selected based on the actual object.</li>
+</ul>
+
+<h1 id="overriding-and-overloading-objectives-15-and-54">Overriding and Overloading (Objectives 1.5 and 5.4)</h1>
+
+<ul>
+  <li>
+    <p>Methods can be overridden or overloaded; constructors can only be overloaded.</p>
+  </li>
+  <li>Rules for overriding a method:
+    <ol>
+      <li>Must be an inherited method.</li>
+      <li>Must have same argument list.</li>
+      <li>Must have same return type (as of Java 5, the return type can be a subclass).</li>
+      <li>CANNOT have a more restrictive access modifier.</li>
+      <li>May have a less restrictive access modifier.</li>
+      <li>Must NOT throw new or broader checked exceptions.</li>
+      <li>May throw narrower, fewer or no checked exceptions e.g. a method that declares a IOException can be overridden by a method that declares a FileNotFoundException (it’s a subclass of IOException).</li>
+      <li>The overriding method CAN throw any unchecked exception, regardless of whether the overridden method declares the exception</li>
+    </ol>
+  </li>
+  <li>Overloading means reusing a method name, but with different arguments.</li>
+  <li>Rules for overloading a method:
+    <ol>
+      <li>Must have different argument list</li>
+      <li>May have a different return type</li>
+      <li>May have different access modifiers</li>
+      <li>May throw different exceptions</li>
+      <li>Methods from a superclass can be overloaded in a subclass.</li>
+    </ol>
+  </li>
+  <li>Reference type determines which overloaded method will be used at compile time.</li>
+  <li>Object type determines which overridden method is used at runtime.</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">Animal</span> <span class="o">{</span>
+  <span class="kd">public</span> <span class="kt">void</span> <span class="nf">eat</span><span class="o">()</span> <span class="o">{</span>
+    <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Animal eating"</span><span class="o">);</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+
+<span class="kd">class</span> <span class="nc">Horse</span> <span class="kd">extends</span> <span class="nc">Animal</span> <span class="o">{</span>
+  <span class="kd">public</span> <span class="kt">void</span> <span class="nf">eat</span><span class="o">()</span> <span class="o">{</span>
+    <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Horse eating"</span><span class="o">);</span>
+  <span class="o">}</span>
+  <span class="kd">public</span> <span class="kt">void</span> <span class="nf">eat</span><span class="o">(</span><span class="nc">String</span> <span class="n">s</span><span class="o">)</span> <span class="o">{</span>	<span class="c1">//overloaded eat()</span>
+    <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Horse eating "</span> <span class="o">+</span> <span class="n">s</span><span class="o">);</span>
+  <span class="o">}</span>
+  <span class="cm">/*public String eat(){
+  	return null;
+  } this is not a legal override or overload
+  */</span>
+<span class="o">}</span>
+
+<span class="kd">class</span> <span class="nc">ZooKeeper</span><span class="o">{</span>
+	<span class="kd">static</span> <span class="kt">void</span> <span class="nf">makeItEat</span><span class="o">(</span><span class="nc">Animal</span> <span class="n">subject</span><span class="o">){</span>
+		<span class="n">subject</span><span class="o">.</span><span class="na">eat</span><span class="o">();</span>
+	<span class="o">}</span>
+<span class="o">}</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">TestAnimals</span> <span class="o">{</span>
+  <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span> <span class="o">(</span><span class="nc">String</span> <span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+    <span class="nc">Animal</span> <span class="n">a</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Animal</span><span class="o">();</span>
+    <span class="nc">Animal</span> <span class="n">b</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Horse</span><span class="o">();</span> <span class="c1">//Animal ref, but a Horse object</span>
+    <span class="nc">Horse</span> <span class="n">c</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Horse</span><span class="o">();</span>
+    <span class="n">a</span><span class="o">.</span><span class="na">eat</span><span class="o">();</span> <span class="c1">// Calls the Animal version of eat()</span>
+    <span class="n">b</span><span class="o">.</span><span class="na">eat</span><span class="o">();</span> <span class="c1">// Calls the Horse version of eat()</span>
+    <span class="c1">//b.eat(“carrots”);  Compiler error as based on ref type</span>
+    <span class="n">c</span><span class="o">.</span><span class="na">eat</span><span class="o">(</span><span class="err">“</span><span class="n">carrots</span><span class="err">”</span><span class="o">);</span>	 <span class="c1">//Calls overloaded eat(String s) in Horse</span>
+    <span class="nc">ZooKeeper</span><span class="o">.</span><span class="na">makeItEat</span><span class="o">(</span><span class="n">a</span><span class="o">);</span>	<span class="c1">// Calls the Animal version of eat()</span>
+    <span class="nc">ZooKeeper</span><span class="o">.</span><span class="na">makeItEat</span><span class="o">(</span><span class="n">b</span><span class="o">);</span> <span class="c1">// Calls the Horse version of eat()</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+
+<span class="c1">//Prints:</span>
+<span class="c1">//Animal eating</span>
+<span class="c1">//Horse eating</span>
+<span class="c1">//Horse eating carrots</span>
+<span class="c1">//Animal eating</span>
+<span class="c1">//Horse eating</span>
+</code></pre></div></div>
+
+<ul>
+  <li>A subclass can call the superclass version of an overridden method by preceding it with the keyword super. This lets you reuse the code in the superclass version of a method, yet still override it to provide some additional specific behavior.</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Dog</span> <span class="kd">extends</span> <span class="nc">Animal</span>
+	<span class="kd">public</span> <span class="kt">void</span> <span class="nf">eat</span><span class="o">(){</span>
+		<span class="kd">super</span><span class="o">.</span><span class="na">eat</span><span class="o">();</span> <span class="c1">//Prints:	Animal eating</span>
+		<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="err">“</span><span class="o">..</span><span class="na">dog</span> <span class="n">food</span><span class="o">!</span><span class="err">”</span><span class="o">);</span> <span class="c1">//..dog food!</span>
+	<span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<ul>
+  <li>You can refer to an instance variable named in a superclass by preceding it with super.</li>
+  <li>Variables are NOT overridden; they are shadowed. A variable in the subclass does NOT replace the variable of the same name in the superclass; it merely hides it.</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">Alpha</span> <span class="o">{</span>
+  <span class="kt">int</span> <span class="n">over</span> <span class="o">=</span> <span class="mi">1</span><span class="o">;</span>
+<span class="o">}</span>
+
+<span class="kd">class</span> <span class="nc">Beta</span> <span class="kd">extends</span> <span class="nc">Alpha</span> <span class="o">{</span>
+  <span class="kt">int</span> <span class="n">over</span> <span class="o">=</span> <span class="mi">2</span><span class="o">;</span>
+<span class="o">}</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Gamma</span> <span class="kd">extends</span> <span class="nc">Beta</span><span class="o">{</span>
+  <span class="kt">int</span> <span class="n">over</span> <span class="o">=</span> <span class="mi">3</span><span class="o">;</span>
+
+  <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span> <span class="n">args</span><span class="o">[]){</span>
+    <span class="k">new</span> <span class="nf">Gamma</span><span class="o">().</span><span class="na">go</span><span class="o">();</span>
+    <span class="o">}</span>
+
+	<span class="kd">public</span> <span class="kt">void</span> <span class="nf">go</span><span class="o">(){</span>
+		<span class="nc">Alpha</span> <span class="n">a</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Gamma</span><span class="o">();</span>
+		<span class="nc">Beta</span> <span class="n">b</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Gamma</span><span class="o">();</span>
+		<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="kd">super</span><span class="o">.</span><span class="na">over</span> <span class="o">+</span> <span class="s">" "</span> <span class="o">+</span> <span class="n">a</span><span class="o">.</span><span class="na">over</span> <span class="o">+</span> <span class="s">" "</span> <span class="o">+</span> <span class="n">b</span><span class="o">.</span><span class="na">over</span><span class="o">);</span>
+	<span class="o">}</span>
+<span class="o">}</span>
+
+<span class="c1">//prints: 2 1 2</span>
+</code></pre></div></div>
+<ul>
+  <li>You CANNOT override a static method; you are really redefining it. Often referred to as “hiding”.</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">Foo</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">method</span><span class="o">()</span> <span class="o">{</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"in Foo"</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+
+<span class="kd">class</span> <span class="nc">Bar</span> <span class="kd">extends</span> <span class="nc">Foo</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">method</span><span class="o">()</span> <span class="o">{</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"in Bar"</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+
+<span class="kd">class</span> <span class="nc">Test</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">Foo</span> <span class="n">f</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Bar</span><span class="o">();</span>
+        <span class="n">f</span><span class="o">.</span><span class="na">method</span><span class="o">();</span> <span class="c1">// prints “in Foo”</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<ul>
+  <li>Since f is declared as type Foo, the compiler looks at f.method() and decides it means Foo.method(). It doesn’t matter that the instance referred to by f is actually a Bar - for static methods the compiler only uses the declared type of the reference. So a static method does NOT have run-time polymorphism.</li>
+  <li>
+    <p>Sometimes you will see error messages from the compiler that talk about overriding static methods. Whoever wrote these particular messages has not read the Java Language Specification and does not know the difference between overriding and hiding.</p>
+  </li>
+  <li>Static methods are viewed as creating the same “overriding” errors in terms of modifiers however:</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">sup</span><span class="o">{</span>
+  <span class="kd">final</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">method</span><span class="o">(){</span>
+    <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Super"</span><span class="o">);</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+<span class="kd">class</span> <span class="nc">test</span> <span class="kd">extends</span> <span class="n">sup</span><span class="o">{</span>
+  <span class="kd">static</span> <span class="kt">void</span> <span class="nf">method</span><span class="o">(){</span>
+    <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"test"</span><span class="o">);</span><span class="c1">//compiler error: CANNOT “override” final method</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<ul>
+  <li>You cannot use super or this in a static method.</li>
+</ul>
+
+<h1 id="reference-variable-casting-objective-52">Reference Variable Casting (Objective 5.2)</h1>
+<ul>
+  <li>The Referencing rule: A reference of type X can point to objects of class X, or to objects of any of X’s subtypes.</li>
+  <li>The compiler checks the reference types to see if a cast is needed (for a downcast), it does NOT check if it will result in a reference that is assignment compatible.</li>
+  <li>The JVM checks the actual object type to see if the it is a supertype of the reference it is being assigned to, if it is, a ClassCastException is thrown</li>
+</ul>
+
+<p>For the answering questions in the exam, simple rules to follow:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">A</span><span class="o">{}</span>
+<span class="kd">class</span> <span class="nc">B</span> <span class="kd">extends</span> <span class="no">A</span><span class="o">{}</span>
+
+<span class="kd">class</span> <span class="nc">MyClass</span><span class="o">{}</span>
+
+<span class="kd">class</span> <span class="nc">Test</span><span class="o">{</span>
+	<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">...</span> <span class="n">x</span><span class="o">){</span>
+    <span class="no">A</span> <span class="n">a</span> <span class="o">=</span> <span class="k">new</span> <span class="no">A</span><span class="o">();</span>
+    <span class="no">B</span> <span class="n">b</span><span class="o">;</span>
+    <span class="nc">MyClass</span> <span class="n">myClass</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">MyClass</span><span class="o">();</span>
+    <span class="c1">//enter line here</span>
+	<span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<ul>
+  <li>When assigning a supertype reference (‘a’ in this case ) to a reference (‘b’), it’s a downcast.  There must be an explicit cast or it will result in a compiler error.
+    <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">b</span> <span class="o">=</span> <span class="o">(</span><span class="no">B</span><span class="o">)</span> <span class="n">a</span><span class="o">;</span>	<span class="c1">// compiles</span>
+</code></pre></div>    </div>
+  </li>
+  <li>If the object you are casting (‘myClass’) is not a supertype of, a subtype of, or the same type as that of the assignment reference type (‘b’), this will result in a compiler error.
+    <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="no">B</span> <span class="n">b</span> <span class="o">=</span> <span class="o">(</span><span class="no">B</span><span class="o">)</span> <span class="n">myClass</span><span class="o">;</span> 	<span class="c1">//compilation error</span>
+</code></pre></div>    </div>
+  </li>
+  <li>If the actual object (that ‘a’ points to) is a supertype of the assignment reference type (‘b’), a ClassCastException will be thrown. This means the code example under rule#1 will compile fine; but fail at run time.
+    <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">b</span> <span class="o">=</span> <span class="o">(</span><span class="no">B</span><span class="o">)</span> <span class="n">a</span><span class="o">;</span>	<span class="c1">//runtime exception. a is an A type, this is a supertype of B, so b cannot be assigned to a</span>
+</code></pre></div>    </div>
+    <p>whereas this compiles and executes:</p>
+    <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="no">A</span> <span class="n">x</span> <span class="o">=</span> <span class="k">new</span> <span class="no">B</span><span class="o">();</span>
+<span class="no">B</span> <span class="n">b</span> <span class="o">=</span> <span class="o">(</span><span class="no">B</span><span class="o">)</span> <span class="n">x</span><span class="o">;</span> <span class="c1">//supertype -downcast req: x is a B which is the same type as b, so it will run!</span>
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<p><img src="/assets/img/blog/2017-08-01-scjp2/casting.jpg" alt="casting" style="width: 100%;" /></p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">Bango</span><span class="o">{}</span>
+<span class="kd">class</span> <span class="nc">Bongo</span> <span class="kd">extends</span> <span class="nc">Bango</span><span class="o">{}</span>
+<span class="kd">class</span> <span class="nc">Bingo</span> <span class="kd">extends</span> <span class="nc">Bongo</span><span class="o">{}</span>
+
+<span class="kd">class</span> <span class="nc">TestAssign</span><span class="o">{</span>
+  <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span> <span class="n">args</span><span class="o">[]){</span>
+    <span class="nc">Bango</span> <span class="n">b1</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Bongo</span><span class="o">();</span>
+    <span class="nc">Bongo</span> <span class="n">b2</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Bingo</span><span class="o">();</span>
+    <span class="nc">Bango</span> <span class="n">b3</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Bingo</span><span class="o">();</span>
+
+    <span class="nc">Bongo</span> <span class="n">b4</span> <span class="o">=</span> <span class="n">b1</span><span class="o">;</span> <span class="c1">//supertype – downcast req: wont compile</span>
+    <span class="nc">Bango</span> <span class="n">b5</span> <span class="o">=</span> <span class="n">b3</span><span class="o">;</span> <span class="c1">//same type – no cast req: compiles + runs.</span>
+    <span class="nc">Bango</span> <span class="n">b6</span> <span class="o">=</span> <span class="n">b2</span><span class="o">;</span> <span class="c1">//subtype – upcasted, no cast req: compiles + runs.</span>
+    <span class="nc">Bango</span> <span class="n">b7</span> <span class="o">=</span> <span class="o">(</span><span class="nc">Bongo</span><span class="o">)</span> <span class="n">b3</span><span class="o">;</span> <span class="c1">//same type – no cast req: downcasted explicitly, so compiles + runs.</span>
+    <span class="nc">Bingo</span> <span class="n">b8</span> <span class="o">=</span> <span class="o">(</span><span class="nc">Bingo</span><span class="o">)</span> <span class="n">b1</span><span class="o">;</span> <span class="c1">//supertype – downcast req: Compiles as is explicitly cast; but it does NOT run as b1 is supertype object.</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<ul>
+  <li>Multiple casts in a single expression will be evaluated from right to left.
+(A) (B) c  first the ref variable is cast to a B, then it is cast to a C.</li>
+</ul>
+
+<h1 id="implementing-an-interface-objective-12">Implementing an Interface (Objective 1.2)</h1>
+<ul>
+  <li>Rules for implementing an interface:
+    <ol>
+      <li>Provide concrete implementations for all methods from the declared interface.</li>
+      <li>Follow all the rules for legal overrides.</li>
+      <li>Make sure implementation doesn’t try to restrict access modifier, method must be public!</li>
+    </ol>
+  </li>
+  <li>An interface can extend multiple other interfaces, but it can never implement anything.</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">interface</span> <span class="nc">Bounceable</span> <span class="kd">extends</span> <span class="nc">Moveable</span><span class="o">,</span> <span class="nc">Spherical</span> <span class="o">{</span> <span class="c1">// ok!</span>
+  <span class="kt">void</span> <span class="nf">bounce</span><span class="o">();</span>
+  <span class="kt">void</span> <span class="nf">setBounceFactor</span><span class="o">(</span><span class="kt">int</span> <span class="n">bf</span><span class="o">);</span>
+<span class="o">}</span>
+
+<span class="kd">interface</span> <span class="nc">Moveable</span> <span class="o">{</span>
+  <span class="kt">void</span> <span class="nf">moveIt</span><span class="o">();</span>
+<span class="o">}</span>
+
+<span class="kd">interface</span> <span class="nc">Spherical</span> <span class="o">{</span>
+  <span class="kt">void</span> <span class="nf">doSphericalThing</span><span class="o">();</span>
+<span class="o">}</span>
+
+<span class="kd">class</span> <span class="nc">Ball</span> <span class="kd">implements</span> <span class="nc">Bounceable</span> <span class="o">{</span>
+   <span class="kd">public</span> <span class="kt">void</span> <span class="nf">bounce</span><span class="o">()</span> <span class="o">{</span> <span class="o">}</span> <span class="c1">// implement all of Bounceable's methods</span>
+   <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setBounceFactor</span><span class="o">(</span><span class="kt">int</span> <span class="n">bf</span><span class="o">)</span> <span class="o">{</span> <span class="o">}</span>
+   <span class="kd">public</span> <span class="kt">void</span> <span class="nf">moveIt</span><span class="o">()</span> <span class="o">{</span> <span class="o">}</span>
+   <span class="kd">public</span> <span class="kt">void</span> <span class="nf">doSphericalThing</span><span class="o">()</span> <span class="o">{</span> <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h1 id="return-types-objective-15">Return Types (Objective 1.5)</h1>
+
+<p>As of Java 5, you’re allowed to change the return type in the overriding method as long as the new return type is a subtype of the declared type of the overridden method. This is a covariant return.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">Alpha</span><span class="o">{</span>
+	<span class="nc">Alpha</span> <span class="nf">doStuff</span><span class="o">(){</span>
+		<span class="k">return</span> <span class="k">new</span> <span class="nf">Alpha</span><span class="o">();}</span>
+<span class="o">}</span>
+
+<span class="kd">class</span> <span class="nc">Beta</span> <span class="kd">extends</span> <span class="nc">Alpha</span><span class="o">{</span>
+	<span class="nc">Beta</span> <span class="nf">doStuff</span><span class="o">(){</span>	<span class="c1">//legal override</span>
+		<span class="k">return</span> <span class="k">new</span> <span class="nf">Beta</span><span class="o">();}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>Return type rules:</p>
+<ul>
+  <li>You can return null in a method with an Object reference return type.
+    <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">Beta</span> <span class="nf">doStuff</span><span class="o">(){</span>
+  <span class="k">return</span> <span class="kc">null</span><span class="o">;}</span>
+</code></pre></div>    </div>
+  </li>
+  <li>An array is a legal return type.
+    <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="nc">String</span><span class="o">[]</span> <span class="nf">go</span><span class="o">(){</span>
+  <span class="k">return</span> <span class="k">new</span> <span class="nc">String</span><span class="o">[]</span> <span class="o">{</span><span class="err">“</span><span class="nc">Fred</span><span class="err">”</span><span class="o">,</span> <span class="err">“</span><span class="nc">Barney</span><span class="err">”</span><span class="o">};</span>
+<span class="o">}</span>
+</code></pre></div>    </div>
+  </li>
+  <li>For methods with primitive return types, any value that can be implicitly converted to the return type can be returned.
+    <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kt">int</span> <span class="nf">foo</span><span class="o">()</span> <span class="o">{</span>
+<span class="kt">char</span> <span class="n">c</span> <span class="o">=</span> <span class="sc">'c'</span><span class="o">;</span>
+<span class="k">return</span> <span class="n">c</span><span class="o">;</span> <span class="c1">// char is widened to an int</span>
+<span class="o">}</span>
+</code></pre></div>    </div>
+  </li>
+  <li>Nothing can be returned from a void, but you can return nothing. You’re allowed to simply say return, this busts out of a method straight away.
+    <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kt">void</span> <span class="nf">bar</span><span class="o">()</span> <span class="o">{</span>
+<span class="k">return</span><span class="o">;</span>
+<span class="o">}</span>
+</code></pre></div>    </div>
+  </li>
+  <li>Methods with an object reference return type can return a subtype.
+    <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="nc">Animal</span> <span class="nf">getAnimal</span><span class="o">()</span> <span class="o">{</span>
+<span class="k">return</span> <span class="k">new</span> <span class="nf">Horse</span><span class="o">();</span> <span class="c1">// Assuming that Horse extends Animal</span>
+<span class="o">}</span>
+</code></pre></div>    </div>
+  </li>
+  <li>Methods with an interface return type can return any implementer.</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">interface</span> <span class="nc">Chewable</span> <span class="o">{</span> <span class="o">}</span>
+
+<span class="kd">class</span> <span class="nc">Gum</span> <span class="kd">implements</span> <span class="nc">Chewable</span> <span class="o">{</span> <span class="o">}</span>
+
+<span class="kd">class</span> <span class="nc">TestChewable</span> <span class="o">{</span>
+  <span class="nc">Chewable</span> <span class="nf">getChewable</span><span class="o">()</span> <span class="o">{</span>
+      <span class="k">return</span> <span class="k">new</span> <span class="nf">Gum</span><span class="o">();</span> <span class="c1">// Return interface implementer</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h1 id="constructors-and-instantiation-objectives-16-and-54">Constructors and Instantiation (Objectives 1.6 and 5.4)</h1>
+<ul>
+  <li>A constructor is always invoked when a new object is created.</li>
+  <li>Rules for constructors:
+    <ol>
+      <li>Must have the same name as the class.</li>
+      <li>Can use any access modifier</li>
+      <li>Constructors do NOT have a return type. If you see a method with the same name as the class and a return type, it is NOT a constructor but it is a legal method.</li>
+      <li>The compiler creates a default no-arg constructor if you do NOT create one yourself.</li>
+      <li>If you want a no-arg constructor and you’ve created another constructor in your class, the compiler won’t provide the no-arg constructor by default.</li>
+      <li>The first statement of every constructor must be a call to either this() or super().</li>
+      <li>The compiler will insert a call to super() as the first line of the constructor if you have NOT already put in a call to this() or super().</li>
+      <li>A constructor can only be invoked from within another constructor.</li>
+      <li>Abstract classes have constructors that are called when a concrete subclass is instantiated.</li>
+      <li>Interfaces do NOT have constructors.</li>
+      <li>Calls to this() and super() cannot be in the same constructor.</li>
+    </ol>
+  </li>
+  <li>When you say Horse h = new Horse(); the following happens:
+    <ol>
+      <li>Horse constructor is invoked.</li>
+      <li>Animal constructor is invoked</li>
+      <li>Object constructor is invoked</li>
+      <li>Object instance variables are given their explicit values.</li>
+      <li>Object constructor completes.</li>
+      <li>Animal instance variables are given their explicit values (if any).</li>
+      <li>Animal constructor completes.</li>
+      <li>Horse instance variables are given their explicit values (if any).</li>
+      <li>Horse constructor completes.</li>
+    </ol>
+  </li>
+</ul>
+
+<h1 id="statics-objective-13">Statics (Objective 1.3)</h1>
+<ul>
+  <li>Use static methods to implement behaviours that are not affected by the state of any instance.</li>
+  <li>
+    <p>Use static variables to hold data that is class specific as opposed to instance specific—there will be only one copy of a static variable.</p>
+  </li>
+  <li>
+    <p>A static method CANNOT access an instance variable directly.</p>
+  </li>
+  <li>Using a reference variable with the dot operator to access a static method is really a syntax trick, the compiler will substitute the class name for the reference variable.</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">d</span><span class="o">.</span><span class="na">doStuff</span><span class="o">();</span>
+</code></pre></div></div>
+<p>becomes</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">Dog</span><span class="o">.</span><span class="na">doStuff</span><span class="o">();</span>
+</code></pre></div></div>
+
+<ul>
+  <li>Static methods are NOT overridden; they are hidden.</li>
+</ul>
+
+<h1 id="coupling-and-cohesion-objective-51">Coupling and Cohesion (Objective 5.1)</h1>
+
+<ul>
+  <li>
+    <p>Coupling refers to the degree to which one class knows about another class.</p>
+  </li>
+  <li>Classes are tightly coupled if they depend on the internal implementations of each other.</li>
+  <li>
+    <p>If the only knowledge that class One has about class Two, is what class Two has exposed through its interface, then class One and class Two are said to be loosely coupled.</p>
+  </li>
+  <li>Good encapsulation promotes loose coupling.</li>
+  <li>
+    <p>Poor encapsulation can allow tight coupling, because it’s possible to access unprotected variables directly from another class, which allows one class to become dependent on the implementation of the class containing those variables.</p>
+  </li>
+  <li>In the example below, class One and Two are loosely coupled. A change in class One would not affect class Two.</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">One</span> <span class="o">{</span>  
+  <span class="kd">private</span> <span class="kt">int</span> <span class="n">x</span><span class="o">;</span>
+
+  <span class="kt">int</span> <span class="nf">getX</span><span class="o">()</span> <span class="o">{</span>
+    <span class="k">return</span> <span class="n">x</span><span class="o">;</span>
+  <span class="o">}</span>  
+<span class="o">}</span>  
+
+<span class="kd">class</span> <span class="nc">Two</span> <span class="o">{</span>  
+  <span class="kd">private</span> <span class="kt">int</span> <span class="n">y</span><span class="o">;</span>
+
+  <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setY</span><span class="o">(</span><span class="nc">One</span> <span class="n">o</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">o</span><span class="o">.</span><span class="na">getX</span><span class="o">();</span>  
+  <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<ul>
+  <li>Cohesion refers to the degree in which a class has a single, well-defined purpose.</li>
+  <li>High cohesion is the desirable state of a class whose members support a single, well-focused purpose.</li>
+  <li>Encapsulation and high cohesion makes it easier to reuse classes.</li>
+</ul>
+:ET

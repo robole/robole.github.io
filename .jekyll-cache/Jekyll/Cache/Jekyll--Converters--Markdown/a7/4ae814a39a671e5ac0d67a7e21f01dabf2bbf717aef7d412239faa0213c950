@@ -1,0 +1,180 @@
+I"'@<h1 id="relational-operators-objective-76">Relational Operators (Objective 7.6)</h1>
+<ul>
+  <li>Relational operators always result in a boolean value</li>
+  <li>
+    <p>There are six relational operators: <code class="highlighter-rouge">&gt;</code>, <code class="highlighter-rouge">&gt;=</code>, <code class="highlighter-rouge">&lt;</code>, <code class="highlighter-rouge">&lt;=</code>, <code class="highlighter-rouge">==</code>, and <code class="highlighter-rouge">!=</code>. The last two (<code class="highlighter-rouge">==</code>
+and <code class="highlighter-rouge">!=</code>) are sometimes referred to as equality operators.</p>
+  </li>
+  <li>There are actually 11 or so compound assignment operators, but only the four most commonly used are: <code class="highlighter-rouge">+=</code>, <code class="highlighter-rouge">-=</code>, <code class="highlighter-rouge">*=</code>, and <code class="highlighter-rouge">/=</code> e.g.</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">x</span> <span class="o">-=</span> <span class="n">y</span><span class="o">;</span> <span class="c1">//same as x = x – y;</span>
+</code></pre></div></div>
+<ul>
+  <li>The operator precedence for compound operators is slightly different than you might expect, the right side is always evaluated first.</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">x</span> <span class="o">*=</span> <span class="mi">2</span> <span class="o">+</span> <span class="mi">5</span><span class="o">;</span> <span class="c1">//evaluated as x = x * (2 + 5)</span>
+</code></pre></div></div>
+<ul>
+  <li>
+    <p>Think of it as putting the right-side in parenthesis, then remove the equals sign to get the equation!</p>
+  </li>
+  <li>
+    <p>When comparing characters, Java compares the numerical Unicode values.</p>
+  </li>
+  <li>
+    <p>Four types of things can be tested using the equality operators: numbers, characters, booleans, and reference variables.</p>
+  </li>
+  <li>When comparing reference variables, <code class="highlighter-rouge">==</code> returns true only if both reference variables refer to the same object.</li>
+  <li><code class="highlighter-rouge">==</code> gives a compiler error if the operands are cast-incompatible (BUT all numeric primitives including char can be compared with <code class="highlighter-rouge">==</code>).</li>
+</ul>
+
+<h1 id="instanceof-operator-objective-76">instanceof Operator (Objective 7.6)</h1>
+<ul>
+  <li><code class="highlighter-rouge">instanceof</code> can be used on reference variables only. It checks whether the object is of a particular type.</li>
+  <li>The <code class="highlighter-rouge">instanceof</code> operator can only be used only to test objects (or <code class="highlighter-rouge">null</code>) against class types of which they are in the same class hierarchy.</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">interface</span> <span class="nc">Vessel</span><span class="o">{}</span>
+<span class="kd">interface</span> <span class="nc">Toy</span><span class="o">{}</span> <span class="c1">//not implemented</span>
+<span class="kd">class</span> <span class="nc">Boat</span> <span class="kd">implements</span> <span class="nc">Vessel</span> <span class="o">{</span> <span class="o">}</span>
+<span class="kd">class</span> <span class="nc">Speedboat</span> <span class="kd">extends</span> <span class="nc">Boat</span><span class="o">{</span> <span class="o">}</span>
+<span class="kd">class</span> <span class="nc">Dingy</span> <span class="kd">extends</span> <span class="nc">Speedboat</span><span class="o">{}</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Test</span><span class="o">{</span>
+	  <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+			<span class="nc">Boat</span> <span class="n">b</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Boat</span><span class="o">();</span>
+			<span class="k">if</span><span class="o">(</span><span class="n">b</span> <span class="k">instanceof</span> <span class="nc">Boat</span><span class="o">)</span>
+				<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"b is a Boat"</span><span class="o">);</span> <span class="c1">//true</span>
+			<span class="k">if</span><span class="o">(</span><span class="n">b</span> <span class="k">instanceof</span> <span class="nc">Vessel</span><span class="o">)</span>
+				<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"b is a Vessel"</span><span class="o">);</span> <span class="c1">//true</span>
+			<span class="k">if</span><span class="o">(</span><span class="n">b</span> <span class="k">instanceof</span> <span class="nc">Toy</span><span class="o">)</span>
+				<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"b is a Toy"</span><span class="o">);</span> <span class="c1">//false</span>
+			<span class="k">if</span><span class="o">(</span><span class="n">b</span> <span class="k">instanceof</span> <span class="nc">Dingy</span><span class="o">)</span>
+				<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"b is a Dingy"</span><span class="o">);</span> <span class="c1">//false</span>
+
+			<span class="nc">Dingy</span> <span class="n">d</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Dingy</span><span class="o">();</span>
+			<span class="k">if</span><span class="o">(</span> <span class="n">d</span> <span class="k">instanceof</span> <span class="nc">Boat</span><span class="o">)</span>
+				<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"d is a Boat"</span><span class="o">);</span><span class="c1">//false</span>
+			<span class="k">if</span><span class="o">(</span> <span class="kc">null</span> <span class="k">instanceof</span> <span class="nc">Boat</span><span class="o">)</span>
+				<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"null is a Boat"</span><span class="o">);</span> <span class="c1">//false</span>
+			<span class="k">if</span><span class="o">(</span><span class="n">d</span> <span class="k">instanceof</span> <span class="nc">MyClass</span><span class="o">)</span> <span class="c1">//compiler error</span>
+	   <span class="o">}</span>	   
+<span class="o">}</span>
+</code></pre></div></div>
+
+<ul>
+  <li>If you test an object reference against a class using <code class="highlighter-rouge">instanceof</code> that is NOT in it’s class hierarchy, it will result in a compiler error.</li>
+  <li>
+    <p>If you compare an object reference to an unrelated interface, or an interface reference to a class, there will be NO compiler error.</p>
+  </li>
+  <li>For interfaces, an object passes the instanceof test if any of its superclasses implement the interface on the right side of the instanceof operator.</li>
+</ul>
+
+<h1 id="arithmetic-operators-objective-76">Arithmetic Operators (Objective 7.6)</h1>
+<ul>
+  <li>There are four primary math operators: add <code class="highlighter-rouge">+</code>, subtract <code class="highlighter-rouge">-</code>, multiply <code class="highlighter-rouge">*</code>, and divide <code class="highlighter-rouge">/</code>.</li>
+  <li>
+    <p>The modulus operator(<code class="highlighter-rouge">%</code>) returns the remainder from a division operation.</p>
+  </li>
+  <li>
+    <p>The <code class="highlighter-rouge">*</code>, <code class="highlighter-rouge">/</code>, and <code class="highlighter-rouge">%</code> operators have higher precedence than + and -.</p>
+  </li>
+  <li>Expressions are evaluated from left to right</li>
+  <li>Evaluation of an expression is changed if you add parentheses, or use operators in the expression that have higher precedence than others. e.g.</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="n">a</span> <span class="o">=</span> <span class="mi">4</span> <span class="o">+</span> <span class="mi">5</span> <span class="o">*</span> <span class="mi">6</span><span class="o">;</span> <span class="c1">//a = 34</span>
+<span class="kt">int</span> <span class="n">a</span> <span class="o">=</span> <span class="o">(</span><span class="mi">4</span> <span class="o">+</span> <span class="mi">5</span><span class="o">)</span> <span class="o">*</span> <span class="mi">6</span> <span class="o">;</span> <span class="c1">//a = 54</span>
+</code></pre></div></div>
+
+<h1 id="string-concatenation-operator-objective-76">String Concatenation Operator (Objective 7.6)</h1>
+
+<ul>
+  <li>If either operand is a <code class="highlighter-rouge">String</code>, <code class="highlighter-rouge">+</code> concatenates the operands.</li>
+  <li>If both operands are numeric, <code class="highlighter-rouge">+</code> adds the operands.</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">42</span><span class="o">;</span>
+<span class="kt">int</span> <span class="n">y</span> <span class="o">=</span> <span class="mi">44</span><span class="o">;</span>
+<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">x</span> <span class="o">+</span> <span class="n">y</span> <span class="o">+</span> <span class="err">“</span><span class="n">text</span><span class="err">”</span><span class="o">);</span> <span class="c1">//prints: 86text</span>
+</code></pre></div></div>
+
+<h1 id="incrementdecrement-operators-objective-76">Increment/Decrement Operators (Objective 7.6)</h1>
+
+<ul>
+  <li>Prefix operators (<code class="highlighter-rouge">++</code> and <code class="highlighter-rouge">--</code>) run before the value is used in the expression.</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">static</span> <span class="kt">int</span> <span class="n">players</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"value of players: "</span> <span class="o">+</span> <span class="o">++</span><span class="n">players</span><span class="o">);</span>
+
+<span class="c1">//Prints: value of players: 1</span>
+</code></pre></div></div>
+
+<ul>
+  <li>Postfix operators (<code class="highlighter-rouge">++</code> and <code class="highlighter-rouge">--</code>) run after the value is used in the expression.</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">static</span> <span class="kt">int</span> <span class="n">players</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"value of players: "</span> <span class="o">+</span> <span class="n">players</span><span class="o">++);</span>
+
+<span class="c1">//Prints: value of players: 0</span>
+</code></pre></div></div>
+
+<h1 id="ternary-conditional-operator-objective-76">Ternary (Conditional Operator) (Objective 7.6)</h1>
+<ul>
+  <li><em>Condition ? Expression if true: Expression if false;</em></li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="n">numOfPets</span> <span class="o">=</span> <span class="mi">3</span><span class="o">;</span>
+<span class="nc">String</span> <span class="n">status</span> <span class="o">=</span> <span class="o">(</span><span class="n">numOfPets</span> <span class="o">&lt;</span> <span class="mi">4</span><span class="o">)</span> <span class="o">?</span> <span class="s">"Pet limit not exceeded"</span><span class="o">:</span> <span class="s">"too many pets"</span><span class="o">;</span>
+<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">status</span><span class="o">);</span> <span class="c1">//Prints: Pet limit not exceeded</span>
+</code></pre></div></div>
+
+<h1 id="bitwise-operators">Bitwise Operators</h1>
+<p>You should merely be aware that the following are bitwise operators:
+<code class="highlighter-rouge">&amp;</code>, <code class="highlighter-rouge">|</code>, <code class="highlighter-rouge">^</code>,<code class="highlighter-rouge">~</code>, <code class="highlighter-rouge">&lt;&lt;</code>, <code class="highlighter-rouge">&gt;&gt;</code>, <code class="highlighter-rouge">&gt;&gt;&gt;</code> .</p>
+
+<h1 id="logical-operators-objective-76">Logical Operators (Objective 7.6)</h1>
+<ul>
+  <li>
+    <p>The exam covers six “logical” operators:
+<code class="highlighter-rouge">&amp;</code>, <code class="highlighter-rouge">|</code>, <code class="highlighter-rouge">^</code>, <code class="highlighter-rouge">!</code>, <code class="highlighter-rouge">&amp;&amp;</code>, and <code class="highlighter-rouge">||</code>.</p>
+  </li>
+  <li>
+    <p>Logical operators work with two expressions (except for <code class="highlighter-rouge">!</code>) that must resolve to boolean values.</p>
+  </li>
+  <li>The <code class="highlighter-rouge">&amp;&amp;</code> and <code class="highlighter-rouge">&amp;</code> operators return true only if both operands are true.</li>
+  <li>
+    <p>The
+<code class="highlighter-rouge">||</code> and <code class="highlighter-rouge">|</code> operators return true if either or both operands are true.</p>
+  </li>
+  <li>The <code class="highlighter-rouge">&amp;&amp;</code> and
+<code class="highlighter-rouge">||</code> operators are known as short-circuit operators, they do not waste their time evaluating both expressions if it knows the result of the complete expression from the evaluation of the first expression:
+    <ul>
+      <li>If the left operand is false, the <code class="highlighter-rouge">&amp;&amp;</code> operator does NOT evaluate the right operand.</li>
+      <li>If the left operand is true, the
+<code class="highlighter-rouge">||</code> does NOT evaluate the right operand.</li>
+    </ul>
+  </li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="n">z</span> <span class="o">=</span> <span class="mi">5</span><span class="o">;</span>
+<span class="k">if</span><span class="o">(++</span><span class="n">z</span> <span class="o">&gt;</span> <span class="mi">5</span> <span class="o">||</span> <span class="o">++</span><span class="n">z</span> <span class="o">&gt;</span> <span class="mi">6</span><span class="o">){</span>
+	<span class="n">z</span><span class="o">++;</span>
+<span class="o">}</span>  
+<span class="c1">// z = 7 now</span>
+</code></pre></div></div>
+
+<ul>
+  <li>
+    <p><code class="highlighter-rouge">^</code> (called the “logical XOR” operator) returns true if exactly one operand
+is true.</p>
+  </li>
+  <li>
+    <p><code class="highlighter-rouge">!</code> (called the “inversion” operator) returns the opposite value of the boolean operand it precedes.</p>
+  </li>
+</ul>
+:ET

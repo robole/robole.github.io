@@ -1,0 +1,305 @@
+I"�O<p>The Java Persistence API (JPA) is the java community specification for persisting data between objects and a database. It has collected the best ideas from existing persistence technologies like Hibernate, TopLink, and JDO. The result is a standardized specification that helps you build a persistence layer that is independent of any particular persistence provider.</p>
+
+<h1 id="version-history-">Version History 📖🔗</h1>
+<ul>
+  <li>JPA 1.0 was released on May 11, 2006 using JSR 220.</li>
+  <li>JPA 2.0 was released with the specifications of JAVA EE6 on December 10, 2009 using JSR 317.</li>
+  <li>JPA 2.1 was released with the specification of JAVA EE7 on April 22, 2013 using JSR 338.</li>
+  <li>JPA 2.2 is a maintenance release that was approved on 19 June 2017.</li>
+</ul>
+
+<h1 id="providers-">Providers 🎁</h1>
+<p>A lot of the persistence vendors support JPA:</p>
+<ul>
+  <li><a href="http://hibernate.org/orm/">Hibernate (latest v5.2 supporting JPA 2.1)</a></li>
+  <li><a href="http://www.eclipse.org/eclipselink/">EclipseLink (latest v2.4 supports some of JPA 2.1)</a></li>
+  <li><a href="https://openjpa.apache.org/">Apache OpenJPA (v2.4.1 supporting JPA 2.0, v3.x under development to support JPA 2.1)</a></li>
+</ul>
+
+<h1 id="features-">Features 📋</h1>
+<ul>
+  <li>Object-relational mappings can be done through annotations, or in XML.</li>
+  <li>JPA defines a runtime EntityManager API for processing queries and transaction on objects.</li>
+  <li>JPA defines an object query language called JPQL.</li>
+  <li>Criteria API can be used for dynamic query creation, and allows type checking on criteria. The Criteria API is a complement, and alternative to JPQL queries.</li>
+  <li>Validation support. Entities can be annotated to enforce data constraints.</li>
+  <li>Applications can be run inside a container, or standalone. So, developers can use JPA for web applications and desktop applications.</li>
+  <li>JPA supports inheritance, polymorphism, and polymorphic queries.</li>
+</ul>
+
+<p>The JPA 2.1 specification added new features that are not available in the JPA 2.0 specification. These features include:</p>
+<ul>
+  <li>Schema generation.</li>
+  <li>Mapping of native queries.</li>
+  <li>Type conversion methods.</li>
+  <li>Entity graphs in queries and find operations.</li>
+  <li>Unsynchronized persistence contexts.</li>
+  <li>Stored procedure invocation.</li>
+  <li>Injection into Entity listener classes.</li>
+  <li>Some JPQL enhancements.</li>
+  <li>Some Criteria API enhancements.</li>
+</ul>
+
+<h1 id="how-to-use-">How to use? 🔬</h1>
+
+<h2 id="1-create-an-entity-class">1. Create an entity class</h2>
+<p>We annotate a class with <code class="highlighter-rouge">@Entity</code> to make it persistent.</p>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@Entity</span>
+<span class="nd">@Table</span><span class="o">(</span><span class="n">name</span> <span class="o">=</span> <span class="s">"student"</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Student</span><span class="o">{</span>
+
+  <span class="nd">@Id</span>
+  <span class="nd">@GeneratedValue</span><span class="o">(</span><span class="n">strategy</span> <span class="o">=</span> <span class="nc">GenerationType</span><span class="o">.</span><span class="na">IDENTITY</span><span class="o">)</span>
+  <span class="kd">private</span> <span class="kt">int</span> <span class="n">studentID</span><span class="o">;</span>
+
+<span class="o">}</span>
+</code></pre></div></div>
+<p>The mappings are done through JPA annotations here, but can be done through a configuration file called <em>orm.xml</em> also.</p>
+
+<p>There are a few points to keep in mind when creating an entity class:</p>
+<ul>
+  <li>The entity class should have a default no-argument constructor.</li>
+  <li>All fields are automatically persisted, there is no need to use <code class="highlighter-rouge">@column</code> annotation. However, if the column name is different than the variable name, you must include it.</li>
+  <li>Using a SQL keyword like <em>order</em> for a class name will cause problems. Either name the class something else (CustomerOrder), or specify the table name as something else (as below).</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@Entity</span><span class="o">(</span><span class="n">name</span><span class="o">=</span><span class="s">"orders"</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Order</span><span class="o">{}</span>
+</code></pre></div></div>
+
+<ul>
+  <li>The entity class should not be final.</li>
+  <li>If a persistent class inherits from a non-persistent class, the fields of the non-persistent superclass cannot be persisted.</li>
+</ul>
+
+<h2 id="2-a-persistencexml-file">2. A persistence.xml file</h2>
+
+<p>A configuration file named <em>persistence.xml</em> is required, and should be placed in the META-INF folder. It is used to specify a persistence unit, which is a logical group of persistent classes and database settings.</p>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;persistence</span> <span class="na">version=</span><span class="s">"2.1"</span> <span class="na">xmlns=</span><span class="s">"http://xmlns.jcp.org/xml/ns/persistence"</span> <span class="na">xmlns:xsi=</span><span class="s">"http://www.w3.org/2001/XMLSchema-instance"</span> <span class="na">xsi:schemaLocation=</span><span class="s">"http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_1.xsd"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;persistence-unit</span> <span class="na">name=</span><span class="s">"school"</span>  <span class="na">transaction-type=</span><span class="s">"RESOURCE_LOCAL"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;class&gt;</span>org.redi.backend.Student<span class="nt">&lt;/class&gt;</span>
+    <span class="nt">&lt;class&gt;</span>org.redi.backend.Course<span class="nt">&lt;/class&gt;</span>
+    <span class="nt">&lt;class&gt;</span>org.redi.backend.Teacher<span class="nt">&lt;/class&gt;</span>
+    <span class="nt">&lt;properties&gt;</span>
+      <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"hibernate.connection.driver_class"</span> <span class="na">value=</span><span class="s">"org.sqlite.JDBC"</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"hibernate.connection.url"</span> <span class="na">value=</span><span class="s">"jdbc:sqlite:redi.sqlite"</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"hibernate.connection.pool_size"</span> <span class="na">value=</span><span class="s">"0"</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"hibernate.dialect"</span> <span class="na">value=</span><span class="s">"com.enigmabridge.hibernate.dialect.SQLiteDialect"</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"hibernate.connection.username"</span> <span class="na">value=</span><span class="s">""</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"hibernate.connection.password"</span> <span class="na">value=</span><span class="s">""</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"hibernate.show_sql"</span> <span class="na">value=</span><span class="s">"true"</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"hibernate.format_sql"</span> <span class="na">value=</span><span class="s">"true"</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;/properties&gt;</span>
+<span class="nt">&lt;/persistence-unit&gt;</span>
+<span class="nt">&lt;/persistence&gt;</span>
+</code></pre></div></div>
+<p>Some important things to note about <em>persistence.xml</em>:</p>
+<ul>
+  <li>it can have multiple persistence units. Each unit can be used for a different JPA vendor; or can be used to persist to different databases.</li>
+  <li>The vendor-specific persistence provider name can be specified in the <provider> tag.</provider></li>
+  <li>The entity class names are specified in the <class> tag.</class></li>
+  <li>The database connection properties are specified within the <properties> tag.</properties></li>
+</ul>
+
+<h2 id="3-write-a-class-that-uses-an-entitymanager">3. Write a class that uses an EntityManager</h2>
+<p>The JPA specification classifies two types of entity managers:</p>
+<ul>
+  <li>container-managed: typically a Java Enterprise Edition (JEE) container such as an application server or a web container.</li>
+  <li>standalone: standalone program.</li>
+</ul>
+
+<p>In a standalone environment, you can create the <em>EntityManager</em> as shown below, you pass the persistence unit name to <code class="highlighter-rouge">createEntityManagerFactory()</code>.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">private</span> <span class="nc">EntityManagerFactory</span> <span class="n">factory</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+<span class="kd">private</span> <span class="nc">EntityManager</span> <span class="n">entityManager</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+
+<span class="kd">private</span> <span class="kt">void</span> <span class="nf">init</span><span class="o">()</span> <span class="o">{</span>
+  <span class="n">factory</span> <span class="o">=</span> <span class="nc">Persistence</span><span class="o">.</span><span class="na">createEntityManagerFactory</span><span class="o">(</span><span class="s">"school"</span><span class="o">);</span>
+  <span class="n">entityManager</span> <span class="o">=</span> <span class="n">factory</span><span class="o">.</span><span class="na">createEntityManager</span><span class="o">();</span>
+<span class="o">}</span>
+</code></pre></div></div>
+<p>In a container-managed environment, the container does the set-up work for you. The class with a reference to an <em>EntityManager</em> (typically DAO objects) will be injected with an existing <em>EntityManager</em>.</p>
+
+<h1 id="core-annotations">Core Annotations</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Annotation</th>
+      <th>Target</th>
+      <th>Purpose</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Column</td>
+      <td>F, M</td>
+      <td>Can provide the table column name if you want it to be different from the variable name. By default, the two names are assumed to be the same.</td>
+    </tr>
+    <tr>
+      <td>id</td>
+      <td>F, M</td>
+      <td>Specify the primary key.</td>
+    </tr>
+    <tr>
+      <td>Entity</td>
+      <td>T</td>
+      <td>Declare the class as entity to be persisted.</td>
+    </tr>
+    <tr>
+      <td>Table</td>
+      <td>T</td>
+      <td>Specify the table for the entity. The default table name is the name of the class with the first letter in small letter. You can set a name by: @Table(name=”EMPLOYEE”)</td>
+    </tr>
+    <tr>
+      <td>UniqueConstraint</td>
+      <td>Pm</td>
+      <td>Enforce an unique constraint for the table in the schema.</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="table-key">Key to Target Column: Pk = Package, T = Type, M = Method, F= Field, Pm = parameter</div>
+
+<h1 id="primary-keys">Primary keys</h1>
+
+<p>You use the @id annotation for a single column primary key.</p>
+
+<h2 id="id-generation">Id Generation</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Target</th>
+      <th>Purpose</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>GeneratedValue</td>
+      <td>F, M</td>
+      <td>Specify a strategy to assign a unique value to your identity fields automatically. The types of strategies available are IDENTITY, SEQUENCE, TABLE, and AUTO. The default strategy is auto.</td>
+    </tr>
+    <tr>
+      <td>SequenceGenerator</td>
+      <td>Pk, T, M, and F</td>
+      <td>Allows a named primary key generator to be defined for use by one or more entities.</td>
+    </tr>
+    <tr>
+      <td>TableGenerator</td>
+      <td>Pk, T, M, and F</td>
+      <td>Defines a primary key generator that may be referenced by name when generator element is specified for the GeneratedValue.</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="table-key">Key to Target Column: Pk = Package, T = Type, M = Method, F= Field, Pm = parameter</div>
+<p><br /></p>
+
+<p>By default, the @Id annotation will automatically determine the most appropriate primary key generation strategy to use—you can override this by also applying the @GeneratedValue annotation. This takes a pair of attributes: strategy and generator.The strategy attribute must be a value from the javax.persistence.GeneratorType enumeration:</p>
+<ul>
+  <li>AUTO: JPA decides which generator type to use, based on the database’s support for primary key generation.</li>
+  <li>IDENTITY: The database is responsible for determining and assigning the next primary key.</li>
+  <li>SEQUENCE: Some databases support a SEQUENCE column type.</li>
+  <li>TABLE: This type keeps a separate table with the primary key values.</li>
+</ul>
+
+<h3 id="generating-primary-key-values-with-sequencegenerator">Generating Primary Key Values with @SequenceGenerator</h3>
+
+<p>A sequence is a vendor-specific database object that generates an id that is independent of any particular table, and can therefore be used by multiple tables. Only the name attribute is mandatory, the other attributes will take sensible default values.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@Id</span>
+<span class="nd">@SequenceGenerator</span><span class="o">(</span><span class="n">name</span><span class="o">=</span><span class="s">"seq1"</span><span class="o">,</span><span class="n">sequenceName</span><span class="o">=</span><span class="s">"SEQ"</span><span class="o">)</span>
+<span class="nd">@GeneratedValue</span><span class="o">(</span><span class="n">strategy</span><span class="o">=</span><span class="no">SEQUENCE</span><span class="o">,</span><span class="n">generator</span><span class="o">=</span><span class="s">"seq1"</span><span class="o">)</span>
+<span class="kd">private</span> <span class="kt">long</span> <span class="n">id</span><span class="o">;</span>
+</code></pre></div></div>
+<h3 id="generating-primary-key-values-with-tablegenerator">Generating Primary Key Values with @TableGenerator</h3>
+
+<p>The @TableGenerator annotation is similar to the @SequenceGenerator annotation, but because it uses a standard database table to obtain its primary key values, it is guaranteed to be portable between database platforms.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@Id</span>
+<span class="nd">@TableGenerator</span><span class="o">(</span><span class="n">name</span><span class="o">=</span><span class="s">"tablegen"</span><span class="o">,</span>
+<span class="n">table</span><span class="o">=</span><span class="s">"ID_TABLE"</span><span class="o">,</span>
+<span class="n">pkColumnName</span><span class="o">=</span><span class="s">"ID"</span><span class="o">,</span>
+<span class="n">valueColumnName</span><span class="o">=</span><span class="s">"NEXT_ID"</span><span class="o">)</span>
+<span class="nd">@GeneratedValue</span><span class="o">(</span><span class="n">strategy</span><span class="o">=</span><span class="no">TABLE</span><span class="o">,</span><span class="n">generator</span><span class="o">=</span><span class="s">"tablegen"</span><span class="o">)</span>
+<span class="kd">private</span> <span class="kt">long</span> <span class="n">id</span><span class="o">;</span>
+</code></pre></div></div>
+
+<h2 id="compound-primary-keys">Compound Primary Keys</h2>
+
+<p>However, when the primary key consists of multiple columns, you must create a class to represent the primary key.</p>
+
+<p>The class must:</p>
+<ul>
+  <li>be public,</li>
+  <li>have a default constructor,</li>
+  <li>be serializable,</li>
+  <li>implement hashCode() and equals() methods to test for collisions</li>
+</ul>
+
+<p>The strategies for using this primary key class once it has been created are as follows:</p>
+<ol>
+  <li>Mark it as @Embeddable and add to your entity class a normal property for it, marked with @Id.</li>
+  <li>Add to your entity class a normal property for it, marked with @EmbeddableId.</li>
+  <li>Add properties to your entity class for all of its fields, mark them with @Id, and mark your entity class with @IdClass, supplying the class of your primary key class.</li>
+</ol>
+
+<h1 id="access-mode">Access Mode</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Annotation</th>
+      <th>Target</th>
+      <th>Purpose</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Access</td>
+      <td>T, F, M</td>
+      <td>Set if the field or property (getter/setter) is used to access values.</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="table-key">Key to Target Column: Pk = Package, T = Type, M = Method, F= Field, Pm = parameter</div>
+<p><br /></p>
+
+<ul>
+  <li>There is no big difference in which you use.</li>
+  <li>If you annotate variables and a getter method, it changes the access type of the entity to property access, and can cause mapping issues. In that case, you need to be explicit with the access for everything. Below, we say that the access type is on fields for everything, except <code class="highlighter-rouge">getId()</code>.</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@Entity</span>
+<span class="nd">@Access</span><span class="o">(</span><span class="nc">AccessType</span><span class="o">.</span><span class="na">FIELD</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Student</span><span class="o">{</span>
+    <span class="kd">private</span> <span class="kt">long</span> <span class="n">id</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="nc">String</span> <span class="n">name</span><span class="o">;</span>
+
+    <span class="nd">@id</span>
+    <span class="nd">@Access</span><span class="o">(</span><span class="nc">AccessType</span><span class="o">.</span><span class="na">PROPERTY</span><span class="o">)</span>
+    <span class="kd">public</span> <span class="nc">Long</span> <span class="nf">getId</span><span class="o">(){</span>
+      <span class="k">return</span> <span class="n">id</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h3 id="java-persistence-api-jpa-part-2-building-relationships"><a href="/programming/2018/03/08/jpa2.html">Java Persistence API (JPA) Part 2: Building Relationships »</a></h3>
+
+<p><br /></p>
+
+<h2 id="additional-reading">Additional Reading</h2>
+
+<ul>
+  <li><a href="https://www.javaworld.com/article/2077817/java-se/understanding-jpa-part-1-the-object-oriented-paradigm-of-data-persistence.html">Understanding JPA, Part 1: The object-oriented paradigm of data persistence</a></li>
+  <li><a href="https://www.javaworld.com/article/2077819/java-se/understanding-jpa-part-2-relationships-the-jpa-way.html">Understanding JPA, Part 2: Relationships the JPA way</a></li>
+  <li><a href="https://docs.spring.io/spring-data/jpa/docs/current/reference/html/">Spring Data Reference</a></li>
+  <li><a href="https://www.amazon.com/Just-Spring-Data-Access-Hibernate/dp/1449328385/ref=sr_1_1?ie=UTF8&amp;qid=1517621189&amp;sr=8-1&amp;keywords=1449328385">Just Spring Data Access 1st Edition by by Madhusudhan Konda (book)</a></li>
+  <li><a href="https://www.youtube.com/watch?v=EZwpOLCfuq4">JPA Beyond Copy and Paste by Jakub Kubrynski (video)</a></li>
+  <li><a href="https://javabeat.net/eclipselink-jpa-annotations/">EclipseLink – JPA Annotations</a></li>
+</ul>
+:ET

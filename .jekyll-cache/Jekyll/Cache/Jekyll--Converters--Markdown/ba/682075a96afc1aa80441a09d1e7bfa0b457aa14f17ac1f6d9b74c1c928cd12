@@ -1,0 +1,216 @@
+I"QL<p>Spring MVC provides good support for testing your RESTful web services. The <code class="highlighter-rouge">spring-boot-starter-test</code> dependency is convenient to use, it combines a compatible collection of testing libraries that offer the power to write short tests without needing to know a lot about each library.</p>
+
+<h2 id="maven-dependency">Maven dependency</h2>
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;dependency&gt;</span>
+  <span class="nt">&lt;groupId&gt;</span>org.springframework.boot<span class="nt">&lt;/groupId&gt;</span>
+  <span class="nt">&lt;artifactId&gt;</span>spring-boot-starter-test<span class="nt">&lt;/artifactId&gt;</span>
+  <span class="nt">&lt;scope&gt;</span>test<span class="nt">&lt;/scope&gt;</span>
+<span class="nt">&lt;/dependency&gt;</span>
+</code></pre></div></div>
+
+<p>I should mention that people have variations on how they use these libraries, and have some different preferences on how they like to test. So, you may see some different approaches, and contradictory opinions! The goal is to find a way that you understand, and are comfortable with. So, I hope this is it!</p>
+
+<h1 id="what-am-i-testing">What am I testing?</h1>
+
+<p>We can define 2 broad levels of testing for our application:</p>
+<ol>
+  <li>Unit tests: we want to test each class/unit in isolation by excluding the surrounding infrastructure, and mocking dependencies. True unit tests typically run extremely quickly.</li>
+  <li>Integration testing: we test everything working together, no mocking. You may also see this referred to as end-to-end testing, but some testing strategies consider end-to-end testing as a more complete testing stage.</li>
+</ol>
+
+<p>I summarised how I define them in more detail below:</p>
+
+<table width="100%" border="0">
+<tbody><tr>
+<th>Unit test</th>
+<th>Integration test</th>
+</tr>
+<tr>
+<td>A single class/unit is tested in isolation</td>
+<td>We test everything together.</td>
+</tr>
+<tr>
+<td>Easy to write and verify.</td>
+<td>Setup of integration test might be complicated.</td>
+</tr>
+<tr>
+<td>All dependencies are mocked if needed.</td>
+<td>No mocking is used (or only unrelated components are mocked).</td>
+</tr>
+<tr>
+<td>Uses JUnit, a mocking framework, and maybe additional libraries for testing assertions.</td>
+<td>Can use same libraries as unit testing, but also may use a dedicated integration testing framework such as <a href="http://arquillian.org">Arquillian</a> or <a href="http://www.dbunit.org">DbUnit</a>.</td>
+</tr>
+<tr>
+<td>Mostly used by developers.</td>
+<td>Useful to QA, DevOps, and Help Desk employees.</td>
+</tr>
+<tr>
+<td>A failed unit test is always a regression (undesirable change in our code) if the business has not changed.</td>
+<td>A failed integration test can mean that the code is still correct, but the environment has changed.</td>
+</tr>
+<tr>
+<td>Unit tests in an enterprise application should last about 5 minutes</td>
+<td>Integration tests in an enterprise application can last for hours.</td>
+</tr>
+</tbody></table>
+
+<h1 id="example-application">Example Application</h1>
+
+<p>We will re-use our User example from <a href="/programming/2018/07/17/restful-service.html">this previous post</a>. It has a <em>model</em> and a <em>controller</em> only, and has some default data inside the controller, which is there just for the purpose of demonstration, and wouldn’t be in a complete application.</p>
+
+<h1 id="how-do-i-test">How do I test?</h1>
+
+<p>Every test case should have following three steps:</p>
+<ul>
+  <li>Preparation: We set all data required to execute a method under test. You can include preparation that is common to every test method in a “setUp” method annotated with <code class="highlighter-rouge">@Before</code> (JUnit4) or <code class="highlighter-rouge">@BeforeClass</code> (JUnit5). Our test data is already inside the controller, so we skip this!</li>
+  <li>Execution: Execute the actual method under test. In our example, we will create a request which will cause a method in our controller class to be executed.</li>
+  <li>Verification: We check the expected behaviour of the method under test. For example, check if the response returned from the controller has the correct status code.</li>
+</ul>
+
+<p>Often overlooked points for test cases are:</p>
+<ul>
+  <li>Independence: We want a test case to be self-contained. If data is modified in one test, it should not impact another test case. So, all test cases should begin in a known state. This means that it is probably necessary to write test initialization code that ensures that the external resource is in a known state.</li>
+  <li>Configuration should be minimal: We should not go too far with custom properties to replicate the exact conditions. If you want to do this, then this falls under end-to-end testing where the production environment is essentially replicated.</li>
+</ul>
+
+<h1 id="unit-testing">Unit testing</h1>
+
+<p>You can organize your test code in different ways.</p>
+
+<p>Typically, in a maven project, your tests are put into <em>src/test/java</em>. Each test is named to follow a convention such as: <em>class name</em> + <em>Test</em> e.g. <em>UserControllerTest</em>.</p>
+
+<h2 id="test-class-configuration">Test class configuration</h2>
+
+<p>We need to do 2 things to set-up our test class:</p>
+<ul>
+  <li>add <code class="highlighter-rouge">@RunWith(SpringRunner.class)</code> to the test class: so it is identified as class to test by the test runner.</li>
+  <li>Create a <a href="https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/test/web/servlet/setup/StandaloneMockMvcBuilder.html">StandaloneMockMVCBuilder</a>: This builder creates the minimum infrastructure required to serve requests with the controllers we provide to. Before each test, this is run and creates a new <code class="highlighter-rouge">UserController</code>, this ensures we have a consistent state each time.</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@RunWith</span><span class="o">(</span><span class="nc">SpringRunner</span><span class="o">.</span><span class="na">class</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">UserControllerTest</span> <span class="o">{</span>
+    <span class="kd">private</span> <span class="nc">MockMvc</span> <span class="n">mockMvc</span><span class="o">;</span>
+
+    <span class="nd">@Before</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setUp</span><span class="o">()</span> <span class="o">{</span>
+        <span class="c1">//create new controller for each test</span>
+        <span class="n">mockMvc</span> <span class="o">=</span> <span class="nc">MockMvcBuilders</span>
+                <span class="o">.</span><span class="na">standaloneSetup</span><span class="o">(</span><span class="k">new</span> <span class="nc">UserController</span><span class="o">())</span>
+                <span class="o">.</span><span class="na">build</span><span class="o">();</span>
+    <span class="o">}</span>
+
+    <span class="c1">//test methods</span>
+</code></pre></div></div>
+<p>Other examples that you may have seen use a <code class="highlighter-rouge">WebApplicationContext</code> or other annotations that may load a complete application context, which uses more resources and gets further away from being a unit test.</p>
+
+<p>You can see that it runs quickly. However, for some reason, it is a bit slow to return when something is not found!</p>
+
+<p><img src="/assets/img/blog/2018-08-01-test-restful-service/unit-test.png" alt="unit test" /></p>
+
+<h2 id="test-methods">Test methods</h2>
+
+<p>The slightly longer version is this, but may be clearer to understand the steps:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@Test</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">getAllUsers</span><span class="o">()</span> <span class="kd">throws</span> <span class="nc">Exception</span> <span class="o">{</span>
+  <span class="c1">//data already set up</span>
+
+  <span class="c1">// execute</span>
+  <span class="nc">MvcResult</span> <span class="n">result</span> <span class="o">=</span> <span class="n">mockMvc</span>
+          <span class="o">.</span><span class="na">perform</span><span class="o">(</span><span class="nc">MockMvcRequestBuilders</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="s">"/users"</span><span class="o">)</span>
+                  <span class="o">.</span><span class="na">accept</span><span class="o">(</span><span class="nc">MediaType</span><span class="o">.</span><span class="na">APPLICATION_JSON_UTF8</span><span class="o">))</span>
+          <span class="o">.</span><span class="na">andReturn</span><span class="o">();</span>
+
+  <span class="c1">// verify</span>
+  <span class="kt">int</span> <span class="n">status</span> <span class="o">=</span> <span class="n">result</span><span class="o">.</span><span class="na">getResponse</span><span class="o">().</span><span class="na">getStatus</span><span class="o">();</span>
+  <span class="n">assertEquals</span><span class="o">(</span><span class="s">"Incorrect Response Status"</span><span class="o">,</span> <span class="nc">HttpStatus</span><span class="o">.</span><span class="na">OK</span><span class="o">.</span><span class="na">value</span><span class="o">(),</span> <span class="n">status</span><span class="o">);</span>
+  <span class="c1">//more statements here to test JSON in response body</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>But you’re more likely to see this shortened syntax with methods chained together.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@Test</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">getAllUsers</span><span class="o">()</span> <span class="kd">throws</span> <span class="nc">Exception</span> <span class="o">{</span>
+    <span class="n">mockMvc</span><span class="o">.</span><span class="na">perform</span><span class="o">(</span><span class="n">get</span><span class="o">(</span><span class="s">"/users"</span><span class="o">))</span>
+            <span class="o">.</span><span class="na">andExpect</span><span class="o">(</span><span class="n">status</span><span class="o">().</span><span class="na">isOk</span><span class="o">())</span>
+            <span class="o">.</span><span class="na">andExpect</span><span class="o">(</span><span class="n">content</span><span class="o">().</span><span class="na">contentType</span><span class="o">(</span><span class="s">"application/json;charset=UTF-8"</span><span class="o">))</span>
+            <span class="o">.</span><span class="na">andExpect</span><span class="o">(</span><span class="n">jsonPath</span><span class="o">(</span><span class="s">"$"</span><span class="o">,</span> <span class="n">hasSize</span><span class="o">(</span><span class="mi">3</span><span class="o">)))</span>
+            <span class="o">.</span><span class="na">andExpect</span><span class="o">(</span><span class="n">jsonPath</span><span class="o">(</span><span class="s">"$[0].id"</span><span class="o">).</span><span class="na">exists</span><span class="o">())</span>
+            <span class="o">.</span><span class="na">andExpect</span><span class="o">(</span><span class="n">jsonPath</span><span class="o">(</span><span class="s">"$[0].name"</span><span class="o">).</span><span class="na">exists</span><span class="o">())</span>
+            <span class="o">.</span><span class="na">andExpect</span><span class="o">(</span><span class="n">jsonPath</span><span class="o">(</span><span class="s">"$[0].age"</span><span class="o">).</span><span class="na">exists</span><span class="o">());</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>Static imports are used to allow us to call methods without an object. For example, <code class="highlighter-rouge">static import org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;</code> enables us to create a mock GET request through <code class="highlighter-rouge">get()</code>.</p>
+
+<p>Some of the assertions use <code class="highlighter-rouge">jsonPath()</code> to validate the structure and contents of the JSON in the response body. <em>$</em> is the root of the JSON and you can select fields with the dot notation.</p>
+
+<p>The other test methods are similar to this and can be found in the source code.</p>
+
+<h1 id="integration-testing">Integration Testing</h1>
+
+<p>Each test can be named to follow a convention such as: <em>class name</em> + <em>IT</em> e.g. <em>UserControllerIT</em>. You can put them in the same folder as unit test if you want, or keep them separate.</p>
+
+<p>Most integration tests are written for the top layer, in our case our controller.</p>
+
+<p>Some tutorials such as <a href="http://www.baeldung.com/integration-testing-in-spring">this one</a> on Baeldung.com use a <code class="highlighter-rouge">WebApplicationContext</code> and <code class="highlighter-rouge">MockMVC</code>, and exclude the web server. I will include an embedded web server, because my interpretation of integration testing is that you are testing how everything works together in a simple version of the <em>real environment</em>. It’s a small difference in the code, so you can decide for yourself!</p>
+
+<h2 id="test-class-configuration-1">Test class configuration</h2>
+
+<p>To perform integration tests for this application, we will create the following environment:</p>
+<ul>
+  <li>Deploy the application on Embedded Tomcat Server on a random port</li>
+  <li>Use <a href="https://docs.spring.io/spring-boot/docs/1.4.1.RELEASE/api/org/springframework/boot/test/web/client/TestRestTemplate.html">TestRestTemplate</a> from Spring Boot to call the Restful Web Services.</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@RunWith</span><span class="o">(</span><span class="nc">SpringRunner</span><span class="o">.</span><span class="na">class</span><span class="o">)</span>
+<span class="nd">@SpringBootTest</span><span class="o">(</span><span class="n">webEnvironment</span> <span class="o">=</span> <span class="nc">WebEnvironment</span><span class="o">.</span><span class="na">RANDOM_PORT</span><span class="o">)</span> <span class="c1">//start web sever on random port</span>
+<span class="nd">@TestPropertySource</span><span class="o">(</span><span class="n">locations</span> <span class="o">=</span> <span class="s">"classpath:test.properties"</span><span class="o">)</span> <span class="c1">//if you want to include properties for database,logging..etc</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">UserControllerIT</span> <span class="o">{</span>
+
+    <span class="nd">@Autowired</span>
+    <span class="kd">private</span> <span class="nc">TestRestTemplate</span> <span class="n">restTemplate</span><span class="o">;</span>
+
+    <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="nc">String</span> <span class="no">URL</span> <span class="o">=</span> <span class="s">"/users/"</span><span class="o">;</span>
+
+    <span class="c1">//test methods</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p><code class="highlighter-rouge">@TestPropertySource(locations = "classpath:test.properties")</code> is optional. It loads the application properties for testing from the specified location. Here you can set logging, database settings, and so on.</p>
+
+<h2 id="test-methods-1">Test methods</h2>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@Test</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">getUserById</span><span class="o">()</span> <span class="kd">throws</span> <span class="nc">Exception</span> <span class="o">{</span>
+    <span class="c1">// execute</span>
+    <span class="nc">ResponseEntity</span><span class="o">&lt;</span><span class="nc">User</span><span class="o">&gt;</span> <span class="n">responseEntity</span> <span class="o">=</span> <span class="n">restTemplate</span><span class="o">.</span><span class="na">getForEntity</span><span class="o">(</span><span class="s">"users/{id}"</span><span class="o">,</span> <span class="nc">User</span><span class="o">.</span><span class="na">class</span><span class="o">,</span> <span class="mi">1</span><span class="o">);</span>
+
+    <span class="c1">// collect response</span>
+    <span class="kt">int</span> <span class="n">status</span> <span class="o">=</span> <span class="n">responseEntity</span><span class="o">.</span><span class="na">getStatusCodeValue</span><span class="o">();</span>
+    <span class="nc">User</span> <span class="n">resultUser</span><span class="o">=</span> <span class="n">responseEntity</span><span class="o">.</span><span class="na">getBody</span><span class="o">();</span>
+
+    <span class="c1">// verify</span>
+    <span class="n">assertEquals</span><span class="o">(</span><span class="s">"Incorrect Response Status"</span><span class="o">,</span> <span class="nc">HttpStatus</span><span class="o">.</span><span class="na">OK</span><span class="o">.</span><span class="na">value</span><span class="o">(),</span> <span class="n">status</span><span class="o">);</span>
+
+    <span class="n">assertNotNull</span><span class="o">(</span><span class="n">resultUser</span><span class="o">);</span>
+    <span class="n">assertEquals</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="n">resultUser</span><span class="o">.</span><span class="na">getId</span><span class="o">());</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>The test case is very similar to the equivalent unit test, we are just using <code class="highlighter-rouge">TestRestTemplate</code> instead of <code class="highlighter-rouge">MockMvc</code>. Because we do not have other layers in our application, the additional part we are testing is the environment. But when you have an enterprise application there is usually other components such as: a repository layer; a database; and maybe a service layer, and in this case, you get more benefit from integration testing to see if they work together as expected.</p>
+
+<h1 id="source-code">Source code</h1>
+
+<p>Available <a href="https://github.com/robole/user-spring-rest">here</a> on github.</p>
+
+<h1 id="references">References</h1>
+
+<ul>
+  <li><a href="http://www.bytestree.com/spring/restful-web-services-unit-testing-spring-boot/">Bytestree - RESTful Web Services Unit Testing with Spring Boot</a>: A decent example but it does not use a standalone MockMVC setup, and each test method is not independent! :-O</li>
+  <li><a href="http://www.baeldung.com/integration-testing-in-spring">Baeldung - Integration Testing in Spring</a>: If you do not want to use an embedded web server for your integration test you can follow this.</li>
+  <li><a href="http://www.bytestree.com/spring/restful-web-services-integration-testing-spring-boot/">Bytestree - RESTful Web Services Integration Testing with Spring Boot</a>: Additional example. Test methods are not independent here also! :-O</li>
+</ul>
+:ET

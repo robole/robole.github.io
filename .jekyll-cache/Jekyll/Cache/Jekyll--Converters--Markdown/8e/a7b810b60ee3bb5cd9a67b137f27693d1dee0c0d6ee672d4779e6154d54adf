@@ -1,0 +1,480 @@
+I"�<h1 id="what-do-i-need-to-install-to-get-started">What do I need to install to get started?</h1>
+
+<p>You can read my previous post <a href="/android/2018/05/01/android-development1.html">Android Development - Getting Started</a>.</p>
+
+<h1 id="how-do-i-make-an-app">How do I make an app?</h1>
+
+<p>The core elements of an app are:</p>
+<ul>
+  <li>A <em>layout</em> defines the appearance of a screen. It is defined in a XML file. Android Studio has a “text view” to show
+the XML source.</li>
+</ul>
+
+<p><img src="/assets/img/blog/2018-05-18-android2/text-view.png" alt="android studio text view" /></p>
+
+<ul>
+  <li>A <em>view</em> is an UI element such as a button that can be added to a <em>layout</em>. Android Studio provides a “design view” to create a layout in a visual way so you can add the view elements directly onto a screen, it provides a palette
+of view elements to choose from.</li>
+</ul>
+
+<p><img src="/assets/img/blog/2018-05-18-android2/design-view-example.png" alt="android studio design view" /></p>
+
+<ul>
+  <li>An <em>activity</em> represents a single user screen. Activities are usually associated with one <em>layout</em>, and they’re written in Java. We have a main activity that is the starting point of our app.</li>
+  <li><em>AndroidManifest.xml</em> contains all the essential application data.</li>
+  <li><em>Resources</em> provide external content for our app such as images,
+styles, string values, and so on.</li>
+  <li><em>Intents</em> are used to launch activities.</li>
+  <li><em>Services</em> are background processes that can run for a long time.</li>
+</ul>
+
+<p>The rest can be discussed in more detail as we focus on each aspect.</p>
+
+<h1 id="how-does-an-app-do-stuff">How does an app do stuff?</h1>
+
+<p>The main <em>activity</em> is launched when a user clicks on the app icon.</p>
+
+<p>A task is when two or more <em>activities</em> are chained together. We use an <em>intent</em> to pass a message between <em>activities</em> to achieve this.</p>
+
+<h1 id="how-is-our-project-organised">How is our project organised?</h1>
+
+<p>Typically, assets are organized into different directories based on their purpose.</p>
+
+<p><img src="/assets/img/blog/2018-05-18-android2/android-directory-structure.png" alt="android directory structure" /></p>
+
+<ul>
+  <li>java files (<em>app/src/main/java</em>): our activities and classes
+that we define go here.</li>
+  <li>generated files (<em>app/build/generated</em>): contains files generated
+by the build process. We don’t change these manually. <em>R.java</em> contains the IDs that keep track of all resources in the app, and is in <em>app/build/generated/source/r/[build flavor/]{release|debug}/{app package}</em>.</li>
+  <li>static resources (<em>app/src/main/res</em>): The additional files for static content such as images. Explained further later.</li>
+  <li><em>AndroidManifest.xml</em>: Every app must have an <em>AndroidManifest.xml</em> file at the root of the project. It describes essential information about your app such as: the list of it’s components, the permissions required, and the hardware and software features required.</li>
+</ul>
+
+<h1 id="activity">Activity</h1>
+
+<p>An activity represents a single user screen, and is a single defined thing that the user can do. You extend <code class="highlighter-rouge">android.app.Activity</code> or a subclass.</p>
+
+<h2 id="configure-the-manifest">Configure the manifest</h2>
+
+<p>Each activity you create must have an entry in <em>AndroidManifest.xml</em>.
+Android Studio does this for you when you create a new activity using it’s wizard (as below).</p>
+
+<p><img src="/assets/img/blog/2018-05-18-android2/new-wizard.png" alt="new wizard" /></p>
+
+<p>The only required attribute for the activity element is <code class="highlighter-rouge">android:name</code>, which specifies the class name of the activity.</p>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;manifest</span> <span class="err">...</span> <span class="nt">&gt;</span>
+  <span class="nt">&lt;application</span> <span class="err">...</span> <span class="nt">&gt;</span>
+    <span class="nt">&lt;activity</span> <span class="na">android:name=</span><span class="s">"design.roboleary.conversion.ConversionActivity"</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;intent-filter&gt;</span>
+              <span class="nt">&lt;action</span> <span class="na">android:name=</span><span class="s">"android.intent.action.MAIN"</span> <span class="nt">/&gt;</span>
+              <span class="nt">&lt;category</span> <span class="na">android:name=</span><span class="s">"android.intent.category.LAUNCHER"</span> <span class="nt">/&gt;</span>
+          <span class="nt">&lt;/intent-filter&gt;</span>
+      <span class="nt">&lt;/activity&gt;</span>
+  <span class="err">&lt;</span>/application ... &gt;
+  ...
+<span class="nt">&lt;/manifest &gt;</span>
+</code></pre></div></div>
+
+<p>One <em>activity</em> needs to be marked as a main activity, so you can launch your app. We use an <em>intent filter</em> to do this. We will speak about this in more detail when we discuss <em>intents</em>.</p>
+
+<h2 id="lifecycle-events">Lifecycle events</h2>
+
+<p>Skillfully managing activities allows you to ensure that:</p>
+<ul>
+  <li>Orientation changes take place smoothly without disrupting the user experience.</li>
+  <li>User data is not lost during activity transitions.</li>
+  <li>The system kills processes when it’s appropriate to do so.</li>
+</ul>
+
+<p>So, an activity has callback methods that are called at different stages of it’s existence to enable us to manage it appropriately. Below is a diagram outlining when the methods are called depending on the state of the activity.</p>
+
+<p><img src="https://i.stack.imgur.com/UHVsR.png" alt="activity states" /></p>
+
+<h1 id="static-resources">Static resources</h1>
+
+<p>You should always externalize app resources such as images and strings from your code, so that you can maintain them independently.</p>
+
+<p>You should also provide alternative resources for specific device configurations, such as different screen resolutions, and group them in specially-named resource directories. At runtime, Android chooses the appropriate resource based on the current configuration.</p>
+
+<p>Once you externalize your app resources, you can access them using resource IDs that are generated in your project’s <em>R.java</em>.</p>
+
+<h2 id="grouping-resources">Grouping resources</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Directory</th>
+      <th>Resource Type</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>animator/</td>
+      <td>XML files that define property animations.</td>
+    </tr>
+    <tr>
+      <td>anim/</td>
+      <td>XML files that define tween animations. (Property animations can also be saved in this directory, but the animator/ directory is preferred for property animations to distinguish between the two types.)</td>
+    </tr>
+    <tr>
+      <td>color/</td>
+      <td>Defines a list of colors.</td>
+    </tr>
+    <tr>
+      <td>drawable/</td>
+      <td>Bitmap files (.png, .9.png, .jpg, .gif) or XML files that are compiled into drawable resources.</td>
+    </tr>
+    <tr>
+      <td>mipmap/</td>
+      <td>Drawable files for different launcher icon densities.</td>
+    </tr>
+    <tr>
+      <td>layout/</td>
+      <td>XML files that define a user interface layout.</td>
+    </tr>
+    <tr>
+      <td>menu/</td>
+      <td>XML files that define app menus.</td>
+    </tr>
+    <tr>
+      <td>raw/</td>
+      <td>Arbitrary files to save in their raw form. To open these resources with a raw InputStream, call <code class="highlighter-rouge">Resources.openRawResource()</code> with the resource ID.</td>
+    </tr>
+    <tr>
+      <td>values/</td>
+      <td>XML files that contain simple values such as: strings, integers, and arrays. By convention, each type is stored in a separate file.</td>
+    </tr>
+    <tr>
+      <td>font/</td>
+      <td>Font files with extensions such as .ttf, .otf, or .ttc, or XML files that include a <font-family> element.</font-family></td>
+    </tr>
+    <tr>
+      <td>xml/</td>
+      <td>Arbitrary XML files that can be read at runtime by calling <code class="highlighter-rouge">Resources.getXML()</code>.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h1 id="exercise-make-a-temperature-conversion-app">Exercise: Make a temperature conversion app</h1>
+
+<p>We want to make an app that will convert a temperature from celsius to farenheit, and the other way around.</p>
+
+<h2 id="create-a-new-project">Create a new project</h2>
+
+<table>
+<colgroup>
+<col style="width: 25%;" />
+<col style="width: 75%;" />
+</colgroup>
+<thead>
+<tr>
+<th>Property</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>Application Name</p></td>
+<td><p>Temperature Conversion</p></td>
+</tr>
+<tr>
+<td><p>Package name</p></td>
+<td><p>design.roboleary.conversion</p></td>
+</tr>
+<tr>
+<td><p>Minimum SDK</p></td>
+<td><p>Latest Android release</p></td>
+</tr>
+<tr>
+<td><p>Template</p></td>
+<td><p>Empty Activity</p></td>
+</tr>
+<tr>
+<td><p>Activity</p></td>
+<td><p>MainActivity</p></td>
+</tr>
+<tr>
+<td><p>Layout</p></td>
+<td><p>activity_main</p></td>
+</tr>
+<tr>
+<td><p>Backwards Compatibility (AppCompat)</p></td>
+<td><p>false (not selected)</p></td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="create-our-strings-in-static-resources">Create our strings in static resources</h2>
+
+<p>Open <em>res/values/strings.xml</em>, and add the String definitions to the file as described as below. These are the values that we will we use for labels in our layout.</p>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span>
+<span class="nt">&lt;resources&gt;</span>
+    <span class="nt">&lt;string</span> <span class="na">name=</span><span class="s">"app_name"</span><span class="nt">&gt;</span>Temperature Conversion<span class="nt">&lt;/string&gt;</span>
+    <span class="nt">&lt;string</span> <span class="na">name=</span><span class="s">"celsius"</span><span class="nt">&gt;</span>Celsius<span class="nt">&lt;/string&gt;</span>
+    <span class="nt">&lt;string</span> <span class="na">name=</span><span class="s">"fahrenheit"</span><span class="nt">&gt;</span>Fahrenheit<span class="nt">&lt;/string&gt;</span>
+    <span class="nt">&lt;string</span> <span class="na">name=</span><span class="s">"calc"</span><span class="nt">&gt;</span>Calculate<span class="nt">&lt;/string&gt;</span>
+<span class="nt">&lt;/resources&gt;</span>
+</code></pre></div></div>
+
+<h2 id="create-the-layout">Create the layout</h2>
+
+<p>This is roughly what we want.</p>
+
+<p><img src="/assets/img/blog/2018-05-18-android2/layout-design.png" alt="layout" /></p>
+
+<p>Open our layout file <em>res/layout/activity_main.xml</em> in
+the “text view”, and delete everything.</p>
+
+<p>We want a simple layout, so we add a <code class="highlighter-rouge">LinearLayout</code> element as the root, which organizes everything in a horizontal or vertical line. We can want everything to
+be organized vertically, so we set this property <code class="highlighter-rouge">android:orientation="vertical"</code>. You
+can switch to the “design view” to add the views to this layout then.</p>
+
+<p>A simple way of organizing the view components is to drag
+and drop them onto the “Component Tree view”.  So you can
+see the order we want them arranged in. We make the radio buttons children of the radio button group.</p>
+
+<p><img src="/assets/img/blog/2018-05-18-android2/component-tree.png" alt="component tree" /></p>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;LinearLayout</span> <span class="na">xmlns:android=</span><span class="s">"http://schemas.android.com/apk/res/android"</span>
+    <span class="na">xmlns:tools=</span><span class="s">"http://schemas.android.com/tools"</span>
+    <span class="na">android:layout_width=</span><span class="s">"match_parent"</span>
+    <span class="na">android:layout_height=</span><span class="s">"match_parent"</span>
+    <span class="na">android:orientation=</span><span class="s">"vertical"</span><span class="nt">&gt;</span>
+
+
+    <span class="nt">&lt;EditText</span>
+        <span class="na">android:layout_width=</span><span class="s">"match_parent"</span>
+        <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
+        <span class="na">android:id=</span><span class="s">"@+id/editText1"</span> <span class="nt">/&gt;</span>
+
+    <span class="nt">&lt;RadioGroup</span>
+        <span class="na">android:id=</span><span class="s">"@+id/radioGroup1"</span>
+        <span class="na">android:layout_width=</span><span class="s">"wrap_content"</span>
+        <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
+        <span class="na">android:layout_alignStart=</span><span class="s">"@+id/editText1"</span>
+        <span class="na">android:layout_below=</span><span class="s">"@+id/editText1"</span><span class="nt">&gt;</span>
+
+        <span class="nt">&lt;RadioButton</span>
+            <span class="na">android:id=</span><span class="s">"@+id/radio0"</span>
+            <span class="na">android:layout_width=</span><span class="s">"wrap_content"</span>
+            <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
+            <span class="na">android:checked=</span><span class="s">"true"</span>
+            <span class="na">android:text=</span><span class="s">"RadioButton"</span> <span class="nt">/&gt;</span>
+
+        <span class="nt">&lt;RadioButton</span>
+            <span class="na">android:id=</span><span class="s">"@+id/radio1"</span>
+            <span class="na">android:layout_width=</span><span class="s">"wrap_content"</span>
+            <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
+            <span class="na">android:text=</span><span class="s">"RadioButton"</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;/RadioGroup&gt;</span>
+
+    <span class="nt">&lt;TextView</span>
+        <span class="na">android:id=</span><span class="s">"@+id/textView1"</span>
+        <span class="na">android:layout_width=</span><span class="s">"match_parent"</span>
+        <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
+        <span class="na">android:layout_alignStart=</span><span class="s">"@+id/radioGroup1"</span>
+        <span class="na">android:layout_below=</span><span class="s">"@+id/radioGroup1"</span>
+        <span class="na">android:layout_marginTop=</span><span class="s">"22dp"</span>
+        <span class="nt">/&gt;</span>
+
+    <span class="nt">&lt;Button</span>
+        <span class="na">android:id=</span><span class="s">"@+id/button1"</span>
+        <span class="na">android:layout_width=</span><span class="s">"wrap_content"</span>
+        <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
+        <span class="na">android:layout_alignStart=</span><span class="s">"@+id/textView1"</span>
+        <span class="na">android:layout_below=</span><span class="s">"@+id/textView1"</span>
+        <span class="na">android:layout_marginTop=</span><span class="s">"22dp"</span>
+        <span class="na">android:text=</span><span class="s">"Button"</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;/LinearLayout&gt;</span>
+</code></pre></div></div>
+
+<h2 id="edit-view-properties">Edit view properties</h2>
+
+<p>For the radio buttons:</p>
+<ol>
+  <li>We can change them to have more meaningful ids, <em>celsius</em> and <em>farenheit</em> are good.</li>
+  <li>We can use the string values from our static resources by making a reference like this <code class="highlighter-rouge">android:text="@string/celsius"</code> for the first radio button (highlighted below), and do similar for the second radio button.</li>
+  <li>Make the first radio button checked with <code class="highlighter-rouge">android:checked ="true"</code></li>
+</ol>
+
+<p><img src="/assets/img/blog/2018-05-18-android2/edit-properties.png" alt="edit properties" /></p>
+
+<p>For our <code class="highlighter-rouge">EditText</code>:</p>
+<ol>
+  <li>We set <code class="highlighter-rouge">android:inputType="numberSigned|numberDecimal"</code>. This changes the keyboard that is used to input the value.</li>
+  <li>We can also change the ID
+<code class="highlighter-rouge">android:id="@+id/inputValue"</code>.</li>
+</ol>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;EditText</span>
+       <span class="na">android:layout_width=</span><span class="s">"match_parent"</span>
+       <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
+       <span class="na">android:id=</span><span class="s">"@+id/inputValue"</span>
+       <span class="na">android:inputType=</span><span class="s">"numberSigned|numberDecimal"</span> <span class="nt">/&gt;</span>
+</code></pre></div></div>
+<p>For the button:</p>
+<ol>
+  <li>We assign the string value <code class="highlighter-rouge">android:text="@string/calc"</code>.</li>
+  <li>Change the ID to <code class="highlighter-rouge">calcButton</code>.</li>
+  <li>Add <code class="highlighter-rouge">android:onClick="onClick"</code> to reference
+the onClick method, which we will create in our
+<code class="highlighter-rouge">MainActivity</code> to respond to the user clicking the button.</li>
+</ol>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;Button</span>
+        <span class="na">android:id=</span><span class="s">"@+id/calcButton"</span>
+        <span class="na">android:onClick=</span><span class="s">"onClick"</span>
+        <span class="err">...</span>
+        <span class="na">android:text=</span><span class="s">"@string/calc"</span> <span class="nt">/&gt;</span>
+</code></pre></div></div>
+<p>This is what the complete layout looks like.</p>
+
+<p><img src="/assets/img/blog/2018-05-18-android2/complete-layout.png" alt="edit properties" /></p>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;LinearLayout</span> <span class="na">xmlns:android=</span><span class="s">"http://schemas.android.com/apk/res/android"</span>
+    <span class="na">xmlns:tools=</span><span class="s">"http://schemas.android.com/tools"</span>
+    <span class="na">android:layout_width=</span><span class="s">"match_parent"</span>
+    <span class="na">android:layout_height=</span><span class="s">"match_parent"</span>
+    <span class="na">android:orientation=</span><span class="s">"vertical"</span><span class="nt">&gt;</span>
+
+
+    <span class="nt">&lt;EditText</span>
+        <span class="na">android:layout_width=</span><span class="s">"match_parent"</span>
+        <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
+        <span class="na">android:id=</span><span class="s">"@+id/inputValue"</span>
+        <span class="na">android:inputType=</span><span class="s">"numberSigned|numberDecimal"</span> <span class="nt">/&gt;</span>
+
+    <span class="nt">&lt;RadioGroup</span>
+        <span class="na">android:id=</span><span class="s">"@+id/radioGroup1"</span>
+        <span class="na">android:layout_width=</span><span class="s">"wrap_content"</span>
+        <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
+        <span class="na">android:layout_alignStart=</span><span class="s">"@+id/editText1"</span>
+        <span class="na">android:layout_below=</span><span class="s">"@+id/editText1"</span><span class="nt">&gt;</span>
+
+        <span class="nt">&lt;RadioButton</span>
+            <span class="na">android:id=</span><span class="s">"@+id/celsius"</span>
+            <span class="na">android:layout_width=</span><span class="s">"wrap_content"</span>
+            <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
+            <span class="na">android:checked=</span><span class="s">"true"</span>
+            <span class="na">android:text=</span><span class="s">"@string/celsius"</span> <span class="nt">/&gt;</span>
+
+        <span class="nt">&lt;RadioButton</span>
+            <span class="na">android:id=</span><span class="s">"@+id/farenheit"</span>
+            <span class="na">android:layout_width=</span><span class="s">"wrap_content"</span>
+            <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
+            <span class="na">android:text=</span><span class="s">"@string/farenheit"</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;/RadioGroup&gt;</span>
+
+    <span class="nt">&lt;TextView</span>
+        <span class="na">android:id=</span><span class="s">"@+id/outputValue"</span>
+        <span class="na">android:layout_width=</span><span class="s">"match_parent"</span>
+        <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
+        <span class="na">android:layout_alignStart=</span><span class="s">"@+id/radioGroup1"</span>
+        <span class="na">android:layout_below=</span><span class="s">"@+id/radioGroup1"</span>
+        <span class="na">android:layout_marginTop=</span><span class="s">"22dp"</span>
+        <span class="nt">/&gt;</span>
+
+    <span class="nt">&lt;Button</span>
+        <span class="na">android:id=</span><span class="s">"@+id/calcButton"</span>
+        <span class="na">android:layout_width=</span><span class="s">"wrap_content"</span>
+        <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
+        <span class="na">android:layout_alignStart=</span><span class="s">"@+id/textView1"</span>
+        <span class="na">android:layout_below=</span><span class="s">"@+id/textView1"</span>
+        <span class="na">android:onClick=</span><span class="s">"onClick"</span>
+        <span class="na">android:layout_marginTop=</span><span class="s">"22dp"</span>
+        <span class="na">android:text=</span><span class="s">"@string/calc"</span> <span class="nt">/&gt;</span>
+
+<span class="nt">&lt;/LinearLayout&gt;</span>
+</code></pre></div></div>
+<h2 id="create-an-utility-class">Create an utility class</h2>
+
+<p>To do the conversion.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">design.roboleary.conversion</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">ConvertUtil</span> <span class="o">{</span>
+    <span class="c1">// converts to celsius</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">float</span> <span class="nf">convertFahrenheitToCelsius</span><span class="o">(</span><span class="kt">float</span> <span class="n">fahrenheit</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="o">((</span><span class="n">fahrenheit</span> <span class="o">-</span> <span class="mi">32</span><span class="o">)</span> <span class="o">*</span> <span class="mi">5</span> <span class="o">/</span> <span class="mi">9</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="c1">// converts to fahrenheit</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">float</span> <span class="nf">convertCelsiusToFahrenheit</span><span class="o">(</span><span class="kt">float</span> <span class="n">celsius</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="o">((</span><span class="n">celsius</span> <span class="o">*</span> <span class="mi">9</span><span class="o">)</span> <span class="o">/</span> <span class="mi">5</span><span class="o">)</span> <span class="o">+</span> <span class="mi">32</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h2 id="update-the-mainactivity">Update the MainActivity</h2>
+
+<p>We need to define the <code class="highlighter-rouge">onClick</code> method to handle the user
+interaction:</p>
+<ul>
+  <li>We check if the user has entered in some text to
+<code class="highlighter-rouge">inputValue</code>, if they haven’t a Toast (a small popup)
+ will tell them that nothing is entered.</li>
+  <li>If there is text
+ entered, we check which radio button is selected, and
+ then we decide which method from our utility class we
+ need to call to do the conversion.</li>
+  <li>The result is displayed in <code class="highlighter-rouge">outputValue</code>, our <code class="highlighter-rouge">TextView</code>.</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">design.roboleary.conversion</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">android.app.Activity</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.os.Bundle</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.view.View</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.widget.EditText</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.widget.RadioButton</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.widget.TextView</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.widget.Toast</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">ConversionActivity</span> <span class="kd">extends</span> <span class="nc">Activity</span> <span class="o">{</span>
+    <span class="kd">private</span> <span class="nc">EditText</span> <span class="n">text</span><span class="o">;</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">onCreate</span><span class="o">(</span><span class="nc">Bundle</span> <span class="n">savedInstanceState</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kd">super</span><span class="o">.</span><span class="na">onCreate</span><span class="o">(</span><span class="n">savedInstanceState</span><span class="o">);</span>
+        <span class="n">setContentView</span><span class="o">(</span><span class="no">R</span><span class="o">.</span><span class="na">layout</span><span class="o">.</span><span class="na">activity_main</span><span class="o">);</span>
+        <span class="n">text</span> <span class="o">=</span> <span class="o">(</span><span class="nc">EditText</span><span class="o">)</span> <span class="n">findViewById</span><span class="o">(</span><span class="no">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">inputValue</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="c1">// this method is called at button click because we assigned the name to the</span>
+    <span class="c1">// "OnClick" property of the button</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onClick</span><span class="o">(</span><span class="nc">View</span> <span class="n">view</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">switch</span> <span class="o">(</span><span class="n">view</span><span class="o">.</span><span class="na">getId</span><span class="o">())</span> <span class="o">{</span>
+            <span class="k">case</span> <span class="no">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">calcButton</span><span class="o">:</span>
+                <span class="nc">RadioButton</span> <span class="n">celsiusButton</span> <span class="o">=</span> <span class="o">(</span><span class="nc">RadioButton</span><span class="o">)</span> <span class="n">findViewById</span><span class="o">(</span><span class="no">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">celsius</span><span class="o">);</span>
+                <span class="nc">RadioButton</span> <span class="n">fahrenheitButton</span> <span class="o">=</span> <span class="o">(</span><span class="nc">RadioButton</span><span class="o">)</span> <span class="n">findViewById</span><span class="o">(</span><span class="no">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">farenheit</span><span class="o">);</span>
+                <span class="nc">TextView</span> <span class="n">output</span> <span class="o">=</span> <span class="o">(</span><span class="nc">TextView</span><span class="o">)</span> <span class="n">findViewById</span><span class="o">(</span><span class="no">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">outputValue</span><span class="o">);</span>
+                <span class="k">if</span> <span class="o">(</span><span class="n">text</span><span class="o">.</span><span class="na">getText</span><span class="o">().</span><span class="na">length</span><span class="o">()</span> <span class="o">==</span> <span class="mi">0</span><span class="o">)</span> <span class="o">{</span>
+                    <span class="nc">Toast</span><span class="o">.</span><span class="na">makeText</span><span class="o">(</span><span class="k">this</span><span class="o">,</span> <span class="s">"Please enter a valid number"</span><span class="o">,</span>
+                            <span class="nc">Toast</span><span class="o">.</span><span class="na">LENGTH_LONG</span><span class="o">).</span><span class="na">show</span><span class="o">();</span>
+                    <span class="k">return</span><span class="o">;</span>
+                <span class="o">}</span>
+
+                <span class="kt">float</span> <span class="n">inputValue</span> <span class="o">=</span> <span class="nc">Float</span><span class="o">.</span><span class="na">parseFloat</span><span class="o">(</span><span class="n">text</span><span class="o">.</span><span class="na">getText</span><span class="o">().</span><span class="na">toString</span><span class="o">());</span>
+                <span class="k">if</span> <span class="o">(</span><span class="n">celsiusButton</span><span class="o">.</span><span class="na">isChecked</span><span class="o">())</span> <span class="o">{</span>
+                    <span class="nc">String</span> <span class="n">result</span> <span class="o">=</span> <span class="nc">String</span><span class="o">.</span><span class="na">valueOf</span><span class="o">(</span><span class="nc">ConvertUtil</span><span class="o">.</span><span class="na">convertCelsiusToFahrenheit</span><span class="o">(</span><span class="n">inputValue</span><span class="o">));</span>
+                    <span class="n">output</span><span class="o">.</span><span class="na">setText</span><span class="o">(</span><span class="s">"= "</span> <span class="o">+</span> <span class="n">result</span> <span class="o">+</span> <span class="s">" farenheit"</span><span class="o">);</span>
+                <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+                    <span class="nc">String</span> <span class="n">result</span> <span class="o">=</span> <span class="nc">String</span><span class="o">.</span><span class="na">valueOf</span><span class="o">(</span><span class="nc">ConvertUtil</span><span class="o">.</span><span class="na">convertFahrenheitToCelsius</span><span class="o">(</span><span class="n">inputValue</span><span class="o">));</span>
+                    <span class="n">output</span><span class="o">.</span><span class="na">setText</span><span class="o">(</span><span class="s">"= "</span> <span class="o">+</span> <span class="n">result</span> <span class="o">+</span> <span class="s">" celsius"</span><span class="o">);</span>
+                <span class="o">}</span>
+                <span class="k">break</span><span class="o">;</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+<h1 id="code">Code</h1>
+
+<p>You can find the completed code in <a href="https://github.com/robole/temperature-conversion">this github repository</a>.</p>
+
+<h1 id="references">References</h1>
+
+<p><a href="http://www.vogella.com/tutorials/Android/article.html">Vogella: Getting started with Android development - Tutorial</a></p>
+:ET

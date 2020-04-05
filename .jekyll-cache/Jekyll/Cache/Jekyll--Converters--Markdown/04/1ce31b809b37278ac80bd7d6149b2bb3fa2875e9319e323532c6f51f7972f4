@@ -1,0 +1,158 @@
+I"^"<h1 id="mapping-relationships-">Mapping Relationships 🗾</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Target</th>
+      <th>Purpose</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>JoinColumn</td>
+      <td>F, M</td>
+      <td>Used to specify an entity relationship. This is used in many-to-one and one-to-many associations.</td>
+    </tr>
+    <tr>
+      <td>ManyToMany</td>
+      <td>F, M</td>
+      <td>Define a many-to-many relationship between the join Tables.</td>
+    </tr>
+    <tr>
+      <td>ManyToOne</td>
+      <td>F, M</td>
+      <td>Define a many-to-one relationship between the join Tables.</td>
+    </tr>
+    <tr>
+      <td>MapKey</td>
+      <td>F, M</td>
+      <td>Allows a key to be specified when making an association with a Map object.</td>
+    </tr>
+    <tr>
+      <td>OneToMany</td>
+      <td>F, M</td>
+      <td>Define a one-to-many relationship between the join Tables.</td>
+    </tr>
+    <tr>
+      <td>OneToOne</td>
+      <td>F, M</td>
+      <td>Define a one-to-one relationship between the join Tables.</td>
+    </tr>
+    <tr>
+      <td>OrderBy</td>
+      <td>F, M</td>
+      <td>Allows the ordering of a collection to be defined as</td>
+    </tr>
+    <tr>
+      <td>it is retrieved.</td>
+      <td> </td>
+      <td> </td>
+    </tr>
+  </tbody>
+</table>
+
+<p>One end of the relationship must be marked as the owner. You must manage both ends of the relationship.</p>
+<h2 id="one-to-one">One to one</h2>
+
+<h2 id="one-to-many">One to many</h2>
+
+<h2 id="many-to-many">Many to many</h2>
+
+<h1 id="the-callbacks">The callbacks</h1>
+
+<p>Callback methods can perform actions at different stages of persistence operations.</p>
+
+<p>Imagine that you want to update a customer record, but, before you update, you want to remove the hyphen from the zip code if one is present. JPA provides listeners for these kinds of activities before and after each fetch, insert, or update operation.</p>
+
+<p>The callback methods can be annotated as any of the following:</p>
+
+<ul>
+  <li>@PostLoad</li>
+  <li>@PrePersist</li>
+  <li>@PostPersist</li>
+  <li>@PreUpdate</li>
+  <li>@PostUpdate</li>
+  <li>@PreRemove</li>
+  <li>@PostRemove</li>
+</ul>
+
+<h1 id="embedded-objects">Embedded objects</h1>
+<p>As you’ve seen so far, the Customer entity has the address information inline in the entity itself. What if you want to apply class normalization concepts and come up with a separate Address class and refer to that in the Customer entity? After all, an address object could be used with Customer, Employee, Order, or User entities.</p>
+
+<p>All you need is an embedded object. You move the address information into a separate class and mark that class as being embeddable, as shown in Listing 10. Refer to this newly created class from the Customer entity with @Embedded annotations.</p>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@Embeddable</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Address</span> <span class="kd">implements</span> <span class="nc">Serializable</span><span class="o">{</span>
+    <span class="kd">private</span> <span class="nc">String</span> <span class="n">street</span><span class="o">;</span>
+
+    <span class="nd">@Column</span><span class="o">(</span><span class="n">name</span> <span class="o">=</span> <span class="s">"APPT"</span><span class="o">,</span><span class="n">nullable</span> <span class="o">=</span> <span class="kc">false</span><span class="o">)</span>  
+    <span class="kd">private</span> <span class="nc">String</span> <span class="n">appt</span><span class="o">;</span>
+
+    <span class="kd">private</span> <span class="nc">String</span> <span class="n">city</span><span class="o">;</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>Embedded classes are mapped together with their owning entity as part of the state of that entity. However, they cannot be queried separately. Listing 11 illustrates a sample entity that uses an embedded object.</p>
+
+<p>A sample entity using an embedded object.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@Entity</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Customer</span> <span class="o">{</span>
+    <span class="nd">@Column</span><span class="o">(</span><span class="n">name</span> <span class="o">=</span> <span class="s">"FIRST_NAME"</span><span class="o">,</span> <span class="n">nullable</span> <span class="o">=</span> <span class="kc">false</span><span class="o">,</span><span class="n">length</span> <span class="o">=</span> <span class="mi">50</span><span class="o">)</span>
+    <span class="kd">private</span> <span class="nc">String</span> <span class="n">firstName</span><span class="o">;</span>
+
+    <span class="nd">@Embedded</span>
+    <span class="kd">private</span> <span class="nc">Address</span> <span class="n">address</span><span class="o">;</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>You can write the callback methods in the entity class itself, or you can write them in a separate class and reference them in the entity class with @EntityListeners, as shown in Listing 9.</p>
+
+<h1 id="inheritance-">Inheritance 👪</h1>
+
+<p>An entity can extend the following:</p>
+
+<p>Another entity – either concrete or abstract.
+Another non-entity, supplying behavior or non-persistence state. The attributes you inherit from a non-entity are not persisted.
+Mapped superclasses, supplying common entity state. Tables in a database have similar fields, but tables are not related to each other.
+Let’s have a look into the various types of inheritance JPA offers. For this scenario, assume that there are two types of customer: a normal customer who buys products from a physical store and an online customer who buys products over the Internet.</p>
+
+<p>Using Spring
+What’s the value input from Spring in supporting JPA, you might ask?</p>
+
+<p>The Spring framework supports the JPA API in couple of ways, very similar to support
+for Hibernate. One way is by providing the classic template: a JpaTemplate class. This
+class is basically a wrapper around the EntityManager similar to other templates such
+as HibernateTemplate .
+The second way is by allowing the developer to use plain JPA API in the applications
+via an injected EntityManager class. If you are confused as to what approach to take,
+go with using plain API if possible. This way, Spring will be used solely for dependency injection thus avoiding any dependencies on its framework classes.</p>
+
+<p>Should you have earlier versions (before 3.x), perhaps sticking to template style might be easier. Let’s explore both of these use cases in detail.</p>
+
+<p>Basically, Spring encapsulates the EntityManagerFactory in its own FactoryBean imple-
+mentation and injects them into the applications where it is needed.
+Spring uses two implementations of FactoryBean for providing the EntityManager s in
+respective environments:
+org.springframework.orm.jpa.LocalEntityManagerFactoryBean
+This FactoryBean creates the EntityManagerFactory for standalone environments.
+This implementation provides a simple factory that has limitations. It cannot par-
+ticipate in global transaction s, cannot work with DataSources .
+org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean
+This factory bean provides the EntityManagerFactory for enterprise environments.
+Note how its classname has the word “Container” embedded in it, compared to
+the previous LocalEntityManagerFactoryBean class.</p>
+
+<p><a href="/programming/2018/03/03/jpa.html">« Java Persistence API (JPA) Part 1: Getting Started</a></p>
+
+<h2 id="additional-reading">Additional Reading</h2>
+
+<ul>
+  <li><a href="https://www.javaworld.com/article/2077817/java-se/understanding-jpa-part-1-the-object-oriented-paradigm-of-data-persistence.html">Understanding JPA, Part 1: The object-oriented paradigm of data persistence</a></li>
+  <li><a href="https://www.javaworld.com/article/2077819/java-se/understanding-jpa-part-2-relationships-the-jpa-way.html">Understanding JPA, Part 2: Relationships the JPA way</a></li>
+  <li><a href="https://docs.spring.io/spring-data/jpa/docs/current/reference/html/">Spring Data Reference</a></li>
+  <li><a href="https://www.amazon.com/Just-Spring-Data-Access-Hibernate/dp/1449328385/ref=sr_1_1?ie=UTF8&amp;qid=1517621189&amp;sr=8-1&amp;keywords=1449328385">Just Spring Data Access 1st Edition by by Madhusudhan Konda (book)</a></li>
+  <li><a href="https://www.youtube.com/watch?v=EZwpOLCfuq4">JPA Beyond Copy and Paste by Jakub Kubrynski (video)</a></li>
+  <li><a href="https://javabeat.net/eclipselink-jpa-annotations/">EclipseLink – JPA Annotations</a></li>
+</ul>
+:ET

@@ -1,0 +1,71 @@
+I"�<h1 id="setting-up-the-environment-and-making-a-hello-world-program">Setting up the environment and making a “Hello World” program</h1>
+
+<p>Android Studio is the official IDE for Android, so I obediently decided to use it!</p>
+
+<ol>
+  <li><a href="https://developer.android.com/studio/index.html">Install Android Studio</a> (Java is already installed, of course!).</li>
+  <li>Create a new project with an “Empty Activity”. By default, this should give a screen with “Hello World”.</li>
+  <li>Build the project.</li>
+  <li>Install anything additional if prompted.</li>
+  <li>Run the project and select an AVD (Android Virtual Device). I selected the default AVD and got an error. It stated that Vtx needed to be enabled in the BIOS. Vtx is to permit hardware acceleration for virtualization to run AVDs. I enabled this in the BIOS and rebooted.</li>
+  <li>The AVD loaded this time but it didn’t display the program properly.</li>
+  <li>I created a new AVD with a smaller screen size and it worked, but it gave a warning that there can be stability issues with my graphics device driver.</li>
+</ol>
+
+<p><img src="/assets/img/blog/2017-11-11-android/android-hello-world.png" alt="android hello world" /> <img src="/assets/img/blog/2017-11-11-android/android-avd-driver-warning.png" alt="device driver warning" /></p>
+
+<h1 id="pick-a-tutorial-or-book">Pick a tutorial or book</h1>
+
+<p>I started with <a href="http://shop.oreilly.com/product/0636920029045.do">Head First Android</a> to get a fundamental grasp of the Android way of doing things. The code samples from the book can be found in <a href="https://github.com/dogriffiths/HeadFirstAndroid">this github repo</a> organized by chapter.</p>
+
+<h1 id="using-someone-elses-project">Using someone else’s project</h1>
+
+<p>It’s good to be clear on what android version number you need installed, and how to set it in the build process.</p>
+
+<h2 id="android-version-numbers">Android Version Numbers</h2>
+
+<p>In the gradle file (usually in <em>project folder\app\build.gradle</em>), there are a few different version numbers that you can specify:</p>
+<ul>
+  <li><em>compileSdkVersion</em> : Version that your app is compiled against during development. This means you can use Android API features included in that version (and lower).</li>
+  <li><em>minSdkVersion</em> : Lowest version that can run the app. Generally, it is recommended to try to pick the lowest version that satisfies all of the features you need!</li>
+  <li><em>targetSdkVersion</em> : Highest version that can be used run the app. This is usually the version you test the app against. If you do not specify the <em>targetSdkVersion</em>, it defaults to the <em>minSdkVersion</em>.</li>
+</ul>
+
+<p>Generally, this is followed:</p>
+<blockquote>
+  <p>minSdkVersion = targetSdkVersion &lt;= compileSdkVersion</p>
+</blockquote>
+
+<p>If you want to offer different features based on the android version used at runtime, you can do this:</p>
+
+<blockquote>
+  <p>minSdkVersion &lt;= targetSdkVersion &lt;= compiledSdkVersion (highest possible)</p>
+</blockquote>
+
+<p>You need to have a version of the Android SDK installed on your computer that supports the <em>compileSdkVersion</em> in build.gradle (equal to or higher than this version number). I changed the version numbers (highlighted fields) and synchronised the project to compile and run the project I downloaded.</p>
+
+<p><img src="/assets/img/blog/2017-11-11-android/android-gradle-build.png" alt="android gradle build update" /></p>
+
+<p>You can also download code samples directly in Android Studio on various different features.</p>
+
+<p><img src="/assets/img/blog/2017-11-11-android/import-code-samples.png" alt="android studio import code sample" />
+<img src="/assets/img/blog/2017-11-11-android/import-code-samples-options.png" alt="android studio import code sample options" /></p>
+
+<h1 id="how-to-run-the-app-on-my-phone">How to run the app on my phone</h1>
+
+<ol>
+  <li>
+    <p>You need to enable the Settings&gt;Developer Options&gt;USB Debugging option on your phone. I have Android 5.1.1 on my phone and I couldn’t find the Developer Options in Settings. After a bit of <a href="https://www.androidcentral.com/android-50-lollipop-basics-how-turn-developer-settings">research</a>, I discovered that you must go to Settings&gt;About phone and hit the build number 7 times to unlock Developer Options. Like a cheat code on a computer game! 😀</p>
+  </li>
+  <li>
+    <p>Run the app as usual, just choose your phone from the list of AVDs and Android Studio will  install the app on your device and launch it! The app is installed on your phone, so when you disconnect, it is still there!</p>
+  </li>
+</ol>
+
+<h1 id="to-directly-install-the-app-on-your-phone">To directly install the app on your phone</h1>
+
+<ul>
+  <li>The apk is the packaged app and should be in “project folder\app\build\outputs\apk\debug”.</li>
+  <li>Transfer this file onto your phone and open it, the installer will do the rest. 😀</li>
+</ul>
+:ET

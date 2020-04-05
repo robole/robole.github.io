@@ -1,0 +1,504 @@
+I"o�<h1 id="stack-and-heap">Stack and Heap</h1>
+<ul>
+  <li>Local variables (method variables) live on the stack.</li>
+  <li>Objects and their instance variables live on the heap.</li>
+</ul>
+
+<h1 id="literals-and-primitive-casting-objective-13">Literals and Primitive Casting (Objective 1.3)</h1>
+<ul>
+  <li>Integer literals can be decimal, octal (prefix of zero e.g. 013), or hexadecimal (prefix of 0x e.g. 0x3d).</li>
+  <li>Literal numbers are implicitly ints.</li>
+  <li>Literals for longs end in L or l.</li>
+  <li>Floating-point literals are defined as double (64 bits) by default, so if you want to assign a floating-point literal to a variable of type float (32 bits), you must attach the suffix F or f to the number.</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">float</span> <span class="n">f</span> <span class="o">=</span> <span class="mf">23.467890</span><span class="o">;</span> <span class="c1">// Compiler error, possible loss of precision</span>
+<span class="kt">float</span> <span class="n">g</span> <span class="o">=</span> <span class="mf">49837849.029847</span><span class="no">F</span><span class="o">;</span> <span class="c1">// OK has the suffix "F"</span>
+</code></pre></div></div>
+
+<ul>
+  <li>A char is a single text character</li>
+  <li>It is a 16-bit unsigned integer under the hood (range from 0 to 65535)</li>
+  <li>A char literal is represented as</li>
+  <li>a character inside single quotes: ‘d’</li>
+  <li>it can be represented by it’s Unicode character code:  a hex-value prefixed by \u</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">//all represent character a</span>
+<span class="kt">char</span> <span class="n">c1</span> <span class="o">=</span> <span class="sc">'a'</span><span class="o">;</span>
+<span class="kt">char</span> <span class="n">c2</span> <span class="o">=</span> <span class="sc">'\u0061'</span><span class="o">;</span>
+<span class="kt">char</span> <span class="n">c3</span> <span class="o">=</span> <span class="mi">97</span><span class="o">;</span>
+<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">c1</span> <span class="o">+</span> <span class="s">""</span> <span class="o">+</span> <span class="n">c2</span> <span class="o">+</span> <span class="s">""</span> <span class="o">+</span> <span class="n">c3</span><span class="o">);</span> <span class="c1">//prints: a a a</span>
+</code></pre></div></div>
+
+<h1 id="scope-objectives-13-and-76">Scope (Objectives 1.3 and 7.6)</h1>
+<ul>
+  <li>Scope refers to the lifetime of a variable.</li>
+  <li>There are four basic scopes:
+    <ol>
+      <li>Static variables live basically as long as their class lives.</li>
+      <li>Instance variables live as long as their object lives.</li>
+      <li>Local variables live as long as their method is on the stack; however, if their method invokes another method, they are temporarily unavailable.</li>
+      <li>Block variables (e.g. in a for block or an if block) live until the block completes.</li>
+    </ol>
+  </li>
+</ul>
+
+<h1 id="basic-assignments-objectives-13-and-76">Basic Assignments (Objectives 1.3 and 7.6)</h1>
+<ul>
+  <li>The result of an expression involving anything int-sized or smaller is always an int. In other words, add two bytes together and you’ll get an int.</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">byte</span> <span class="n">a</span> <span class="o">=</span> <span class="mi">3</span><span class="o">;</span> <span class="c1">// No problem, 3 fits in a byte</span>
+<span class="kt">byte</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">8</span><span class="o">;</span> <span class="c1">// No problem, 8 fits in a byte</span>
+<span class="kt">byte</span> <span class="n">c</span> <span class="o">=</span> <span class="n">b</span> <span class="o">+</span> <span class="n">c</span><span class="o">;</span> <span class="c1">// Wont compile. Explicit cast to byte required</span>
+</code></pre></div></div>
+
+<ul>
+  <li>Widening usually is done by an implicit cast. Widening is putting a smaller thing into a bigger container e.g. byte =&gt; int</li>
+  <li>Narrowing requires an explicit cast. Narrowing is the putting of a large-value into a smaller container e.g. int =&gt; byte</li>
+  <li>When the value of a primitive being narrowed is too large for the type, the low order bits are assigned to it.</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">long</span> <span class="n">l</span> <span class="o">=</span> <span class="mi">130L</span><span class="o">;</span>		<span class="c1">//binary: 0000 0000 1000 0010</span>
+<span class="c1">//takes least significant byte 1000 0010 which is minus 126 in 2’s complement</span>
+<span class="kt">byte</span> <span class="n">b</span> <span class="o">=</span> <span class="o">(</span><span class="kt">byte</span><span class="o">)</span><span class="n">l</span><span class="o">;</span>		
+
+<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="err">“</span><span class="n">b</span> <span class="n">is</span> <span class="err">”</span> <span class="o">+</span> <span class="n">b</span><span class="o">);</span> <span class="c1">//Prints: b is -126</span>
+</code></pre></div></div>
+
+<ul>
+  <li>Compound assignments (e.g. +=) perform an automatic cast in some cases e.g.</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">byte</span> <span class="n">a</span> <span class="o">=</span><span class="mi">3</span><span class="o">,</span> <span class="n">c</span> <span class="o">=</span><span class="mi">8</span><span class="o">;</span>
+<span class="n">a</span> <span class="o">+=</span> <span class="n">c</span><span class="o">;</span> <span class="c1">//no need for explicit cast to byte</span>
+</code></pre></div></div>
+
+<ul>
+  <li>A reference variable holds the bits that are used to refer to an object.</li>
+  <li>Reference variables can refer to subclasses of the declared type; but not to superclasses.</li>
+</ul>
+
+<h1 id="using-a-variable-or-array-element-that-is-uninitialized-and-unassigned-objectives-13-and-76">Using a Variable or Array Element That Is Uninitialized and Unassigned (Objectives 1.3 and 7.6)</h1>
+<ul>
+  <li>Instance variables are always initialized with a default value.</li>
+  <li>
+    <p>Local/automatic/method variables are NEVER given a default value. If you
+attempt to use one before initializing it, you’ll get a compiler error.</p>
+  </li>
+  <li>When an array is instantiated, elements get default values.</li>
+</ul>
+
+<h1 id="passing-variables-into-methods-objective-73">Passing Variables into Methods (Objective 7.3)</h1>
+<ul>
+  <li>
+    <p>Methods can take primitives and/or object references as arguments.</p>
+  </li>
+  <li>Method arguments are always copies, pass-by-value.</li>
+  <li>An object reference passed as an argument into a method allows the method to change the state of the object it points to.</li>
+  <li>
+    <p>A primitive argument is an unattached copy of the original primitive.</p>
+  </li>
+  <li>Shadowing occurs when two variables with different scopes share the same
+name. This leads to hard-to-find bugs, and hard-to-answer exam questions.</li>
+</ul>
+
+<h1 id="array-declaration-construction-and-initialization-obj-13">Array Declaration, Construction, and Initialization (Obj. 1.3)</h1>
+<ul>
+  <li>
+    <p>Arrays can hold primitives or objects, but the array itself is always an object.</p>
+  </li>
+  <li>You must include the size of an array when you construct it (using new), unless you are creating an anonymous array.</li>
+  <li>When you construct an array of objects, the elements are NOT automatically created for you, it merely has null references in it.</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">Animal</span> <span class="o">[]</span> <span class="n">pets</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Animal</span><span class="o">[</span><span class="mi">3</span><span class="o">];</span> <span class="c1">//3 null references of type Animal</span>
+</code></pre></div></div>
+
+<ul>
+  <li>Arrays are indexed beginning with zero.</li>
+  <li>
+    <p>An ArrayIndexOutOfBoundsException occurs if you use a bad index value.</p>
+  </li>
+  <li>
+    <p>Arrays have a length variable whose value is the number of array elements, the last index you can access is always one less than the length of the array.</p>
+  </li>
+  <li>Multidimensional arrays are just arrays of arrays.</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span><span class="o">[</span> <span class="o">][</span> <span class="o">]</span> <span class="n">myArray</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[</span><span class="mi">3</span><span class="o">][</span><span class="mi">1</span><span class="o">];</span>
+<span class="n">myArray</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[</span><span class="mi">2</span><span class="o">];</span>
+<span class="n">myArray</span><span class="o">[</span><span class="mi">0</span><span class="o">][</span><span class="mi">0</span><span class="o">]</span> <span class="o">=</span> <span class="mi">6</span><span class="o">;</span>
+<span class="n">myArray</span><span class="o">[</span><span class="mi">1</span><span class="o">]</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[</span><span class="mi">3</span><span class="o">];</span>
+<span class="n">myArray</span><span class="o">[</span><span class="mi">1</span><span class="o">][</span><span class="mi">0</span><span class="o">]</span> <span class="o">=</span> <span class="mi">9</span><span class="o">;</span>
+<span class="n">myArray</span><span class="o">[</span><span class="mi">1</span><span class="o">][</span><span class="mi">2</span><span class="o">]</span> <span class="o">=</span> <span class="mi">9</span><span class="o">;</span>
+</code></pre></div></div>
+
+<ul>
+  <li>You only have to declare the first dimension of a multi-dimension array:</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span><span class="o">[][]</span> <span class="n">myArray</span> <span class="o">=</span>  <span class="k">new</span> <span class="kt">int</span><span class="o">[</span><span class="mi">3</span><span class="o">][];</span>
+</code></pre></div></div>
+<ul>
+  <li>You can declare, create and initialise an array in one statement in 2 ways:</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">2</span><span class="o">;</span>
+
+<span class="kt">int</span><span class="o">[]</span> <span class="n">dots</span> <span class="o">=</span> <span class="o">{</span><span class="mi">6</span><span class="o">,</span><span class="n">x</span><span class="o">,</span><span class="mi">8</span><span class="o">};</span> <span class="c1">//single dimensional</span>
+<span class="kt">int</span><span class="o">[][]</span> <span class="n">scores</span> <span class="o">=</span> <span class="o">{{</span><span class="mi">5</span><span class="o">,</span><span class="mi">2</span><span class="o">,</span><span class="mi">4</span><span class="o">,</span><span class="mi">7</span><span class="o">},</span> <span class="o">{</span><span class="mi">9</span><span class="o">,</span><span class="mi">2</span><span class="o">},</span> <span class="o">{</span><span class="mi">3</span><span class="o">,</span><span class="mi">4</span><span class="o">}};</span> <span class="c1">//multidimensional</span>
+
+<span class="n">dots</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[]</span> <span class="o">{</span><span class="mi">6</span><span class="o">,</span><span class="mi">2</span><span class="o">,</span><span class="mi">8</span><span class="o">};</span>	<span class="c1">//anonymous array assigned to ref variable</span>
+<span class="n">f</span><span class="o">.</span><span class="na">takesAnArray</span><span class="o">(</span><span class="k">new</span> <span class="kt">int</span><span class="o">[]</span> <span class="o">{</span><span class="mi">7</span><span class="o">,</span><span class="mi">7</span><span class="o">,</span><span class="mi">8</span><span class="o">,</span><span class="mi">2</span><span class="o">,</span><span class="mi">5</span><span class="o">});</span>
+
+<span class="c1">//anonymous array can be used as a just-in-time method argument</span>
+</code></pre></div></div>
+
+<ul>
+  <li>An array of primitives can accept any value that can be promoted implicitly to the array’s declared type e.g. a byte variable can go into an int array.</li>
+  <li>
+    <p>An array of objects can hold any object that passes the IS-A (or instanceof) test for the declared type of the array. e.g. if Horse extends Animal, then a Horse object can go into an Animal array.</p>
+  </li>
+  <li>If you assign an array of primitives to a previously declared array reference, the array you’re assigning must be the same type and the same dimension as the reference you’re assigning it to. e.g.</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span><span class="o">[]</span> <span class="n">big</span><span class="o">;</span>
+<span class="kt">byte</span><span class="o">[]</span><span class="n">smaller</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">byte</span><span class="o">[</span><span class="mi">5</span><span class="o">];</span>
+<span class="n">big</span> <span class="o">=</span> <span class="n">small</span><span class="o">;</span> <span class="c1">//compiler error, incompatible types!</span>
+
+<span class="kt">int</span><span class="o">[]</span> <span class="n">oneD</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[</span><span class="mi">6</span><span class="o">];</span>
+<span class="kt">int</span><span class="o">[][]</span> <span class="n">twoD</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[</span><span class="mi">3</span><span class="o">][];</span>
+<span class="n">oneD</span> <span class="o">=</span> <span class="n">twoD</span><span class="o">;</span> 	<span class="c1">//compiler error, different dimensioning!</span>
+<span class="n">twoD</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span> <span class="o">=</span> <span class="n">oneD</span><span class="o">;</span>	<span class="cm">/* OK, twoD is an int array and oneD’s first element is expecting an int array*/</span>
+</code></pre></div></div>
+
+<ul>
+  <li>There is unusual syntax where you can create an anonymous array, and assign it to a dimension of another array in one statement e.g.</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span><span class="o">[]</span> <span class="n">it</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[][]</span><span class="mi">1</span><span class="o">[</span><span class="mi">0</span><span class="o">];</span>
+</code></pre></div></div>
+
+ 	is the same as
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span><span class="o">[][]</span> <span class="n">anon</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[][]</span><span class="mi">1</span><span class="o">;</span>
+<span class="kt">int</span><span class="o">[]</span> <span class="n">it</span> <span class="o">=</span> <span class="n">anon</span><span class="o">[</span><span class="mi">0</span><span class="o">];</span>
+</code></pre></div></div>
+
+<ul>
+  <li>You can assign an array of objects of one type to a previously declared array reference if it passes the IS-A test. e.g.</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">Car</span><span class="o">[]</span> <span class="n">cars</span><span class="o">;</span>
+<span class="nc">Honda</span><span class="o">[]</span> <span class="n">hondas</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Honda</span><span class="o">[</span><span class="mi">5</span><span class="o">];</span>
+<span class="n">cars</span> <span class="o">=</span> <span class="n">hondas</span><span class="o">;</span> <span class="c1">// OK because Honda is a type of Car</span>
+</code></pre></div></div>
+
+<ul>
+  <li>For comparison of arrays:</li>
+  <li>Arrays.equals(): two arrays are considered equal if both arrays contain the same number of elements, and all corresponding pairs of elements in the two arrays are equal.</li>
+  <li>.equals() on a primitive array: you actually calling .equals() of Object, so only when the two references point to the same object, they are considered equal.</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">Test</span> <span class="o">{</span>  
+     <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">...</span> <span class="n">args</span><span class="o">)</span>  
+     <span class="o">{</span>  
+         <span class="kt">int</span><span class="o">[]</span><span class="n">a</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[]{</span><span class="mi">1</span><span class="o">};</span>  
+         <span class="kt">int</span><span class="o">[]</span><span class="n">b</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[]{</span><span class="mi">1</span><span class="o">};</span>  
+         <span class="kt">int</span><span class="o">[]</span> <span class="n">c</span> <span class="o">=</span> <span class="n">a</span><span class="o">;</span>  
+         <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">a</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="n">b</span><span class="o">));</span>   <span class="c1">//false  </span>
+         <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">a</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="n">c</span><span class="o">));</span>   <span class="c1">//true  </span>
+         <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="nc">Arrays</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="n">a</span><span class="o">,</span> <span class="n">b</span><span class="o">));</span> <span class="c1">//true  </span>
+     <span class="o">}</span>  
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h1 id="initialization-blocks-objectives-13-and-76">Initialization Blocks (Objectives 1.3 and 7.6)</h1>
+<ul>
+  <li>Static initialization blocks run once, when the class is first loaded. Classes are loaded starting with the class at the head of hierarchy e.g. Bird in example below.</li>
+  <li>Instance initialization blocks run every time a new instance is created. They
+run after all super-constructors and before the constructor’s code has run.</li>
+  <li>If multiple instance initialisation blocks exist in a class, they follow the rules stated above, AND they run in the order in which they appear in the source file.</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">Bird</span> <span class="o">{</span>
+	<span class="kd">static</span> <span class="o">{</span> <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="s">"b1 "</span><span class="o">);}</span>
+	<span class="o">{</span> <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="s">"b2 "</span><span class="o">);</span> <span class="o">}</span>
+
+	<span class="kd">public</span> <span class="nf">Bird</span><span class="o">()</span> <span class="o">{</span> <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="s">"b3 "</span><span class="o">);</span> <span class="o">}</span>
+<span class="o">}</span>
+<span class="kd">class</span> <span class="nc">Raptor</span> <span class="kd">extends</span> <span class="nc">Bird</span> <span class="o">{</span>
+	<span class="kd">static</span> <span class="o">{</span> <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="s">"r1 "</span><span class="o">);</span> <span class="o">}</span>
+
+	<span class="kd">public</span> <span class="nf">Raptor</span><span class="o">()</span> <span class="o">{</span> <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="s">"r2 "</span><span class="o">);</span> <span class="o">}</span>
+
+	<span class="o">{</span> <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="s">"r3 "</span><span class="o">);</span> <span class="o">}</span>
+
+	<span class="kd">static</span> <span class="o">{</span> <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="s">"r4 "</span><span class="o">);</span> <span class="o">}</span>
+<span class="o">}</span>
+<span class="kd">class</span> <span class="nc">Hawk</span> <span class="kd">extends</span> <span class="nc">Raptor</span> <span class="o">{</span>
+	<span class="kd">static</span> <span class="o">{</span><span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="s">"h1 "</span><span class="o">);}</span>
+
+	<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+		<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="s">"pre "</span><span class="o">);</span>
+		<span class="k">new</span> <span class="nf">Hawk</span><span class="o">();</span>
+		<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"hawk "</span><span class="o">);</span>
+	<span class="o">}</span>
+<span class="o">}</span>
+
+<span class="nl">Prints:</span> <span class="n">b1</span> <span class="n">r1</span> <span class="n">r4</span> <span class="n">h1</span> <span class="n">pre</span> <span class="n">b2</span> <span class="n">b3</span> <span class="n">r3</span> <span class="n">r2</span> <span class="n">hawk</span>
+</code></pre></div></div>
+
+<ul>
+  <li>The compiler performs a single class initialization routine that combines all the static variable initializers and all of the static initializer blocks, in the order that they appear in the class declaration. This single initialization procedure is run automatically, one time only, when the class is first loaded.</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">ExamLabBoard</span><span class="o">{</span>
+    <span class="kd">static</span> <span class="kt">int</span> <span class="n">door</span><span class="o">=</span><span class="mi">1</span><span class="o">;</span> <span class="c1">//executes first</span>
+
+    <span class="kd">static</span> <span class="kt">int</span> <span class="n">cam</span><span class="o">=</span><span class="n">capture</span><span class="o">();</span> <span class="c1">//executes second</span>
+
+    <span class="kd">static</span><span class="o">{</span> <span class="n">door</span><span class="o">+=</span><span class="mi">2</span><span class="o">;}</span> <span class="c1">//executes third</span>
+
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">int</span> <span class="nf">capture</span><span class="o">(){</span> <span class="k">return</span> <span class="n">door</span><span class="o">;}</span>
+
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span> <span class="n">args</span><span class="o">[]){</span>
+         <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">printf</span><span class="o">(</span><span class="s">"cam="</span><span class="o">+</span><span class="n">cam</span><span class="o">);</span> <span class="c1">//cam=1</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<ul>
+  <li>If you make a mistake in an initialization block, the JVM can throw  an ExceptionInInitializationError.</li>
+</ul>
+
+<h1 id="using-wrappers-objective-31">Using Wrappers (Objective 3.1)</h1>
+<ul>
+  <li>Wrappers have two main functions:</li>
+  <li>To wrap primitives so that they can be handled like objects</li>
+  <li>To provide utility methods for primitives (usually conversions)</li>
+  <li>Wrapper values are immutable: once assigned, they CANNOT be changed.</li>
+  <li>
+    <p>All Wrapper classes are final.</p>
+  </li>
+  <li>The three most important method families are:</li>
+  <li>xxxValue() Method takes no arguments, returns a primitive. Every Wrapper class has 6 versions of this e.g. byteValue, shortValue(), intValue()..</li>
+  <li>parseXxx(String s) Static method that takes a String, returns a primitive, throws NumberFormatException. Can be supplied with second parameter radix for Short, Byte, Integer, Long to change number system representation e.g. binary - 2</li>
+  <li>valueOf(String s)/valueOf(primitive)  Static method that takes a String/primitive, returns a wrapped object, throws NumberFormatException. Can be supplied with second parameter radix for Short, Byte, Integer, Long to change number system representation
+REMEMBER: if any of above methods have a primitive type in its name, then it returns a primitive e.g. parseInt(), intValue().</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">Integer</span> <span class="n">i</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Integer</span><span class="o">(</span><span class="err">“</span><span class="mi">42</span><span class="err">”</span><span class="o">);</span> 	<span class="c1">// make a new wrapper object</span>
+<span class="kt">byte</span> <span class="n">b</span> <span class="o">=</span> <span class="n">i</span><span class="o">.</span><span class="na">byteValue</span><span class="o">();</span> 		<span class="c1">// convert i's value to a byte</span>
+
+<span class="kt">int</span> <span class="n">int1</span> <span class="o">=</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="s">"00000011"</span><span class="o">,</span> <span class="mi">2</span><span class="o">);</span> <span class="cm">/* Converts a string representing a binary number to an int. int1 = 3*/</span>
+
+<span class="nc">Integer</span> <span class="n">i2</span> <span class="o">=</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">valueOf</span><span class="o">(</span><span class="s">"34"</span><span class="o">);</span> <span class="c1">// creates an Integer</span>
+<span class="nc">Integer</span> <span class="n">i2</span> <span class="o">=</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">valueOf</span><span class="o">(</span><span class="mi">34</span><span class="o">);</span> <span class="c1">// creates an Integer</span>
+</code></pre></div></div>
+
+<ul>
+  <li>Wrapper constructors can take a String or its associated primitive, except for Character, which can only take a char.</li>
+  <li>new Boolean(“anyValue”) or new Boolean(null) will create a Boolean with the value of false.</li>
+  <li>new Boolean(“TRuE”) is not case-sensitive.</li>
+  <li>There is a Boolean.parseBoolean(String) in Java 6.</li>
+  <li>There is NO Character.parseChar(char).</li>
+</ul>
+
+<h1 id="boxing-objective-31">Boxing (Objective 3.1)</h1>
+<ul>
+  <li>As of Java 5, boxing allows you to convert primitives to wrappers or to convert wrappers to primitives automatically.</li>
+  <li>Wrapper objects are found “meaningful equivalent” with equals() if they are of the same type and have the same value.</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">Integer</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">343</span><span class="o">;</span>
+<span class="kt">long</span> <span class="n">long343</span> <span class="o">=</span> <span class="mi">343L</span><span class="o">;</span>
+<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">x</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="n">long343</span><span class="o">))</span><span class="c1">//false.long343 is boxed to Long</span>
+<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">x</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="mi">343</span><span class="o">));</span><span class="c1">//true. 343 is boxed to an Integer</span>
+</code></pre></div></div>
+
+<ul>
+  <li>Use == to see if the two wrapper objects are the same objects.</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">Integer</span> <span class="n">x</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Integer</span><span class="o">(</span><span class="mi">567</span><span class="o">);</span>
+<span class="nc">Integer</span> <span class="n">y</span> <span class="o">=</span> <span class="n">x</span><span class="o">;</span>
+<span class="nc">Integer</span> <span class="n">z</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Integer</span><span class="o">(</span><span class="mi">567</span><span class="o">);</span>
+
+<span class="k">if</span><span class="o">(</span><span class="n">x</span><span class="o">==</span><span class="n">y</span><span class="o">)</span> <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"x==y"</span><span class="o">);</span>  <span class="c1">//true</span>
+<span class="k">if</span><span class="o">(</span><span class="n">x</span><span class="o">==</span><span class="n">z</span><span class="o">)</span> <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"x==z"</span><span class="o">);</span> <span class="c1">//false</span>
+</code></pre></div></div>
+
+<ul>
+  <li>Using == with wrappers created through boxing is tricky: two instances of the following wrapper objects will always be == when their primitive values are the same:</li>
+  <li>Boolean</li>
+  <li>Byte</li>
+  <li>Character from \u0000 to \u007f (7f is 127 in decimal)</li>
+  <li>Short and Integer from -128 to 127</li>
+</ul>
+
+<h1 id="advanced-overloading-objectives-15-and-54">Advanced Overloading (Objectives 1.5 and 5.4)</h1>
+<ul>
+  <li>Primitive widening uses the “smallest” method argument possible.</li>
+  <li>
+    <p>Java 5’s designers decided that the most important rule should be that pre-existing
+code should function the way it used to, so the compiler will choose the older style before it chooses the newer style, so when choosing suitable method arguments:</p>
+  </li>
+  <li>Widening beats boxing</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">AddBoxing</span> <span class="o">{</span>
+	<span class="kd">static</span> <span class="kt">void</span> <span class="nf">go</span><span class="o">(</span><span class="nc">Integer</span> <span class="n">x</span><span class="o">)</span> <span class="o">{</span>
+		<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Integer"</span><span class="o">);</span>
+	<span class="o">}</span>
+	<span class="kd">static</span> <span class="kt">void</span> <span class="nf">go</span><span class="o">(</span><span class="kt">long</span> <span class="n">x</span><span class="o">)</span> <span class="o">{</span>
+		<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"long"</span><span class="o">);</span>
+	<span class="o">}</span>
+
+	<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span> <span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+		<span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">5</span><span class="o">;</span>
+		<span class="n">go</span><span class="o">(</span><span class="n">i</span><span class="o">);</span> <span class="c1">// which go() will be invoked? Prints: long</span>
+	<span class="o">}</span>
+<span class="o">}</span>
+
+</code></pre></div></div>
+
+<ul>
+  <li>Widening beats var-args</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">AddVarargs</span> <span class="o">{</span>
+	<span class="kd">static</span> <span class="kt">void</span> <span class="nf">go</span><span class="o">(</span><span class="kt">int</span> <span class="n">x</span><span class="o">,</span> <span class="kt">int</span> <span class="n">y</span><span class="o">)</span> <span class="o">{</span>
+		<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"int,int"</span><span class="o">);</span>
+	<span class="o">}</span>
+
+	<span class="kd">static</span> <span class="kt">void</span> <span class="nf">go</span><span class="o">(</span><span class="kt">byte</span><span class="o">...</span> <span class="n">x</span><span class="o">)</span> <span class="o">{</span>
+		<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"byte... "</span><span class="o">);</span>
+	<span class="o">}</span>
+
+	<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+		<span class="kt">byte</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">5</span><span class="o">;</span>
+		<span class="n">go</span><span class="o">(</span><span class="n">b</span><span class="o">,</span><span class="n">b</span><span class="o">);</span> <span class="c1">// which go() will be invoked? Prints: int, int</span>
+	<span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<ul>
+  <li>Boxing beats var-args, think of var-args method as more like a catch-all method that is used only as a last resort.</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">BoxOrVararg</span> <span class="o">{</span>
+
+	<span class="kd">static</span> <span class="kt">void</span> <span class="nf">go</span><span class="o">(</span><span class="nc">Byte</span> <span class="n">x</span><span class="o">,</span> <span class="nc">Byte</span> <span class="n">y</span><span class="o">){</span>
+		<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Byte, Byte"</span><span class="o">);</span>
+	<span class="o">}</span>
+
+	<span class="kd">static</span> <span class="kt">void</span> <span class="nf">go</span><span class="o">(</span><span class="kt">byte</span><span class="o">...</span> <span class="n">x</span><span class="o">)</span> <span class="o">{</span>
+		<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"byte... "</span><span class="o">);</span>
+	<span class="o">}</span>
+
+	<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span> <span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+		<span class="kt">byte</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">5</span><span class="o">;</span>
+		<span class="n">go</span><span class="o">(</span><span class="n">b</span><span class="o">,</span><span class="n">b</span><span class="o">);</span> <span class="c1">// which go() will be invoked? Prints: Byte, Byte</span>
+	<span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<ul>
+  <li>You can box and then widen. (byte b is boxed to a Byte, Byte is widened to an Object.)</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">BoxAndWiden</span> <span class="o">{</span>
+	<span class="kd">static</span> <span class="kt">void</span> <span class="nf">go</span><span class="o">(</span><span class="nc">Object</span> <span class="n">o</span><span class="o">)</span> <span class="o">{</span>
+		<span class="nc">Byte</span> <span class="n">b2</span> <span class="o">=</span> <span class="o">(</span><span class="nc">Byte</span><span class="o">)</span> <span class="n">o</span><span class="o">;</span> <span class="c1">// ok - it's a Byte object</span>
+		<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">b2</span><span class="o">);</span>
+	<span class="o">}</span>
+
+	<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span> <span class="o">[]</span> <span class="n">args</span><span class="o">){</span>
+		<span class="kt">byte</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">5</span><span class="o">;</span>
+		<span class="n">go</span><span class="o">(</span><span class="n">b</span><span class="o">);</span> <span class="c1">// can this byte turn into an Object? Prints: 5</span>
+	<span class="o">}</span>
+<span class="o">}</span>
+
+</code></pre></div></div>
+<ul>
+  <li>You can widen and use var-args,  and you can box and use var-arg.</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">Vararg</span> <span class="o">{</span>
+	<span class="kd">static</span> <span class="kt">void</span> <span class="nf">wide_vararg</span><span class="o">(</span><span class="kt">long</span><span class="o">...</span> <span class="n">x</span><span class="o">){</span>
+		<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"long..."</span><span class="o">);</span>
+	<span class="o">}</span>
+
+	<span class="kd">static</span> <span class="kt">void</span> <span class="nf">box_vararg</span><span class="o">(</span><span class="nc">Integer</span><span class="o">...</span> <span class="n">x</span><span class="o">){</span> 	   
+		<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Integer..."</span><span class="o">);</span>
+	<span class="o">}</span>
+
+	<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span> <span class="o">[]</span> <span class="n">args</span><span class="o">){</span>
+		<span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">5</span><span class="o">;</span>
+		<span class="n">wide_vararg</span><span class="o">(</span><span class="n">i</span><span class="o">,</span><span class="n">i</span><span class="o">);</span> <span class="c1">// needs to widen and use var-args</span>
+		<span class="n">box_vararg</span><span class="o">(</span><span class="n">i</span><span class="o">,</span><span class="n">i</span><span class="o">);</span> <span class="c1">// needs to box and use var-args</span>
+	<span class="o">}</span>
+<span class="o">}</span>
+<span class="c1">//Prints:</span>
+<span class="c1">//long...</span>
+<span class="c1">//Integer...</span>
+</code></pre></div></div>
+<ul>
+  <li>If there are two overloaded methods: one that can take a primitive var-args, the other that can take a Wrapper var-args, you can only call the method if you pass it an primitive array or Wrapper array.</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">test</span> <span class="o">{</span>
+	<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">tMeth</span><span class="o">(</span><span class="nc">Integer</span><span class="o">...</span> <span class="n">i</span><span class="o">){</span>
+		<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="s">"A"</span><span class="o">);</span>
+	<span class="o">}</span>
+
+	<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">tMeth</span><span class="o">(</span><span class="kt">int</span><span class="o">...</span> <span class="n">i</span><span class="o">){</span>
+		<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="s">"B"</span><span class="o">);</span>
+	<span class="o">}</span>
+
+	<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span> <span class="n">args</span><span class="o">[]){</span>
+		<span class="n">tMeth</span><span class="o">(</span><span class="mi">1</span><span class="o">);</span> <span class="c1">//compiler error</span>
+		<span class="n">tMeth</span><span class="o">(</span><span class="k">new</span> <span class="nc">Integer</span><span class="o">(</span><span class="mi">1</span><span class="o">));</span> <span class="c1">//compiler error</span>
+		<span class="n">tMeth</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span><span class="mi">2</span><span class="o">);</span> <span class="c1">//compiler error</span>
+		<span class="n">tMeth</span><span class="o">(</span><span class="k">new</span> <span class="nc">Integer</span><span class="o">(</span><span class="mi">1</span><span class="o">),</span> <span class="k">new</span> <span class="nc">Integer</span><span class="o">(</span><span class="mi">2</span><span class="o">));</span> <span class="c1">//compiler error</span>
+		<span class="n">tMeth</span><span class="o">(</span><span class="k">new</span> <span class="kt">int</span><span class="o">[]{</span><span class="mi">1</span><span class="o">,</span><span class="mi">2</span><span class="o">,</span><span class="mi">3</span><span class="o">});</span> <span class="c1">//compiles</span>
+		<span class="n">tMeth</span><span class="o">(</span><span class="k">new</span> <span class="nc">Integer</span><span class="o">[]{</span><span class="k">new</span> <span class="nc">Integer</span><span class="o">(</span><span class="mi">1</span><span class="o">),</span> <span class="k">new</span> <span class="nc">Integer</span><span class="o">(</span><span class="mi">2</span><span class="o">)});</span> <span class="c1">//compiles</span>
+	<span class="o">}</span>  
+<span class="o">}</span>
+</code></pre></div></div>
+
+<ul>
+  <li>You CANNOT widen from one wrapper type to another e.g. widening of Integer to Long is not possible as IS-A test fails.</li>
+  <li>You CANNOT widen and then box. (An int can’t become a Long.)</li>
+</ul>
+
+<h1 id="garbage-collection-objective-74">Garbage Collection (Objective 7.4)</h1>
+<ul>
+  <li>In Java, garbage collection (GC) provides automated memory management, to free as much space on the heap as possible.</li>
+  <li>
+    <p>The purpose of GC is to delete objects that can’t be reached, an object is eligible for deletion when no live thread can reach it (no more references to an object).</p>
+  </li>
+  <li>Only the JVM decides when to run the GC, you can only suggest it.</li>
+  <li>
+    <p>You CANNOT know the GC algorithm for sure.</p>
+  </li>
+  <li>
+    <p>Java applications can run out of memory.</p>
+  </li>
+  <li>
+    <p>Islands of objects are when two instances have references to each other; but their references are not accessible externally. So even though each object still has a valid reference, there will be no way for any live thread to access either object. Islands of objects can be garbage collected.</p>
+  </li>
+  <li>
+    <p>You can request garbage collection with the static call System.gc(); or Runtime.getRuntime().gc(). Garbage collection has evolved to a stage where it is recommended not to bother invoking it in your code ever.</p>
+  </li>
+  <li>The finalize() method is guaranteed to run once and only once before the garbage collector deletes an object, its inherited from Object.</li>
+  <li>
+    <p>As you CANNOT count on the GC to delete an object, you CANNOT be guaranteed that finalize() will run, so essential code should NOT be put in there.</p>
+  </li>
+  <li>You can uneligibilize an object for GC from within finalize() if an object reference is created to that object.</li>
+  <li>finalize() is never invoked more than once by a JVM for any given object.</li>
+</ul>
+:ET
