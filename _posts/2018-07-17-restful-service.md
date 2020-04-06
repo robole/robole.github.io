@@ -1,17 +1,96 @@
 ---
 layout: scrollable_post
-title: Building a RESTful Web Service in Spring for beginners ☕
+title: Master the Web - Build a REST API with Spring for Beginners ☕
 category: programming
 tags: [rest, Java, Spring]
 published: true
 ---
-I want to go a bit beyond the trivial [Hello World example](http://spring.io/guides/gs/rest-service/) from the Spring website to build a simple [restful service](http://spring.io/understanding/REST) that is closer to something you would realistically build. I have seen other tutorials that can overwhelm beginners with some aspects that are not explained, and could be excluded.
+<img src="/assets/img/blog/2018-07-17-restful-service/spiderman.png" alt="spiderman city!"/>
 
-# What you’ll build
+- [What is REST?](#what-is-rest)
+  - [Twitter REST API Example](#twitter-rest-api-example)
+- [What we will build](#what-we-will-build)
+- [Understanding REST in Spring](#Understanding-REST-in-Spring)
+  - [Design Patterns](#design-patterns)
+- [What you need](#what-you-need)
+- [How to set your project up](#how-to-set-your-project-up)
+- [Get All Users](#get-all-users)
+- [Get User by ID](#get-user-by-id)
+- [Get User by Name](#get-user-by-name)
+- [Add a new User](#add-a-new-user)
+- [Update a User](#update-a-user)
+- [Partial Update of a User](#partial-update-of-a-user)
+- [Delete a User](#delete-a-user)
+- [How to verify your application](#how-to-verify-your-application)
+- [Source code](#source-code)
+- [Next Steps](#next-steps)
 
-You’ll build a service for a *user*, something that is core thing in a lot of web applications. The table below summarises the actions we create for our *user*/
+<abbr title="REpresentational State Transfer">REST</abbr> <abbr title="Application Programming Interface">API</abbr>s are fundamental to building distributed web applications. It has become an ubquitious way to distribute our code and data to web applications. 
 
-The default local address for your Spring Boot application should be: ```http://localhost:8080```, so the address
+ I want to go a bit beyond the trivial [Hello World example from the Spring website](http://spring.io/guides/gs/rest-service/), and build a simple REST API, which is closer to what you would realistically build. 
+
+ > You can probably do a copy-and-paste-edit code collage and make a web application, but it is better to understand what you are doing, and why you are doing it that way.
+
+I have seen other tutorials that can overwhelm beginners with some concepts that are not explained well, or are not explained at all. You can probably do a copy-and-paste-edit code collage and make a web application, but it is better to understand what you are doing, and why you are doing it that way. I will go through it from start to finish. You can skip the bits you know.
+
+## What is REST?
+
+- REST stands for REpresentational State Transfer.
+- REST is one of the underlying principles of the design of the internet: resources are exposed in an uniform way. 
+- A client (web browser, mobile app, etc.) interacts with a server (a remote computer) over a network in complex ways without knowing what resources are on that server. When you browse the internet, you know the address of a homepage of a website, then you interact with the website to find out what information it has, and what functions it offers. It is similar with a REST API but we are concerned with data, rather than pages.
+- You request a webpage by using it's web address, which is known as Uniform Resource Location (URL). The address you write in is probably it's base URL e.g. `http://www.google.com`, all other pages (resources) are related to that. 
+
+  <img src="/assets/img/blog/2018-07-17-restful-service/address.png" alt="picture of web address in browser" style="display:block"/>
+
+- The client and server agree on what media is transferred. This is the Application Type. The Application Type is HTML for web pages, and usually JSON or XML for data.
+- The transfer is done by making a request using HTTP (Hypertext Transfer Protocol) specifying a HTTP Method. You use the GET method to retrieve data. This is the method you use every time you request a webpage in your browser.
+- The server returns a response with the results.
+  <img src="/assets/img/blog/2018-07-17-restful-service/req-res.png" alt="request response model for internet diagram" style="display:block"/>
+- The differnt HTTP methods allow us to perform different actions to interact with a resource. These are commonly know as CRUD actions (Create, Read, Update, Delete).
+ <img src="/assets/img/blog/2018-07-17-restful-service/rest-methods.png" alt="request response model for internet diagram" style="display:block"/>
+  <br/>
+- That's it in a nutshell really! You can see the answers to ["what is restful programming?"](https://stackoverflow.com/questions/671118/what-exactly-is-restful-programming) on Stack Overflow if you want to see the differing interpretations. 
+<img src="/assets/img/blog/2018-07-17-restful-service/rest-basic.png" alt="basic rest api architecture" style="display:block"/>
+- Restful Services follow the concepts of REST Architecture loosely or closely, there are different maturity levels of how well they conform to the architecture. We conform to level 3, more or less, which is typical. If you want to understand more behind that, you can read about the [4 Maturity Levels of REST API Design](https://blog.restcase.com/4-maturity-levels-of-rest-api-design/).
+<br/>
+
+If you're still a bit confused, don't worry. Let's look at an example of an API to clarify what we want to emulate, and then we can!
+
+### Twitter REST API Example
+
+It is common now for companies to share access some of their data to the public through Rest APIs. API stands for Application Programming Interface, which is just a list of public methods we can use to interact with the company data. 
+
+Let’s look at the [Twitter API](https://developer.twitter.com/en/docs/api-reference-index). I'm guessing you know what Twitter is already!
+
+The API reference gives you a long categorized list of methods. You can do anything with tweets, direct messages, account settings, all of the things you do through the website is possible to do through the API.
+
+<img src="/assets/img/blog/2018-07-17-restful-service/twitter-api-reference.png" alt="twitter api reference" style="display:block;border:1px black solid"/>
+
+Let's look at getting all of the tweets from the timeline of @spiderman. Looking through the list, [GET statuses/user_timeline](https://developer.twitter.com/en/docs/tweets/timelines/api-reference/get-statuses-user_timeline) seems to be the method that matches what we want. This is the method description:
+
+<img src="/assets/img/blog/2018-07-17-restful-service/twitter-user-timeline-endpoint.png" alt="Twitter API user timeline request and response" style="display:block;border:1px black solid"/>
+
+We need to have a REST client to use the API. I like to use [Insomnia](https://insomnia.rest/). 
+
+Based on the method description we need to provide 1 parameter in our request to get what we want, `screen_name`. 
+
+You need to do some configuration in your Twitter account settings to get the developer keys for authentication,  we need to provide this in our REST request so that it is accepted by the Twitter server. It's a bit tedious to get this done! I wont show you how, the focus is on showing what the API is and how it can be used. This is what our request looks like on the left, and the response received is on the right.
+
+![Twitter API user timeline request and response](/assets/img/blog/2018-07-17-restful-service/twitter-req.png)
+
+You can see that our `screen_name` parameter is appended to the URL (highlighted in yellow). We use a question mark to mark the beginning of our parameters, then we provide the parameter name and value. You can provide a list of parameters if you need to, you separate each parameter by an ampersand.
+
+As you can see the latest Tweet from Spiderman is telling everyone that you should "Be a Hero. Stay at Home.". 🕸️🙌 
+
+## What we will build
+
+We’ll build a service for a *User*. We want someone to use our App, dont we? 😅 
+
+We will not use a database like a real application would. We will have some dummy data to mimic this functionality.
+
+The table below summarises our *User* API.
+
+When we run our App. The default local address for your Spring Boot application should be: ```http://localhost:8080```, so the address
 to get all users would be ```http://localhost:8080/users``` for example.
 
 <table>
@@ -23,7 +102,7 @@ to get all users would be ```http://localhost:8080/users``` for example.
   <tr>
     <td>GET</td>
     <td>/users</td>
-    <td><a href="#create-a-controller">Get all users</a></td>
+    <td><a href="#get-all-users">Get all users</a></td>
   </tr>
   <tr>
     <td>GET</td>
@@ -52,52 +131,97 @@ to get all users would be ```http://localhost:8080/users``` for example.
   </tr>
 </table>
 
-# Understanding REST in Spring
+## Understanding REST in Spring
 
-Spring is evolving version by version, so its worth noting that you may
-see some differences between tutorials. I would always suggest looking at the most recent tutorial that you can find!
+Spring is evolving version by version, so its worth noting that you may see some differences between examples, and this can be a bit confusing. I would always suggest looking at the most recent tutorial that you can find if you want to know more, or find a tutorial that is in the right style for you!
 
-A more common issue when beginning to learn REST in Spring is that tutorials
-expect you to know the [design patterns](https://en.wikipedia.org/wiki/Software_design_pattern) that are being implicitly used, even though this is a [good tutorial](). Bigger applications are divided into layers with particular responsibilities, this makes it easier to maintain
-them. You can learn design patterns separately beyond this, but you need
-to look at the [Model-View-Controller (MVC)](https://blog.codinghorror.com/understanding-model-view-controller/)
-design pattern to understand what you're doing, because all implementations follow it, as far as I know!
+A common issue when beginning to learn REST with Spring is that tutorials expect you to know something about the [design patterns](https://en.wikipedia.org/wiki/Software_design_pattern) that are being implicitly used. So, I will tell you enough to know what you're doing!
 
-You may also see the use of the following design patterns in an example,
-you *should* skip learning them if your objective is just to understand REST,
-but I mention them here if it is something you want to return to:
-- [Data Access Object layer](https://www.tutorialspoint.com/design_pattern/data_access_object_pattern.htm) / [Repository layer](http://blog.sapiensworks.com/post/2014/06/02/The-Repository-Pattern-For-Dummies.aspx) : controls access to the stored data, so
-other parts of the application do not know about the source of the data.
-- [Service layer](https://martinfowler.com/eaaCatalog/serviceLayer.html): business logic goes here, and it may use multiple repositories. For example, a Book Service might use the user repository and book repository to offer functionality such as "search for my books", and validate if the user is logged in.
+### Design Patterns
+
+- A design pattern is a general, reusable solution to a commonly occurring problem.
+- Design patterns can speed up the development process by providing tested, proven solutions.
+- Reusing design patterns helps to prevent small mistakes that can cause major problems later on.
+
+Bigger applications are divided into layers with particular responsibilities, this makes it easier to maintain
+them. Spring uses the [Model-View-Controller (MVC)](https://blog.codinghorror.com/understanding-model-view-controller/)
+design pattern for building restful services.
 
 Don't be daunted by what I just mentioned, it is more straightforward than you think!
 
-# Getting Started
+## What you need
 
-You can read the "How to complete this guide" section in the [Hello World example](http://spring.io/guides/gs/rest-service/) if you need guidance on how to set-up your project.
+- About 1 hour
+- A favorite text editor or IDE
+- JDK 1.8 or later
+- Gradle 4+ or Maven 3.2+. You skip this depending on your IDE, IntelliJ has maven built-in.
 
-Only one dependency is required and that's the *Spring Boot Starter Web*.
-I will use maven and include it as below. You can download my completed project from:
-[https://github.com/robole/user-spring-rest](https://github.com/robole/user-spring-rest).
+## How to set your project up
+
+You can use [Spring Initializr](https://start.spring.io/) to create your project. The Initializr offers a fast way to pull in all the dependencies you need for an application and does a lot of the setup for you. Only one Spring Dependency is required for this project and that's the *Spring Web*. You click generate and you an download your project in a zip file. 
+
+![Spring Initializr configuration](/assets/img/blog/2018-07-17-restful-service/spring-initializr.png)
+
+Unzip the file and open it in the IDE of your choice. 
+
+The dependencies should be downloaded automatically to ``C:\Users\<username>\.m2\repository` on Windows. You may have to trigger the downloading of the dependencies for you. In IntelliJ, you go to `File > Synchronise` in the menu.
+
+`pom.xml` 
 
 ```xml
-<dependencies>
-  <dependency>
-      <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-starter-web</artifactId>
-  </dependency>
-</dependencies>
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>2.2.6.RELEASE</version>
+		<relativePath/> <!-- lookup parent from repository -->
+	</parent>
+	<groupId>com.spiderman</groupId>
+	<artifactId>user</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<name>user</name>
+	<description>My first REST API</description>
+	<properties>
+		<java.version>1.8</java.version>
+	</properties>
+	<dependencies>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+			<exclusions>
+				<exclusion>
+					<groupId>org.junit.vintage</groupId>
+					<artifactId>junit-vintage-engine</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+	</dependencies>
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+		</plugins>
+	</build>
+</project>
 ```
 
-## Create the model class
+You can download the complete code from github: [https://github.com/robole/user-spring-rest](https://github.com/robole/user-spring-rest).
 
-Spring Web follows the
-[Model-View-Controller design pattern (MVC)](https://www.tutorialspoint.com/mvc_framework/mvc_framework_introduction.htm) as mentioned already.
+## Get All Users
 
-The *model* is what we want our program to be about. We want to create a ```User``` class that has the attributes: *id*, *name*, and *age*.
+### Create the model class
 
-__You must include a no argument constructor when you have a POST
-or PUT request, or Spring will give you an error.__
+The *model* is what we want our program to be about. We want to create a `User` class that has the attributes: *id*, *name*, and *age*.
 
 We add the typical methods to make a regular java class.
 
@@ -107,10 +231,8 @@ public class User {
     private String name;
     private int age;
 
-    //you must include this when you have a POST or PUT
-    public User(){
-
-    }
+    //you must include a no-args constructor when you have a POST or PUT
+    public User(){ }
 
     public User(long id, String name, int age) {
         this.id = id;
@@ -126,11 +248,9 @@ public class User {
 
 The Controller is responsible for matching a HTTP request with a java method that provides a response.
 
-We annotate our Controller with ```@RestController```, and we add methods to
-handle the different requests. Spring is going to transform the data into JSON for us before it is returned as a reponse.
+We annotate our Controller with ```@RestController```, and we add methods to handle the different requests. Spring is going to transform the data into JSON for us before it is returned as a reponse.
 
-I have created an ```ArrayList``` of users to have
-some data to return. ```getUsers()``` returns all of the users
+I have created an ```ArrayList``` of users to have some data to return. ```getUsers()``` returns all of the users
 for the address [http://localhost:8080/users](http://localhost:8080/users). We specify this in the ```@RequestMapping```.
 
 ```java
@@ -158,7 +278,7 @@ public class UserController {
   }
 ```
 
-## @RequestMapping Variants
+#### @RequestMapping Variants
 
 Spring 4.3 introduced shortcut annotations, which serve the same purpose as ```@RequestMapping``` but have the HTTP method as part it's name.
 
@@ -181,32 +301,35 @@ or this:
 @RequestMapping(method=GET, value="/users")
 ```
 
-## Create a class to start a Spring Boot application
+### Create a class to start a Spring Boot application
 
-Spring Boot simplifies the creation of an application. We only need to annotate a class with ```@SpringBootApplication```, and in ```main()```
-we call the static method  ```SpringApplication.run()``` to launch the application. Spring Boot will package the application and run it in an embedded web server to create our web services for us.
+Spring Initialzr already made this class for us `UserApplication`! This class initiates the packagaging of the application and then starts an embedded web server to run our restful service for us.
 
 ```java
+package com.spiderman.user;
+
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class DemoApplication {
+public class UserApplication {
+
 	public static void main(String[] args) {
-		SpringApplication.run(DemoApplication.class, args);
+		SpringApplication.run(UserApplication.class, args);
 	}
+
 }
 ```
 
-Easy peasy!
+That's everything the hard bit done!
 
-## Run the application
+#### Run the application
 
-You can run the ```DemoApplication``` class, and test it in the browser.
+You can run the ```DemoApplication``` class, and test the it in the browser.
 
 ![get request](/assets/img/blog/2018-07-17-restful-service/get.png)
 
-# Get user by id
+## Get user by id
 
 To get the user by id, we want to be able to specify the id inside the address path, this is called a __path variable__.
 
@@ -235,7 +358,7 @@ public User getUsersById(@PathVariable("id") Long id){
 }
 ```
 
-# Get user by name
+## Get user by name
 
 To get the user by name, we want to be able to specify a parameter at the end of the address. For example, we navigate to
 [http://localhost:8080/users?name=rob oleary](http://localhost:8080/users?name=rob oleary)
@@ -268,7 +391,7 @@ public List<User> getUsersByName(@RequestParam(value="name") String name){
 }
 ```
 
-# Add a new user
+## Add a new user
 
 - HTTP POST
 
@@ -284,7 +407,7 @@ public ResponseEntity add(@RequestBody User u) {
 }
 ```
 
-# Update a user
+## Update a user
 
 - HTTP PUT
 
@@ -313,13 +436,13 @@ public ResponseEntity addOrUpdate(@RequestBody User u) {
 }
 ```
 
-# Partial update of a user
+## Partial update of a user
 
 - HTTP PATCH
 
 PATCH is used when we update some fields of an object. This can be important when we use a database as it is more efficient to only update what has changed, rather than replacing an entire object. As we are doing everything in memory with an ```ArrayList```, there is no benefit to this, so __I have not included a method__.
 
-# Delete a user
+## Delete a user
 
 - HTTP DELETE
 
@@ -348,30 +471,30 @@ public ResponseEntity delete(@PathVariable("id") Long id) {
 }
 ```
 
-# How to verify (test) your application
+## How to verify your application
 
 This is just to verify your code works really. If you want to unit test your code, this is a separate topic.
 
 As mentioned previously, GET methods can be tested in your browser.
 
-To test the other methods, you need a rest client like [Postman](https://www.getpostman.com/), or a command-line tool like
+To test the other methods, you need a rest client like [Insomnia](https://insomnia.rest/), or a command-line tool like
 [cURL](https://curl.haxx.se/).
 
-I will show you one example using Postman here. To add a new user, we
-make a POST request like below, we put the JSON of the new user in the request body, and set the header *Content-Type* to "application/json" (you can see it chosen as "JSON(application/json)" in orange text in the picture).
+I will show you one example using Insomnia here. To add a new user, we make a POST request like below, we put the JSON of the new user in the request body, and set the header *Content-Type* to "application/json" (you can see it chosen as "JSON(application/json)" in orange text in the picture).
 
 ![post request](/assets/img/blog/2018-07-17-restful-service/post.png)
 
-# Source code
+## Source code
 
-Available [here](https://github.com/robole/user-spring-rest) on github.  
+You can download the complete code from github: [https://github.com/robole/user-spring-rest](https://github.com/robole/user-spring-rest).
 
-# Next steps
+## Next steps
 
-If you want to learn about unit testing and intgeration of this application, you
-can read [this post]({{ site.baseurl }}{% post_url 2018-08-01-test-restful-service %}).
+You probably want to have a database to store long-term data. You can use Spring Data Rest for this. You can look at [this javacodegeeks tutorial](https://www.javacodegeeks.com/2018/08/restful-api-spring-rest-data-jpa-h2.html) to guide you with that. 
 
-You probably want to use a database to have long-term data.
-You can use Spring Data Rest for this. You can look at my [library example](https://github.com/robole/library-rest-minimum) to explore this, or look at [this javacodegeeks tutorial](https://www.javacodegeeks.com/2018/08/restful-api-spring-rest-data-jpa-h2.html).
+In more **advanced examples**, you will also see the use of the following design patterns:
+- [Data Access Object layer](https://www.tutorialspoint.com/design_pattern/data_access_object_pattern.htm) / [Repository layer](http://blog.sapiensworks.com/post/2014/06/02/The-Repository-Pattern-For-Dummies.aspx) : This layer controls access to the stored data, so that
+other parts of the application do not know about the source of the data. You will create repositories when you have a database in Spring.
+- [Service layer](https://martinfowler.com/eaaCatalog/serviceLayer.html): This layer is where our common business logic lives, it may use multiple repositories to perform tasks. For example, a Book Service might use the User repository and Book repository to offer functionality such as "search for my books",  validating if the user is logged in before it will return a list of the User's books.
 
-If you want a more comprehensive tutorial on building a complete RESTful service that includes: using a database with JPA; error handling; testing; building a HATEOAS REST service; and adding security, you can look at [this tutorial](https://spring.io/guides/tutorials/bookmarks/) from the Spring website. I found the testing section to be a bit poor, they are confusing unit testing with integration testing, so I would skip this section.
+If you are interested in a follow-up article to make a more complete app, let me know! Happy coding!
