@@ -90,8 +90,8 @@ We will not use a database like a real application would. We will have some dumm
 
 The table below summarises our *User* API.
 
-When we run our App. The default local address for your Spring Boot application should be: ```http://localhost:8080```, so the address
-to get all users would be ```http://localhost:8080/users``` for example.
+When we run our App. The default local address for your Spring Boot application should be: `http://localhost:8080`, so the address
+to get all users would be `http://localhost:8080/users` for example.
 
 <table>
   <tr>
@@ -158,15 +158,15 @@ Don't be daunted by what I just mentioned, it is more straightforward than you t
 
 ## How to set your project up
 
-You can use [Spring Initializr](https://start.spring.io/) to create your project. The Initializr offers a fast way to pull in all the dependencies you need for an application and does a lot of the setup for you. Only one Spring Dependency is required for this project and that's the *Spring Web*. You click generate and you an download your project in a zip file. 
+You can use [Spring Initializr](https://start.spring.io/) to create your project. The Initializr offers a fast way to pull in all the dependencies you need for an application and does a lot of the setup for you. Only one Spring Dependency is required for this project and that's *Spring Web*. Fill in fields. Choose Maven or Gradle, then click generate. You can then download your project in a zip file. 
 
 ![Spring Initializr configuration](/assets/img/blog/2018-07-17-restful-service/spring-initializr.png)
 
 Unzip the file and open it in the IDE of your choice. 
 
-The dependencies should be downloaded automatically to ``C:\Users\<username>\.m2\repository` on Windows. You may have to trigger the downloading of the dependencies for you. In IntelliJ, you go to `File > Synchronise` in the menu.
+The dependencies should be downloaded automatically to `C:\Users\<username>\.m2\repository` if you are a Windows user. You may have to trigger the downloading of the dependencies for you. In IntelliJ, you go to `File > Synchronise` in the menu.
 
-`pom.xml` 
+**pom.xml** 
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -248,10 +248,10 @@ public class User {
 
 The Controller is responsible for matching a HTTP request with a java method that provides a response.
 
-We annotate our Controller with ```@RestController```, and we add methods to handle the different requests. Spring is going to transform the data into JSON for us before it is returned as a reponse.
+We annotate our Controller with `@RestController`, and we add methods to handle the different requests. Spring is going to transform the data into JSON for us before it is returned as a reponse.
 
-I have created an ```ArrayList``` of users to have some data to return. ```getUsers()``` returns all of the users
-for the address [http://localhost:8080/users](http://localhost:8080/users). We specify this in the ```@RequestMapping```.
+I have created an `ArrayList` of users to have some data to return. `getUsers()` returns all of the users
+for the address [http://localhost:8080/users](http://localhost:8080/users). We specify this in the `@RequestMapping`.
 
 ```java
 import com.roboleary.model.User;
@@ -280,14 +280,14 @@ public class UserController {
 
 #### @RequestMapping Variants
 
-Spring 4.3 introduced shortcut annotations, which serve the same purpose as ```@RequestMapping``` but have the HTTP method as part it's name.
+Spring 4.3 introduced shortcut annotations, which serve the same purpose as `@RequestMapping` but have the HTTP method as part it's name.
 
 You may seen them used also. They are:
-- ```@GetMapping```
-- ```@PostMapping```
-- ```@PutMapping```
-- ```@DeleteMapping```
-- ```@PatchMapping```
+- `@GetMapping`
+- `@PostMapping`
+- `@PutMapping`
+- `@DeleteMapping`
+- `@PatchMapping`
 
 So, to annotate your  method you could use this:
 
@@ -325,7 +325,7 @@ That's everything the hard bit done!
 
 #### Run the application
 
-You can run the ```DemoApplication``` class, and test the it in the browser.
+You can run the `DemoApplication` class, and test the it in the browser.
 
 ![get request](/assets/img/blog/2018-07-17-restful-service/get.png)
 
@@ -340,7 +340,7 @@ the user with an id of 2, and we expect to get this response:
 [{"id":2,"name":"Angela Merkel","age":20}]
 ```
 
-We put the variable name within curly brackets as part of our ```@RequestMapping``` annotation, and we declare it using the ```@PathVariable``` annotation in our method signature. We search through our ```ArrayList``` to find the first user with that id.
+We put the variable name within curly brackets as part of our `@RequestMapping` annotation, and we declare it using the `@PathVariable` annotation in our method signature. We search through our `ArrayList` to find the first user with that id.
 
 ```java
 @RequestMapping(method=GET, value="/users/{id}")
@@ -372,8 +372,8 @@ differently, it will work either way! We expect to get this response:
 [{"id":1,"name":"Rob OLeary","age":21}]
 ```
 
-We need to add ```params``` to our ```@RequestMapping``` to specify the parameter name. We need this to define an unique path, so Spring can map the request to the correct method with certainty. We specify ```@RequestParam``` in our method signature, and we can use this variable inside our method to search for the user with that name. We use
-```equalsIgnoreCase()``` to accept whatever mix of big and small letters we get from the client.
+We need to add `params` to our `@RequestMapping` to specify the parameter name. We need this to define an unique path, so Spring can map the request to the correct method with certainty. We specify `@RequestParam` in our method signature, and we can use this variable inside our method to search for the user with that name. We use
+`equalsIgnoreCase()` to accept whatever mix of big and small letters we get from the client.
 
 ```java
 //for GET to http://localhost:8080/user?name=rob oleary
@@ -395,9 +395,9 @@ public List<User> getUsersByName(@RequestParam(value="name") String name){
 
 - HTTP POST
 
-We add the user to our ```ArrayList```. We use ```ResponseEntity``` as our method return type, it is a wrapper class where we can optionally include things such as: the status code (outcome of action), and headers to give the client some information about the action.
+We add the user to our `ArrayList`. We use `ResponseEntity` as our method return type, it is a wrapper class where we can optionally include things such as: the status code (outcome of action), and headers to give the client some information about the action.
 
-We return a status code of HttpStatus.CREATED, which is HTTP code of 201. There is no opportunity for there to be a failure to add a new user to our ```ArrayList```, but you should consider this if you use a database.
+We return a status code of HttpStatus.CREATED, which is HTTP code of 201. There is no opportunity for there to be a failure to add a new user to our `ArrayList`, but you should consider this if you use a database.
 
 ```java
 @PostMapping(value="users")
@@ -440,13 +440,13 @@ public ResponseEntity addOrUpdate(@RequestBody User u) {
 
 - HTTP PATCH
 
-PATCH is used when we update some fields of an object. This can be important when we use a database as it is more efficient to only update what has changed, rather than replacing an entire object. As we are doing everything in memory with an ```ArrayList```, there is no benefit to this, so __I have not included a method__.
+PATCH is used when we update some fields of an object. This can be important when we use a database as it is more efficient to only update what has changed, rather than replacing an entire object. As we are doing everything in memory with an `ArrayList`, there is no benefit to this, so __I have not included a method__.
 
 ## Delete a user
 
 - HTTP DELETE
 
-We remove the user from our ```ArrayList```, and  return a status code to
+We remove the user from our `ArrayList`, and  return a status code to
 indicate if the user was found or not.
 
 ```java
