@@ -64,7 +64,7 @@ I summarised how I define them in more detail below:
 
 # Example Application
 
-We will re-use our User example from [this previous post]({{ site.baseurl }}{% post_url 2018-07-17-restful-service %}). It has a *model* and a *controller* only, and has some default data inside the controller, which is there just for the purpose of demonstration, and wouldn't be in a complete application.
+We will re-use our User example from [this previous post]({{ site.baseurl }}{% post_url 2018-07-17-spring-web-service %}). It has a *model* and a *controller* only, and has some default data inside the controller, which is there just for the purpose of demonstration, and wouldn't be in a complete application.
 
 # How do I test?
 

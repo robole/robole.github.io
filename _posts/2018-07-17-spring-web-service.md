@@ -5,7 +5,7 @@ category: programming
 tags: [rest, Java, Spring]
 published: true
 ---
-<img src="/assets/img/blog/2018-07-17-restful-service/spiderman.png" alt="spiderman city!"/>
+<img src="/assets/img/blog/2018-07-17-restful-service/spiderman.png" alt="web city!"/>
 
 - [What is REST?](#what-is-rest)
   - [Twitter REST API Example](#twitter-rest-api-example)
