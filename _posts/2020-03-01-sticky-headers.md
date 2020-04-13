@@ -9,13 +9,15 @@ published: true
 
 CSS introduced the property `position: sticky` in 2012, one obvious application of this is for making sticky headers. 
 
-The idea is straightforward: If an element has `position: sticky`, treat it as a normal `position: relative` block, as long as it’s on screen. If the user scrolls far enough that the element (let’s say it’s a `h1`) would be scrolled off the screen, but it's parent is still visible onscreen, treat it as though it were `position: fixed`. 
+The idea is straightforward: If an element has `position: sticky`, treat it as a normal `position: relative` block, as long as it’s on screen. If the user scrolls far enough that the element (let’s say it’s a `h1`) will move off the screen, but it's parent is still visible onscreen, treat it as though it were `position: fixed`. 
 
-Initially, the problem with this property was that adoption was slow by some browser vendors, but that has changed long since 2012, so we can embrace it without big reservations now! There is a caveat with tables, which I will discuss below.
+Initially, the problem with this property was that adoption was slow by some browser vendors, but that is no longer an issue, so we can embrace it without big reservations now! There is a caveat with tables, which I will discuss below.
 
 ## So, how do you make sticky headers with just css?
 
-It’s super-easy. All you do is:
+It’s super-easy! 
+
+All you do is:
 
 ```css
 .stayOnTop{
@@ -29,7 +31,7 @@ It’s super-easy. All you do is:
 ```
 The position is set through the properties: `top`, `left`, `right`, `bottom`. So, to have the element stay on top always set `top: 0;`. 
 
-Using the browser prefixes is still necessary for some Browsers such as Safari, so it's best to add them all to avoid mishaps!
+Using the browser prefixes is still necessary for some Browsers such as Safari, so it's best to add them all, and avoid cross-browser compatibility mishaps!
 
 ## Tables
 
