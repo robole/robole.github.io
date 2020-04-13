@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "How do you make learning new stuff fun, and stay motivated?"
+title: "How do you make learning new stuff fun, and stay motivated? 💪🥳"
 category: programming
 tags: [CSS, Javascript, HTML, learning]
 published: true

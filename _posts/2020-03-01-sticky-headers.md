@@ -1,6 +1,6 @@
 ---
 layout: scrollable_post
-title: Make it stick! Sticky headers in CSS 🦎🔝💻
+title: Make it stick! Sticky headers in CSS 🦎🔝
 category: web
 tags: [HTML, CSS, web]
 published: true
@@ -29,13 +29,13 @@ All you do is:
     top: 0;
 }
 ```
-The position is set through the properties: `top`, `left`, `right`, `bottom`. So, to have the element stay on top always set `top: 0;`. 
+The position is set through the properties: `top`, `left`, `right`, `bottom`. So, to have the element stay on top, use `top: 0;`. 
 
 Using the browser prefixes is still necessary for some Browsers such as Safari, so it's best to add them all, and avoid cross-browser compatibility mishaps!
 
 ## Tables
 
-One of the best use-cases for this is for bigggg tables. That is, tables where you want to see the column headers on top as you scroll down.
+One of the best Use Cases for this is for bigggg tables. That is, tables where you want to see the column headers on top as you scroll down.
 
 There is one caveat though, Chrome and Edge have a bug with using `position: sticky` on `thead`. So, the way around this is to apply it to `th` instead.
 
@@ -47,11 +47,10 @@ You can use it to make sticky headers on the side and top for easy cross-referen
 <p data-height="417" data-theme-id="0" data-slug-hash="KBQbNG" data-default-tab="result" data-user="robjoeol" data-pen-title="Cell Zoom 🔍" class="codepen">See the Pen <a href="https://codepen.io/robjoeol/pen/KBQbNG/">Cell Zoom 🔍</a> by rob (<a href="https://codepen.io/robjoeol">@robjoeol</a>) on <a href="https://codepen.io">CodePen</a>.</p>
 <script async src="https://static.codepen.io/assets/embed/ei.js"></script>
 
-## Other uses
+## Other Use Cases
 
-It is used often to have the main navigation menu stick on the top of the page.
-
-I thought this was a cool idea. A reading progress bar for a blog post (scroll to see it in action):
+- It is used often to make a sticky navigation bar. This is used mostly when there is a hero section above the navbar, the navbar becomes fixed when the user scrolls past the hero section.
+- I think the example below is cool. A reading progress bar for a blog post (scroll to see it in action).
 
 <p class="codepen" data-height="392" data-theme-id="light" data-default-tab="result" data-user="stephanieogaygarcia" data-slug-hash="zLQpbX" style="height: 392px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="Sticky Blog Reading Progress Bar">
   <span>See the Pen <a href="https://codepen.io/stephanieogaygarcia/pen/zLQpbX">
