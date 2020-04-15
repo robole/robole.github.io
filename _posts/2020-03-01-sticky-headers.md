@@ -50,7 +50,7 @@ You can use it to make sticky headers on the side and top for easy cross-referen
 ## Other Use Cases
 
 - It is used often to make a sticky navigation bar. This is used mostly when there is a hero section above the navbar, the navbar becomes fixed when the user scrolls past the hero section.
-- I think the example below is cool. A reading progress bar for a blog post (scroll to see it in action).
+- I think the example below is cool, but it **requires some JS**. A reading progress bar for a blog post (scroll to see it in action). You can get creative with `sticky` too!
 
 <p class="codepen" data-height="392" data-theme-id="light" data-default-tab="result" data-user="stephanieogaygarcia" data-slug-hash="zLQpbX" style="height: 392px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="Sticky Blog Reading Progress Bar">
   <span>See the Pen <a href="https://codepen.io/stephanieogaygarcia/pen/zLQpbX">

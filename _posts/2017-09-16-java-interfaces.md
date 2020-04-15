@@ -12,8 +12,7 @@ It’s basically a list of related method declarations without implementations. 
 
 # What must a class do to implement an interface?
 
-The class must identify the interface in its implements clause and implement
-all of the methods specified in the interface.
+The class must identify the interface in its implements clause and implement all of the methods specified in the interface.
 
 # What are the rules of defining interfaces?
 
