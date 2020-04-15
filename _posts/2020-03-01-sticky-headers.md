@@ -61,6 +61,6 @@ You can use it to make sticky headers on the side and top for easy cross-referen
 
 ## Browser Support
 
-As long as you avoid using it on `thead`, you are good on the major desktop browsers (see green-shaded squares in image below). IE be damned! 😜
+As long as you avoid using it on `thead`, you are good on the major browsers (see green-shaded squares in image below). IE be damned! 😜
 
 <a href="https://caniuse.com/#feat=css-sticky"><img src="/assets/img/blog/2018-07-31-sticky-headers/caniuse.png" alt="browser support for position sticky"/></a>
