@@ -1,21 +1,22 @@
 ---
 layout: scrollable_post
-title: "Dates in Java ☕"
+title: "Dates in Java 8: 📆🙏"
 category: java
 tags: [Java, "date-time api", dates]
 published: true
 ---
 
-️Dates were so badly realised in Java that a lot people started to use
-external libraries such as [Joda Time](http://www.joda.org/joda-time/). 😥⏰
+Using Dates in programming languages makes many people sweat at the thought, they can be tricky to understand and use. In Java, they were  badly realised in the core library, and that led to a lot people to use external libraries such as [Joda Time](http://www.joda.org/joda-time/). 😥⏰
 
-It was only in Java 8, that this has been addressed in the <code>java.time</code> package. 🙏 Most of the classes are immutable to ensure thread-safety. ☔
+It was only in Java 8, that it was addressed in the <code>java.time</code> package, and a lot of the pain has been removed. 🙏 
 
-# Key temporal classes
+## Key temporal classes
 
-## Instant 💻⚡
+These classes are immutable, which means you can't change values of an instance. Why? We want to ensure thread-safety. If you have different threads updating a date, you will get funky results when you want to lookup the value.
 
-An [Instant](https://docs.oracle.com/javase/8/docs/api/java/time/Instant.html) is a moment on the timeline in [UTC](https://en.wikipedia.org/wiki/Coordinated_Universal_Time). It is a count in nanoseconds since the first moment of 1970 UTC (unix epoch time). It is essentially a timestamp (often referred to as "machine time").
+### Instant 💻⚡
+
+An [Instant](https://docs.oracle.com/javase/8/docs/api/java/time/Instant.html) is a moment on the timeline in [UTC](https://en.wikipedia.org/wiki/Coordinated_Universal_Time). It is the count in nanoseconds since the first moment of 1970 UTC (unix epoch time). It is essentially a timestamp (often referred to as "machine time").
 
 ```java
 Instant a = Instant.now();

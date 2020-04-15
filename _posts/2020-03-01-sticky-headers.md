@@ -49,8 +49,16 @@ You can use it to make sticky headers on the side and top for easy cross-referen
 
 ## Other Use Cases
 
-- It is used often to make a sticky navigation bar. This is used mostly when there is a hero section above the navbar, the navbar becomes fixed when the user scrolls past the hero section.
-- I think the example below is cool, but it **requires some JS**. A reading progress bar for a blog post (scroll to see it in action). You can get creative with `sticky` too!
+- It is used often to make a sticky navigation bar when there is a hero section above it. The navigation bar becomes fixed when the user scrolls past the hero section.
+
+<p class="codepen" data-height="457" data-theme-id="light" data-default-tab="result" data-user="robjoeol" data-slug-hash="pojgrXz" style="height: 457px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="Sticky nav under hero (CSS only)">
+  <span>See the Pen <a href="https://codepen.io/robjoeol/pen/pojgrXz">
+  Sticky nav under hero (CSS only)</a> by Rob (<a href="https://codepen.io/robjoeol">@robjoeol</a>)
+  on <a href="https://codepen.io">CodePen</a>.</span>
+</p>
+<script async src="https://static.codepen.io/assets/embed/ei.js"></script>
+
+- I think the example below is cool, but it **requires some JS**. A reading progress bar for a blog post. Scroll to see it in action. You can get creative with `sticky` too!
 
 <p class="codepen" data-height="392" data-theme-id="light" data-default-tab="result" data-user="stephanieogaygarcia" data-slug-hash="zLQpbX" style="height: 392px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="Sticky Blog Reading Progress Bar">
   <span>See the Pen <a href="https://codepen.io/stephanieogaygarcia/pen/zLQpbX">
@@ -61,6 +69,6 @@ You can use it to make sticky headers on the side and top for easy cross-referen
 
 ## Browser Support
 
-As long as you avoid using it on `thead`, you are good on the major browsers (see green-shaded squares in image below). IE be damned! 😜
+As long as you avoid using it on `thead`, you are good on the major browsers (see green-shaded squares in image below). IE be damned! 😜 Click on the image to see the full list.
 
 <a href="https://caniuse.com/#feat=css-sticky"><img src="/assets/img/blog/2018-07-31-sticky-headers/caniuse.png" alt="browser support for position sticky"/></a>
