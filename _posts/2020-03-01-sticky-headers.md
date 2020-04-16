@@ -45,7 +45,7 @@ There is one caveat though, Chrome and Edge have a bug with using `position: sti
 You can use it to make sticky headers on the side and top for easy cross-referencing for big data sets, maybe you're showing scientific findings like below! So, it kind of mimics frozen rows in Excel!
 
 <p data-height="417" data-theme-id="0" data-slug-hash="KBQbNG" data-default-tab="result" data-user="robjoeol" data-pen-title="Cell Zoom 🔍" class="codepen">See the Pen <a href="https://codepen.io/robjoeol/pen/KBQbNG/">Cell Zoom 🔍</a> by rob (<a href="https://codepen.io/robjoeol">@robjoeol</a>) on <a href="https://codepen.io">CodePen</a>.</p>
-<script async src="https://static.codepen.io/assets/embed/ei.js"></script>
+
 
 ## Other Use Cases
 
@@ -56,16 +56,16 @@ You can use it to make sticky headers on the side and top for easy cross-referen
   Sticky nav under hero (CSS only)</a> by Rob (<a href="https://codepen.io/robjoeol">@robjoeol</a>)
   on <a href="https://codepen.io">CodePen</a>.</span>
 </p>
-<script async src="https://static.codepen.io/assets/embed/ei.js"></script>
+
 
 - I think the example below is cool, but it **requires some JS**. A reading progress bar for a blog post. Scroll to see it in action. You can get creative with `sticky` too!
 
-<p class="codepen" data-height="392" data-theme-id="light" data-default-tab="result" data-user="stephanieogaygarcia" data-slug-hash="zLQpbX" style="height: 392px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="Sticky Blog Reading Progress Bar">
-  <span>See the Pen <a href="https://codepen.io/stephanieogaygarcia/pen/zLQpbX">
-  Sticky Blog Reading Progress Bar</a> by Stephanie O'Gay Garcia (<a href="https://codepen.io/stephanieogaygarcia">@stephanieogaygarcia</a>)
+<p class="codepen" data-height="439" data-theme-id="light" data-default-tab="result" data-user="robjoeol" data-slug-hash="bGVpePR" style="height: 439px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="Blog Reading Progressbar">
+  <span>See the Pen <a href="https://codepen.io/robjoeol/pen/bGVpePR">
+  Blog Reading Progressbar</a> by Rob (<a href="https://codepen.io/robjoeol">@robjoeol</a>)
   on <a href="https://codepen.io">CodePen</a>.</span>
 </p>
-<script async src="https://static.codepen.io/assets/embed/ei.js"></script>
+
 
 ## Browser Support
 
