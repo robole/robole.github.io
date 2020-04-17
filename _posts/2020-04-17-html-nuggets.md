@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "HTML Nuggets: Little bits that you may have forgotten, never learned, never realised, or ignored! 🏅🤓"
+title: "HTML Nuggets: Little bits that you may have forgotten, never learned, never realised, or ignored! 🔸🤓"
 category: web
 tags: [html, programming]
 published: true
@@ -11,7 +11,7 @@ If you learned something new from this, let me know what it is! 😊
 
 1. [No doctype, maybe no emojis 😢](#no-doctype-maybe-no-emojis-)
 1. [Optimize: Lazy loading of images and iframes with `loading` attribute](#optimize-lazy-loading-of-images-and-iframes-with-loading-attribute)
-1. [Good form: You're my `type` 😬 Get the right keyboard on mobile for inputs](#good-form-youre-my-type--get-the-right-keyboard-on-mobile-for-inputs)
+1. [Good form: You're my `type` 😘 Get the right keyboard on mobile for inputs](#good-form-youre-my-type--get-the-right-keyboard-on-mobile-for-inputs)
 1. [Good form: Restrict input by `type`](#good-form-restrict-input-by-type)
 1. [Good form: Validate input easily](#good-form-validate-input-easily)
 1. [Good form: Validate input with regex](#good-form-validate-input-with-regex)
