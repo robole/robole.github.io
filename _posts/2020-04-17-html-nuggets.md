@@ -1,13 +1,13 @@
 ---
 layout: post
-title: "HTML Nuggets: Little bits that you may have forgotten, never learned, never realised, or ignored! 📀🤓"
+title: "HTML Nuggets: Little bits that you may have forgotten, never learned, never realised, or ignored! 🏅🤓"
 category: web
 tags: [html, programming]
 published: true
 ---
 <img src="/assets/img/blog/2020-04-17-html-nuggets/banner.jpg"  alt="code collage" style="width:100%"/>
 
-If you learned something new from this, click on the 🦄 and let me know what it is! 😊
+If you learned something new from this, let me know what it is! 😊
 
 1. [No doctype, maybe no emojis 😢](#no-doctype-maybe-no-emojis-)
 1. [Optimize: Lazy loading of images and iframes with `loading` attribute](#optimize-lazy-loading-of-images-and-iframes-with-loading-attribute)
@@ -15,7 +15,7 @@ If you learned something new from this, click on the 🦄 and let me know what i
 1. [Good form: Restrict input by `type`](#good-form-restrict-input-by-type)
 1. [Good form: Validate input easily](#good-form-validate-input-easily)
 1. [Good form: Validate input with regex](#good-form-validate-input-with-regex)
-1. [Good form: `<label>` and `<input>` are like wine and cheese, for better clicking and accessibility](#good-form-label-and-input-are-like-wine-and-cheese-for-better-clicking-and-accessibility)
+1. [Good form: `<label>` and `<input>` are like wine and cheese, good for clicking and accessibility](#good-form-label-and-input-are-like-wine-and-cheese-good-for-clicking-and-accessibility)
 1. [Good form: reset a form](#good-form-reset-a-form)
 1. [Good form: spellcheck](#good-form-spellcheck)
 1. [Make the content of any element editable 😮](#make-the-content-of-any-element-editable-)
@@ -49,7 +49,7 @@ If you omit this declaration, then the default character set is probably [8859-1
 
 Firefox gives you a warning to explain:
 
-![firefox warning](/assets/img/blog/2020-04-17-html-nuggets/no-doctype.png)
+<img src="/assets/img/blog/2020-04-17-html-nuggets/no-doctype.png" alt="firefox warning" style="width:100%">
 
 You also can go into [quirks mode](https://developer.mozilla.org/en-US/docs/Web/HTML/Quirks_Mode_and_Standards_Mode) in older browsers (< IE9), which will cause erratic behaviour. I don't think this is an issue any more (for everyone on > IE9).
 
@@ -64,11 +64,11 @@ Set the value of `loading` to lazy, and it will defer loading of the resources t
 
 It is still quite a new feature, so Browser support is not that great. 
 
-<a href="https://caniuse.com/#feat=loading-lazy-attr">![caniuse browser support](/assets/img/blog/2020-04-17-html-nuggets//loading-caniuse.png)</a>
+<a href="https://caniuse.com/#feat=loading-lazy-attr"><img src="/assets/img/blog/2020-04-17-html-nuggets/loading-caniuse.png" alt="browser support for lazy attribute. its 64% ish" style="width:100%"></a>
 
 ### How do I support more Browsers?  
 
-The `loading` property can be used to detect if the feature is supported in the Browser.
+Write some Javascript!🙃 The `loading` property can be used to detect if the feature is supported in the Browser.
 
 If it's not supported, we can ues a [*polyfill*](https://github.com/mfranzke/loading-attribute-polyfill); or a third-party library such as [lazysizes](https://github.com/aFarkas/lazysizes) instead.
 
@@ -84,25 +84,25 @@ If it's not supported, we can ues a [*polyfill*](https://github.com/mfranzke/loa
 
 ## Good form: You're my `type` 😘 Get the right keyboard on mobile for inputs
 
-Some mobile browsers recognize the type of an input and provide a keyboard that makes text entry easier. 
+Some mobile browsers recognize the type of an input and provide a keyboard that makes text entry easier for that type: 
 
-- `<input type="email">` trigger a keyboard with the <kbd>.com</kbd> and <kbd>@</kbd> keys.
-- `<input type='url'>` (for a web address) trigger a keyboard with the <kbd>.com</kbd> key.
-- `<input type='number'>` and numeric types trigger a numeric keyboard.
+- `<input type="email">` triggers a keyboard with the <kbd>.com</kbd> and <kbd>@</kbd> keys.
+- `<input type='url'>` (for a web address) triggers a keyboard with the <kbd>/</kbd> key.
+- `<input type='number'>` and other numeric types trigger a numeric keyboard.
 
-You can also provide an additional "hint" by providing the `inputmode` attribute (values include: `none`, `text`, `tel`, `url`, `email`, `numeric`, `decimal`, and `search`).
+You can also provide an additional "hint" by providing the `inputmode` attribute (values include: `none`, `text`, `tel`, `url`, `email`, `numeric`, `decimal`, and `search`). My experience with Android Browsers is that this attribute is not necessary.
 
 ## Good form: Restrict input by `type`
 
-With the following input types (ordered from unfamiliar to familiar), you constrain the values that can be entered by using a certain type:
+With the following input types (ordered from least familiar to most familiar), you constrain the values that can be entered:
 
-- `color`: Shows a button with a colour swatch, which opens a colourpicker dialog.
-- `file`: Shows a button, which opens a file browser dialog.
+- `color`: Shows a button with a colour swatch, which opens a colourpicker dialog. You can only pick colours.
+- `file`: Shows a button, which opens a file browser dialog. You can only pick files.
 - `range`: Shows a slider for a numeric range from the lowest to highest values (set with the `min` and `max` attributes).
 - `time`: You can only input a time in *hh:ss* format. Some browser show it a mask such as `__:__`
 - `date`: Shows a text field, which opens a  datepicker dialog on selection. Not popular because it cannot be styled easily and looks so different from browser to browser!
 - `checkbox`, `radio`, `select`, `datalist`: you can only select their list of values.
-- `button`, `submit`, `reset` : these are buttons, you can only click them!
+- `<button>`, `submit`, `reset` : these are buttons, you can only click them!
 
 You can see all of the inputs on the [MDN page](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/Input) to get a clearer idea if you are not familiar.
 
@@ -121,13 +121,18 @@ Validation is done in the following ways:
 
 ```html
 <!--implicit validation-->
-<label>Email:<input type="email" name="email" placeholder="john.doe@example.com" size="30"></label><br>
-<label>Website:<input type="url" name="website" placeholder="http://www.example.com" size="30"></label><br>
-<label>Random number:<input type="number" name="random"></label><br>
+<label>Email:
+<input type="email" name="email" placeholder="john.doe@example.com" size="30"></label><br>
+<label>Website:
+<input type="url" name="website" placeholder="http://www.example.com" size="30"></label><br>
+<label>Random number:
+<input type="number" name="random"></label><br>
  
 <!--specific validation-->
-<label>Name (4-8 chars):<input type="text" id="name" name="name" minlength="4" maxlength="8" required><br>
-<label>Age (1-120):<input type="number" name="age" min="1" max="120" required></label><br>
+<label>Name (4-8 chars):
+<input type="text" id="name" name="name" minlength="4" maxlength="8" required><br>
+<label>Age (1-120):
+<input type="number" name="age" min="1" max="120" required></label><br>
 ```
 
 <p class="codepen" data-height="400" data-theme-id="light" data-default-tab="result" data-user="robjoeol" data-slug-hash="rNOedwp" style="height: 400px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="Learning HTML - Form Validation">
@@ -148,14 +153,15 @@ You can make very expressive tests with this attribute. When you use it, let the
 <input name="username" id="username" pattern="[A-Za-z0-9]+" required></label><br>
 
 <!-- US Postal Code-->
-<label>Postal Code <i>(5 numbers, a dash, and 4 numbers)</i>:<input type="text" pattern="(\d{5}([\-]\d{4})?)" required></label>
+<label>Postal Code <i>(5 numbers, a dash, and 4 numbers)</i>:
+<input type="text" pattern="(\d{5}([\-]\d{4})?)" required></label>
 ```
 
  However, I would be cautious using this as it is hard to anticipate all of the possible variations upfront, and regex can be misunderstood. There is an old proverb among computer programmers:
 
 >  Some people, when confronted with a problem, think “I know, I'll use regular expressions.” Now they have two problems.
 
-## Good form: `<label>` and `<input>` are like wine and cheese, for better clicking and accessibility
+## Good form: `<label>` and `<input>` are like wine and cheese, good for clicking and accessibility
 
 Having a `<label>` with a input of type: `radio`, `check`, `submit`, `reset` makes the `<label>` clickable also. A bigger target area makes life easier for users. 
 
@@ -176,7 +182,8 @@ Use `<input type="reset">` and it will clear all form fields, resetting them to 
 ## Good form: spellcheck
 
 ```html
-<textarea name="description" spellcheck="true" rows="4" cols="50">></textarea>
+<textarea name="description" spellcheck="true" 
+rows="4" cols="50">Cjeck me</textarea>
 ```
 
 You will get red squiggly lines underneath misspelt words.
@@ -190,12 +197,13 @@ The following can be spellchecked:
 ## Make the content of any element editable 😮
 
 ```html
-<p contenteditable="true">This is a paragraph. It is editable. Try to change this text.</p>
+<p contenteditable="true">This is a paragraph. It is editable. 
+Try to change this text.</p>
 ```
 
 You can make an element editable by setting the `contenteditable` attribute to true.
 
-<p class="codepen" data-height="283" data-theme-id="light" data-default-tab="result" data-user="robjoeol" data-slug-hash="LYpNmPw" style="height: 283px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="Learning HTML - spellcheck and contenteditable attributes">
+<p class="codepen" data-height="350" data-theme-id="light" data-default-tab="result" data-user="robjoeol" data-slug-hash="LYpNmPw" style="height: 350px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="Learning HTML - spellcheck and contenteditable attributes">
   <span>See the Pen <a href="https://codepen.io/robjoeol/pen/LYpNmPw">
   Learning HTML - spellcheck and contenteditable attributes</a> by Rob (<a href="https://codepen.io/robjoeol">@robjoeol</a>)
   on <a href="https://codepen.io">CodePen</a>.</span>
@@ -206,9 +214,7 @@ You can make an element editable by setting the `contenteditable` attribute to t
 
 Spinners and skeletons have become the most popular ways to showing the progress of a loading task. 
 
-HTML has `<progress>` for this purpose. It is a progress bar. Maybe the reason it is seldom used is because it is hard to style, [but you can style it with some know-how](https://css-tricks.com/html5-progress-element/). It looks like this:
-
-<progress id="file" value="32" max="100">32%</progress>
+HTML has `<progress>` for this purpose. It is a progress bar. Maybe the reason it is seldom used is because it is hard to style, [but you can style it with some know-how](https://css-tricks.com/html5-progress-element/). 
 
 ```html
 <label for="file">Downloading progress:</label>
@@ -240,7 +246,7 @@ Without it, the page on mobile is scaled to around 60%. The website looks like a
 
 ## Responsive: Responsive images with`srcset`. Look mom, no media queries! 🤔
 
-I will just preface this by saying this you may choose to use CSS instead. It is a bit complicated, but I will break it down for you. 
+I will preface this by saying that you may choose to use CSS instead, but it's a hard decision. Let me break it down for you. 
 
 Ideally, we would always load optimized images that closely match the screen size of the device. Goldilocks scenario: *not too big* (wasteful of bandwidth), and *not too small* (grainy if you scale it up in size). So, we would like to swap images depending on resolution. This is known as the **resolution switching problem**.
 
@@ -256,7 +262,7 @@ The `sizes` attribute has a comma-separated list describing the size of the imag
 
 - `(max-width: 480px) 100vw`:  If the viewport is <= 480px wide, the image will be 100% of the viewport width.
 - `(max-width: 900px) 33vw`: If the  viewport is between 481px and 900px wide, then the image will be 33% of the viewport width.
-- `1280px: This the default value used when none of the other media conditions are met. So, for >= 901px wide, the image will be 1280px wide.
+- `1280px`: This the default value used when none of the other media conditions are met. So, for >= 901px wide, the image will be 1280px wide.
 
 This works really well. The problem many have is that we now have information about the presentation of an element, the size of the image, in our markup. Ideally, we put this type of information in CSS. So there is an argument for doing it all in CSS. But the counter argument is performance. Read on.
 
@@ -273,12 +279,13 @@ I would highly recommend the [Responsive Images 101 series of short articles](ht
 ## You can show/hide details in a collapsible widget
 
 ```html
-<h1>Click to see the triangle to see more details</h1> 
 <details>
   <summary>Jack in the box.</summary>
-  <img src="https://upload.wikimedia.org/wikipedia/commons/8/8f/Jack-in-the-box.jpg" alt="Jack in the box">
-  <p>A jack-in-the-box is a children's toy that is a box with a crank. When the crank is turned, it plays a melody. 
-  After the crank has been turned a sufficient number of times, the lid pops open and a clown, pops out of the box. </p>
+  <img src="https://upload.wikimedia.org/wikipedia/commons/8/8f/Jack-in-the-box.jpg" 
+  alt="Jack in the box">
+  <p>A jack-in-the-box is a children's toy that is a box with a crank. When the 
+  crank is turned, it plays a melody. After the crank has been turned a sufficient 
+  number of times, the lid pops open and a clown, pops out of the box. </p>
 </details> 
 ```
 <p class="codepen" data-height="378" data-theme-id="light" data-default-tab="result" data-user="robjoeol" data-slug-hash="WNQwKxr" style="height: 378px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="Learning HTML - details">
@@ -295,11 +302,12 @@ Some languages have long words. Germans make a lot of compound words for instanc
 If a sentence gets too long, a word is broken up wherever the browser decides, usually so it doesn't overflow. Breaking it up in the wrong place makes it hard to read. You can use `<wbr>` (Word Break Opportunity) to specify where in a text it would be ok to add a line-break.
 
 ```html
-<p>You must take a left at the station, go halfway down the street, and you will see a building with the name 
-<wbr>Fern<wbr>straßen<wbr>bau<wbr>privat<wbr>finanzierungs<wbr>gesetz.</p>
+<p>You must take a left at the station, go halfway down the street, 
+and you will see a building with the name <wbr>Fern<wbr>straßen
+<wbr>bau<wbr>privat<wbr>finanzierungs<wbr>gesetz.</p>
 ```
 
+## The End
 
-
-
+Thanks for reading!🙂
 
