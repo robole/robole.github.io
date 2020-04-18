@@ -27,17 +27,22 @@ If you learned something new from this, let me know what it is! 😊
 
 ## No doctype, maybe no emojis 😢
 
-The doctype declares what type of document it is. 
+The doctype declares what type of document it is, surprise, surprise! 🎉
 
-Usually you see this `<!DOCTYPE html>` as the first line to specify it is a HTML5 document. It must be the first line. It is not case sensitive.
+Usually you see `<!DOCTYPE html>` as the first line to specify it is a HTML 5 document. It must be the first line. It is not case sensitive. 
 
-The default character set in HTML 5 is UTF-8. Declare this always and you're good.
+The thing with Browsers is that they *do their best with whatever you give them*, and they probably don't complain. So, you can omit the doctype or something else, and it may be able to show the webpage perfectly to you, but another Browser may produce something weird. To avoid the guessing game, it is better to be explicit with the doctype and the character set. Let me explain fully.  
+
+The default character set in HTML 5 is [UTF-8](https://en.wikipedia.org/wiki/UTF-8). If you omit the doctype, then the default character set is probably [ISO 8859-1](https://en.wikipedia.org/wiki/ISO/IEC_8859-1), which is a lot smaller, so you might get some garbled text with characters not in the set, especially for more recent additions like emojis. 
+
+I suggest you declare the character set always with `<meta charset="UTF-8">` too. So your typical document looks something like this:
 
 ```html
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset=UTF-8>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hello World!</title>
   </head>
   <body>
@@ -45,13 +50,11 @@ The default character set in HTML 5 is UTF-8. Declare this always and you're goo
 </html>
 ```
 
-If you omit this declaration, then the default character set is probably [8859-1](https://en.wikipedia.org/wiki/ISO/IEC_8859-1), which is a more limited character set, so you might get some garbled text, especially for more recent additions like emojis. 
-
-Firefox gives you a warning to explain:
+Firefox gives you a warning if you have a DOCTYPE but no character set declared. 🦊😕
 
 <img src="/assets/img/blog/2020-04-17-html-nuggets/no-doctype.png" alt="firefox warning" style="width:100%">
 
-You also can go into [quirks mode](https://developer.mozilla.org/en-US/docs/Web/HTML/Quirks_Mode_and_Standards_Mode) in older browsers (< IE9), which will cause erratic behaviour. I don't think this is an issue any more (for everyone on > IE9).
+Another side effect connected with omitting the doctype is, you can go into [quirks mode](https://developer.mozilla.org/en-US/docs/Web/HTML/Quirks_Mode_and_Standards_Mode) in older browsers (< IE9), which will cause erratic behaviour. I don't think this is an issue for everyone on > IE9, and other Browsers.
 
 ## Optimize: Lazy loading of images and iframes with `loading` attribute
 
@@ -234,7 +237,9 @@ Always include the `<meta>` element as below.
 ```html
  <!DOCTYPE html>
 <html>
+<head>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
 <body>
 <h2>Setting the Viewport</h2>
 <p>This example does not really do anything, other than showing you how to add the viewport meta element.</p>
@@ -297,7 +302,7 @@ I would highly recommend the [Responsive Images 101 series of short articles](ht
 
 ## *Fernstraßenbauprivatfinanzierungsgesetz* is a real word. Use `<wbr>`
 
-Some languages have long words. Germans make a lot of compound words for instance. If you're a chemist and you use chemical names, they can be very long. So what?
+Some languages have long words. Germans make a lot of compound words for instance. If you're a chemist and you use chemical names, they can be very long. It must be hard to be a German chemist! So what you may ask?
 
 If a sentence gets too long, a word is broken up wherever the browser decides, usually so it doesn't overflow. Breaking it up in the wrong place makes it hard to read. You can use `<wbr>` (Word Break Opportunity) to specify where in a text it would be ok to add a line-break.
 
