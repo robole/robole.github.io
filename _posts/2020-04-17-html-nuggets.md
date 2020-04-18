@@ -27,7 +27,7 @@ If you learned something new from this, let me know what it is! 😊
 
 ## No doctype, maybe no emojis 😢
 
-The doctype declares what type of document it is, surprise, surprise! 🎉
+The doctype declares the version of HTML we use, more specifically what web standard the document follows (XHTML 1.1, HTML 4.01, HTML 5).
 
 Usually you see `<!DOCTYPE html>` as the first line to specify it is a HTML 5 document. It must be the first line. It is not case sensitive. 
 
@@ -149,7 +149,7 @@ Validation is done in the following ways:
 
 ## Good form: Validate input with regex
 
-The `pattern` attribute takes a [regular expression (regex)](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions) that the input `value` must match in order for the value to be valid. It is checked when `required='true'`. 
+The `pattern` attribute takes a [regular expression (regex)](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions) that the data you enter must match in order for the value to be valid. It is only checked when `required` is included. 
 
 You can make very expressive tests with this attribute. When you use it, let the users know about the input requirements, it can be frustrating trying to figure out it otherwise!
 
