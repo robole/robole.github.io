@@ -113,6 +113,8 @@ You can see all of the inputs on the [MDN page](https://developer.mozilla.org/en
 
 If you enter incorrect data in an input, and hit the 'submit button', then the field will be highlighted (usually with a red outline). 
 
+<img src="/assets/img/blog/2020-04-17-html-nuggets/implicit-validation.png"  alt="invalid data highlighted with red outline" style="display:block; width:425px:margin:0 auto;"/>
+
 There are some [CSS pseudo-classes available for custom styling](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/Input#UI_pseudo-classes) such as `:invalid`, `:in-range`, `:out-of-range`, `:required`). Maybe, you thought the default style is the only choice!
 
 Validation is done in the following ways:
