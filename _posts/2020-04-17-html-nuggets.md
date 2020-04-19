@@ -5,12 +5,12 @@ category: web
 tags: [html, programming]
 published: true
 ---
-<img src="/assets/img/blog/2020-04-17-html-nuggets/banner.jpg"  alt="code collage" style="width:100%"/>
+<img src="/assets/img/blog/2020-04-17-html-nuggets/banner.jpg"  alt="code collage" style="width:100%;max-width:1920px;margin:0 auto;"/>
 
 If you learned something new from this, let me know what it is! 😊
 
 1. [No doctype, maybe no emojis 😢](#no-doctype-maybe-no-emojis-)
-1. [Optimize: Lazy loading of images and iframes with `loading` attribute](#optimize-lazy-loading-of-images-and-iframes-with-loading-attribute)
+1. [Optimize: Lazy loading of images and iframes with the `loading` attribute](#optimize-lazy-loading-of-images-and-iframes-with-the-loading-attribute)
 1. [Good form: You're my `type` 😘 Get the right keyboard on mobile for inputs](#good-form-youre-my-type--get-the-right-keyboard-on-mobile-for-inputs)
 1. [Good form: Restrict input by `type`](#good-form-restrict-input-by-type)
 1. [Good form: Validate input easily](#good-form-validate-input-easily)
@@ -52,11 +52,11 @@ I suggest you declare the character set always with `<meta charset="UTF-8">` too
 
 Firefox gives you a warning if you have a DOCTYPE but no character set declared. 🦊😕
 
-<img src="/assets/img/blog/2020-04-17-html-nuggets/no-doctype.png" alt="firefox warning" style="width:100%">
+<img src="/assets/img/blog/2020-04-17-html-nuggets/no-doctype.png" alt="firefox warning" style="display:block;width:100%;max-width:802px;">
 
 Another side effect connected with omitting the doctype is, you can go into [quirks mode](https://developer.mozilla.org/en-US/docs/Web/HTML/Quirks_Mode_and_Standards_Mode) in older browsers (< IE9), which will cause erratic behaviour. I don't think this is an issue for everyone on > IE9, and other Browsers.
 
-## Optimize: Lazy loading of images and iframes with `loading` attribute
+## Optimize: Lazy loading of images and iframes with the `loading` attribute
 
 ```html
 <img src="big-image.png" loading="lazy" alt="…" >
@@ -67,7 +67,7 @@ Set the value of `loading` to lazy, and it will defer loading of the resources t
 
 It is still quite a new feature, so Browser support is not that great. 
 
-<a href="https://caniuse.com/#feat=loading-lazy-attr"><img src="/assets/img/blog/2020-04-17-html-nuggets/loading-caniuse.png" alt="browser support for lazy attribute. its 64% ish" style="width:100%"></a>
+<a href="https://caniuse.com/#feat=loading-lazy-attr"><img src="/assets/img/blog/2020-04-17-html-nuggets/loading-caniuse.png" alt="browser support for lazy attribute. its 64% ish" style="width:100%;max-width:657px;display:block;margin:0 auto;"></a>
 
 ### How do I support more Browsers?  
 
@@ -95,6 +95,8 @@ Some mobile browsers recognize the type of an input and provide a keyboard that 
 
 You can also provide an additional "hint" by providing the `inputmode` attribute (values include: `none`, `text`, `tel`, `url`, `email`, `numeric`, `decimal`, and `search`). My experience with Android Browsers is that this attribute is not necessary.
 
+Check out this article for a more in-depth look: [Better Form Inputs for Better Mobile User Experiences](https://css-tricks.com/better-form-inputs-for-better-mobile-user-experiences/).
+
 ## Good form: Restrict input by `type`
 
 With the following input types (ordered from least familiar to most familiar), you constrain the values that can be entered:
@@ -113,7 +115,7 @@ You can see all of the inputs on the [MDN page](https://developer.mozilla.org/en
 
 If you enter incorrect data in an input, and hit the 'submit button', then the field will be highlighted (usually with a red outline). 
 
-<img src="/assets/img/blog/2020-04-17-html-nuggets/implicit-validation.png"  alt="invalid data highlighted with red outline" style="display:block; width:425px:margin:0 auto;"/>
+<img src="/assets/img/blog/2020-04-17-html-nuggets/implicit-validation.png"  alt="invalid data highlighted with red outline" style="display:block;width:100%;max-width:425px;margin:0 auto;"/>
 
 There are some [CSS pseudo-classes available for custom styling](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/Input#UI_pseudo-classes) such as `:invalid`, `:in-range`, `:out-of-range`, `:required`). Maybe, you thought the default style is the only choice!
 
