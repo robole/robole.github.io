@@ -50,7 +50,7 @@ I suggest you declare the character set always with `<meta charset="UTF-8">` too
 </html>
 ```
 
-Firefox gives you a warning if you have a DOCTYPE but no character set declared. 🦊😕
+Firefox gives you a warning if you have a doctype, but no character set declared. 🦊😕
 
 <img src="/assets/img/blog/2020-04-17-html-nuggets/no-doctype.png" alt="firefox warning" style="display:block;width:100%;max-width:802px;">
 

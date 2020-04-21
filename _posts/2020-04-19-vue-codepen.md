@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Vue Components can be written in Codepen now!💚🖊"
+title: "Vue Components can be written in Codepen now! 💚🖊"
 category: web
 tags: [vue, programming]
 published: true
