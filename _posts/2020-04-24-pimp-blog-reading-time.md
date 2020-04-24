@@ -21,7 +21,7 @@ Well, let's look at what others do first!
 
 One issue I see with these calculations is that they treat code fragments as regular text! I doubt people read code at a regular reading speed! 😲⚡ 
 
-It is difficult to choose a typical reading speed, [research has been conducted on various groups of people to get typical rates](https://en.wikipedia.org/wiki/Reading#Reading_rate), what you regularly see quoted is: **100-200 words per minute (wpm) for learning, 200 to 400 wpm for comprehension**. On that basis, a tutorial would take longer to read than a personal account. 
+It is difficult to choose a typical reading speed, [research has been conducted on various groups of people to get typical rates](https://en.wikipedia.org/wiki/Reading#Reading_rate), what you regularly see quoted is: **100 to 200 words per minute (wpm) for learning, 200 to 400 wpm for comprehension**. On that basis, a tutorial would take longer to read than a personal account. 
 
 I will show you how to do it similar to Dev.to, but I will do the following differently: 
 
@@ -50,7 +50,7 @@ You can see the <b><span style="color:purple">reading time in purple</span></b> 
 </div>
 ```
 
-The `<details>` element is similar to an accordion, additional details are hidden that the user can view or hide on demand. 
+The `<details>` element is an "accordion", additional details are hidden, which the user can view or hide on demand. 
 
 The `<summary>` is always shown, this shows our reading time. The `<span>` is the additional details that are hidden by default, we add the details of our calculation here. We wrap it in a `<div>` to help with styling it.
 
@@ -79,7 +79,7 @@ The `<summary>` is always shown, this shows our reading time. The `<span>` is th
 }
 ```
 
-We set the `<div>` wrapping our content as `position:relative`, this enables us to position the child `<details>` absolutely in relation to it, which takes it out of the normal page flow. We do this because now when we click on the *reading time* to show the additional details, it doesn't expand in size and push the elements below it further down. We assign it `z-index:1`, so it appears above the content below it.
+We set the `<div>` wrapping our content as `position:relative`, this enables us to position `<details>` absolutely in relation to it, which takes it out of the normal page flow. We do this because now when we click on the *reading time* to show the additional details, it doesn't expand in size and push the elements below it further down. We assign it `z-index:1`, so it appears above the content below it.
 
 ### JavaScript
 
@@ -108,17 +108,21 @@ I will explain `getWordCount()`, the rest should be clear.
 
 We use a [regular expression (regex)](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions) pattern to get all the words of the post. The `match()` function searches the text (in *post*) using the regex pattern and returns all matches in an array.
 
-The regex is contained between 2 forward slashes, and followed by a '*g*' to state it is a global search. A global search looks for every occurrence, if we omit it, then the search looks for the first occurrence only. *w+* looks for 1 or more words. 
+The regex pattern is contained between 2 forward slashes, and followed by a '*g*' to state it is a global search. A global search looks for every occurrence, if we omit it, then the search looks for the first occurrence only. The pattern *w+* looks for 1 or more words. 
 
-We get the value of the `length` property of the resulting array to get the word count.
+The array returned from `match()` has each word as an element. So, the size of the array should be equal to the number of words, we use the `length` property of the array to get this.
 
-## On the reading time of code
+That's everything!
+
+## Reading speed of code
 
 I couldn't find any empirical information on the typical reading speed of code.  
 
-When researchers looked for ways to measure programming productivity, they chose **lines of code** written as the primary metric. This has fallen out of favour now, it was known as the [programming productivity paradox](https://dzone.com/articles/programmer-productivity). Still, maybe lines of code would be more useful than looking at individual words for reading, programming syntax is a lot different than verbal languages. Obviously the complexity of the code, and the programming language used would be 2 major factors that would affect the reading time. The point is, it is not simple to be accurate and conjure an universal formula, which will esimate how long it takes to understand a fragment of code.
+In the early days of programming, researchers looked for ways to measure programming productivity, they chose **lines of code** written as their primary metric. This has fallen out of favour now, it has become known as the [programming productivity paradox](https://dzone.com/articles/programmer-productivity). 
 
-If I were to guess I would say that reading code would probably occupy the lower end of the scale of the "learning" bracket discussed previously, we are learning the logic of a program, rather than just comprehending text.
+Still, maybe lines of code would be more useful than looking at individual words for reading, programming syntax is a lot different than verbal languages. Obviously the complexity of the code, and the programming language used influence the reading time. The point is, it is not simple to conjure an universal formula, which will estimate how long it takes to understand any fragment of code.
+
+If I were to guess I would say that reading code would probably occupy the lower end of the scale of the "learning" bracket discussed earlier, because really we are learning the logic of a program, rather than just comprehending a narrative.
 
 I will show you the word count from the code snippets included in my blog example. You can decide for yourself if the reading times for these simple examples are realistic. 
 
@@ -142,7 +146,11 @@ I will show you the word count from the code snippets included in my blog exampl
 
 ## Final Words
 
-That's it. If you enjoyed the post, let me know. 
+Did you read this in 4 minutes? 🤔😛
+
+I would like to write something a bit more sophisticated than this to come up with an estimated reading time that considers code in a more meaningful way.
+
+If you enjoyed the post, let me know. 
 
 Maybe next, I will speak about adding comments to your blog.
 
