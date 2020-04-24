@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 'Calculate the "reading time" of your Blog. Do you read code at 275 words per minute? ⏱🦉'
+title: "Pimp your Blog: Calculate the 'reading time' ⏱🦉"
 category: programming
 tags: [html, css, javascript, programming]
 published: true
@@ -19,9 +19,9 @@ Well, let's look at what others do first!
 - **Dev.to** counts the words in a post and divides it by **275 (words per minute)**. The resulting number is rounded up to give the number of minutes. [Source of information here](https://dev.to/devteam/changelog-reading-time-now-displayed-16o0).
 - **Medium** counts the words in a post and divides it by **265 (words per minute)**. They make an adjustment for images, whatever that means! It sounds intriguing, I wish I could see their code! [Source of information here](https://help.medium.com/hc/en-us/articles/214991667-Read-time).
 
-One issue I have with these calculations is that **they treat code as regular text**! I doubt people read code at a regular reading speed! 😲⚡ Reading code is not linear, it involves going back and forth between blocks in order to understand the program's logic. Of course, it depends on the size, complexity, and language of the fragment included. 
+One issue I see with these calculations is that they treat code fragments as regular text! I doubt people read code at a regular reading speed! 😲⚡ 
 
-As for the choice of a typical reading speed, [research has been conducted on various groups of people](https://en.wikipedia.org/wiki/Reading#Reading_rate), what you regularly see quoted is: **100-200 words per minute (wpm) for learning, 200 to 400 wpm for comprehension**.
+It is difficult to choose a typical reading speed, [research has been conducted on various groups of people to get typical rates](https://en.wikipedia.org/wiki/Reading#Reading_rate), what you regularly see quoted is: **100-200 words per minute (wpm) for learning, 200 to 400 wpm for comprehension**. On that basis, a tutorial would take longer to read than a personal account. 
 
 I will show you how to do it similar to Dev.to, but I will do the following differently: 
 
