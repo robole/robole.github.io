@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Add the estimated reading time to your Blog. Do you read code at 275 words per minute? 👓👩‍💻"
+title: 'Calculate the "reading time" of your Blog. Do you read code at 275 words per minute? ⏱🦉'
 category: programming
 tags: [html, css, javascript, programming]
 published: true
@@ -16,20 +16,19 @@ How about the estimated reading time?
 
 Well, let's look at what others do first!
 
-- **Dev.to** takes the total word count of a post and divides it by **275 (words per minute)**. The resulting number is rounded up to give the number of minutes. [Source of information here](https://dev.to/devteam/changelog-reading-time-now-displayed-16o0).
+- **Dev.to** counts the words in a post and divides it by **275 (words per minute)**. The resulting number is rounded up to give the number of minutes. [Source of information here](https://dev.to/devteam/changelog-reading-time-now-displayed-16o0).
+- **Medium** counts the words in a post and divides it by **265 (words per minute)**. They make an adjustment for images, whatever that means! It sounds intriguing, I wish I could see their code! [Source of information here](https://help.medium.com/hc/en-us/articles/214991667-Read-time).
 
-- **Medium** takes the total word count of a post and divides it by **265 (words per minute)**. They make an adjustment for images, whatever that means! It sounds intriguing, I wish I could see their code! [Source of information here](https://help.medium.com/hc/en-us/articles/214991667-Read-time).
-
-One big issue I have with these calculations is that **they treat code as regular text**! I doubt people read code at a regular reading speed! 😲⚡ Reading code is not linear, and it involves going back and forth between blocks in order to understand the program's logic. It is not a narrative. 
+One issue I have with these calculations is that **they treat code as regular text**! I doubt people read code at a regular reading speed! 😲⚡ Reading code is not linear, it involves going back and forth between blocks in order to understand the program's logic. Of course, it depends on the size, complexity, and language of the fragment included. 
 
 As for the choice of a typical reading speed, [research has been conducted on various groups of people](https://en.wikipedia.org/wiki/Reading#Reading_rate), what you regularly see quoted is: **100-200 words per minute (wpm) for learning, 200 to 400 wpm for comprehension**.
 
-I will show you how to do it the same way as Dev.to, but I differ by: 
+I will show you how to do it similar to Dev.to, but I will do the following differently: 
 
-- Using 250 wpm as my reading speed; 
-- And **I will show the calculation in a dropdown**. I wanted to know where the magic number came from, so maybe the readers of your blog do too! 
+- Use 250 wpm as my reading speed; 
+- **I will show the calculation in a dropdown**. I wanted to know where the magic number came from, so maybe the readers of your blog do too! 
 
-## Reading Time with dropdown
+## Reading Time
 
 You can see the <b><span style="color:purple">reading time in purple</span></b> in the Pen below. Click it to show the calculation.
 
