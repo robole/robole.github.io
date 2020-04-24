@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Add the estimated reading time to your Blog. Do you read code at 275 words per minute? 🐱‍🏍🐱‍💻"
+title: "Add the estimated reading time to your Blog. Do you read code at 275 words per minute? 👓👩‍💻"
 category: programming
 tags: [html, css, javascript, programming]
 published: true
@@ -27,7 +27,7 @@ As for the choice of a typical reading speed, [research has been conducted on va
 I will show you how to do it the same way as Dev.to, but I differ by: 
 
 - Using 250 wpm as my reading speed; 
-- And **I will show how the reading time is calculated in a dropdown**. I wanted to know, so maybe the readers of your blog do too! 
+- And **I will show the calculation in a dropdown**. I wanted to know where the magic number came from, so maybe the readers of your blog do too! 
 
 ## Reading Time with dropdown
 
@@ -80,7 +80,7 @@ The `<summary>` is always shown, this shows our reading time. The `<span>` is wh
 }
 ```
 
-We make the `<div>` wrapping our content a *relative* inline-block, this enables us to position the child `<details>` absolutely in relation to it, which takes it out of the normal page flow. This way when we click on it to show the additional details, it doesn't expand in size and push the elements below it further down. We assign it `z-index:1;`, so it appears above the content below it.
+We set the `<div>` wrapping our content as `position:relative`, this enables us to position the child `<details>` absolutely in relation to it, which takes it out of the normal page flow. We do this because now when we click on the *reading time* to show the additional details, it doesn't expand in size and push the elements below it further down. We assign it `z-index:1`, so it appears above the content below it.
 
 ### JavaScript
 
