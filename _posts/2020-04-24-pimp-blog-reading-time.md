@@ -6,7 +6,7 @@ tags: [html, css, javascript, programming]
 published: true
 ---
 
-<img src="/assets/img/blog/2020-04-24-pimp-blog-reading-time/banner.jpg" alt="overhead point of view of coder at desk with 3 screens" style="width:100%;max-width:1920px;margin:0 auto;"/>
+<img src="/assets/img/blog/2020-04-24-pimp-blog-reading-time/banner.jpg" alt="overhead point of view of coder at desk with 3 screens" style="width:98%;max-width:1920px;margin:0 auto;"/>
 
 Can we add anything to a standard blog that would enhance the reading experience?
 
@@ -53,7 +53,7 @@ You can see the <b><span style="color:purple">reading time in purple</span></b> 
 
 The `<details>` element is similar to an accordion, additional details are hidden that the user can view or hide on demand. 
 
-The `<summary>` is always shown, this shows our reading time. The `<span>` is where we provide  the additional details about the calculation of the reading time. We wrap it in a `<div>` to help with styling it.
+The `<summary>` is always shown, this shows our reading time. The `<span>` is the additional details that are hidden by default, we add the details of our calculation here. We wrap it in a `<div>` to help with styling it.
 
 ### CSS
 
@@ -127,19 +127,19 @@ I will show you the word count from the code snippets included in my blog exampl
 
 29 words. Reading time: 7 seconds.
 
-<img src="/assets/img/blog/2020-04-24-pimp-blog-reading-time/html-snippet.png" alt="word count for html code snippet" style="max-width:1204px,width:100%;display:block;margin:0 auto;"/>
+<img src="/assets/img/blog/2020-04-24-pimp-blog-reading-time/html-snippet.png" alt="word count for html code snippet" style="max-width:1204px;width:96%;display:block;margin:0 auto;"/>
 
 ### CSS Snippet
 
 174 words. Reading time: 42 seconds.
 
-<img src="/assets/img/blog/2020-04-24-pimp-blog-reading-time/css-snippet.png" alt="word count for css code snippet" style="max-width:1326px,width:100%;display:block;margin:0 auto;"/>
+<img src="/assets/img/blog/2020-04-24-pimp-blog-reading-time/css-snippet.png" alt="word count for css code snippet" style="max-width:1326px;width:96%;display:block;margin:0 auto;"/>
 
 ### JavaScript Snippet
 
 107 words. Reading time: 26 seconds.
 
-<img src="/assets/img/blog/2020-04-24-pimp-blog-reading-time/js-snippet.png" alt="word count for javascript code snippet" style="max-width:1436px,width:100%;display:block;margin:0 auto;"/>
+<img src="/assets/img/blog/2020-04-24-pimp-blog-reading-time/js-snippet.png" alt="word count for javascript code snippet" style="max-width:1436px;width:96%;display:block;margin:0 auto;"/>
 
 ## Final Words
 
