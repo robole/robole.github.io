@@ -16,21 +16,21 @@ How about the estimated reading time?
 
 Well, let's look at what others do first!
 
-- **Dev.to** counts the words in a post and divides it by **275 (words per minute)**. The resulting number is rounded up to give the number of minutes. [Source of information here](https://dev.to/devteam/changelog-reading-time-now-displayed-16o0).
-- **Medium** counts the words in a post and divides it by **265 (words per minute)**. They make an adjustment for images, whatever that means! It sounds intriguing, I wish I could see their code! [Source of information here](https://help.medium.com/hc/en-us/articles/214991667-Read-time).
+- *Dev.to* counts the words in a post and divides it by 275 (words per minute). The resulting number is rounded up to give the number of minutes. [Source of information here](https://dev.to/devteam/changelog-reading-time-now-displayed-16o0).
+- *Medium* counts the words in a post and divides it by 265 (words per minute). They make an adjustment for images, whatever that means! It sounds intriguing, I wish I could see their code! I guess they round up the number too. [Source of information here](https://help.medium.com/hc/en-us/articles/214991667-Read-time).
 
 One issue I see with these calculations is that they treat code fragments as regular text! I doubt people read code at a regular reading speed! 😲⚡ 
 
 It is difficult to choose a typical reading speed, [research has been conducted on various groups of people to get typical rates](https://en.wikipedia.org/wiki/Reading#Reading_rate), what you regularly see quoted is: **100 to 200 words per minute (wpm) for learning, 200 to 400 wpm for comprehension**. On that basis, a tutorial would take longer to read than a personal account. 
 
-I will show you how to do it similar to Dev.to, but I will do the following differently: 
+I will show you how to do it similar to *Dev.to*, but I will do the following differently: 
 
 - Use 250 wpm as my reading speed; 
-- **I will show the calculation in a dropdown**. I wanted to know where the magic number came from, so maybe the readers of your blog do too! 
+- I will show the calculation in a dropdown. I wanted to know where the magic number came from, so maybe the readers of your blog do too! 
 
 ## Reading Time
 
-You can see the <b><span style="color:purple">reading time in purple</span></b> in the Pen below. Click it to show the calculation.
+You can see the <strong><span style="color:purple">reading time in purple</span> in the Pen below</strong> . Click it to show the calculation.
 
 <p class="codepen" data-height="507" data-theme-id="light" data-default-tab="result" data-user="robjoeol" data-slug-hash="JjYWRMp" style="height: 507px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="Calculate Reading Time (naively) for a Blog">
   <span>See the Pen <a href="https://codepen.io/robjoeol/pen/JjYWRMp">
@@ -106,9 +106,9 @@ function getWordCount(){
 
 I will explain `getWordCount()`, the rest should be clear.
 
-We use a [regular expression (regex)](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions) pattern to get all the words of the post. The `match()` function searches the text (in *post*) using the regex pattern and returns all matches in an array.
+We use a [regular expression (regex)](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions) to get all the words of the post. The `match()` function searches the text (in *post*) using the regex and returns all matches in an array.
 
-The regex pattern is contained between 2 forward slashes, and followed by a '*g*' to state it is a global search. A global search looks for every occurrence, if we omit it, then the search looks for the first occurrence only. The pattern *w+* looks for 1 or more words. 
+The regex is contained between 2 forward slashes, and followed by a '*g*' to state it is a global search. A global search looks for every occurrence, if we omit it, then the search looks for the first occurrence only. The regex *w+* looks for 1 or more words. 
 
 The array returned from `match()` has each word as an element. So, the size of the array should be equal to the number of words, we use the `length` property of the array to get this.
 
