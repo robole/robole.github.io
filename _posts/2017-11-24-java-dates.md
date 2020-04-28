@@ -1,6 +1,6 @@
 ---
 layout: scrollable_post
-title: "Dates in Java 8: 📆🙏"
+title: "Dates in Java 8 📆🙏"
 category: java
 tags: [Java, "date-time api", dates]
 published: true
