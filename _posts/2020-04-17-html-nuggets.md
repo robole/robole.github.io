@@ -210,13 +210,6 @@ Try to change this text.</p>
 
 You can make an element editable by setting the `contenteditable` attribute to true.
 
-<p class="codepen" data-height="350" data-theme-id="light" data-default-tab="result" data-user="robjoeol" data-slug-hash="LYpNmPw" style="height: 350px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="Learning HTML - spellcheck and contenteditable attributes">
-  <span>See the Pen <a href="https://codepen.io/robjoeol/pen/LYpNmPw">
-  Learning HTML - spellcheck and contenteditable attributes</a> by Rob (<a href="https://codepen.io/robjoeol">@robjoeol</a>)
-  on <a href="https://codepen.io">CodePen</a>.</span>
-</p>
-<script async src="https://static.codepen.io/assets/embed/ei.js"></script>
-
 ## Show the progress of something with `<progress>`
 
 Spinners and skeletons have become the most popular ways to showing the progress of a loading task. 
@@ -288,21 +281,15 @@ I would highly recommend the [Responsive Images 101 series of short articles](ht
 ## You can show/hide details in a collapsible widget
 
 ```html
+<h1>Click to see to see more details</h1>
 <details>
   <summary>Jack in the box.</summary>
   <img src="https://upload.wikimedia.org/wikipedia/commons/8/8f/Jack-in-the-box.jpg" 
-  alt="Jack in the box">
-  <p>A jack-in-the-box is a children's toy that is a box with a crank. When the 
-  crank is turned, it plays a melody. After the crank has been turned a sufficient 
-  number of times, the lid pops open and a clown, pops out of the box. </p>
-</details> 
+  alt="Jack in the box" style="height:100px;">
+  <p>A jack-in-the-box is a children's toy. It is a clown that pops out of a box.</p>
+</details>
 ```
-<p class="codepen" data-height="378" data-theme-id="light" data-default-tab="result" data-user="robjoeol" data-slug-hash="WNQwKxr" style="height: 378px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="Learning HTML - details">
-  <span>See the Pen <a href="https://codepen.io/robjoeol/pen/WNQwKxr">
-  Learning HTML - details</a> by Rob (<a href="https://codepen.io/robjoeol">@robjoeol</a>)
-  on <a href="https://codepen.io">CodePen</a>.</span>
-</p>
-<script async src="https://static.codepen.io/assets/embed/ei.js"></script>
+<img src="/assets/img/blog/2020-04-17-html-nuggets/details.png" alt="clicking on details element to reveal content" style="display:block;width:100%;max-width:1092px;margin:0 auto;">
 
 ## *Fernstraßenbauprivatfinanzierungsgesetz* is a real word. Use `<wbr>`
 
