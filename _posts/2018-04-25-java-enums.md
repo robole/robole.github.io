@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Shall I enumerate the ways you can drink me? Java enumerations 🤤☕"
+title: "Shall I enumerate the ways you drink me? Java enumerations 🤤☕"
 category: programming
 tags: [java, enumeration, enum]
 published: true
@@ -39,8 +39,8 @@ The semi-colon at the end of the constant list is optional.
 
 ## Why should I use them?
 
-- It enables you to restrict the values that can be used. 
-- It increases compile-time checking and helps to avoid assignment errors.
+- It enables you to restrict the values that can be used for a *type*. 
+- It increases compile-time checking, helping to avoid more errors.
 - It serves as a clearer way to document what are the legal values for a type.
 
 ## When NOT to use enums?
@@ -69,11 +69,13 @@ If your list of constants is likely to change often. Adding a new constant requi
     CoffeSize c = Enum.valueOf(CoffeSize.class, "HUGE");
     ```
 
-# Constructors
+## Constructors
 
-Constructors for an enum type should be declared as `private`. The compiler allows constructors to be declared as public, but this can seem misleading, since `new` can never be used with enum types!
+I know, it seems weird having a constructor for a list of constants. Bear with me and I will explain! 🐻✌
 
-Here we pass a value to each constant to set the value of *ounces* through it's constructor.
+Constructors for an enum type should be declared as `private`. The compiler allows constructors to be declared as public, but this can seem misleading, since `new` can never be used with enums!
+
+Let's get more specific about our sizes, and add a variable for the volume, measured in (fluid) ounces. We can call it *ounces*. We want to set the value of *ounces* for each size on creation. How do we do that? We will do this through the constructor. 
 
 ```java
 enum CoffeeSize {
@@ -85,7 +87,7 @@ enum CoffeeSize {
   private int ounces;
 
   //constructor
-  CoffeeSize(int ounces) {
+  private CoffeeSize(int ounces) {
     this.ounces = ounces;
   }
 
