@@ -7,7 +7,7 @@ published: true
 ---
 <img src="/assets/img/blog/2018-04-25-java-enums/banner.jpg" style="width:100%;display:block;max-size:1920px;margin:0 auto;" alt="coffee cups, small and big"/>
 
-An Enumeration (enum) is a data type with a list of closely related constants. 
+An Enumeration (enum) is a data type with a list of related constants that limit its permitted values.
 
 You might use an enumeration to describe the following:
 
