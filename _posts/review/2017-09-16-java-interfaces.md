@@ -5,7 +5,7 @@ category: programming
 tags: [interfaces, java, OO Design, progamming]
 published: false
 ---
-# What is an interface?
+## What is an interface?
 
 An interface defines a contract for what a class can do, without saying anything about how the class will do it.
 

@@ -7,7 +7,7 @@ published: true
 ---
 <img src="/assets/img/blog/2018-04-25-java-enums/banner.jpg" style="width:100%;display:block;max-size:1920px;margin:0 auto;" alt="coffee cups, small and big"/>
 
-An Enumeration (enum) is a list of closely related constants. 
+An Enumeration (enum) is a data type with a list of closely related constants. 
 
 You might use an enumeration to describe the following:
 
@@ -39,7 +39,7 @@ The semi-colon at the end of the constant list is optional.
 
 ## Why should I use them?
 
-- It enables you to restrict the values that can be used for a *type*. 
+- It enables you to restrict the values that can be used for a type. 
 - It increases compile-time checking, helping to avoid more errors.
 - It serves as a clearer way to document what are the legal values for a type.
 
