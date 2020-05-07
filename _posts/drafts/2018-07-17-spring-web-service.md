@@ -7,6 +7,8 @@ published: true
 ---
 <img src="/assets/img/blog/2018-07-17-restful-service/spiderman.png" alt="web city!"/>
 
+READ THIS: https://dev.to/pmgysel/simple-working-example-of-rest-web-service-with-spring-boot-4plo
+
 - [What is REST?](#what-is-rest)
   - [Twitter REST API Example](#twitter-rest-api-example)
 - [What we will build](#what-we-will-build)
