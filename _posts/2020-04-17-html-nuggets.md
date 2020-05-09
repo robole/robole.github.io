@@ -33,9 +33,9 @@ Usually you see `<!DOCTYPE html>` as the first line to specify it is a HTML 5 do
 
 The thing with Browsers is that they *do their best with whatever you give them*, and they probably don't complain. So, you can omit the doctype or something else, and it may be able to show the webpage perfectly to you, but another Browser may produce something weird. To avoid the guessing game, it is better to be explicit with the doctype and the character set. Let me explain fully.  
 
-The default character set in HTML 5 is [UTF-8](https://en.wikipedia.org/wiki/UTF-8). If you omit the doctype, then the default character set is probably [ISO 8859-1](https://en.wikipedia.org/wiki/ISO/IEC_8859-1), which is a lot smaller, so you might get some garbled text with characters not in the set, especially for more recent additions like emojis. 
+The default character set in HTML 5 is [UTF-8](https://en.wikipedia.org/wiki/UTF-8). If you omit the doctype, then the default character set is probably [ISO 8859-1](https://en.wikipedia.org/wiki/ISO/IEC_8859-1), which is a much smaller character set, so you might get some garbled text with characters not in the set, especially for more recent character additions like emojis. 
 
-I suggest you declare the character set always with `<meta charset="UTF-8">` too. So your typical document looks something like this:
+I suggest you declare the character set always with `<meta charset="UTF-8">`. So your typical document looks something like this:
 
 ```html
 <!DOCTYPE html>
@@ -50,11 +50,11 @@ I suggest you declare the character set always with `<meta charset="UTF-8">` too
 </html>
 ```
 
-Firefox gives you a warning if you have a doctype, but no character set declared. 🦊😕
+Firefox gives you a warning if you have a doctype, but no character set declared. 🦊👏
 
 <img src="/assets/img/blog/2020-04-17-html-nuggets/no-doctype.png" alt="firefox warning" style="display:block;width:100%;max-width:802px;">
 
-Another side effect connected with omitting the doctype is, you can go into [quirks mode](https://developer.mozilla.org/en-US/docs/Web/HTML/Quirks_Mode_and_Standards_Mode) in older browsers (< IE9), which will cause erratic behaviour. I don't think this is an issue for everyone on > IE9, and other Browsers.
+Another side effect connected with omitting the doctype is that you can go into [quirks mode](https://developer.mozilla.org/en-US/docs/Web/HTML/Quirks_Mode_and_Standards_Mode) in older browsers (< IE9), which will cause erratic behaviour. I don't think this is an issue for anyone on > IE9, and other Browsers.
 
 ## Optimize: Lazy loading of images and iframes with the `loading` attribute
 
@@ -113,7 +113,7 @@ You can see all of the inputs on the [MDN page](https://developer.mozilla.org/en
 
 ## Good form: Validate input easily
 
-If you enter incorrect data in an input, the the field will be highlighted will it loses focus (usually with a red outline). 
+If you enter invalid data in an input, the input will be highlighted when it loses focus (usually with a red outline). 
 
 <img src="/assets/img/blog/2020-04-17-html-nuggets/implicit-validation.png"  alt="invalid data highlighted with red outline" style="display:block;width:100%;max-width:425px;margin:0 auto;"/>
 
@@ -121,7 +121,7 @@ There are some [CSS pseudo-classes available for custom styling](https://develop
 
 Validation is done in the following ways:
 
-- Some inputs have implicit validation: `email` must contain '@' and a dot, `url` must contain "http://", numeric inputs must contain a number.
+- Some inputs have implicit validation for types: `email` must contain '@' and a dot, `url` must contain "http://", numeric inputs must be a number.
 - Add the `required` attribute to ensure an input must be filled in.
 - For numeric types, you can limit the value with the `min` and `max` attributes.
 - For text types, you can limit the length with the `minlength` and `maxlength` attributes.
@@ -142,7 +142,7 @@ Validation is done in the following ways:
 <input type="number" name="age" min="1" max="120" required></label><br>
 ```
 
-<script async src="//jsfiddle.net/robjoeol/yhox314e/5/embed/result,html,css/"></script>
+<script async src="//jsfiddle.net/robjoeol/yhox314e/23/embed/result,html,css/"></script>
 
 ## Good form: Validate input with regex
 
