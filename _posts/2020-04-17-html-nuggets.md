@@ -113,7 +113,7 @@ You can see all of the inputs on the [MDN page](https://developer.mozilla.org/en
 
 ## Good form: Validate input easily
 
-If you enter incorrect data in an input, and hit the 'submit button', then the field will be highlighted (usually with a red outline). 
+If you enter incorrect data in an input, the the field will be highlighted will it loses focus (usually with a red outline). 
 
 <img src="/assets/img/blog/2020-04-17-html-nuggets/implicit-validation.png"  alt="invalid data highlighted with red outline" style="display:block;width:100%;max-width:425px;margin:0 auto;"/>
 
@@ -142,12 +142,7 @@ Validation is done in the following ways:
 <input type="number" name="age" min="1" max="120" required></label><br>
 ```
 
-<p class="codepen" data-height="400" data-theme-id="light" data-default-tab="result" data-user="robjoeol" data-slug-hash="rNOedwp" style="height: 400px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="Learning HTML - Form Validation">
-  <span>See the Pen <a href="https://codepen.io/robjoeol/pen/rNOedwp">
-  Learning HTML - Form Validation</a> by Rob (<a href="https://codepen.io/robjoeol">@robjoeol</a>)
-  on <a href="https://codepen.io">CodePen</a>.</span>
-</p>
-<script async src="https://static.codepen.io/assets/embed/ei.js"></script>
+<script async src="//jsfiddle.net/robjoeol/yhox314e/5/embed/result,html,css/"></script>
 
 ## Good form: Validate input with regex
 
