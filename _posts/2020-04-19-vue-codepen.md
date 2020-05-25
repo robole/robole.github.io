@@ -2,6 +2,7 @@
 layout: post
 title: "Vue Components can be written in Codepen now! 💚🖊"
 category: web
+description: "You can now write Single-File Vue Components in Codepen!"
 tags: [vue, programming]
 published: true
 ---

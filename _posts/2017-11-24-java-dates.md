@@ -2,6 +2,7 @@
 layout: scrollable_post
 title: "Dates in Java 8 📆🙏"
 category: java
+description: "Learn how to use date in Java. The java.time package was introduced in Java 8 to make dates easier to use."
 tags: [Java, "date-time api", dates]
 published: true
 ---

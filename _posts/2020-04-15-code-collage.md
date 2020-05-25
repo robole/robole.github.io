@@ -1,15 +1,17 @@
 ---
 layout: post
 title: "Code Collage: Reuse, repurpose, regret! 🎃👨‍💻"
+description: "Code can be composed from various sources. Do you find yourself writing code in short spurts before needing to go on a code hunt? It's a warning sign"
 category: programming
 tags: [programming]
 published: true
 ---
+
 <img src="/assets/img/blog/2020-04-15-code-collage/collage.jpg"  alt="code collage" style="width:100%"/>
 
-A collage is an "*artistic composition made of various materials (such as paper, cloth, or wood) glued on a surface*". What do you call code composed from various sources and glued together?
+A collage is an "_artistic composition made of various materials (such as paper, cloth, or wood) glued on a surface_". What do you call code composed from various sources and glued together?
 
-Do you find yourself writing code in short spurts before needing to go on a code hunt in your favourite search engine? It's a warning sign if it's happening often. You end up playing Dr Frankenstein pulling different little pieces together and tinkering until it splutters into life. 
+Do you find yourself writing code in short spurts before needing to go on a code hunt in your favourite search engine? It's a warning sign if it's happening often. You end up playing Dr Frankenstein pulling different little pieces together and tinkering until it splutters into life.
 
 We have all been there (probably), I know I have. It's an indicator that you're going too far, too soon. You need to back up and understand things better, as difficult as this is to do. The cliché is learning a framework before you know the language it's based on very well!
 
@@ -21,7 +23,7 @@ Using libraries and frameworks is different than grabbing code snippets here and
 
 The thing is that no-one is immune to this completely. If we are honest, to some extent, we just want the result, not the striving, nor the doing really. Dedicate a statue to me already. Your code collage might work. If you can copy-and-paste your way to glory, imagine if you learn something well and understand it thoroughly! Hail, Caesar!
 
-But a more basic psychology plays a stronger role. We procrastinate and then cram, leaving little time to read documentation and become acquainted with something unfamiliar. We don't say 'No' to an unrealistic demand. We wander too far outside of our zone of competence, and can't do what is expected by yourself, or others quickly. We are pressurised by management. We are anxious about a deadline and lose rationality, the reptile quarter of our brain takes over. 
+But a more basic psychology plays a stronger role. We procrastinate and then cram, leaving little time to read documentation and become acquainted with something unfamiliar. We don't say 'No' to an unrealistic demand. We wander too far outside of our zone of competence, and can't do what is expected by yourself, or others quickly. We are pressurised by management. We are anxious about a deadline and lose rationality, the reptile quarter of our brain takes over.
 
 The obvious antidote is to know the fundamentals of the technology you are working in well, don't bypass something because you think you know it, confirm it by using it. Get advice from experienced peers to know what is important. Build knowledge, applications, and confidence. Strive for consistency.
 

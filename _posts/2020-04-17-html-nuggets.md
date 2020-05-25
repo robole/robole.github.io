@@ -1,10 +1,12 @@
 ---
 layout: post
 title: "HTML Nuggets: Little bits that you may have forgotten, never learned, never realised, or ignored! 🔸🤓"
+description: "Improve your knowledge of HTML with little bits that you may have forgotten, never learned, never realised, or ignored!"
 category: web
 tags: [html, programming]
 published: true
 ---
+
 <img src="/assets/img/blog/2020-04-17-html-nuggets/banner.jpg"  alt="code collage" style="width:100%;max-width:1920px;margin:0 auto;"/>
 
 If you learned something new from this, let me know what it is! 😊
@@ -23,17 +25,17 @@ If you learned something new from this, let me know what it is! 😊
 1. [Responsive: Want a responsive webpage? Not without`<meta>` !](#responsive-want-a-responsive-webpage-not-without-meta-)
 1. [Responsive: Responsive images with`srcset`. Look mom, no media queries! 🤔](#responsive-responsive-images-withsrcset-look-mom-no-media-queries-)
 1. [You can show/hide details in a collapsible widget](#you-can-showhide-details-in-a-collapsible-widget)
-1. [*Fernstraßenbauprivatfinanzierungsgesetz* is a real word. Use `<wbr>`](#fernstraßenbauprivatfinanzierungsgesetz-is-a-real-word-use-wbr).
+1. [_Fernstraßenbauprivatfinanzierungsgesetz_ is a real word. Use `<wbr>`](#fernstraßenbauprivatfinanzierungsgesetz-is-a-real-word-use-wbr).
 
 ## No doctype, maybe no emojis 😢
 
 The doctype declares the version of HTML we use, more specifically what web standard the document follows (XHTML 1.1, HTML 4.01, HTML 5).
 
-Usually you see `<!DOCTYPE html>` as the first line to specify it is a HTML 5 document. It must be the first line. It is not case sensitive. 
+Usually you see `<!DOCTYPE html>` as the first line to specify it is a HTML 5 document. It must be the first line. It is not case sensitive.
 
-The thing with Browsers is that they *do their best with whatever you give them*, and they probably don't complain. So, you can omit the doctype or something else, and it may be able to show the webpage perfectly to you, but another Browser may produce something weird. To avoid the guessing game, it is better to be explicit with the doctype and the character set. Let me explain fully.  
+The thing with Browsers is that they _do their best with whatever you give them_, and they probably don't complain. So, you can omit the doctype or something else, and it may be able to show the webpage perfectly to you, but another Browser may produce something weird. To avoid the guessing game, it is better to be explicit with the doctype and the character set. Let me explain fully.
 
-The default character set in HTML 5 is [UTF-8](https://en.wikipedia.org/wiki/UTF-8). If you omit the doctype, then the default character set is probably [ISO 8859-1](https://en.wikipedia.org/wiki/ISO/IEC_8859-1), which is a much smaller character set, so you might get some garbled text with characters not in the set, especially for more recent character additions like emojis. 
+The default character set in HTML 5 is [UTF-8](https://en.wikipedia.org/wiki/UTF-8). If you omit the doctype, then the default character set is probably [ISO 8859-1](https://en.wikipedia.org/wiki/ISO/IEC_8859-1), which is a much smaller character set, so you might get some garbled text with characters not in the set, especially for more recent character additions like emojis.
 
 I suggest you declare the character set always with `<meta charset="UTF-8">`. So your typical document looks something like this:
 
@@ -41,12 +43,11 @@ I suggest you declare the character set always with `<meta charset="UTF-8">`. So
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Hello World!</title>
   </head>
-  <body>
-  </body>
+  <body></body>
 </html>
 ```
 
@@ -59,35 +60,38 @@ Another side effect connected with omitting the doctype is that you can go into 
 ## Optimize: Lazy loading of images and iframes with the `loading` attribute
 
 ```html
-<img src="big-image.png" loading="lazy" alt="…" >
+<img src="big-image.png" loading="lazy" alt="…" />
 <iframe src="https://example.com" loading="lazy"></iframe>
 ```
 
 Set the value of `loading` to lazy, and it will defer loading of the resources that are off-screen until the user scrolls near them.
 
-It is still quite a new feature, so Browser support is not that great. 
+It is still quite a new feature, so Browser support is not that great.
 
 <a href="https://caniuse.com/#feat=loading-lazy-attr"><img src="/assets/img/blog/2020-04-17-html-nuggets/loading-caniuse.png" alt="browser support for lazy attribute. its 64% ish" style="width:100%;max-width:657px;display:block;margin:0 auto;"></a>
 
-### How do I support more Browsers?  
+### How do I support more Browsers?
 
 Write some Javascript!🙃 The `loading` property can be used to detect if the feature is supported in the Browser.
 
-If it's not supported, we can ues a [*polyfill*](https://github.com/mfranzke/loading-attribute-polyfill); or a third-party library such as [lazysizes](https://github.com/aFarkas/lazysizes) instead.
+If it's not supported, we can ues a [_polyfill_](https://github.com/mfranzke/loading-attribute-polyfill); or a third-party library such as [lazysizes](https://github.com/aFarkas/lazysizes) instead.
 
 ```js
 <script>
- if ('loading' in HTMLImageElement.prototype) {
-  // supported in browser
-} else {
-  // get polyfill or third-party library and use that
-}
+  if ('loading' in HTMLImageElement.prototype){" "}
+  {
+    // supported in browser
+  }{" "}
+  else{" "}
+  {
+    // get polyfill or third-party library and use that
+  }
 </script>
 ```
 
 ## Good form: You're my `type` 😘 Get the right keyboard on mobile for inputs
 
-Some mobile browsers recognize the type of an input and provide a keyboard that makes text entry easier for that type: 
+Some mobile browsers recognize the type of an input and provide a keyboard that makes text entry easier for that type:
 
 - `<input type="email">` triggers a keyboard with the <kbd>.com</kbd> and <kbd>@</kbd> keys.
 - `<input type='url'>` (for a web address) triggers a keyboard with the <kbd>/</kbd> key.
@@ -104,8 +108,8 @@ With the following input types (ordered from least familiar to most familiar), y
 - `color`: Shows a button with a colour swatch, which opens a colourpicker dialog. You can only pick colours.
 - `file`: Shows a button, which opens a file browser dialog. You can only pick files.
 - `range`: Shows a slider for a numeric range from the lowest to highest values (set with the `min` and `max` attributes).
-- `time`: You can only input a time in *hh:ss* format. Some browser show it a mask such as `__:__`
-- `date`: Shows a text field, which opens a  datepicker dialog on selection. Not popular because it cannot be styled easily and looks so different from browser to browser!
+- `time`: You can only input a time in _hh:ss_ format. Some browser show it a mask such as `__:__`
+- `date`: Shows a text field, which opens a datepicker dialog on selection. Not popular because it cannot be styled easily and looks so different from browser to browser!
 - `checkbox`, `radio`, `select`, `datalist`: you can only select their list of values.
 - `<button>`, `submit`, `reset` : these are buttons, you can only click them!
 
@@ -113,7 +117,7 @@ You can see all of the inputs on the [MDN page](https://developer.mozilla.org/en
 
 ## Good form: Validate input easily
 
-If you enter invalid data in an input, the input will be highlighted when it loses focus (usually with a red outline). 
+If you enter invalid data in an input, the input will be highlighted when it loses focus (usually with a red outline).
 
 <img src="/assets/img/blog/2020-04-17-html-nuggets/implicit-validation.png"  alt="invalid data highlighted with red outline" style="display:block;width:100%;max-width:425px;margin:0 auto;"/>
 
@@ -128,64 +132,96 @@ Validation is done in the following ways:
 
 ```html
 <!--implicit validation-->
-<label>Email:
-<input type="email" name="email" placeholder="john.doe@example.com" size="30"></label><br>
-<label>Website:
-<input type="url" name="website" placeholder="http://www.example.com" size="30"></label><br>
-<label>Random number:
-<input type="number" name="random"></label><br>
- 
+<label
+  >Email:
+  <input
+    type="email"
+    name="email"
+    placeholder="john.doe@example.com"
+    size="30" /></label
+><br />
+<label
+  >Website:
+  <input
+    type="url"
+    name="website"
+    placeholder="http://www.example.com"
+    size="30" /></label
+><br />
+<label>Random number: <input type="number" name="random" /></label><br />
+
 <!--specific validation-->
-<label>Name (4-8 chars):
-<input type="text" id="name" name="name" minlength="4" maxlength="8" required><br>
-<label>Age (1-120):
-<input type="number" name="age" min="1" max="120" required></label><br>
+<label
+  >Name (4-8 chars):
+  <input
+    type="text"
+    id="name"
+    name="name"
+    minlength="4"
+    maxlength="8"
+    required /><br />
+  <label
+    >Age (1-120):
+    <input type="number" name="age" min="1" max="120" required /></label
+  ><br
+/></label>
 ```
 
 <script async src="//jsfiddle.net/robjoeol/yhox314e/23/embed/result,html,css/"></script>
 
 ## Good form: Validate input with regex
 
-The `pattern` attribute takes a [regular expression (regex)](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions) that the data you enter must match in order for the value to be valid. It is only checked when `required` is included. 
+The `pattern` attribute takes a [regular expression (regex)](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions) that the data you enter must match in order for the value to be valid. It is only checked when `required` is included.
 
 You can make very expressive tests with this attribute. When you use it, let the users know about the input requirements, it can be frustrating trying to figure out it otherwise!
 
 ```html
-<label>Username <i>(letters and numbers only, no  punctuation or special characters)</i>
-<input name="username" id="username" pattern="[A-Za-z0-9]+" required></label><br>
+<label
+  >Username
+  <i>(letters and numbers only, no punctuation or special characters)</i>
+  <input name="username" id="username" pattern="[A-Za-z0-9]+" required /></label
+><br />
 
 <!-- US Postal Code-->
-<label>Postal Code <i>(5 numbers, a dash, and 4 numbers)</i>:
-<input type="text" pattern="(\d{5}([\-]\d{4})?)" required></label>
+<label
+  >Postal Code <i>(5 numbers, a dash, and 4 numbers)</i>:
+  <input type="text" pattern="(\d{5}([\-]\d{4})?)" required
+/></label>
 ```
 
- However, I would be cautious using this as it is hard to anticipate all of the possible variations upfront, and regex can be misunderstood. There is an old proverb among computer programmers:
+However, I would be cautious using this as it is hard to anticipate all of the possible variations upfront, and regex can be misunderstood. There is an old proverb among computer programmers:
 
->  Some people, when confronted with a problem, think “I know, I'll use regular expressions.” Now they have two problems.
+> Some people, when confronted with a problem, think “I know, I'll use regular expressions.” Now they have two problems.
 
 ## Good form: `<label>` and `<input>` are like wine and cheese, good for clicking and accessibility
 
-Having a `<label>` with a input of type: `radio`, `check`, `submit`, `reset` makes the `<label>` clickable also. A bigger target area makes life easier for users. 
+Having a `<label>` with a input of type: `radio`, `check`, `submit`, `reset` makes the `<label>` clickable also. A bigger target area makes life easier for users.
 
 The pairing is useful for assistive technologies such as screen readers. By pairing them using the `for` attribute, you bond the label to the input in a way that lets screen readers describe inputs to users more precisely.
 
 ```html
 <!-- implicit label -->
-<p><label>Enter your name: <input id="name" type="text" size="30"></label></p>
+<p>
+  <label>Enter your name: <input id="name" type="text" size="30" /></label>
+</p>
 
 <!-- explicit label -->
-<p><label for="name">Enter your name: </label><input id="name" type="text" size="30"></p>
+<p>
+  <label for="name">Enter your name: </label
+  ><input id="name" type="text" size="30" />
+</p>
 ```
 
 ## Good form: reset a form
 
-Use `<input type="reset">` and it will clear all form fields, resetting them to their default value, specified in the `value` attribute.  
+Use `<input type="reset">` and it will clear all form fields, resetting them to their default value, specified in the `value` attribute.
 
 ## Good form: spellcheck
 
 ```html
-<textarea name="description" spellcheck="true" 
-rows="4" cols="50">Cjeck me</textarea>
+<textarea name="description" spellcheck="true" rows="4" cols="50">
+Cjeck me</textarea
+>
 ```
 
 You will get red squiggly lines underneath misspelt words.
@@ -199,21 +235,22 @@ The following can be spellchecked:
 ## Make the content of any element editable 😮
 
 ```html
-<p contenteditable="true">This is a paragraph. It is editable. 
-Try to change this text.</p>
+<p contenteditable="true">
+  This is a paragraph. It is editable. Try to change this text.
+</p>
 ```
 
 You can make an element editable by setting the `contenteditable` attribute to true.
 
 ## Show the progress of something with `<progress>`
 
-Spinners and skeletons have become the most popular ways to showing the progress of a loading task. 
+Spinners and skeletons have become the most popular ways to showing the progress of a loading task.
 
-HTML has `<progress>` for this purpose. It is a progress bar. Maybe the reason it is seldom used is because it is hard to style, [but you can style it with some know-how](https://css-tricks.com/html5-progress-element/). 
+HTML has `<progress>` for this purpose. It is a progress bar. Maybe the reason it is seldom used is because it is hard to style, [but you can style it with some know-how](https://css-tricks.com/html5-progress-element/).
 
 ```html
 <label for="file">Downloading progress:</label>
-<progress id="file" value="32" max="100">32%</progress> 
+<progress id="file" value="32" max="100">32%</progress>
 ```
 
 [Here is the MDN page](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/progress) if you want to read more.
@@ -227,15 +264,18 @@ I made this mistake one day, why isn't the page resizing on mobile!😡🤦‍�
 Always include the `<meta>` element as below.
 
 ```html
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html>
-<head>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-</head>
-<body>
-<h2>Setting the Viewport</h2>
-<p>This example does not really do anything, other than showing you how to add the viewport meta element.</p>
-</body>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  </head>
+  <body>
+    <h2>Setting the Viewport</h2>
+    <p>
+      This example does not really do anything, other than showing you how to
+      add the viewport meta element.
+    </p>
+  </body>
 </html>
 ```
 
@@ -243,22 +283,30 @@ Without it, the page on mobile is scaled to around 60%. The website looks like a
 
 ## Responsive: Responsive images with`srcset`. Look mom, no media queries! 🤔
 
-I will preface this by saying that you may choose to use CSS instead, but it's a hard decision. Let me break it down for you. 
+I will preface this by saying that you may choose to use CSS instead, but it's a hard decision. Let me break it down for you.
 
-Ideally, we would always load optimized images that closely match the screen size of the device. Goldilocks scenario: *not too big* (wasteful of bandwidth), and *not too small* (grainy if you scale it up in size). So, we would like to swap images depending on resolution. This is known as the **resolution switching problem**.
+Ideally, we would always load optimized images that closely match the screen size of the device. Goldilocks scenario: _not too big_ (wasteful of bandwidth), and _not too small_ (grainy if you scale it up in size). So, we would like to swap images depending on resolution. This is known as the **resolution switching problem**.
 
-We can use the `srcset` and `sizes` attributes of `<img>`, which gives the browser the choice to choose the right image for the screen resolution. The value of `srcset` contains a comma-separated list of images with the path and with the width stated. 
+We can use the `srcset` and `sizes` attributes of `<img>`, which gives the browser the choice to choose the right image for the screen resolution. The value of `srcset` contains a comma-separated list of images with the path and with the width stated.
 
 ```html
-<img src="cat.jpg" alt="cat"
-  srcset="cat-160.jpg 160w, cat-320.jpg 320w, cat-640.jpg 640w, cat-1280.jpg 1280w"
-  sizes="(max-width: 480px) 100vw, (max-width: 900px) 33vw, 1280px">
+<img
+  src="cat.jpg"
+  alt="cat"
+  srcset="
+    cat-160.jpg   160w,
+    cat-320.jpg   320w,
+    cat-640.jpg   640w,
+    cat-1280.jpg 1280w
+  "
+  sizes="(max-width: 480px) 100vw, (max-width: 900px) 33vw, 1280px"
+/>
 ```
 
 The `sizes` attribute has a comma-separated list describing the size of the image in relation to the viewport. Not as easy to understand this one. It's a bit like a media query. If we translated this into a list of instructions, it might look like this:
 
-- `(max-width: 480px) 100vw`:  If the viewport is <= 480px wide, the image will be 100% of the viewport width.
-- `(max-width: 900px) 33vw`: If the  viewport is between 481px and 900px wide, then the image will be 33% of the viewport width.
+- `(max-width: 480px) 100vw`: If the viewport is <= 480px wide, the image will be 100% of the viewport width.
+- `(max-width: 900px) 33vw`: If the viewport is between 481px and 900px wide, then the image will be 33% of the viewport width.
 - `1280px`: This the default value used when none of the other media conditions are met. So, for >= 901px wide, the image will be 1280px wide.
 
 This works really well. The problem many have is that we now have information about the presentation of an element, the size of the image, in our markup. Ideally, we put this type of information in CSS. So there is an argument for doing it all in CSS. But the counter argument is performance. Read on.
@@ -279,26 +327,33 @@ I would highly recommend the [Responsive Images 101 series of short articles](ht
 <h1>Click to see to see more details</h1>
 <details>
   <summary>Jack in the box.</summary>
-  <img src="https://upload.wikimedia.org/wikipedia/commons/8/8f/Jack-in-the-box.jpg" 
-  alt="Jack in the box" style="height:100px;">
-  <p>A jack-in-the-box is a children's toy. It is a clown that pops out of a box.</p>
+  <img
+    src="https://upload.wikimedia.org/wikipedia/commons/8/8f/Jack-in-the-box.jpg"
+    alt="Jack in the box"
+    style="height:100px;"
+  />
+  <p>
+    A jack-in-the-box is a children's toy. It is a clown that pops out of a box.
+  </p>
 </details>
 ```
+
 <img src="/assets/img/blog/2020-04-17-html-nuggets/details.png" alt="clicking on details element to reveal content" style="display:block;width:100%;max-width:1092px;margin:0 auto;">
 
-## *Fernstraßenbauprivatfinanzierungsgesetz* is a real word. Use `<wbr>`
+## _Fernstraßenbauprivatfinanzierungsgesetz_ is a real word. Use `<wbr>`
 
 Some languages have long words. Germans make a lot of compound words for instance. If you're a chemist and you use chemical names, they can be very long. It must be hard to be a German chemist! So what you may ask?
 
 If a sentence gets too long, a word is broken up wherever the browser decides, usually so it doesn't overflow. Breaking it up in the wrong place makes it hard to read. You can use `<wbr>` (Word Break Opportunity) to specify where in a text it would be ok to add a line-break.
 
 ```html
-<p>You must take a left at the station, go halfway down the street, 
-and you will see a building with the name <wbr>Fern<wbr>straßen
-<wbr>bau<wbr>privat<wbr>finanzierungs<wbr>gesetz.</p>
+<p>
+  You must take a left at the station, go halfway down the street, and you will
+  see a building with the name <wbr />Fern<wbr />straßen
+  <wbr />bau<wbr />privat<wbr />finanzierungs<wbr />gesetz.
+</p>
 ```
 
 ## The End
 
 Thanks for reading!🙂
-

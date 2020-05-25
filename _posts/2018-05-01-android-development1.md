@@ -2,6 +2,7 @@
 layout: scrollable_post
 title: "Android Development - (1) Getting Started 👽"
 category: android
+description: "We discuss how to install and setup Android Studio. And how to create a Hello World app."
 tags: [mobile, java, android, programming]
 ---
 # Setting up the environment and making a "Hello World" program

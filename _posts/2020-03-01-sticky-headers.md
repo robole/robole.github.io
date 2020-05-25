@@ -2,6 +2,7 @@
 layout: scrollable_post
 title: Make it stick! Sticky headers in CSS 🦎🔝
 category: web
+description: "CSS introduced the property `position: sticky` in 2012, one obvious application of this is for making sticky headers."
 tags: [HTML, CSS, web]
 published: true
 ---

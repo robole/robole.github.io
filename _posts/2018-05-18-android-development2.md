@@ -2,9 +2,11 @@
 layout: scrollable_post
 title: "Android Development - (2) Fundamentals 👽"
 category: android
+description: "Learn the fundamentals of Android. What are the component parts of a typical app."
 tags: [mobile, java, android]
 published: true
 ---
+
 # What do I need to install to get started?
 
 You can read my previous post [Android Development - Getting Started]({{ site.baseurl }}{% post_url 2018-05-01-android-development1 %}).
@@ -12,30 +14,31 @@ You can read my previous post [Android Development - Getting Started]({{ site.ba
 # How do I make an app?
 
 The core elements of an app are:
-- A *layout* defines the appearance of a screen. It is defined in a XML file. Android Studio has a "text view" to show
-the XML source.
+
+- A _layout_ defines the appearance of a screen. It is defined in a XML file. Android Studio has a "text view" to show
+  the XML source.
 
 ![android studio text view](/assets/img/blog/2018-05-18-android2/text-view.png)
 
-- A *view* is an UI element such as a button that can be added to a *layout*. Android Studio provides a "design view" to create a layout in a visual way so you can add the view elements directly onto a screen, it provides a palette
-of view elements to choose from.
+- A _view_ is an UI element such as a button that can be added to a _layout_. Android Studio provides a "design view" to create a layout in a visual way so you can add the view elements directly onto a screen, it provides a palette
+  of view elements to choose from.
 
 ![android studio design view](/assets/img/blog/2018-05-18-android2/design-view-example.png)
 
-- An *activity* represents a single user screen. Activities are usually associated with one *layout*, and they’re written in Java. We have a main activity that is the starting point of our app.
-- *AndroidManifest.xml* contains all the essential application data.
-- *Resources* provide external content for our app such as images,
-styles, string values, and so on.
-- *Intents* are used to launch activities.
-- *Services* are background processes that can run for a long time.
+- An _activity_ represents a single user screen. Activities are usually associated with one _layout_, and they’re written in Java. We have a main activity that is the starting point of our app.
+- _AndroidManifest.xml_ contains all the essential application data.
+- _Resources_ provide external content for our app such as images,
+  styles, string values, and so on.
+- _Intents_ are used to launch activities.
+- _Services_ are background processes that can run for a long time.
 
 The rest can be discussed in more detail as we focus on each aspect.
 
 # How does an app do stuff?
 
-The main *activity* is launched when a user clicks on the app icon.
+The main _activity_ is launched when a user clicks on the app icon.
 
-A task is when two or more *activities* are chained together. We use an *intent* to pass a message between *activities* to achieve this.
+A task is when two or more _activities_ are chained together. We use an _intent_ to pass a message between _activities_ to achieve this.
 
 # How is our project organised?
 
@@ -43,25 +46,25 @@ Typically, assets are organized into different directories based on their purpos
 
 ![android directory structure](/assets/img/blog/2018-05-18-android2/android-directory-structure.png)
 
-- java files (*app/src/main/java*): our activities and classes
-that we define go here.
-- generated files (*app/build/generated*): contains files generated
-by the build process. We don't change these manually. *R.java* contains the IDs that keep track of all resources in the app, and is in *app/build/generated/source/r/[build flavor/]{release|debug}/{app package}*.
-- static resources (*app/src/main/res*): The additional files for static content such as images. Explained further later.
-- *AndroidManifest.xml*: Every app must have an *AndroidManifest.xml* file at the root of the project. It describes essential information about your app such as: the list of it's components, the permissions required, and the hardware and software features required.
+- java files (_app/src/main/java_): our activities and classes
+  that we define go here.
+- generated files (_app/build/generated_): contains files generated
+  by the build process. We don't change these manually. _R.java_ contains the IDs that keep track of all resources in the app, and is in _app/build/generated/source/r/[build flavor/]{release|debug}/{app package}_.
+- static resources (_app/src/main/res_): The additional files for static content such as images. Explained further later.
+- _AndroidManifest.xml_: Every app must have an _AndroidManifest.xml_ file at the root of the project. It describes essential information about your app such as: the list of it's components, the permissions required, and the hardware and software features required.
 
 # Activity
 
-An activity represents a single user screen, and is a single defined thing that the user can do. You extend ```android.app.Activity``` or a subclass.
+An activity represents a single user screen, and is a single defined thing that the user can do. You extend `android.app.Activity` or a subclass.
 
 ## Configure the manifest
 
-Each activity you create must have an entry in *AndroidManifest.xml*.
+Each activity you create must have an entry in _AndroidManifest.xml_.
 Android Studio does this for you when you create a new activity using it's wizard (as below).
 
 ![new wizard](/assets/img/blog/2018-05-18-android2/new-wizard.png)
 
-The only required attribute for the activity element is ```android:name```, which specifies the class name of the activity.
+The only required attribute for the activity element is `android:name`, which specifies the class name of the activity.
 
 ```xml
 <manifest ... >
@@ -77,11 +80,12 @@ The only required attribute for the activity element is ```android:name```, whic
 </manifest >
 ```
 
-One *activity* needs to be marked as a main activity, so you can launch your app. We use an *intent filter* to do this. We will speak about this in more detail when we discuss *intents*.
+One _activity_ needs to be marked as a main activity, so you can launch your app. We use an _intent filter_ to do this. We will speak about this in more detail when we discuss _intents_.
 
 ## Lifecycle events
 
 Skillfully managing activities allows you to ensure that:
+
 - Orientation changes take place smoothly without disrupting the user experience.
 - User data is not lost during activity transitions.
 - The system kills processes when it's appropriate to do so.
@@ -96,23 +100,23 @@ You should always externalize app resources such as images and strings from your
 
 You should also provide alternative resources for specific device configurations, such as different screen resolutions, and group them in specially-named resource directories. At runtime, Android chooses the appropriate resource based on the current configuration.
 
-Once you externalize your app resources, you can access them using resource IDs that are generated in your project's *R.java*.
+Once you externalize your app resources, you can access them using resource IDs that are generated in your project's _R.java_.
 
 ## Grouping resources
 
-|Directory| Resource Type |
-|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| animator/| XML files that define property animations.|
-|anim/ | XML files that define tween animations. (Property animations can also be saved in this directory, but the animator/ directory is preferred for property animations to distinguish between the two types.) |
-|color/| Defines a list of colors. |
-|drawable/ | Bitmap files (.png, .9.png, .jpg, .gif) or XML files that are compiled into drawable resources.|        
-| mipmap/ | Drawable files for different launcher icon densities.|
-| layout/| XML files that define a user interface layout.|
-|menu/| XML files that define app menus. |
-|raw/ | Arbitrary files to save in their raw form. To open these resources with a raw InputStream, call ```Resources.openRawResource()``` with the resource ID.|
-|values/| XML files that contain simple values such as: strings, integers, and arrays. By convention, each type is stored in a separate file.|
-| font/| Font files with extensions such as .ttf, .otf, or .ttc, or XML files that include a <font-family> element. |
-| xml/| Arbitrary XML files that can be read at runtime by calling ```Resources.getXML()```. |
+| Directory | Resource Type                                                                                                                                                                                             |
+| --------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| animator/ | XML files that define property animations.                                                                                                                                                                |
+| anim/     | XML files that define tween animations. (Property animations can also be saved in this directory, but the animator/ directory is preferred for property animations to distinguish between the two types.) |
+| color/    | Defines a list of colors.                                                                                                                                                                                 |
+| drawable/ | Bitmap files (.png, .9.png, .jpg, .gif) or XML files that are compiled into drawable resources.                                                                                                           |
+| mipmap/   | Drawable files for different launcher icon densities.                                                                                                                                                     |
+| layout/   | XML files that define a user interface layout.                                                                                                                                                            |
+| menu/     | XML files that define app menus.                                                                                                                                                                          |
+| raw/      | Arbitrary files to save in their raw form. To open these resources with a raw InputStream, call `Resources.openRawResource()` with the resource ID.                                                       |
+| values/   | XML files that contain simple values such as: strings, integers, and arrays. By convention, each type is stored in a separate file.                                                                       |
+| font/     | Font files with extensions such as .ttf, .otf, or .ttc, or XML files that include a <font-family> element.                                                                                                |
+| xml/      | Arbitrary XML files that can be read at runtime by calling `Resources.getXML()`.                                                                                                                          |
 
 # Exercise: Make a temperature conversion app
 
@@ -165,7 +169,7 @@ We want to make an app that will convert a temperature from celsius to farenheit
 
 ## Create our strings in static resources
 
-Open *res/values/strings.xml*, and add the String definitions to the file as described as below. These are the values that we will we use for labels in our layout.
+Open _res/values/strings.xml_, and add the String definitions to the file as described as below. These are the values that we will we use for labels in our layout.
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -183,15 +187,15 @@ This is roughly what we want.
 
 ![layout](/assets/img/blog/2018-05-18-android2/layout-design.png)
 
-Open our layout file *res/layout/activity_main.xml* in
+Open our layout file _res/layout/activity_main.xml_ in
 the "text view", and delete everything.
 
-We want a simple layout, so we add a ```LinearLayout``` element as the root, which organizes everything in a horizontal or vertical line. We can want everything to
-be organized vertically, so we set this property ```android:orientation="vertical"```. You
+We want a simple layout, so we add a `LinearLayout` element as the root, which organizes everything in a horizontal or vertical line. We can want everything to
+be organized vertically, so we set this property `android:orientation="vertical"`. You
 can switch to the "design view" to add the views to this layout then.
 
 A simple way of organizing the view components is to drag
-and drop them onto the "Component Tree view".  So you can
+and drop them onto the "Component Tree view". So you can
 see the order we want them arranged in. We make the radio buttons children of the radio button group.
 
 ![component tree](/assets/img/blog/2018-05-18-android2/component-tree.png)
@@ -253,16 +257,18 @@ see the order we want them arranged in. We make the radio buttons children of th
 ## Edit view properties
 
 For the radio buttons:
-1. We can change them to have more meaningful ids, *celsius* and *farenheit* are good.
-2. We can use the string values from our static resources by making a reference like this ```android:text="@string/celsius"``` for the first radio button (highlighted below), and do similar for the second radio button.
-3. Make the first radio button checked with ```android:checked ="true"```
+
+1. We can change them to have more meaningful ids, _celsius_ and _farenheit_ are good.
+2. We can use the string values from our static resources by making a reference like this `android:text="@string/celsius"` for the first radio button (highlighted below), and do similar for the second radio button.
+3. Make the first radio button checked with `android:checked ="true"`
 
 ![edit properties](/assets/img/blog/2018-05-18-android2/edit-properties.png)
 
-For our ```EditText```:
-1. We set ```android:inputType="numberSigned|numberDecimal"```. This changes the keyboard that is used to input the value.
+For our `EditText`:
+
+1. We set `android:inputType="numberSigned|numberDecimal"`. This changes the keyboard that is used to input the value.
 2. We can also change the ID
-```android:id="@+id/inputValue"```.
+   `android:id="@+id/inputValue"`.
 
 ```xml
 <EditText
@@ -271,12 +277,14 @@ For our ```EditText```:
        android:id="@+id/inputValue"
        android:inputType="numberSigned|numberDecimal" />
 ```
+
 For the button:
-1. We assign the string value ```android:text="@string/calc"```.
-2. Change the ID to ```calcButton```.
-3. Add ```android:onClick="onClick"``` to reference
-the onClick method, which we will create in our
-```MainActivity``` to respond to the user clicking the button.
+
+1. We assign the string value `android:text="@string/calc"`.
+2. Change the ID to `calcButton`.
+3. Add `android:onClick="onClick"` to reference
+   the onClick method, which we will create in our
+   `MainActivity` to respond to the user clicking the button.
 
 ```xml
 <Button
@@ -285,6 +293,7 @@ the onClick method, which we will create in our
         ...
         android:text="@string/calc" />
 ```
+
 This is what the complete layout looks like.
 
 ![edit properties](/assets/img/blog/2018-05-18-android2/complete-layout.png)
@@ -345,6 +354,7 @@ This is what the complete layout looks like.
 
 </LinearLayout>
 ```
+
 ## Create an utility class
 
 To do the conversion.
@@ -367,16 +377,17 @@ public class ConvertUtil {
 
 ## Update the MainActivity
 
-We need to define the ```onClick``` method to handle the user
+We need to define the `onClick` method to handle the user
 interaction:
+
 - We check if the user has entered in some text to
-```inputValue```, if they haven't a Toast (a small popup)
- will tell them that nothing is entered.
+  `inputValue`, if they haven't a Toast (a small popup)
+  will tell them that nothing is entered.
 - If there is text
- entered, we check which radio button is selected, and
- then we decide which method from our utility class we
- need to call to do the conversion.
- - The result is displayed in ```outputValue```, our ```TextView```.
+  entered, we check which radio button is selected, and
+  then we decide which method from our utility class we
+  need to call to do the conversion.
+- The result is displayed in `outputValue`, our `TextView`.
 
 ```java
 package design.roboleary.conversion;
@@ -426,6 +437,7 @@ public class ConversionActivity extends Activity {
     }
 }
 ```
+
 # Code
 
 You can find the completed code in [this github repository](https://github.com/robole/temperature-conversion).

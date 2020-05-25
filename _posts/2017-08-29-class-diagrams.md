@@ -1,6 +1,7 @@
 ---
 layout: scrollable_post
 title: "Class Diagrams - Typical Format and Best Practices ✏️"
+description: Learn about class diagrams. Class diagrams are used to show the structure and content of our application."
 category: "analysis and design"
 tags: [class diagrams, UML, OO Design, "analysis and design", Java]
 ---

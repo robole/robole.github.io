@@ -5,22 +5,23 @@ email: robjoeol@gmail.com
 phone: (+49) 1 523 476 7526
 brand: Rob O'Leary
 headline: Designer, Explorer, Humanist
-description: Navigate with your brightest ideas
+description: Rob O'Leary is a creative full-stack developer and data architect.
 copyright: © Rob O'Leary 2018
 url: https://robole.github.io
 github: https://github.com/robole/
 codepen: https://codepen.io/robjoeol/
 linkedin: https://linkedin.com/in/robert-oleary
+image: /assets/img/top/portrait.jpg
 markdown: kramdown
 highlighter: rouge
-include: ['_pages', '.htaccess']
-tag_page: '/blog/tags'
+include: ["_pages", ".htaccess"]
+tag_page: "/blog/tags"
 
 # Disqus Comments
 disqus:
-    # Leave shortname blank to disable comments site-wide.
-    # Disable comments for any post by adding `comments: false` to that post's YAML Front Matter.
-    shortname: robole-github-io
+  # Leave shortname blank to disable comments site-wide.
+  # Disable comments for any post by adding `comments: false` to that post's YAML Front Matter.
+  shortname: robole-github-io
 
 plugins:
   - jemoji
