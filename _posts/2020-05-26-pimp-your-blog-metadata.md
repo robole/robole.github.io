@@ -11,15 +11,17 @@ tags: [HTML, metadata]
 
 Rich snippets are summaries of the content of a webpage, usually it shows: a headline, an image, and a description.
 
+<img src="/assets/img/blog/2020-05-26-pimp-your-blog-metadata/twitter-card.jpg" alt="sharing my blog post on twitter" style="width:98%;max-width:1051px;margin:0 auto;"/>
+
 Social media platforms created their own metadata specifications for rich snippets with the goal of helping web creators to advertise their content better. Search Engine results are also typically populated by the metadata you provide.
 
 Metadata is information about your HTML page, it is generally the content contained in the `head` element of your page.
 
 ## Why bother?
 
-- Eye catching results: Drawing a user's attention to your content can improve engagement on social platforms.
+- Eye-catching results: Drawing a user's attention to your content can improve engagement on social platforms.
 - Potential click-through rate (CTR) increase: By providing a more specific and interesting preview of your content, you can encourage users to visit your page.
-- It can lead to improvements in your page rankings: Search engines typically rank webpages higher when they are referenced by other websites (as hyperlinks), by attracting more people to your content, you can increase your chances of people referencing your webpage.
+- Potential improvements in your page rankings: Search engines typically rank webpages higher when they are referenced by other websites (as hyperlinks), by attracting more people to your content, you can increase your chances of people referencing your webpage.
 
 ## TLDR: Here is the Markup
 
