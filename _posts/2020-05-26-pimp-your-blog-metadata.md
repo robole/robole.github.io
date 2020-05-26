@@ -7,7 +7,7 @@ image: "/assets/img/blog/2020-05-26-pimp-your-blog-metadata/banner.jpg"
 tags: [HTML, metadata]
 ---
 
-<img src="/assets/img/blog/2020-05-26-pimp-your-blog-metadata/banner.jpg" alt="social sharing" style="width:98%;max-width:1051px;margin:0 auto;"/>
+<img src="/assets/img/blog/2020-05-26-pimp-your-blog-metadata/banner.jpg" alt="social sharing" style="width:98%;max-width:1280px;margin:0 auto;"/>
 
 Rich snippets are summaries of the content of a webpage, usually it shows: a headline, an image, and a description.
 
