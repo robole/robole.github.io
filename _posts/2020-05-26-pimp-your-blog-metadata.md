@@ -7,22 +7,19 @@ image: "/assets/img/blog/2020-05-26-pimp-your-blog-metadata/banner.jpg"
 tags: [HTML, metadata]
 ---
 
-<figure style="margin:.5em 0;">
-<img src="/assets/img/blog/2020-05-26-pimp-your-blog-metadata/banner.jpg" alt="sharing my blog post on twitter" style="width:98%;max-width:1051px;margin:0 auto;"/>
-<figcaption style="font-weight:normal;font-size:.8em;margin-left:1.5em;color:grey;">Rich snippet on Twitter for my blog post</figcaption>
-</figure>
+<img src="/assets/img/blog/2020-05-26-pimp-your-blog-metadata/banner.jpg" alt="social sharing" style="width:98%;max-width:1051px;margin:0 auto;"/>
 
 Rich snippets are summaries of the content of a webpage, usually it shows: a headline, an image, and a description.
 
-Social media platforms created their own metadata specifications for rich snippets with the goal of helping web creators to advertise their content better. Search Engine results are also typically populated with metadata you provide.
+Social media platforms created their own metadata specifications for rich snippets with the goal of helping web creators to advertise their content better. Search Engine results are also typically populated by the metadata you provide.
 
 Metadata is information about your HTML page, it is generally the content contained in the `head` element of your page.
 
 ## Why bother?
 
 - Eye catching results: Drawing a user's attention to your content can improve engagement on social platforms.
-- Potential click-through rate (CTR) increase: Providing a more specific and interesting preview of you content can encourage users to visit your page.
-- It can lead to improvements in your page rankings: Search engines typically rank webpages higher when they are referenced by other websites more often, by attracting more people to your content, you can increase the chances of people referencing your webpage.
+- Potential click-through rate (CTR) increase: Providing a more specific and interesting preview of your content, you can encourage users to visit your page.
+- It can lead to improvements in your page rankings: Search engines typically rank webpages higher when they are referenced by other websites (as hyperlinks), by attracting more people to your content, you can increase your chances of people referencing your webpage.
 
 ## TLDR: Here is the Markup
 
@@ -48,7 +45,7 @@ Metadata is information about your HTML page, it is generally the content contai
     content="https://roboleary.net/programming/2020/04/24/pimp-blog-reading-time.html"
   />
   <meta property="og:type" content="article" />
-   <meta property="article:section" content="Technology" />
+  <meta property="article:section" content="Technology" />
   <meta property="article:published_time" content="2020-04-24T14:54:50+00:00" />
   <meta property="article:author" content="Rob O'Leary" />
   <meta
@@ -70,26 +67,24 @@ Metadata is information about your HTML page, it is generally the content contai
 
 ### The Title Element
 
-The _title_ element sets the document’s title. Browsers usually display the contents of this element at the top of the browser window or tab. In Search Engine Results Pages (<abbr>SERP</abbr>s), this is usually the headline of the result. You should have a _title_ for every page!
+The _title_ element sets the document’s title. Browsers usually display the contents of this element at the top of the browser window or tab. In Search Engine Results Pages (<abbr>SERP</abbr>s), this is usually the headline of a result. You should have a _title_ for every page!
 
 ### The Meta Element
 
-There are different attributes that you can use with _meta_ to provide different kinds of metadata.
+The meta element is the generic metadata element that covers a wide array of metadata.
 
 #### Using the name and content attributes
 
-We can use the _name_ attribute to define metadata applied to the whole page.
-
-The attributes _name_ and _content_ are used as name-value pairs.
+We can use the _name_ and _content_ attributes as name-value pairs to declare our metadata.
 
 - **_name="author"_**: Declares the author of the page. You can only declare one author.
-- **_name="description"_**: Describes the content of the page, and is often used as the description by search engines in their results. Keeping it to 150 characters is a good rule of thumb as the text is truncated beyond that usually.
+- **_name="description"_**: Describes the content of the page, and is often used as the description by search engines in their results. Keeping it to 150 characters is a good rule of thumb as the text is usually truncated around that point.
 
 ### Metadata for Social Media Platforms
 
 #### Open Graph
 
-Facebook’s Open Graph allows you to specify how your content is displayed on a user’s timeline. Without these tags, the Facebook Crawler uses internal heuristics to make a best guess about the title, description, and preview image for your content.
+Facebook’s Open Graph allows you to specify how your content is displayed on a user’s timeline. Without these tags, the Facebook Crawler uses internal heuristics to make a best guess about the title, description, and image for your content.
 
 <img src="/assets/img/blog/2020-05-26-pimp-your-blog-metadata/facebook.jpg" alt="sharing on facebook" style="display:block;width:98%;max-width:669px;margin:0 auto;"/>
 
@@ -101,7 +96,7 @@ Open Graph is used by the following Social Media platforms:
 - Pinterest
 - LinkedIn
 
-The Open Graph protocol specifies the use of the _property_ and _content_ attributes for markup, this deviates from the HTML standard of using _name_ and _content_. 🙄
+The Open Graph protocol specifies the use of the _property_ and _content_ attributes for markup, which deviates from the HTML standard of using _name_ and _content_. 🙄
 
 <table>
 <caption style="visibility:hidden;">Table outlining the key Open Graph metadata properties</caption>
@@ -181,6 +176,7 @@ The Open Graph protocol specifies the use of the _property_ and _content_ attrib
 </tbody>
 </table>
 <br>
+
 A typical blog post can be marked as below:
 
 ```html
@@ -220,6 +216,8 @@ You can read more about [the specifation for Open Graph here](https://developers
 Twitter calls its rich snippets _Twitter Cards_.
 
 > Twitter Cards are customizable media units that advertisers can use to drive traffic to their website or mobile app.
+
+<img src="/assets/img/blog/2020-05-26-pimp-your-blog-metadata/twitter-card.jpg" alt="sharing my blog post on twitter" style="width:98%;max-width:1051px;margin:0 auto;"/>
 
 Twitter's metadata is similar to Open Graph, it is based on the same conventions. When using Open Graph to describe data on a page, it is easy to generate a Twitter Card without duplicating the elements and data. When the Twitter card processor looks at the metadata on a page, it first checks for the Twitter-specific properties, if they are not present, it falls back to the equivalent Open Graph property.
 
@@ -264,10 +262,12 @@ So, if we have already provided the Open Graph metadata, the only additional met
 <meta name="twitter:creator" content="@twitterhandle" />
 ```
 
-A *summary* card has a thumbnail photo, a *summary_large_image* has a bigger image but has a shorter description, choose whichever is most in line with your style. You can read more about [Twitter Cards here](https://developer.twitter.com/en/docs/tweets/optimize-with-cards/guides/getting-started).
+The only difference between a _summary_ card and a _summary_large_image_ card is that _summary_large_image_ has a large image, rather than a thumbnail. Choose whichever is most in line with your style and objective. You can read more about [Twitter Cards here](https://developer.twitter.com/en/docs/tweets/optimize-with-cards/guides/getting-started).
 
 ## Final Words
 
-It does not require much effort to include metadata for rich snippets, and it can prove worthwile if you want to grow your audience. You should try to choose an interesting and distinctive image for each blog post to stand out. 
+It does not require much effort to include metadata for rich snippets, and it can prove worthwile if you want to grow your audience.
+
+You should try to choose an interesting and distinctive image for each blog post to stand out. Try to use an image that is at least 1080 pixels wide and is less than 1MB, so it looks good on all screen resolutions.
 
 If you are using a static-site generator, there should be a simple way to populate the metadata fields using variables. If you use Jekyll, you can read [this article](https://blog.webjeda.com/optimize-jekyll-seo/#5-connecting-with-social-media) to find out what global variables and Front Matter you can use to populate the metadata.
