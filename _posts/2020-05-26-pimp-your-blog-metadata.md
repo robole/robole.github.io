@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Pimp your blog: Make eye-catching rich snippets"
+title: "Pimp your blog: Create eye-catching rich snippets"
 category: web
 description: "Learn how to improve the metadata of your website to create eye-catching rich snippets"
 image: "/assets/img/blog/2020-05-26-pimp-your-blog-metadata/banner.jpg"
@@ -18,7 +18,7 @@ Metadata is information about your HTML page, it is generally the content contai
 ## Why bother?
 
 - Eye catching results: Drawing a user's attention to your content can improve engagement on social platforms.
-- Potential click-through rate (CTR) increase: Providing a more specific and interesting preview of your content, you can encourage users to visit your page.
+- Potential click-through rate (CTR) increase: By providing a more specific and interesting preview of your content, you can encourage users to visit your page.
 - It can lead to improvements in your page rankings: Search engines typically rank webpages higher when they are referenced by other websites (as hyperlinks), by attracting more people to your content, you can increase your chances of people referencing your webpage.
 
 ## TLDR: Here is the Markup
@@ -47,7 +47,7 @@ Metadata is information about your HTML page, it is generally the content contai
   <meta property="og:type" content="article" />
   <meta property="article:section" content="Technology" />
   <meta property="article:published_time" content="2020-04-24T14:54:50+00:00" />
-  <meta property="article:author" content="Rob O'Leary" />
+  <meta property="article:author" content="https://www.facebook.com/username" />
   <meta
     property="og:title"
     content="Pimp your Blog: Calculate the 'reading time' ⏱🦉"
@@ -209,7 +209,7 @@ To see how your markup appears to the Facebook Crawler, you can preview and debu
 
 These tags can also enable you to track traffic statistics on [Facebook Insights](https://developers.facebook.com/docs/sharing/referral-insights), Facebook's analytics suite. You must include `<meta property="fb:app_id" value=".." />` in your page to use it.
 
-You can read more about [the specifation for Open Graph here](https://developers.facebook.com/docs/sharing/webmasters#markup).
+You can read more about [the specification for Open Graph here](https://developers.facebook.com/docs/sharing/webmasters#markup).
 
 #### Twitter
 
@@ -235,8 +235,8 @@ Twitter's metadata is similar to Open Graph, it is based on the same conventions
     <td>twitter:card</td>
     <td>The card type.<br><br>Only one card type per-page is supported. If more than one value exists in the page, the last one in sequence will take priority.</td>
     <td>One the values:
-<br>- <strong>summary</strong>: Twitter’s “default” card and include a title, description, thumbnail image, Twitter account attribution and a direct link to the content. These are great for blog posts!<br>
-- <strong>summary_large_image</strong>: Large photo summary cards have all the same features of a regular summary card, but they trade a bit of the description space for a big, beautiful image. Highly visual content producers might want to think about this card.<br>
+<br>- <strong>summary</strong>: Twitter’s “default” card. It includes: a title, a description, a thumbnail image, Twitter account attribution, and a direct link to the content. These are great for blog posts!<br>
+- <strong>summary_large_image</strong>: This card has all the same features of a *summary* card, but has a large image.<br>
 - <strong>app</strong><br>
 - <strong>player</strong></td>
   </tr>
@@ -266,7 +266,7 @@ The only difference between a _summary_ card and a _summary_large_image_ card is
 
 ## Final Words
 
-It does not require much effort to include metadata for rich snippets, and it can prove worthwile if you want to grow your audience.
+It does not require much effort to include metadata for rich snippets, and it can prove worthwhile if you want to grow your audience.
 
 You should try to choose an interesting and distinctive image for each blog post to stand out. Try to use an image that is at least 1080 pixels wide and is less than 1MB, so it looks good on all screen resolutions.
 
