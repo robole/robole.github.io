@@ -236,7 +236,7 @@ Twitter's metadata is similar to Open Graph, it is based on the same conventions
 <tr>
     <td>twitter:card</td>
     <td>The card type.<br><br>Only one card type per-page is supported. If more than one value exists in the page, the last one in sequence will take priority.</td>
-    <td>One the values:
+    <td>One of the values:
 <br>- <strong>summary</strong>: Twitter’s “default” card. It includes: a title, a description, a thumbnail image, Twitter account attribution, and a direct link to the content. These are great for blog posts!<br>
 - <strong>summary_large_image</strong>: This card has all the same features of a *summary* card, but has a large image.<br>
 - <strong>app</strong><br>
@@ -264,7 +264,7 @@ So, if we have already provided the Open Graph metadata, the only additional met
 <meta name="twitter:creator" content="@twitterhandle" />
 ```
 
-The only difference between a _summary_ card and a _summary_large_image_ card is that _summary_large_image_ has a large image, rather than a thumbnail. Choose whichever is most in line with your style and objective. You can read more about [Twitter Cards here](https://developer.twitter.com/en/docs/tweets/optimize-with-cards/guides/getting-started).
+You can read more about [Twitter Cards here](https://developer.twitter.com/en/docs/tweets/optimize-with-cards/guides/getting-started).
 
 ## Final Words
 

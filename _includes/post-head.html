@@ -7,14 +7,14 @@
 		{% endif %}
 	</title>
 	<meta charset="utf-8" />
-	<meta itemprop="description" name="description"
+	<meta name="description"
 		content="{% if page.description %}{{ page.description | truncate: 160 }}{% else %}{{ site.description | truncate: 160  }}{% endif %}" />
 	<meta name="author" content="Rob O'Leary" />
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<!-- social media-->
-	<meta name="twitter:card" content="summary_large_image">
+	<meta name="twitter:card" content="summary_large_image" />
 	<meta property="article:section" content="Technology" />
-	<meta property="og:type" content="article">
+	<meta property="og:type" content="article" />
 	<meta property="og:title" content="{%if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}">
 	<meta property="og:url" content="{{ site.url }}{{ page.url }}">
 	<meta property="og:image"
