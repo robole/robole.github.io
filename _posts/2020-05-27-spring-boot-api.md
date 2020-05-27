@@ -6,7 +6,7 @@ tags: [API, Java, Spring]
 published: true
 ---
 
-<img src="../assets/img/blog/2020-05-27-spring-boot-api/spiderman.png" alt="web city!"/>
+<img src="/assets/img/blog/2020-05-27-spring-boot-api/spiderman.png" alt="web city!"/>
 
 - [What is an API?](#what-is-an-api)
 - [Twitter API Example](#twitter-api-example)
@@ -31,11 +31,11 @@ published: true
 - [Source code](#source-code)
 - [Next Steps](#next-steps)
 
-Tutorials I have seen are either too trivial ([Hello World API](http://spring.io/guides/gs/rest-service/)) to help you understand how to build an API; or overwhelm beginners and assume too much about what you know. So, here I will build a simple API, which is closer to what you would realistically build, but will empower you to build a complete API. I will go through everything from start to finish, you can skip ahead if you know something already.
+Tutorials I have seen are either too trivial ([Hello World API](http://spring.io/guides/gs/rest-service/)) to help you understand how to build an API; or overwhelm beginners and assume too much about what you know. I will build a simple API, which is closer to what you would realistically build, and go through everything from start to finish, so you can skip ahead if you know something already.
 
 ## What is an API?
 
-It is common now for companies to give access to their data through APIs. API stands for Application Programming Interface, it is a list of methods we can use to interact with a company's data. These methods are often referred to as web services because we call the methods using HTTP requests.
+It is common now for companies to give access to their data through APIs. API stands for Application Programming Interface, it is a list of methods we can use to interact with a company's data. These methods are often referred to as web services because we execute the methods using HTTP requests.
 
 Let's look at an example of an API to clarify what it is exactly!
 
@@ -45,11 +45,11 @@ Let’s look at the Twitter API. I'm guessing you know what Twitter is already, 
 
 [Twitter's API reference](https://developer.twitter.com/en/docs/api-reference-index) gives you a long categorized list of methods. You can do a wide range of actions with tweets, direct messages, your personal account settings, almost everything you can do through the website is possible to do through the API. If you wanted to, you could use the API, and build an entirely different front-end for Twitter, or build a TwitterBot.
 
-<img src="../assets/img/blog/2020-05-27-spring-boot-api/twitter-api-reference.png" alt="twitter api reference" style="display:block;border:1px black solid"/>
+<img src="/assets/img/blog/2020-05-27-spring-boot-api/twitter-api-reference.png" alt="twitter api reference" style="display:block;border:1px black solid"/>
 
 Let's take an example of using the API, say we want to get all of the tweets from the timeline of **@spiderman**. Looking through the list of methods, [GET statuses/user_timeline](https://developer.twitter.com/en/docs/tweets/timelines/api-reference/get-statuses-user_timeline) seems to be the method that matches what we want. This is the method description:
 
-<img src="../assets/img/blog/2020-05-27-spring-boot-api/twitter-user-timeline-endpoint.png" alt="Twitter API user timeline request and response" style="display:block;border:1px black solid"/>
+<img src="/assets/img/blog/2020-05-27-spring-boot-api/twitter-user-timeline-endpoint.png" alt="Twitter API user timeline request and response" style="display:block;border:1px black solid"/>
 
 We need to have a client application to use the API to execute our HTTP request to call the method. I like to use [Insomnia](https://insomnia.rest/), but other popular applications are: [cURL](https://curl.haxx.se/) (a command-line tool), [Postman](https://www.postman.com/) (a collaboration platform for API Development), and [Postwoman](https://postwoman.io/) (an open-source alternative to Postman).
 
@@ -59,7 +59,7 @@ To use Twitter's API, you have to have a Twitter account, and register as a deve
 
 You need to do some configuration in your Twitter account settings to get the developer keys. It's a bit tedious to get this done! I wont show you how, the focus is on showing what the API is and how it can be used. This is what our request looks like on the left, and the response received is on the right.
 
-![Twitter API user timeline request and response](../assets/img/blog/2020-05-27-spring-boot-api/twitter-req.jpg)
+![Twitter API user timeline request and response](/assets/img/blog/2020-05-27-spring-boot-api/twitter-req.jpg)
 
 You can see that our `screen_name` parameter is appended to the URL (highlighted in yellow). We use a question mark to mark the beginning of our parameters, then we provide the parameter name and value. You can provide a list of parameters if you need to, you separate each parameter by an ampersand.
 
@@ -255,7 +255,7 @@ You can use [Spring Initializr](https://start.spring.io/) to create your project
 
 To use [Spring Initializr](https://start.spring.io/), fill in fields, and click generate. You can then download your project in a zip file.
 
-![Spring Initializr configuration](../assets/img/blog/2020-05-27-spring-boot-api/spring-initializr.jpg)
+![Spring Initializr configuration](/assets/img/blog/2020-05-27-spring-boot-api/spring-initializr.jpg)
 
 Unzip the file and open it in your IDE of choice.
 
@@ -268,7 +268,7 @@ The dependencies may be downloaded automatically by your IDE when you import/ope
 
 Spring Initializr created a default class to run you web application called **_UserApplication.java_**. You can run this to verify you are set-up correctly. It doesn't do anything yet aside from run a web server. You should see something like this on the command-line if it worked.
 
-![Spring Initializr configuration](../assets/img/blog/2020-05-27-spring-boot-api/spring-boot-verify.jpg)
+![Spring Initializr configuration](/assets/img/blog/2020-05-27-spring-boot-api/spring-boot-verify.jpg)
 
 You can follow along and write the code with me, or you can download [the complete code from github](https://github.com/robole/spring-boot-api-for-beginners).
 
@@ -392,7 +392,7 @@ That's the hard bit done!
 
 Does it work? Run the `UserApplication` class, you can test the `GET` method in your Web Browser.
 
-![get request](../assets/img/blog/2020-05-27-spring-boot-api/get.jpg)
+![get request](/assets/img/blog/2020-05-27-spring-boot-api/get.jpg)
 
 ## Get user by ID
 
@@ -541,7 +541,7 @@ I will show you one example using Insomnia.
 
 To add a new user, we make a POST request like below, we put a JSON object of our new user in the request body, and set the body type to JSON (this usually sets the _Content-Type_ header to "application/json").
 
-![post request](../assets/img/blog/2020-05-27-spring-boot-api/post.jpg)
+![post request](/assets/img/blog/2020-05-27-spring-boot-api/post.jpg)
 
 ## Source code
 
@@ -552,11 +552,5 @@ You can download [the complete code from github](https://github.com/robole/sprin
 You should learn to write unit/integration tests for your web application.
 
 You can add a database to store long-term data. You can use _Spring Data Rest_ for this.
-
-You can build a complete API.
-
-## Final Words
-
-I hope you enjoyed this tutorial.
 
 If you have some feedback to share, or are interested in a follow-up article to this, let me know! Happy coding!
