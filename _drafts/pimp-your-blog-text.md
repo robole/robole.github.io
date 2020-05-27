@@ -6,7 +6,7 @@
 
 ## Readability
 
-While studies have been done on text readability, most are inconclusive, some are contradictory, and, in general, there isn't a lot of it out  there.
+While studies have been done on text readability, most are inconclusive, some are contradictory, and, in general, there isn't a lot of it out there.
 
 You also have to take into account:
 

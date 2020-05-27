@@ -9,7 +9,7 @@ tags: [HTML, metadata]
 
 <img src="/assets/img/blog/2020-05-26-pimp-your-blog-metadata/banner.jpg" alt="social sharing" style="width:98%;max-width:1280px;margin:0 auto;"/>
 
-Rich snippets are summaries of the content of a webpage, usually it shows: a headline, an image, and a description.
+Rich snippets are summaries of the content of a webpage, usually it shows: a headline, an image, a description, and the link to your webpage.
 
 <img src="/assets/img/blog/2020-05-26-pimp-your-blog-metadata/twitter-card.jpg" alt="sharing my blog post on twitter" style="width:98%;max-width:1051px;margin:0 auto;"/>
 
@@ -69,7 +69,7 @@ Metadata is information about your HTML page, it is generally the content contai
 
 ### The Title Element
 
-The _title_ element sets the document’s title. Browsers usually display the contents of this element at the top of the browser window or tab. In Search Engine Results Pages (<abbr>SERP</abbr>s), this is usually the headline of a result. You should have a _title_ for every page!
+The _title_ element sets the page’s title. In Search Engine Results Pages (<abbr>SERP</abbr>s), this is usually the headline of a result. You should have a _title_ for every page!
 
 ### The Meta Element
 
@@ -98,7 +98,7 @@ Open Graph is used by the following Social Media platforms:
 - Pinterest
 - LinkedIn
 
-The Open Graph protocol specifies the use of the _property_ and _content_ attributes for markup, which deviates from the HTML standard of using _name_ and _content_. 🙄
+Open Graph specifies the use of the _property_ and _content_ attributes, which deviates from the HTML standard of using _name_ and _content_. 🙄
 
 <table>
 <caption style="visibility:hidden;">Table outlining the key Open Graph metadata properties</caption>
