@@ -113,7 +113,7 @@ The table below summarises our User API.
   </tr>
 </table>
 
-When we run our App. The default local address for your Spring Boot application should be: `http://localhost:8080`, so the address to get all users would be `http://localhost:8080/users` for example. 
+When we run our App. The default local address for your Spring Boot application should be: `http://localhost:8080`, so the address to get all users would be `http://localhost:8080/users` for example.
 
 ## Is this the latest way?
 
@@ -236,11 +236,12 @@ Below is a **summary of the typical content in a Response for the methods**.
 
 ### A little bit about JSON
 
- JSON stands for JavaScript Object Notation, and is a syntax for storing and exchanging data. JSON has become the favoured data format for web services 
- 
- One of the reasons JSON is popular is that we can convert any JSON received from the server into JavaScript objects without any complicated parsing and translations, since Javascript is the language of the Web Browser, it makes life easier for front-end development.
+JSON stands for JavaScript Object Notation, and is a syntax for storing and exchanging data. JSON has become the favoured data format for web services
+
+One of the reasons JSON is popular is that we can convert any JSON received from the server into JavaScript objects without any complicated parsing and translations, since Javascript is the language of the Web Browser, it makes life easier for front-end development.
 
 The syntax rules are simple:
+
 - Data is in name/value pairs
 - Data is separated by commas
 - Curly braces hold objects
@@ -249,25 +250,27 @@ The syntax rules are simple:
 For example, a user object would be written as:
 
 ```json
-{ name: "John", age: 31 }
+{ "name": "John", "age": 31 }
 ```
 
 An array of users would be written as:
 
 ```json
-[ { "name":"John", age : 31 }, { "name":"Mary", age : 30 } ]
+[
+  { "name": "John", "age": 31 },
+  { "name": "Mary", "age": 30 }
+]
 ```
+
 This should be enough for you to know when dealing with web services, but for further information, [W3schools has a short tutorial series on JSON](https://www.w3schools.com/js/js_json_intro.asp).
 
 ### A little bit about REST
 
 You may have noticed I barely speak about REST in this article, and that's because I think it is a term used inappropriately too often when speaking about APIs and web services. It has become a nuisance. **The most important thing to know is if you build an API with a framework like Spring Boot, you are following most of the best practices of restful API design**.
 
-Representational state transfer (REST) is an architectural style that defines a set of constraints to use for creating web services. It was proposed by Roy Fielding in his doctoral dissertation in 2000. It is intended to be a guide for creating well-designed web applications by leveraging many of the conventions of the web. I recommend reading [this Stack Overflow thread on "What is Restful Programming"](https://stackoverflow.com/questions/671118/what-exactly-is-restful-programming) if you want to understand more.
+Representational state transfer (REST) is an architectural style that defines a set of constraints to use for creating web services. It was proposed by Roy Fielding in his doctoral dissertation in 2000. It is intended to be a guide for creating well-designed web applications by leveraging many of the conventions of the web. I recommend reading [this Stack Overflow thread on "What is Restful Programming"](https://stackoverflow.com/questions/671118/what-exactly-is-restful-programming) to understand more.
 
 Most web services today are restful, but they vary in how closely or completely they follow the constraints from Fielding's dissertation. It gets murky quickly when people talk about how restful a web application is by comparing it to the academic definition.
-
-Even an approach to provide a simpler set of heuristics by Leonard Richardson known as the **Richardson Maturity Model** (RMM), which breaks down the principal elements of a REST approach into three steps, has [received plenty of criticism](https://dev.to/mikeralphson/why-there-is-no-such-thing-as-the-richardson-maturity-model-3b4). If you want to understand more behind that, you can read about the [4 Maturity Levels of REST API Design](https://blog.restcase.com/4-maturity-levels-of-rest-api-design/).
 
 ## What you need to complete this tutorial
 
@@ -278,9 +281,9 @@ Even an approach to provide a simpler set of heuristics by Leonard Richardson kn
 
 ## How to set your project up
 
-You can use [Spring Initializr](https://start.spring.io/) to create your project. It offers a fast way to create a skeleton project. 
+You can use [Spring Initializr](https://start.spring.io/) to create your project. It offers a fast way to create a skeleton project.
 
-<strong>Only one dependency is required for this project and that is <i>Spring Web</i></strong>. 
+<strong>Only one dependency is required for this project and that is <i>Spring Web</i></strong>.
 
 To use [Spring Initializr](https://start.spring.io/), fill in fields, and click generate. You can then download your project in a zip file.
 
@@ -578,8 +581,12 @@ You can download [the complete code from github](https://github.com/robole/sprin
 
 ## Next steps
 
-You should learn to write unit/integration tests for your web application.
+You should learn to write (integration) tests for your web application.
 
-You can add a database to store long-term data. You can use _Spring Data Rest_ for this.
+You can add a database to store your data long-term. You can use _Spring Data Rest_ for this.
 
-If you have some feedback to share, or are interested in a follow-up article to this, let me know! Happy coding!
+You can learn how to add authentication to your web application to control access to data.
+
+If you found this article useful give a ❤. Let me know if you are interested in a follow-up article! 🙂
+
+Happy coding! 👩‍💻🙌
