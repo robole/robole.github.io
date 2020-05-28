@@ -1,12 +1,14 @@
 ---
 layout: scrollable_post
 title: Master the Web - Build an API with Spring Boot 🕸☕
+description: Build a realistic API with Spring Boot
 category: java
+image: /assets/img/blog/2020-05-27-spring-boot-api/web-city.png
 tags: [API, Java, Spring]
 published: true
 ---
 
-<img src="/assets/img/blog/2020-05-27-spring-boot-api/spiderman.png" alt="web city!"/>
+<img src="/assets/img/blog/2020-05-27-spring-boot-api/web-city.png" alt="web city!"/>
 
 - [What is an API?](#what-is-an-api)
 - [Twitter API Example](#twitter-api-example)
@@ -15,8 +17,9 @@ published: true
 - [Is there anything I should know before I start?](#is-there-anything-i-should-know-before-i-start)
   - [A little bit about Design Patterns](#a-little-bit-about-design-patterns)
     - [Model View Controller](#model-view-controller)
-    - [Other patterns that may be used](#other-patterns-that-may-be-used)
+    - [Other patterns that are used in more advanced examples](#other-patterns-that-are-used-in-more-advanced-examples)
   - [HTTP Basics](#http-basics)
+  - [A little bit about JSON](#a-little-bit-about-json)
   - [A little bit about REST](#a-little-bit-about-rest)
 - [What you need to complete this tutorial](#what-you-need-to-complete-this-tutorial)
 - [How to set your project up](#how-to-set-your-project-up)
@@ -25,45 +28,44 @@ published: true
 - [Get User by Name](#get-user-by-name)
 - [Add a new User](#add-a-new-user)
 - [Update a User](#update-a-user)
-- [Partial Update of a User](#partial-update-of-a-user)
 - [Delete a User](#delete-a-user)
 - [How to verify your application](#how-to-verify-your-application)
 - [Source code](#source-code)
 - [Next Steps](#next-steps)
 
-Tutorials I have seen are either too trivial ([Hello World API](http://spring.io/guides/gs/rest-service/)) to help you understand how to build an API; or overwhelm beginners and assume too much about what you know. I will build a simple API, which is closer to what you would realistically build, and go through everything from start to finish, so you can skip ahead if you know something already.
+I'm writing this tutorial to fill a void. Building web applications is a top priority for people learning backend development, but I haven't seen any Java/Spring Boot tutorials that provide a clear path to get you there quickly. Tutorials are either too trivial ([Hello World API](http://spring.io/guides/gs/rest-service/)) to help you understand what you need to know; or they overwhelm beginners and assume too much about what you already know! I will build a simple API, which is closer to what you would realistically build, and go through everything from start to finish. You can skip ahead if you know something already.
 
 ## What is an API?
 
-It is common now for companies to give access to their data through APIs. API stands for Application Programming Interface, it is a list of methods we can use to interact with a company's data. These methods are often referred to as web services because we execute the methods using HTTP requests.
+It is common now for companies to give access to their data through APIs. API stands for Application Programming Interface, it is a list of methods we can use to interact with a company's data. These methods are often referred to as web services.
 
 Let's look at an example of an API to clarify what it is exactly!
 
 ### Twitter API Example
 
-Let’s look at the Twitter API. I'm guessing you know what Twitter is already, but let's state what it is regardless, Twitter is a social micro-blogging website. It's where Donal Trump vents publicly!
+I'm guessing you know what Twitter is already, but let's state what it is regardless, Twitter is a social micro-blogging website. It's become more than that, now it's where Donald Trump vents publicly! ✍😡
 
-[Twitter's API reference](https://developer.twitter.com/en/docs/api-reference-index) gives you a long categorized list of methods. You can do a wide range of actions with tweets, direct messages, your personal account settings, almost everything you can do through the website is possible to do through the API. If you wanted to, you could use the API, and build an entirely different front-end for Twitter, or build a TwitterBot.
+[Twitter's API reference](https://developer.twitter.com/en/docs/api-reference-index) gives you a long categorized list of methods. You can perform a wide range of actions on tweets, direct messages, your personal account settings, and more. Almost everything you can do on the website is possible to do through the API. If you wanted to, you could use the API to build an entirely different front-end for Twitter, or a TwitterBot.
 
 <img src="/assets/img/blog/2020-05-27-spring-boot-api/twitter-api-reference.png" alt="twitter api reference" style="display:block;border:1px black solid"/>
 
-Let's take an example of using the API, say we want to get all of the tweets from the timeline of **@spiderman**. Looking through the list of methods, [GET statuses/user_timeline](https://developer.twitter.com/en/docs/tweets/timelines/api-reference/get-statuses-user_timeline) seems to be the method that matches what we want. This is the method description:
+Let's take an example of using the API, say we want to get all of the tweets from the timeline of **@spiderman**. Looking through the list of methods, [GET statuses/user_timeline](https://developer.twitter.com/en/docs/tweets/timelines/api-reference/get-statuses-user_timeline) appears to be the method that matches what we want. This is the method description:
 
 <img src="/assets/img/blog/2020-05-27-spring-boot-api/twitter-user-timeline-endpoint.png" alt="Twitter API user timeline request and response" style="display:block;border:1px black solid"/>
 
-We need to have a client application to use the API to execute our HTTP request to call the method. I like to use [Insomnia](https://insomnia.rest/), but other popular applications are: [cURL](https://curl.haxx.se/) (a command-line tool), [Postman](https://www.postman.com/) (a collaboration platform for API Development), and [Postwoman](https://postwoman.io/) (an open-source alternative to Postman).
+We need to have a client application to execute the methods. I like to use [Insomnia](https://insomnia.rest/), but other popular applications are: [cURL](https://curl.haxx.se/) (a command-line tool), [Postman](https://www.postman.com/) (a collaboration platform for API Development), and [Postwoman](https://postwoman.io/) (an open-source alternative to Postman).
 
-Looking at the method description, we need to provide 1 parameter in our request to get the data we want, this parameter is `screen_name`.
+If you are unfamilar with HTTP terminology, you can jump to the [HTTP Basics](#html-basics) section. Looking at the method description, we need to provide 1 parameter in our HTTP request to get the data we want, this parameter is `screen_name`.
 
-To use Twitter's API, you have to have a Twitter account, and register as a developer to obtain some keys. When you interact with the API, you provide these keys to authenticate your identity. This ensures that only you can only change your own account data, and generally that you use the platform in a fair way .
+To use Twitter's API, you have to have a Twitter account, and register an application to obtain developer keys. When you interact with the API, you provide these developer keys to authenticate your identity. This ensures that only you can only perform actions on your own account data, and generally that you use the platform in a fair way.
 
-You need to do some configuration in your Twitter account settings to get the developer keys. It's a bit tedious to get this done! I wont show you how, the focus is on showing what the API is and how it can be used. This is what our request looks like on the left, and the response received is on the right.
+You need to do some configuration in your Twitter account settings to get the developer keys. It's a bit tedious to find the right place! I wont show you how here, the focus is to show what the API is about. Below is the request (on the left) and the response (on the right).
 
-![Twitter API user timeline request and response](/assets/img/blog/2020-05-27-spring-boot-api/twitter-req.jpg)
+<img src="/assets/img/blog/2020-05-27-spring-boot-api/twitter-req.jpg" alt="\Twitter API user timeline request and response" style="display:block;width:100%;max-width:1353px;margin:0 auto;"/>
 
-You can see that our `screen_name` parameter is appended to the URL (highlighted in yellow). We use a question mark to mark the beginning of our parameters, then we provide the parameter name and value. You can provide a list of parameters if you need to, you separate each parameter by an ampersand.
+You can see that our `screen_name` parameter is appended to the URL in our request. We use a question mark to mark the beginning of our parameters, then we provide the parameter name and value. You can provide a list of parameters if you need to, you separate each parameter with an ampersand.
 
-As you can see the latest Tweet from Spiderman is telling everyone that you should "Learn how to draw Miles Morales, AKA Spider-Man, in this special Spanish-speaking lesson with artist @MikeHawthorne… https:\/\/t.co\/RdvzWVzJ4o.". 🕸️🎨
+The response returns a JSON array of tweets. The content of a tweet is contained in the `text` field. As you can see the latest Tweet from Spiderman is: "Learn how to draw Miles Morales, AKA Spider-Man, in this special Spanish-speaking lesson with artist @MikeHawthorne… https:\/\/t.co\/RdvzWVzJ4o.". 🕸️🎨
 
 ## What we will build
 
@@ -72,8 +74,6 @@ We’ll build a web service for a _User_. We want someone to use our app, don't 
 We will not use a database like a real application would. We will have some dummy data to mimic this.
 
 The table below summarises our User API.
-
-When we run our App. The default local address for your Spring Boot application should be: `http://localhost:8080`, so the address to get all users would be `http://localhost:8080/users` for example. Spring follows conventions that does things in a default way, we can override this if we want to go our own way.
 
 <table>
   <tr>
@@ -113,9 +113,11 @@ When we run our App. The default local address for your Spring Boot application 
   </tr>
 </table>
 
+When we run our App. The default local address for your Spring Boot application should be: `http://localhost:8080`, so the address to get all users would be `http://localhost:8080/users` for example. 
+
 ## Is this the latest way?
 
-Spring Boot is evolving version by version, so its worth noting that you may see some differences between examples, and this can be a bit confusing. Most choices are stylistic, and some are based on changes to the framework. The current stable version is 2.3.0.
+Spring Boot is evolving version by version, so its worth noting that you may see some differences between examples, and this can be a bit confusing. Most choices are stylistic, and some are based on changes to the framework over time. The current stable version is 2.3.0.
 
 I would always suggest looking at the most recent tutorial that you can find, and choose a tutorial style that matches your learning preferences.
 
@@ -142,13 +144,13 @@ What is the purpose of each layer:
 - **View**: The view is the user interface. It renders the model to the user. In a web application, this is the web page written in HTML, the "front-end" of your application. <u>**We don't write this in our example application.**</u>
 - **Controller**: The Controller code is the liaison between the Model and the View, it receives the user input and decides what to do with it. The controller in a web application has two parts. The first part is the web server that matches incoming HTTP Requests to a particular handler method, this is part of Spring Boot. The second part is the handler methods themselves, which can be confusingly called "controllers" also, this is the bit that we write. The handler methods are responsible for returning data from the model.
 
-![mvc diagram](D:\Programming\Workspace\Web\github-pages-website\robole.github.io\assets\img\blog\2020-05-27-spring-boot-api\mvc.svg)
+<img src="/assets/img/blog/2020-05-27-spring-boot-api\mvc.svg" alt="MVC diagram" style="display:block;margin:0 auto;"/>
 
 The advantage of this approach is that our application is more [loosely-coupled](https://en.wikipedia.org/wiki/Loose_coupling). You can change the view and the model can remain the same, and vice-versa. This separation makes application more maintainable.
 
 If you would like a more in-depth explanation, you can read this [MVC article](https://blog.codinghorror.com/understanding-model-view-controller/).
 
-#### Other patterns that may be used
+#### Other patterns that are used in more advanced examples
 
 In our example, we only use the MVC pattern implicitly.
 
@@ -232,13 +234,38 @@ Below is a **summary of the typical content in a Response for the methods**.
 						</tbody>
 					</table>
 
+### A little bit about JSON
+
+ JSON stands for JavaScript Object Notation, and is a syntax for storing and exchanging data. JSON has become the favoured data format for web services 
+ 
+ One of the reasons JSON is popular is that we can convert any JSON received from the server into JavaScript objects without any complicated parsing and translations, since Javascript is the language of the Web Browser, it makes life easier for front-end development.
+
+The syntax rules are simple:
+- Data is in name/value pairs
+- Data is separated by commas
+- Curly braces hold objects
+- Square brackets hold arrays
+
+For example, a user object would be written as:
+
+```json
+{ name: "John", age: 31 }
+```
+
+An array of users would be written as:
+
+```json
+[ { "name":"John", age : 31 }, { "name":"Mary", age : 30 } ]
+```
+This should be enough for you to know when dealing with web services, but for further information, [W3schools has a short tutorial series on JSON](https://www.w3schools.com/js/js_json_intro.asp).
+
 ### A little bit about REST
 
 You may have noticed I barely speak about REST in this article, and that's because I think it is a term used inappropriately too often when speaking about APIs and web services. It has become a nuisance. **The most important thing to know is if you build an API with a framework like Spring Boot, you are following most of the best practices of restful API design**.
 
-Representational state transfer (REST) is an architectural style that defines a set of constraints to be used for creating web services. It was proposed by Roy Fielding in his doctoral dissertation in 2000. It is intended to be a guide for creating well-designed web applications by leveraging many of the conventions of the web. I recommend reading [this Stack Overflow thread on "What is Restful Programming"](https://stackoverflow.com/questions/671118/what-exactly-is-restful-programming) if you want to understand more.
+Representational state transfer (REST) is an architectural style that defines a set of constraints to use for creating web services. It was proposed by Roy Fielding in his doctoral dissertation in 2000. It is intended to be a guide for creating well-designed web applications by leveraging many of the conventions of the web. I recommend reading [this Stack Overflow thread on "What is Restful Programming"](https://stackoverflow.com/questions/671118/what-exactly-is-restful-programming) if you want to understand more.
 
-Most web services today are restful, but they vary in how closely they follow the constraints from Fielding's dissertation. It gets murky quickly when people talk about how restful a web application is by comparing it to the academic definition.
+Most web services today are restful, but they vary in how closely or completely they follow the constraints from Fielding's dissertation. It gets murky quickly when people talk about how restful a web application is by comparing it to the academic definition.
 
 Even an approach to provide a simpler set of heuristics by Leonard Richardson known as the **Richardson Maturity Model** (RMM), which breaks down the principal elements of a REST approach into three steps, has [received plenty of criticism](https://dev.to/mikeralphson/why-there-is-no-such-thing-as-the-richardson-maturity-model-3b4). If you want to understand more behind that, you can read about the [4 Maturity Levels of REST API Design](https://blog.restcase.com/4-maturity-levels-of-rest-api-design/).
 
@@ -251,7 +278,9 @@ Even an approach to provide a simpler set of heuristics by Leonard Richardson kn
 
 ## How to set your project up
 
-You can use [Spring Initializr](https://start.spring.io/) to create your project. It offers a fast way to create a skeleton project. **<u>Only one dependency is required for this project and that's _Spring Web_</u>**. Really, all we need is have our project reference this dependency to get started, but the perk of using Spring Initializr is the folders and a default application class is constructed for you.
+You can use [Spring Initializr](https://start.spring.io/) to create your project. It offers a fast way to create a skeleton project. 
+
+<strong>Only one dependency is required for this project and that is <i>Spring Web</i></strong>. 
 
 To use [Spring Initializr](https://start.spring.io/), fill in fields, and click generate. You can then download your project in a zip file.
 
@@ -261,12 +290,12 @@ Unzip the file and open it in your IDE of choice.
 
 The dependencies may be downloaded automatically by your IDE when you import/open the project, or you may need to trigger the download yourself:
 
-- In IntelliJ, you can go to `File > Synchronise` in the menu to trigger this.
+- In IntelliJ, you can go to `File > Synchronise` in the menu to trigger the download.
 - On the command-line:
   - For maven, run the command `mvn install`.
   - For gradle, run the command `gradle build`.
 
-Spring Initializr created a default class to run you web application called **_UserApplication.java_**. You can run this to verify you are set-up correctly. It doesn't do anything yet aside from run a web server. You should see something like this on the command-line if it worked.
+Spring Initializr creates a default class to run you web application called **_UserApplication.java_**. You can run this to verify you are set-up correctly. It will run a web server for you, nothing more than that because we have written any code yet! You should see something like this on the command-line if it is set-up correctly:
 
 ![Spring Initializr configuration](/assets/img/blog/2020-05-27-spring-boot-api/spring-boot-verify.jpg)
 
@@ -274,7 +303,7 @@ You can follow along and write the code with me, or you can download [the comple
 
 ## Get All Users
 
-Let's begin by writing the code, which will get all of our users.
+Let's begin by writing the code to get all of our users.
 
 ### Create the model class
 
@@ -282,9 +311,9 @@ Our application is all about the user, which every application should be! 😉
 
 We want to create a `User` class that has the attributes: _id_, _name_, and _age_.
 
-Behind the scenes Spring creates empty objects when creating or updating users (responding to POST and PUT requests). So, you need to include a no-args constructor if you want to support these actions.
+Behind the scenes, Spring creates empty objects when creating or updating users (responding to POST and PUT requests). So, you always need to include a no-args constructor if you want to support these actions.
 
-We add the typical methods to make a regular java class. Setter and getters are required for retrieving and modifying the attributes. We must include `equals` and `hashCode` methods to support the comparison of _User_ objects, when Spring checks to see if an user exists or not, it must know how to compare users. I used IntelliJ to generate all of these methods for me.
+We add the typical methods to make a regular java class. Setter and getters are required for retrieving and modifying the attributes. We must include `equals` and `hashCode` methods to support the comparison of _User_ objects. I used IntelliJ to generate all of these methods.
 
 ```java
 public class User {
@@ -313,7 +342,7 @@ We annotate our Controller with `@RestController`, and we add methods to handle 
 
 I have created an `ArrayList` of users to have some data to return.
 
-The `getUsers` method returns all of the users for the URL [http://localhost:8080/users](http://localhost:8080/users). We specify this with an annotation of `@RequestMapping` or `@GetMapping`. We return the `ArrayList` and Spring does the rest!
+The `getUsers` method (you can call it whatever you want) returns all of the users for the URL [http://localhost:8080/users](http://localhost:8080/users). We tie the URL with our method using an annotation of `@RequestMapping` or `@GetMapping`. We return the `ArrayList` from our methid and Spring does the rest!
 
 ```java
 import com.roboleary.model.User;
@@ -333,7 +362,7 @@ public class UserController {
     }
 
     //for GET to http://localhost:8080/users
-    @RequestMapping(method=GET, value="/users")
+    @GetMapping(value="/users")
     public List<User> getUsers(){
         return users;
     }
