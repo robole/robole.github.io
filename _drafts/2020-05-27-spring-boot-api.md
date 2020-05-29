@@ -33,19 +33,21 @@ published: true
 - [Source code](#source-code)
 - [Next Steps](#next-steps)
 
-I'm writing this tutorial to fill a void. Building web applications is a top priority for people learning backend development, but I haven't seen any Java/Spring Boot tutorials that provide a clear path to get you there quickly. Tutorials are either too trivial ([Hello World API](http://spring.io/guides/gs/rest-service/)) to help you understand what you need to know; or they overwhelm beginners and assume too much about what you already know! I will build a simple API, which is closer to what you would realistically build, and go through everything from start to finish. You can skip ahead if you know something already.
+I'm writing this tutorial to fill a void that I have noticed. Building web applications is a top priority for people learning backend development, but I haven't seen any Java/Spring Boot tutorials that provide a clear path to get you there quickly with the least amount of friction. Tutorials are either too trivial ([Hello World API](http://spring.io/guides/gs/rest-service/)) to help you understand what you need to know; or they overwhelm beginners and assume too much about what you already know! 
+
+I will build a simple API, which is closer to what you would realistically build, and go through everything from start to finish. This enables you to skip ahead if you know about a topic already.
 
 ## What is an API?
 
-It is common now for companies to give access to their data through APIs. API stands for Application Programming Interface, it is a list of methods we can use to interact with a company's data. These methods are often referred to as web services.
+It is common now for companies to give access to their data through APIs. API stands for Application Programming Interface, it is a list of methods we can use to interact with a company's backend systems over the internet. These methods are often referred to as web services.
 
 Let's look at an example of an API to clarify what it is exactly!
 
 ### Twitter API Example
 
-I'm guessing you know what Twitter is already, but let's state what it is regardless, Twitter is a social micro-blogging website. It's become more than that, now it's where Donald Trump vents publicly! ✍😡
+I'm guessing you know what Twitter is already, but let's state what it is regardless, Twitter is a social micro-blogging website. It's become more than that, now it's where Donald Trump goes to vent! ✍😡
 
-[Twitter's API reference](https://developer.twitter.com/en/docs/api-reference-index) gives you a long categorized list of methods. You can perform a wide range of actions on tweets, direct messages, your personal account settings, and more. Almost everything you can do on the website is possible to do through the API. If you wanted to, you could use the API to build an entirely different front-end for Twitter, or a TwitterBot.
+[Twitter's API reference](https://developer.twitter.com/en/docs/api-reference-index) gives you a long categorized list of methods. You can perform a wide range of actions on: tweets, direct messages, your personal account settings, and more. Almost everything you can do on the website is possible to do through the API. If you wanted to, you could use the API to build an entirely different front-end for Twitter, or a TwitterBot.
 
 <img src="/assets/img/blog/2020-05-27-spring-boot-api/twitter-api-reference.png" alt="twitter api reference" style="display:block;border:1px black solid"/>
 
@@ -53,19 +55,19 @@ Let's take an example of using the API, say we want to get all of the tweets fro
 
 <img src="/assets/img/blog/2020-05-27-spring-boot-api/twitter-user-timeline-endpoint.png" alt="Twitter API user timeline request and response" style="display:block;border:1px black solid"/>
 
-We need to have a client application to execute the methods. I like to use [Insomnia](https://insomnia.rest/), but other popular applications are: [cURL](https://curl.haxx.se/) (a command-line tool), [Postman](https://www.postman.com/) (a collaboration platform for API Development), and [Postwoman](https://postwoman.io/) (an open-source alternative to Postman).
+We need to have a client application to execute the methods. I like to use [Insomnia](https://insomnia.rest/), but other popular applications are: [cURL](https://curl.haxx.se/) (a command-line tool), [Postman](https://www.postman.com/) (a collaboration platform for API Development), and [Postwoman](https://postwoman.io/) (a minimal open-source alternative to Postman).
 
-If you are unfamilar with HTTP terminology, you can jump to the [HTTP Basics](#html-basics) section. Looking at the method description, we need to provide 1 parameter in our HTTP request to get the data we want, this parameter is `screen_name`.
+If you are unfamilar with HTTP, you can jump to the [HTTP Basics](#html-basics) section to get your up to speed. Looking at the method description, we need to provide 1 parameter in our HTTP request to get the data we want, this parameter is `screen_name`.
 
 To use Twitter's API, you have to have a Twitter account, and register an application to obtain developer keys. When you interact with the API, you provide these developer keys to authenticate your identity. This ensures that only you can only perform actions on your own account data, and generally that you use the platform in a fair way.
 
-You need to do some configuration in your Twitter account settings to get the developer keys. It's a bit tedious to find the right place! I wont show you how here, the focus is to show what the API is about. Below is the request (on the left) and the response (on the right).
+You need to do some configuration in your Twitter account settings to get the developer keys. It's a bit tedious to find the right place! I wont show you how here, the focus is to show you what the API is. Below is the request (on the left) and the response recieved (on the right).
 
 <img src="/assets/img/blog/2020-05-27-spring-boot-api/twitter-req.jpg" alt="\Twitter API user timeline request and response" style="display:block;width:100%;max-width:1353px;margin:0 auto;"/>
 
 You can see that our `screen_name` parameter is appended to the URL in our request. We use a question mark to mark the beginning of our parameters, then we provide the parameter name and value. You can provide a list of parameters if you need to, you separate each parameter with an ampersand.
 
-The response returns a JSON array of tweets. The content of a tweet is contained in the `text` field. As you can see the latest Tweet from Spiderman is: "Learn how to draw Miles Morales, AKA Spider-Man, in this special Spanish-speaking lesson with artist @MikeHawthorne… https:\/\/t.co\/RdvzWVzJ4o.". 🕸️🎨
+The response returns a JSON array of tweets. The content of a tweet is contained in the `text` field. As you can see the latest Tweet from Spiderman is: "*Learn how to draw Miles Morales, AKA Spider-Man, in this special Spanish-speaking lesson with artist @MikeHawthorne… https:\/\/t.co\/RdvzWVzJ4o.*". 🕸️🎨
 
 ## What we will build
 
@@ -581,12 +583,12 @@ You can download [the complete code from github](https://github.com/robole/sprin
 
 ## Next steps
 
-You should learn to write (integration) tests for your web application.
+1. Learn to write (integration) tests for your web application.
+1. Add a database to store your data long-term. You can use the _Spring Data Rest_ library for this.
+1. Build a complete API of something you are interested in. 
+1. Learn how to add authentication to control access to data.
+1. Learn how to document your API. You can use libraries such as Swagger to automate some of this.
 
-You can add a database to store your data long-term. You can use _Spring Data Rest_ for this.
-
-You can learn how to add authentication to your web application to control access to data.
-
-If you found this article useful give a ❤. Let me know if you are interested in a follow-up article! 🙂
+If you found this article useful give a ❤. Let me know if you are interested in a follow-up article regarding one of the topics above! 🙂
 
 Happy coding! 👩‍💻🙌
