@@ -1,6 +1,6 @@
 ---
 layout: scrollable_post
-title: Master the Web - Build an API with Spring Boot 🕸☕
+title: "From A to Web App: Build an API with Spring Boot 🕸☕"
 description: Build a realistic API with Spring Boot
 category: java
 image: /assets/img/blog/2020-05-27-spring-boot-api/web-city.png
@@ -16,10 +16,15 @@ published: true
 - [Is this the latest way?](#is-this-the-latest-way)
 - [Is there anything I should know before I start?](#is-there-anything-i-should-know-before-i-start)
   - [A little bit about Design Patterns](#a-little-bit-about-design-patterns)
-    - [Model View Controller](#model-view-controller)
+    - [Model View Controller (MVC)](#model-view-controller-mvc)
     - [Other patterns that are used in more advanced examples](#other-patterns-that-are-used-in-more-advanced-examples)
   - [HTTP Basics](#http-basics)
+    - [Uniform Resource Locators (URL)](#uniform-resource-locators-url)
+    - [HTTP Request](#http-request)
+    - [HTTP Response](#http-response)
+    - [Further Reading on HTTP](#further-reading-on-http)
   - [A little bit about JSON](#a-little-bit-about-json)
+    - [Further Reading on JSON](#further-reading-on-json)
   - [A little bit about REST](#a-little-bit-about-rest)
 - [What you need to complete this tutorial](#what-you-need-to-complete-this-tutorial)
 - [How to set your project up](#how-to-set-your-project-up)
@@ -33,41 +38,47 @@ published: true
 - [Source code](#source-code)
 - [Next Steps](#next-steps)
 
-I'm writing this tutorial to fill a void that I have noticed. Building web applications is a top priority for people learning backend development, but I haven't seen any Java/Spring Boot tutorials that provide a clear path to get you there quickly with the least amount of friction. Tutorials are either too trivial ([Hello World API](http://spring.io/guides/gs/rest-service/)) to help you understand what you need to know; or they overwhelm beginners and assume too much about what you already know! 
+I'm writing this tutorial to fill a void that I have noticed. Building web applications is a top priority for people learning backend development, but I haven't seen any Java/Spring Boot tutorials that provide a clear path to get you there quickly with the least amount of friction. Tutorials are either too trivial ([Hello World API](http://spring.io/guides/gs/rest-service/)) to help you understand what you need to know; or they overwhelm beginners and assume too much about what you already know!
 
-I will build a simple API, which is closer to what you would realistically build, and go through everything from start to finish. This enables you to skip ahead if you know about a topic already.
+I will build a simple API, which is a big step towards to what you would realistically build, and go through everything from start to finish. This enables you to skip ahead if you know about a topic already.
 
 ## What is an API?
 
 It is common now for companies to give access to their data through APIs. API stands for Application Programming Interface, it is a list of methods we can use to interact with a company's backend systems over the internet. These methods are often referred to as web services.
 
+<img src="/assets/img/blog/2020-05-27-spring-boot-api/api.png" alt="api diagram" style="display:block;width:100%;max-width:1250px;"/>
+
 Let's look at an example of an API to clarify what it is exactly!
 
 ### Twitter API Example
 
-I'm guessing you know what Twitter is already, but let's state what it is regardless, Twitter is a social micro-blogging website. It's become more than that, now it's where Donald Trump goes to vent! ✍😡
+I'm guessing you know what Twitter is already, but let's state what it is regardless, Twitter is a social micro-blogging website. It's become more than that over time, now it's where Donald Trump goes to vent! ✍😡
 
 [Twitter's API reference](https://developer.twitter.com/en/docs/api-reference-index) gives you a long categorized list of methods. You can perform a wide range of actions on: tweets, direct messages, your personal account settings, and more. Almost everything you can do on the website is possible to do through the API. If you wanted to, you could use the API to build an entirely different front-end for Twitter, or a TwitterBot.
 
 <img src="/assets/img/blog/2020-05-27-spring-boot-api/twitter-api-reference.png" alt="twitter api reference" style="display:block;border:1px black solid"/>
 
-Let's take an example of using the API, say we want to get all of the tweets from the timeline of **@spiderman**. Looking through the list of methods, [GET statuses/user_timeline](https://developer.twitter.com/en/docs/tweets/timelines/api-reference/get-statuses-user_timeline) appears to be the method that matches what we want. This is the method description:
+Let's take an example of using the API, say we want to get all of the tweets from the timeline of **@spiderman**.
+
+<img src="/assets/img/blog/2020-05-27-spring-boot-api/twitter-api.png" alt="twitter api diagram" style="display:block;width:100%;max-width:1250px;"/>
+
+Looking through the list of methods, [GET statuses/user_timeline](https://developer.twitter.com/en/docs/tweets/timelines/api-reference/get-statuses-user_timeline) appears to be the method that matches what we want. This is the method description:
 
 <img src="/assets/img/blog/2020-05-27-spring-boot-api/twitter-user-timeline-endpoint.png" alt="Twitter API user timeline request and response" style="display:block;border:1px black solid"/>
 
 We need to have a client application to execute the methods. I like to use [Insomnia](https://insomnia.rest/), but other popular applications are: [cURL](https://curl.haxx.se/) (a command-line tool), [Postman](https://www.postman.com/) (a collaboration platform for API Development), and [Postwoman](https://postwoman.io/) (a minimal open-source alternative to Postman).
 
-If you are unfamilar with HTTP, you can jump to the [HTTP Basics](#html-basics) section to get your up to speed. Looking at the method description, we need to provide 1 parameter in our HTTP request to get the data we want, this parameter is `screen_name`.
+If you are totally unfamiliar with HTTP, you can jump to the [HTTP Basics](#html-basics) section to get yourself up to speed. Looking at the method description, we need to provide 1 parameter in our HTTP request to get the data we want, this parameter is `screen_name`.
 
 To use Twitter's API, you have to have a Twitter account, and register an application to obtain developer keys. When you interact with the API, you provide these developer keys to authenticate your identity. This ensures that only you can only perform actions on your own account data, and generally that you use the platform in a fair way.
 
-You need to do some configuration in your Twitter account settings to get the developer keys. It's a bit tedious to find the right place! I wont show you how here, the focus is to show you what the API is. Below is the request (on the left) and the response recieved (on the right).
+You need to do some configuration in your Twitter account settings to get the developer keys. It's not obvious to locate the place in the settings for this! I wont show you how here, the focus is to show you what an API is. Below is the request (on the left) and the response received (on the right).
 
 <img src="/assets/img/blog/2020-05-27-spring-boot-api/twitter-req.jpg" alt="\Twitter API user timeline request and response" style="display:block;width:100%;max-width:1353px;margin:0 auto;"/>
 
 You can see that our `screen_name` parameter is appended to the URL in our request. We use a question mark to mark the beginning of our parameters, then we provide the parameter name and value. You can provide a list of parameters if you need to, you separate each parameter with an ampersand.
 
-The response returns a JSON array of tweets. The content of a tweet is contained in the `text` field. As you can see the latest Tweet from Spiderman is: "*Learn how to draw Miles Morales, AKA Spider-Man, in this special Spanish-speaking lesson with artist @MikeHawthorne… https:\/\/t.co\/RdvzWVzJ4o.*". 🕸️🎨
+The response returns a JSON array of tweets. The content of a tweet is contained in the `text` field. As you can see the latest Tweet from Spiderman is: "_Learn how to draw Miles Morales, AKA Spider-Man, in this special Spanish-speaking lesson with artist @MikeHawthorne… https:\/\/t.co\/RdvzWVzJ4o._". 🕸️🎨
 
 ## What we will build
 
@@ -119,7 +130,9 @@ When we run our App. The default local address for your Spring Boot application 
 
 ## Is this the latest way?
 
-Spring Boot is evolving version by version, so its worth noting that you may see some differences between examples, and this can be a bit confusing. Most choices are stylistic, and some are based on changes to the framework over time. The current stable version is 2.3.0.
+Spring is evolving version by version, so its worth noting that you may see some differences between examples, and this can be a bit confusing. Most choices are stylistic, and some are based on changes to the framework over time. The current stable version of Spring is 5.25, and 2.3.0 for Spring Boot.
+
+If you use _Spring Data Rest_ rather than the _Spring Web_ starter dependency, you can do things differently. With _Spring Data Rest_, default controllers will be built by Spring for you, so if you are happy with the convention, you do not have to define your own.
 
 I would always suggest looking at the most recent tutorial that you can find, and choose a tutorial style that matches your learning preferences.
 
@@ -129,26 +142,26 @@ A common issue when beginning to learn how to build APIs with Spring Boot is tha
 
 ### A little bit about Design Patterns
 
-- A design pattern is a general, reusable solution to a commonly occurring problem.
-- Design patterns can speed up the development process by providing tested, proven solutions.
-- Reusing design patterns helps to prevent small mistakes that can cause major problems later on.
+A design pattern is a _general, reusable solution to a commonly occurring problem_.
+
+Design patterns can speed up the development process by providing tested, proven solutions. Reusing design patterns helps to prevent small mistakes that can cause major problems later on.
 
 Bigger applications are divided into layers with particular responsibilities, this makes it easier to maintain
 them. Spring uses the [Model-View-Controller (MVC) ](https://blog.codinghorror.com/understanding-model-view-controller/) design pattern for building web applications.
 
-#### Model View Controller
+#### Model View Controller (MVC)
 
-MVC is a way of organizing your code. The big idea behind MVC is that each _layer_ of your code has a purpose. It makes it easier to build and maintain your application.
+The big idea behind MVC is that each _layer_ of your code has a specific purpose.
 
 What is the purpose of each layer:
 
-- **Model**: The model captures the real-world things your application is concerned with. It _models_ the real world. The classes in the model are used to store and manipulate state of your application.
-- **View**: The view is the user interface. It renders the model to the user. In a web application, this is the web page written in HTML, the "front-end" of your application. <u>**We don't write this in our example application.**</u>
-- **Controller**: The Controller code is the liaison between the Model and the View, it receives the user input and decides what to do with it. The controller in a web application has two parts. The first part is the web server that matches incoming HTTP Requests to a particular handler method, this is part of Spring Boot. The second part is the handler methods themselves, which can be confusingly called "controllers" also, this is the bit that we write. The handler methods are responsible for returning data from the model.
+- **Model**: The Model captures the real-world things your application is concerned with. It _models_ the real world. The classes in the model are used to store and manipulate the state of your application.
+- **View**: The View is the user interface. It renders the model to the user. In a web application, this is the web pages we write in HTML. It is covers the "front-end" of your application. <u>**We don't write this in our example application.**</u>
+- **Controller**: The Controller layer is the liaison between the Model and the View layers, it receives the user input and decides what to do with it. A Controller in a web application has two parts. The first part is the web server that matches incoming HTTP Requests to a particular handler method, this is built-in part of Spring Boot. The second part is the handler methods themselves, which can be confusingly called "controllers" also, this is the bit that we write. The handler methods are responsible for returning data from the model.
 
 <img src="/assets/img/blog/2020-05-27-spring-boot-api\mvc.svg" alt="MVC diagram" style="display:block;margin:0 auto;"/>
 
-The advantage of this approach is that our application is more [loosely-coupled](https://en.wikipedia.org/wiki/Loose_coupling). You can change the view and the model can remain the same, and vice-versa. This separation makes application more maintainable.
+The advantage of this approach is that our application is more [loosely-coupled](https://en.wikipedia.org/wiki/Loose_coupling). You can change the view, but the model can remain the same. This separation of responsibility is what makes our application more maintainable.
 
 If you would like a more in-depth explanation, you can read this [MVC article](https://blog.codinghorror.com/understanding-model-view-controller/).
 
@@ -158,21 +171,50 @@ In our example, we only use the MVC pattern implicitly.
 
 In more **advanced examples**, you may also encounter or need to use the following design patterns:
 
-- [Data Access Object layer](https://www.tutorialspoint.com/design_pattern/data_access_object_pattern.htm) / [Repository layer](http://blog.sapiensworks.com/post/2014/06/02/The-Repository-Pattern-For-Dummies.aspx) : When you use a database, you will probably use one of these patterns. This layer controls access to the stored data, it isolates other parts of the application from knowing about the source of the data, they don't know if it is a database or spreadsheet or text file! You will create data repositories when you have a database in Spring Boot.
-- [Service layer](https://martinfowler.com/eaaCatalog/serviceLayer.html): This layer is where our common business logic lives, you use repositories to perform tasks. For example, a Book Service might use the User repository and Book repository to offer functionality such as "search for my books", validating if the user is logged in before it will return a list of the User's books.
+- [Data Access Object layer](https://www.tutorialspoint.com/design_pattern/data_access_object_pattern.htm) / [Repository layer](http://blog.sapiensworks.com/post/2014/06/02/The-Repository-Pattern-For-Dummies.aspx) : When you use a database, you will probably use one of these patterns. This layer controls access to the stored data, it isolates other parts of the application from knowing about the source of the data, they don't know if it is a database or spreadsheet or text file! Spring has a number of [Spring Data libraries](https://spring.io/projects/spring-data) to support data repositories.
+- [Service layer](https://martinfowler.com/eaaCatalog/serviceLayer.html): This layer is where our common business logic lives. A service uses repositories to perform tasks. For example, a Book Service might use the User repository and Book repository to offer functionality such as "search for my books".
 
 ### HTTP Basics
 
-HTTP is the foundation of data communication for the World Wide Web. It follows a request-response protocol.
+Hypertext Transfer Protocol (**HTTP**) is the foundation of data communication for the World Wide Web. It is a protocol that controls data transfer between a client application (such as a Web Browser) and a web server. Clients and servers communicate by exchanging individual messages. The messages sent by the client are called _requests_ and the messages sent by the server in reply are called _responses_.
 
-[HTTP resources](https://en.wikipedia.org/wiki/Web_resource) are identified and located on the network by [Uniform Resource Locators](https://en.wikipedia.org/wiki/Uniform_Resource_Locator) (URLs), using the [Uniform Resource Identifiers](https://en.wikipedia.org/wiki/Uniform_Resource_Identifier) (URI's) schemes _http_ and _[https](https://en.wikipedia.org/wiki/Https)_. In the case of a web application, the resources are objects based on the classes in our model.
+The target of an HTTP request is called a _resource_. Generally a web resource is a file on web server such as a document or a photo; but it has evolved to encompass any "thing" that is uniquely identifiable. Now it can encompass abstract resources such as classes and properties. Each resource is identified by a Uniform Resource Identifier (URI).
+
+#### Uniform Resource Locator (URL)
+
+The most common form of URI is the Uniform Resource Locator ([URL](https://developer.mozilla.org/en-US/docs/Glossary/URL)), which is known as the _web address_. This is what you type into your Web Browser to load a page. A
+
+A URL is composed of different parts, some are mandatory and others are optional.
+
+![URL syntax](D:\Programming\Workspace\Web\github-pages-website\robole.github.io\assets\img\blog\2020-05-27-spring-boot-api\url.png)
+
+1. **Scheme or protocol**: It indicates which protocol must be used. Usually it is the HTTP or its secured version, HTTPS. This is _required_.
+2. **Authority or domain name**: This indicates the name of the Web Server being requested. Alternatively, it is possible to directly use an IP address, but because it is less convenient, it is not often used on the Web. This is _required_.
+3. **Port**: A port is a logical identifier to locate a specific process or service on the Web Server. It is usually omitted if the web server uses the standard ports of the HTTP protocol (80 for HTTP and 443 for HTTPS) to grant access to its resources. This is _optional_.
+4. **Path**: Is the path to the resource on the Web server. The path can represent a physical file location on the Web Server, or can be an abstraction handled by Web servers to find the resource.
+5. **Query**: It is a list of parameters. The parameters are a list of key-value pairs separated with an ampersand (`&` ). The Web server can use the parameters to do some conditional logic. This is _optional_.
+6. **Fragment**: It is an anchor to a part of the resource itself. An anchor is like a "bookmark" inside the resource, giving the browser the directions to show the content located at that spot. In an HTML document, for example, the browser will scroll to the point where the anchor is defined; for a video, the browser will try to go to the time the anchor represents. This is _optional_.
+
+#### HTTP Request
 
 A **HTTP request** consists of the following:
 
-- a request line. For example, `GET /users/1 HTTP/1.1`, which requests a resource called /users/1 from the server,
+- a request line. For example, `GET http://localhost:8080/users/1 HTTP/1.1`, which wants to retrieve a resource identified by the path `/users/1` from the server,
 - request header fields,
 - an empty line,
 - and an optional message body.
+
+```
+GET http://localhost:8080/users/1 HTTP/1.1
+Host: localhost:8080
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:76.0) Gecko/20100101 Firefox/76.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+DNT: 1
+Connection: keep-alive
+Upgrade-Insecure-Requests: 1
+```
 
 HTTP defines a set of **request methods** that define the action to be performed on a given resource. They are sometimes referred to a HTTP verbs. The following HTTP request methods are used in web applications:
 
@@ -184,12 +226,26 @@ HTTP defines a set of **request methods** that define the action to be performed
 
 You will often see the core functions of a web application referred to as CRUD, which stands for: Create, Read, Update, Delete.
 
+#### HTTP Response
+
 The **HTTP Response** consists of the following:
 
 - a status line which includes the status code and reason message,
 - response header fields,
 - an empty line,
 - an optional message body.
+
+```
+HTTP/1.1 200 OK
+Connection: keep-alive
+Content-Type: application/json
+Date: Mon, 01 Jun 2020 15:16:54 GMT
+Keep-Alive:	timeout=60
+Transfer-Encoding: chunkedtes
+Connection: close
+
+{"id":1,"name":"Rob OLeary","age":21}
+```
 
 Below is a **summary of the typical content in a Response for the methods**.
 
@@ -236,18 +292,23 @@ Below is a **summary of the typical content in a Response for the methods**.
 						</tbody>
 					</table>
 
+#### Further Reading on HTTP
+
+For a more complete guide to HTTP, you can read [Mozilla's HTTP reference](https://developer.mozilla.org/en-US/docs/Web/HTTP)
+
 ### A little bit about JSON
 
-JSON stands for JavaScript Object Notation, and is a syntax for storing and exchanging data. JSON has become the favoured data format for web services
+JSON stands for JavaScript Object Notation, and is a syntax for storing and exchanging data. JSON has become the favoured data format for web services, with [XML](https://www.w3schools.com/xml/) being used less nowadays.
 
-One of the reasons JSON is popular is that we can convert any JSON received from the server into JavaScript objects without any complicated parsing and translations, since Javascript is the language of the Web Browser, it makes life easier for front-end development.
+One of the reasons JSON is popular is that we can convert any JSON received from the server into JavaScript objects without any complicated parsing and translations, and since JavaScript is the language of the Web Browser, this makes building web applications simpler.
 
 The syntax rules are simple:
 
-- Data is in name/value pairs
-- Data is separated by commas
-- Curly braces hold objects
-- Square brackets hold arrays
+- Data is in name-value pairs,
+- Strings are contained in quotations,
+- Data is separated by commas,
+- Curly braces hold objects,
+- Square brackets hold arrays.
 
 For example, a user object would be written as:
 
@@ -264,15 +325,17 @@ An array of users would be written as:
 ]
 ```
 
+#### Further Reading on JSON
+
 This should be enough for you to know when dealing with web services, but for further information, [W3schools has a short tutorial series on JSON](https://www.w3schools.com/js/js_json_intro.asp).
 
 ### A little bit about REST
 
-You may have noticed I barely speak about REST in this article, and that's because I think it is a term used inappropriately too often when speaking about APIs and web services. It has become a nuisance. **The most important thing to know is if you build an API with a framework like Spring Boot, you are following most of the best practices of restful API design**.
+You may have noticed I barely speak about REST in this article, and that's because I think it is a term misused too often when speaking about APIs and web services.
 
-Representational state transfer (REST) is an architectural style that defines a set of constraints to use for creating web services. It was proposed by Roy Fielding in his doctoral dissertation in 2000. It is intended to be a guide for creating well-designed web applications by leveraging many of the conventions of the web. I recommend reading [this Stack Overflow thread on "What is Restful Programming"](https://stackoverflow.com/questions/671118/what-exactly-is-restful-programming) to understand more.
+Representational state transfer (REST) is an architectural style that defines a set of constraints to use for creating web services. It was proposed by Roy Fielding in his doctoral dissertation in 2000. It can be used as a guide for creating well-designed web applications by leveraging many of the conventions of the web. **The most important thing to know is if you build an API with a framework like Spring Boot, you are following most of the conventions of restful API design**.
 
-Most web services today are restful, but they vary in how closely or completely they follow the constraints from Fielding's dissertation. It gets murky quickly when people talk about how restful a web application is by comparing it to the academic definition.
+I recommend reading [this Stack Overflow thread on "What is Restful Programming"](https://stackoverflow.com/questions/671118/what-exactly-is-restful-programming) to understand more about it. Most web services today are restful, but they vary in how closely or completely they follow the constraints from Fielding's dissertation. It gets murky quickly when people talk about how restful a web application is by comparing it to the academic definition.
 
 ## What you need to complete this tutorial
 
@@ -585,10 +648,12 @@ You can download [the complete code from github](https://github.com/robole/sprin
 
 1. Learn to write (integration) tests for your web application.
 1. Add a database to store your data long-term. You can use the _Spring Data Rest_ library for this.
-1. Build a complete API of something you are interested in. 
+1. Build a complete API of something you are interested in.
 1. Learn how to add authentication to control access to data.
 1. Learn how to document your API. You can use libraries such as Swagger to automate some of this.
 
 If you found this article useful give a ❤. Let me know if you are interested in a follow-up article regarding one of the topics above! 🙂
 
 Happy coding! 👩‍💻🙌
+
+<p style="font-size:.5em">Attribution for Icons from the Noun Project: Mobile by Rainbow Designs, Cloud by James Kopina, Database by Kimmi Studios, User by Adrian Coquet, Twitter by Acid Beast.</p>
