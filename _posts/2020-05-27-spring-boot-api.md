@@ -12,6 +12,7 @@ published: true
 
 - [What is an API?](#what-is-an-api)
 - [Twitter API Example](#twitter-api-example)
+- [What is Spring and Spring Boot?](#what-is-spring-and-spring-boot)
 - [What we will build](#what-we-will-build)
 - [Is this the latest way?](#is-this-the-latest-way)
 - [Is there anything I should know before I start?](#is-there-anything-i-should-know-before-i-start)
@@ -19,7 +20,7 @@ published: true
     - [Model View Controller (MVC)](#model-view-controller-mvc)
     - [Other patterns that are used in more advanced examples](#other-patterns-that-are-used-in-more-advanced-examples)
   - [HTTP Basics](#http-basics)
-    - [Uniform Resource Locators (URL)](#uniform-resource-locators-url)
+    - [Uniform Resource Locator (URL)](#uniform-resource-locator-url)
     - [HTTP Request](#http-request)
     - [HTTP Response](#http-response)
     - [Further Reading on HTTP](#further-reading-on-http)
@@ -28,13 +29,14 @@ published: true
   - [A little bit about REST](#a-little-bit-about-rest)
 - [What you need to complete this tutorial](#what-you-need-to-complete-this-tutorial)
 - [How to set your project up](#how-to-set-your-project-up)
-- [Get All Users](#get-all-users)
-- [Get User by ID](#get-user-by-id)
-- [Get User by Name](#get-user-by-name)
-- [Add a new User](#add-a-new-user)
-- [Update a User](#update-a-user)
-- [Delete a User](#delete-a-user)
-- [How to verify your application](#how-to-verify-your-application)
+- [Write the code](#write-the-code)
+  - [Get All Users](#get-all-users)
+  - [Get User by ID](#get-user-by-id)
+  - [Get User by Name](#get-user-by-name)
+  - [Add a new User](#add-a-new-user)
+  - [Update a User](#update-a-user)
+  - [Delete a User](#delete-a-user)
+- [How to test your application](#how-to-test-your-application)
 - [Source code](#source-code)
 - [Next Steps](#next-steps)
 
@@ -46,7 +48,7 @@ I will build a simple API, which is a big step towards to what you would realist
 
 It is common now for companies to give access to their data through APIs. API stands for Application Programming Interface, it is a list of methods we can use to interact with a company's backend systems over the internet. These methods are often referred to as web services.
 
-<img src="/assets/img/blog/2020-05-27-spring-boot-api/api.png" alt="api diagram" style="display:block;width:100%;max-width:1250px;"/>
+<img src="/assets/img/blog/2020-05-27-spring-boot-api/api.png" alt="api diagram" style="display:block;width:100%;max-width:1250px;" loading="lazy"/>
 
 Let's look at an example of an API to clarify what it is exactly!
 
@@ -56,15 +58,15 @@ I'm guessing you know what Twitter is already, but let's state what it is regard
 
 [Twitter's API reference](https://developer.twitter.com/en/docs/api-reference-index) gives you a long categorized list of methods. You can perform a wide range of actions on: tweets, direct messages, your personal account settings, and more. Almost everything you can do on the website is possible to do through the API. If you wanted to, you could use the API to build an entirely different front-end for Twitter, or a TwitterBot.
 
-<img src="/assets/img/blog/2020-05-27-spring-boot-api/twitter-api-reference.png" alt="twitter api reference" style="display:block;border:1px black solid"/>
+<img src="/assets/img/blog/2020-05-27-spring-boot-api/twitter-api-reference.png" alt="twitter api reference" style="display:block;border:1px black solid;max-width:1250px;width:100%;" loading="lazy"/>
 
 Let's take an example of using the API, say we want to get all of the tweets from the timeline of **@spiderman**.
 
-<img src="/assets/img/blog/2020-05-27-spring-boot-api/twitter-api.png" alt="twitter api diagram" style="display:block;width:100%;max-width:1250px;"/>
+<img src="/assets/img/blog/2020-05-27-spring-boot-api/twitter-api.png" alt="twitter api diagram" style="display:block;width:100%;max-width:1250px;" loading="lazy"/>
 
 Looking through the list of methods, [GET statuses/user_timeline](https://developer.twitter.com/en/docs/tweets/timelines/api-reference/get-statuses-user_timeline) appears to be the method that matches what we want. This is the method description:
 
-<img src="/assets/img/blog/2020-05-27-spring-boot-api/twitter-user-timeline-endpoint.png" alt="Twitter API user timeline request and response" style="display:block;border:1px black solid"/>
+<img src="/assets/img/blog/2020-05-27-spring-boot-api/twitter-user-timeline-endpoint.png" alt="Twitter API user timeline request and response" style="display:block;border:1px black solid" loading="lazy"/>
 
 We need to have a client application to execute the methods. I like to use [Insomnia](https://insomnia.rest/), but other popular applications are: [cURL](https://curl.haxx.se/) (a command-line tool), [Postman](https://www.postman.com/) (a collaboration platform for API Development), and [Postwoman](https://postwoman.io/) (a minimal open-source alternative to Postman).
 
@@ -74,11 +76,27 @@ To use Twitter's API, you have to have a Twitter account, and register an applic
 
 You need to do some configuration in your Twitter account settings to get the developer keys. It's not obvious to locate the place in the settings for this! I wont show you how here, the focus is to show you what an API is. Below is the request (on the left) and the response received (on the right).
 
-<img src="/assets/img/blog/2020-05-27-spring-boot-api/twitter-req.jpg" alt="\Twitter API user timeline request and response" style="display:block;width:100%;max-width:1353px;margin:0 auto;"/>
+<img src="/assets/img/blog/2020-05-27-spring-boot-api/twitter-req.jpg" alt="\Twitter API user timeline request and response" style="display:block;width:100%;max-width:1353px;margin:0 auto;" loading="lazy"/>
 
 You can see that our `screen_name` parameter is appended to the URL in our request. We use a question mark to mark the beginning of our parameters, then we provide the parameter name and value. You can provide a list of parameters if you need to, you separate each parameter with an ampersand.
 
 The response returns a JSON array of tweets. The content of a tweet is contained in the `text` field. As you can see the latest Tweet from Spiderman is: "_Learn how to draw Miles Morales, AKA Spider-Man, in this special Spanish-speaking lesson with artist @MikeHawthorne… https:\/\/t.co\/RdvzWVzJ4o._". 🕸️🎨
+
+## What is Spring and Spring Boot?
+
+Spring is an open-source application framework. You can think of it a swiss-army knife for creating enterprise applications, it has different modules that provide a range of functions such as: authentication, data access, inversion of control, messaging, web services, and so on.
+
+<img src="/assets/img/blog/2020-05-27-spring-boot-api/swiss-army-knife.svg" alt="swiss army knife" style="display:block;width:100%;max-width:400px;margin:0 auto;" loading="lazy"/>
+
+Spring’s philosophy is:
+
+- Good design is more important than the underlying technology.
+- Classes that are loosely coupled through interfaces is a good model.
+- Code should be easy to test.
+
+Spring follows convention-over-configuration. By following certain conventions such as naming things in a certain way, and implementing certain interfaces, it saves you writing a lot of repetitive code (boilerplate). It takes care of some of the cumbersome work for you, some things happen in the background magically!
+
+Spring Boot makes life easier to create stand-alone, Spring-based applications. It is preconfigured with the Spring team's "opinionated view" of the best configuration of the Spring platform and third-party libraries, so you can get started with minimum fuss. It has an embedded web server, so no need to manually deploy your application, you can just run your application.
 
 ## What we will build
 
@@ -132,7 +150,7 @@ When we run our App. The default local address for your Spring Boot application 
 
 Spring is evolving version by version, so its worth noting that you may see some differences between examples, and this can be a bit confusing. Most choices are stylistic, and some are based on changes to the framework over time. The current stable version of Spring is 5.25, and 2.3.0 for Spring Boot.
 
-If you use _Spring Data Rest_ rather than the _Spring Web_ starter dependency, you can do things differently. With _Spring Data Rest_, default controllers will be built by Spring for you, so if you are happy with the convention, you do not have to define your own.
+If you use _Spring Data Rest_ rather than the _Spring Web_ starter dependency, you can do things differently. With _Spring Data Rest_, default controllers will be built by Spring for you, so if you are happy with the defaults in the convention, you do not have to define your own.
 
 I would always suggest looking at the most recent tutorial that you can find, and choose a tutorial style that matches your learning preferences.
 
@@ -159,7 +177,7 @@ What is the purpose of each layer:
 - **View**: The View is the user interface. It renders the model to the user. In a web application, this is the web pages we write in HTML. It is covers the "front-end" of your application. <u>**We don't write this in our example application.**</u>
 - **Controller**: The Controller layer is the liaison between the Model and the View layers, it receives the user input and decides what to do with it. A Controller in a web application has two parts. The first part is the web server that matches incoming HTTP Requests to a particular handler method, this is built-in part of Spring Boot. The second part is the handler methods themselves, which can be confusingly called "controllers" also, this is the bit that we write. The handler methods are responsible for returning data from the model.
 
-<img src="/assets/img/blog/2020-05-27-spring-boot-api\mvc.svg" alt="MVC diagram" style="display:block;margin:0 auto;"/>
+<img src="/assets/img/blog/2020-05-27-spring-boot-api\mvc.svg" alt="MVC diagram" style="display:block;margin:0 auto;" loading="lazy"/>
 
 The advantage of this approach is that our application is more [loosely-coupled](https://en.wikipedia.org/wiki/Loose_coupling). You can change the view, but the model can remain the same. This separation of responsibility is what makes our application more maintainable.
 
@@ -186,7 +204,7 @@ The most common form of URI is the Uniform Resource Locator ([URL](https://devel
 
 A URL is composed of different parts, some are mandatory and others are optional.
 
-![URL syntax](D:\Programming\Workspace\Web\github-pages-website\robole.github.io\assets\img\blog\2020-05-27-spring-boot-api\url.png)
+<img src="/assets/img/blog/2020-05-27-spring-boot-api/url.png" alt="url syntax" loading="lazy"/>
 
 1. **Scheme or protocol**: It indicates which protocol must be used. Usually it is the HTTP or its secured version, HTTPS. This is _required_.
 2. **Authority or domain name**: This indicates the name of the Web Server being requested. Alternatively, it is possible to directly use an IP address, but because it is less convenient, it is not often used on the Web. This is _required_.
@@ -333,9 +351,15 @@ This should be enough for you to know when dealing with web services, but for fu
 
 You may have noticed I barely speak about REST in this article, and that's because I think it is a term misused too often when speaking about APIs and web services.
 
-Representational state transfer (REST) is an architectural style that defines a set of constraints to use for creating web services. It was proposed by Roy Fielding in his doctoral dissertation in 2000. It can be used as a guide for creating well-designed web applications by leveraging many of the conventions of the web. **The most important thing to know is if you build an API with a framework like Spring Boot, you are following most of the conventions of restful API design**.
+Representational state transfer (REST) is an architectural style that defines a set of constraints that can be followed when creating web services, which recommend using many of the conventions of the web. It was proposed by Roy Fielding in his doctoral dissertation in 2000.
 
-I recommend reading [this Stack Overflow thread on "What is Restful Programming"](https://stackoverflow.com/questions/671118/what-exactly-is-restful-programming) to understand more about it. Most web services today are restful, but they vary in how closely or completely they follow the constraints from Fielding's dissertation. It gets murky quickly when people talk about how restful a web application is by comparing it to the academic definition.
+I recommend reading [this Stack Overflow thread on "What is Restful Programming"](https://stackoverflow.com/questions/671118/what-exactly-is-restful-programming) to understand more about it, and you can see some of the diversity of opinions on what it is a REST API "in the wild".
+
+If you build web services with a framework like Spring Boot, you follow some of the conventions of restful API design by default, but some would consider it a HTTP-based web service, rather than a restful web service. It gets murky quickly when people talk about how restful a web application is by comparing it to the academic definition, I don't think it is a productive endeavour to do so.
+
+One of the constraints of REST is to use [Hypermedia as the Engine of Application State (HATEOS)](http://restcookbook.com/Basics/hateoas/), which can be done in Spring Boot if you use the _Spring Data Rest_ starter dependency. In practice, most APIs do not follow this constraint, and this leads some people to say, "well, it is not a rest API then". 😅 There is merit in following the constraint, but for clients to use takes more work, and I guess that's why people tend not to use that often.
+
+For me, the key part is to be pragmatic when making web services, make them intuitive to use, and easy to extend. What most people tend to agree on, and follow, is to arrange an application into _resources_, we do this in our Model, and leverage HTTP methods to implement functionality on a resource. The convention is to use an uniform path for a resource such as `/users`, which is the pluralized version of the name of the resource. This is an exceptional post about [pragmatic restful API design](https://www.vinaysahni.com/best-practices-for-a-pragmatic-restful-api), if you want to understand the conventions well.
 
 ## What you need to complete this tutorial
 
@@ -369,17 +393,19 @@ Spring Initializr creates a default class to run you web application called **_U
 
 You can follow along and write the code with me, or you can download [the complete code from github](https://github.com/robole/spring-boot-api-for-beginners).
 
-## Get All Users
+## Write the code
+
+### Get All Users
 
 Let's begin by writing the code to get all of our users.
 
-### Create the model class
+#### Create the model class
 
 Our application is all about the user, which every application should be! 😉
 
 We want to create a `User` class that has the attributes: _id_, _name_, and _age_.
 
-Behind the scenes, Spring creates empty objects when creating or updating users (responding to POST and PUT requests). So, you always need to include a no-args constructor if you want to support these actions.
+Behind the scenes, Spring may need to create empty objects when creating or updating users (responding to POST and PUT requests). So, you always need to include a no-args constructor if you want to support these actions.
 
 We add the typical methods to make a regular java class. Setter and getters are required for retrieving and modifying the attributes. We must include `equals` and `hashCode` methods to support the comparison of _User_ objects. I used IntelliJ to generate all of these methods.
 
@@ -402,15 +428,17 @@ public class User {
 }
 ```
 
-## Create a Controller
+#### Create a Controller
 
 Remember, the controller is responsible for matching the HTTP request with a java method that returns a response.
 
-We annotate our Controller with `@RestController`, and we add methods to handle the different requests. Spring is going to transform the data into JSON for us before it is returned as a response.
+We add annotations to our Controller to implement functionality. `@RestController` marks the class as a Rest Controller, so Spring can link some functionality. We specify that the Controller should interpet all requests for the path `/users` with `@RequestMapping ("/users")`.
+
+We add methods to handle different requests and annotate them to indicate the HTTP method they are responding to. We return data from the method and Spring is going to transform the data into JSON for us and return it in a response.
 
 I have created an `ArrayList` of users to have some data to return.
 
-The `getUsers` method (you can call it whatever you want) returns all of the users for the URL [http://localhost:8080/users](http://localhost:8080/users). We tie the URL with our method using an annotation of `@RequestMapping` or `@GetMapping`. We return the `ArrayList` from our methid and Spring does the rest!
+The `getUsers` method (you can call it whatever you want) returns all of the users for the URL [http://localhost:8080/users](http://localhost:8080/users). We tie the URL with our method using an annotation of `@RequestMapping` or `@GetMapping`. We return the `ArrayList` from our method.
 
 ```java
 import com.roboleary.model.User;
@@ -420,6 +448,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.*;
 
 @RestController
+@RequestMapping ("/users")
 public class UserController {
     List<User> users = new ArrayList<User>();
 
@@ -430,14 +459,14 @@ public class UserController {
     }
 
     //for GET to http://localhost:8080/users
-    @GetMapping(value="/users")
+    @GetMapping
     public List<User> getUsers(){
         return users;
     }
   }
 ```
 
-#### @RequestMapping Variants
+##### @RequestMapping Variants
 
 Spring 4.3 introduced shortcut annotations, which serve the same purpose as `@RequestMapping` but have the HTTP method as part it's name.
 
@@ -452,16 +481,16 @@ You may seen them used also. They are:
 So, to annotate your method you could use this:
 
 ```java
-@GetMapping(value="/users")
+@GetMapping
 ```
 
 or this:
 
 ```java
-@RequestMapping(method=GET, value="/users")
+@RequestMapping(method=GET)
 ```
 
-### Create a class to start the application
+#### Create a class to start the application
 
 If you used Spring Initialzr, then this class is already created for you!
 
@@ -485,17 +514,17 @@ public class UserApplication {
 
 That's the hard bit done!
 
-#### Run the application
+##### Run the application
 
 Does it work? Run the `UserApplication` class, you can test the `GET` method in your Web Browser.
 
 ![get request](/assets/img/blog/2020-05-27-spring-boot-api/get.jpg)
 
-## Get user by ID
+### Get user by ID
 
 To get the user by ID, we want to be able to specify the ID in the URL.
 
-For example, we navigate to [http://localhost:8080/users/2](http://localhost:8080/users/2) to get the user with an id of 2, and we expect to get this response:
+For example, we navigate to [http://localhost:8080/users/2](http://localhost:8080/users/2) to get the user with an ID of 2, and we expect to get this response:
 
 ```javascript
 [{ id: 2, name: "Angela Merkel", age: 20 }];
@@ -504,7 +533,7 @@ For example, we navigate to [http://localhost:8080/users/2](http://localhost:808
 We put the variable name within curly brackets as part of our `@GetMapping` annotation, and we declare it using the `@PathVariable` annotation in our method signature. We search through our `ArrayList` to find the first user with that id.
 
 ```java
-@GetMapping(value="/users/{id}")
+@GetMapping(value="/{id}")
 public User getUsersById(@PathVariable("id") long id){
      User found = null;
 
@@ -519,7 +548,7 @@ public User getUsersById(@PathVariable("id") long id){
 }
 ```
 
-## Get user by name
+### Get user by name
 
 To get the user by name, we want to be able to specify a parameter at the end of the URL.
 
@@ -538,7 +567,7 @@ We need to add `params` to our `@GetMapping` annotation to specify the parameter
 We specify `@RequestParam` in our method signature, so we can use this variable inside our method to search for the user with that name. We use `equalsIgnoreCase()` to accept whatever mix of big and small letters we get from the client.
 
 ```java
-@GetMapping(value="/users", params = "name")
+@GetMapping(params = "name")
 public List<User> getUsersByName(@RequestParam(value="name") String name){
     List<User> filteredUsers = new ArrayList<User>();
 
@@ -552,7 +581,7 @@ public List<User> getUsersByName(@RequestParam(value="name") String name){
 }
 ```
 
-## Add a new user
+### Add a new user
 
 We add the user to our `ArrayList`. We use `ResponseEntity` as our method return type, it is a wrapper class where we can optionally include things such as: the status code (outcome of action), and headers to give the client information about the outcome.
 
@@ -561,14 +590,14 @@ This time our parameter is annotated with `@RequestBody`, this is because the da
 We return a status code of _HttpStatus.CREATED_, which is HTTP code of 201. There is no opportunity for there to be a failure to add a new user to our `ArrayList`, but you should consider this if you use a database.
 
 ```java
-@PostMapping(value="users")
+@PostMapping
 public ResponseEntity add(@RequestBody User u) {
        users.add(u);
        return new ResponseEntity(u, HttpStatus.CREATED);
 }
 ```
 
-## Update a user
+### Update a user
 
 Updates a user, or add a new user if there is no user found.
 
@@ -579,7 +608,7 @@ Our parameter is annotated with `@RequestBody` again.
 We return different status codes depending on whether we updated or added a user.
 
 ```java
-@PutMapping(value="users")
+@PutMapping
 public ResponseEntity addOrUpdate(@RequestBody User u) {
     ResponseEntity response;
 
@@ -602,12 +631,12 @@ We don't use PATCH in our web application. PATCH is used for partial update.
 
 This may be used when you use a database as it is more efficient to only update specifically what has changed, rather than replacing an entire object. As we are doing everything in memory with an `ArrayList`, there is no benefit to this.
 
-## Delete a user
+### Delete a user
 
 We remove the user from our `ArrayList`, and return a status code to indicate if the user was found or not.
 
 ```java
-@DeleteMapping(value="users/{id}")
+@DeleteMapping(value="/{id}")
 public ResponseEntity delete(@PathVariable("id")long id) {
     boolean found = false;
 
@@ -628,15 +657,13 @@ public ResponseEntity delete(@PathVariable("id")long id) {
 }
 ```
 
-## How to verify your application
+## How to test your application
 
-If you want to create tests for your code, this is a separate topic to cover.
+If you want to create automated tests for your code, this is a separate topic that deserves more time.
 
-As mentioned previously, GET methods can be executed in your browser.
+For now, as a sanity check, you can execute GET methods in your browser. You can use a client application like [Insomonia](https://insomnia.rest/) to execute other methods.
 
-I will show you one example using Insomnia.
-
-To add a new user, we make a POST request like below, we put a JSON object of our new user in the request body, and set the body type to JSON (this usually sets the _Content-Type_ header to "application/json").
+Here is a quick example to add a new user using Insomonia. We make a POST request like below, we put a JSON object of our new user in the request body, and set the body type to JSON (this usually sets the _Content-Type_ header to "application/json"). A status code of 201 indicates the user was created successfully.
 
 ![post request](/assets/img/blog/2020-05-27-spring-boot-api/post.jpg)
 
@@ -647,10 +674,10 @@ You can download [the complete code from github](https://github.com/robole/sprin
 ## Next steps
 
 1. Learn to write (integration) tests for your web application.
-1. Add a database to store your data long-term. You can use the _Spring Data Rest_ library for this.
+1. Add a database to store your data long-term.
 1. Build a complete API of something you are interested in.
 1. Learn how to add authentication to control access to data.
-1. Learn how to document your API. You can use libraries such as Swagger to automate some of this.
+1. Learn how to document your API. You can use libraries such as AsciiDoctor and Swagger to automate some of this.
 
 If you found this article useful give a ❤. Let me know if you are interested in a follow-up article regarding one of the topics above! 🙂
 

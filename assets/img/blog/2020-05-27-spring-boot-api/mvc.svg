@@ -13,7 +13,10 @@
    version="1.1"
    id="svg182"
    sodipodi:docname="mvc.svg"
-   inkscape:version="0.92.5 (2060ec1f9f, 2020-04-08)">
+   inkscape:version="0.92.5 (2060ec1f9f, 2020-04-08)"
+   inkscape:export-filename="D:\Programming\Workspace\Web\github-pages-website\robole.github.io\assets\img\blog\2020-05-27-spring-boot-api\mvc.png"
+   inkscape:export-xdpi="100"
+   inkscape:export-ydpi="100">
   <metadata
      id="metadata188">
     <rdf:RDF>
@@ -22,6 +25,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -40,8 +44,8 @@
      inkscape:window-height="837"
      id="namedview184"
      showgrid="false"
-     inkscape:zoom="0.822382"
-     inkscape:cx="75.905028"
+     inkscape:zoom="0.7814066"
+     inkscape:cx="194.54172"
      inkscape:cy="71.613624"
      inkscape:window-x="-8"
      inkscape:window-y="-8"
@@ -50,6 +54,13 @@
   <g
      transform="translate(-220 -140)"
      id="g180">
+    <rect
+       style="opacity:1;fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0.9988535;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:stroke fill markers"
+       id="rect4856"
+       width="599.00116"
+       height="359.00116"
+       x="220.49944"
+       y="140.4994" />
     <path
        d="M417.38 240H502v60h-84.62z"
        fill="none"
