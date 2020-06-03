@@ -1,14 +1,14 @@
 ---
 layout: scrollable_post
-title: "From A to Web App: Build an API with Spring Boot 🕸☕"
+title: "From A to Web App: Build an API in Java 🕸☕"
 description: Build a realistic API with Spring Boot
 category: java
-image: /assets/img/blog/2020-05-27-spring-boot-api/web-city.png
+image: /assets/img/blog/2020-06-03-spring-boot-api/web-city.png
 tags: [API, Java, Spring]
 published: true
 ---
 
-<img src="/assets/img/blog/2020-05-27-spring-boot-api/web-city.png" alt="web city!"/>
+<img src="/assets/img/blog/2020-06-03-spring-boot-api/web-city.png" alt="web city!"/>
 
 - [What is an API?](#what-is-an-api)
 - [Twitter API Example](#twitter-api-example)
@@ -42,13 +42,15 @@ published: true
 
 I'm writing this tutorial to fill a void that I have noticed. Building web applications is a top priority for people learning backend development, but I haven't seen any Java/Spring Boot tutorials that provide a clear path to get you there quickly with the least amount of friction. Tutorials are either too trivial ([Hello World API](http://spring.io/guides/gs/rest-service/)) to help you understand what you need to know; or they overwhelm beginners and assume too much about what you already know!
 
-I will build a simple API, which is a big step towards to what you would realistically build, and go through everything from start to finish. This enables you to skip ahead if you know about a topic already.
+The only thing you should know already is Java, to an intermediate level, everything else I will cover along the way. If you are familiar with a topic already, you can skip ahead. This way, you know that there are no gaps in your knowledge, or blindspots in your learning path.
+
+I will build a simple Web API with Spring Boot, which is a big step towards what you would build for an enterprise-grade application.
 
 ## What is an API?
 
 It is common now for companies to give access to their data through APIs. API stands for Application Programming Interface, it is a list of methods we can use to interact with a company's backend systems over the internet. These methods are often referred to as web services.
 
-<img src="/assets/img/blog/2020-05-27-spring-boot-api/api.png" alt="api diagram" style="display:block;width:100%;max-width:1250px;" loading="lazy"/>
+<img src="/assets/img/blog/2020-06-03-spring-boot-api/api.png" alt="api diagram" style="display:block;width:100%;max-width:1250px;" loading="lazy"/>
 
 Let's look at an example of an API to clarify what it is exactly!
 
@@ -58,15 +60,15 @@ I'm guessing you know what Twitter is already, but let's state what it is regard
 
 [Twitter's API reference](https://developer.twitter.com/en/docs/api-reference-index) gives you a long categorized list of methods. You can perform a wide range of actions on: tweets, direct messages, your personal account settings, and more. Almost everything you can do on the website is possible to do through the API. If you wanted to, you could use the API to build an entirely different front-end for Twitter, or a TwitterBot.
 
-<img src="/assets/img/blog/2020-05-27-spring-boot-api/twitter-api-reference.png" alt="twitter api reference" style="display:block;border:1px black solid;max-width:1250px;width:100%;" loading="lazy"/>
+<img src="/assets/img/blog/2020-06-03-spring-boot-api/twitter-api-reference.png" alt="twitter api reference" style="display:block;border:1px black solid;max-width:1250px;width:100%;" loading="lazy"/>
 
 Let's take an example of using the API, say we want to get all of the tweets from the timeline of **@spiderman**.
 
-<img src="/assets/img/blog/2020-05-27-spring-boot-api/twitter-api.png" alt="twitter api diagram" style="display:block;width:100%;max-width:1250px;" loading="lazy"/>
+<img src="/assets/img/blog/2020-06-03-spring-boot-api/twitter-api.png" alt="twitter api diagram" style="display:block;width:100%;max-width:1250px;" loading="lazy"/>
 
 Looking through the list of methods, [GET statuses/user_timeline](https://developer.twitter.com/en/docs/tweets/timelines/api-reference/get-statuses-user_timeline) appears to be the method that matches what we want. This is the method description:
 
-<img src="/assets/img/blog/2020-05-27-spring-boot-api/twitter-user-timeline-endpoint.png" alt="Twitter API user timeline request and response" style="display:block;border:1px black solid" loading="lazy"/>
+<img src="/assets/img/blog/2020-06-03-spring-boot-api/twitter-user-timeline-endpoint.png" alt="Twitter API user timeline request and response" style="display:block;border:1px black solid" loading="lazy"/>
 
 We need to have a client application to execute the methods. I like to use [Insomnia](https://insomnia.rest/), but other popular applications are: [cURL](https://curl.haxx.se/) (a command-line tool), [Postman](https://www.postman.com/) (a collaboration platform for API Development), and [Postwoman](https://postwoman.io/) (a minimal open-source alternative to Postman).
 
@@ -76,7 +78,7 @@ To use Twitter's API, you have to have a Twitter account, and register an applic
 
 You need to do some configuration in your Twitter account settings to get the developer keys. It's not obvious to locate the place in the settings for this! I wont show you how here, the focus is to show you what an API is. Below is the request (on the left) and the response received (on the right).
 
-<img src="/assets/img/blog/2020-05-27-spring-boot-api/twitter-req.jpg" alt="\Twitter API user timeline request and response" style="display:block;width:100%;max-width:1353px;margin:0 auto;" loading="lazy"/>
+<img src="/assets/img/blog/2020-06-03-spring-boot-api/twitter-req.jpg" alt="\Twitter API user timeline request and response" style="display:block;width:100%;max-width:1353px;margin:0 auto;" loading="lazy"/>
 
 You can see that our `screen_name` parameter is appended to the URL in our request. We use a question mark to mark the beginning of our parameters, then we provide the parameter name and value. You can provide a list of parameters if you need to, you separate each parameter with an ampersand.
 
@@ -86,7 +88,7 @@ The response returns a JSON array of tweets. The content of a tweet is contained
 
 Spring is an open-source application framework. You can think of it a swiss-army knife for creating enterprise applications, it has different modules that provide a range of functions such as: authentication, data access, inversion of control, messaging, web services, and so on.
 
-<img src="/assets/img/blog/2020-05-27-spring-boot-api/swiss-army-knife.svg" alt="swiss army knife" style="display:block;width:100%;max-width:400px;margin:0 auto;" loading="lazy"/>
+<img src="/assets/img/blog/2020-06-03-spring-boot-api/swiss-army-knife.svg" alt="swiss army knife" style="display:block;width:100%;max-width:400px;margin:0 auto;" loading="lazy"/>
 
 Spring’s philosophy is:
 
@@ -177,7 +179,7 @@ What is the purpose of each layer:
 - **View**: The View is the user interface. It renders the model to the user. In a web application, this is the web pages we write in HTML. It is covers the "front-end" of your application. <u>**We don't write this in our example application.**</u>
 - **Controller**: The Controller layer is the liaison between the Model and the View layers, it receives the user input and decides what to do with it. A Controller in a web application has two parts. The first part is the web server that matches incoming HTTP Requests to a particular handler method, this is built-in part of Spring Boot. The second part is the handler methods themselves, which can be confusingly called "controllers" also, this is the bit that we write. The handler methods are responsible for returning data from the model.
 
-<img src="/assets/img/blog/2020-05-27-spring-boot-api\mvc.svg" alt="MVC diagram" style="display:block;margin:0 auto;" loading="lazy"/>
+<img src="/assets/img/blog/2020-06-03-spring-boot-api\mvc.svg" alt="MVC diagram" style="display:block;margin:0 auto;" loading="lazy"/>
 
 The advantage of this approach is that our application is more [loosely-coupled](https://en.wikipedia.org/wiki/Loose_coupling). You can change the view, but the model can remain the same. This separation of responsibility is what makes our application more maintainable.
 
@@ -204,7 +206,7 @@ The most common form of URI is the Uniform Resource Locator ([URL](https://devel
 
 A URL is composed of different parts, some are mandatory and others are optional.
 
-<img src="/assets/img/blog/2020-05-27-spring-boot-api/url.png" alt="url syntax" loading="lazy"/>
+<img src="/assets/img/blog/2020-06-03-spring-boot-api/url.png" alt="url syntax" loading="lazy"/>
 
 1. **Scheme or protocol**: It indicates which protocol must be used. Usually it is the HTTP or its secured version, HTTPS. This is _required_.
 2. **Authority or domain name**: This indicates the name of the Web Server being requested. Alternatively, it is possible to directly use an IP address, but because it is less convenient, it is not often used on the Web. This is _required_.
@@ -376,7 +378,7 @@ You can use [Spring Initializr](https://start.spring.io/) to create your project
 
 To use [Spring Initializr](https://start.spring.io/), fill in fields, and click generate. You can then download your project in a zip file.
 
-![Spring Initializr configuration](/assets/img/blog/2020-05-27-spring-boot-api/spring-initializr.jpg)
+![Spring Initializr configuration](/assets/img/blog/2020-06-03-spring-boot-api/spring-initializr.jpg)
 
 Unzip the file and open it in your IDE of choice.
 
@@ -389,7 +391,7 @@ The dependencies may be downloaded automatically by your IDE when you import/ope
 
 Spring Initializr creates a default class to run you web application called **_UserApplication.java_**. You can run this to verify you are set-up correctly. It will run a web server for you, nothing more than that because we have written any code yet! You should see something like this on the command-line if it is set-up correctly:
 
-![Spring Initializr configuration](/assets/img/blog/2020-05-27-spring-boot-api/spring-boot-verify.jpg)
+![Spring Initializr configuration](/assets/img/blog/2020-06-03-spring-boot-api/spring-boot-verify.jpg)
 
 You can follow along and write the code with me, or you can download [the complete code from github](https://github.com/robole/spring-boot-api-for-beginners).
 
@@ -518,7 +520,7 @@ That's the hard bit done!
 
 Does it work? Run the `UserApplication` class, you can test the `GET` method in your Web Browser.
 
-![get request](/assets/img/blog/2020-05-27-spring-boot-api/get.jpg)
+![get request](/assets/img/blog/2020-06-03-spring-boot-api/get.jpg)
 
 ### Get user by ID
 
@@ -665,7 +667,7 @@ For now, as a sanity check, you can execute GET methods in your browser. You can
 
 Here is a quick example to add a new user using Insomonia. We make a POST request like below, we put a JSON object of our new user in the request body, and set the body type to JSON (this usually sets the _Content-Type_ header to "application/json"). A status code of 201 indicates the user was created successfully.
 
-![post request](/assets/img/blog/2020-05-27-spring-boot-api/post.jpg)
+![post request](/assets/img/blog/2020-06-03-spring-boot-api/post.jpg)
 
 ## Source code
 
@@ -679,7 +681,7 @@ You can download [the complete code from github](https://github.com/robole/sprin
 1. Learn how to add authentication to control access to data.
 1. Learn how to document your API. You can use libraries such as AsciiDoctor and Swagger to automate some of this.
 
-If you found this article useful give a ❤. Let me know if you are interested in a follow-up article regarding one of the topics above! 🙂
+Let me know if you are interested in a follow-up article regarding one of the topics above! 🙂
 
 Happy coding! 👩‍💻🙌
 
