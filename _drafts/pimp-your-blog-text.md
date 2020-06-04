@@ -1,4 +1,4 @@
-# Pimp your Blog: Styling
+# Pimp your Blog: Layout and readability
 
 
 

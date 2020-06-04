@@ -1,7 +1,7 @@
 ---
 layout: scrollable_post
-title: "From A to Web App: Build an API in Java 🕸☕"
-description: Build a realistic API with Spring Boot
+title: "From 'A' to 'Web App': Build an API in Java 🕸☕"
+description: "Understand the core concepts behind a building an API, and build a realistic API in Java with Spring Boot"
 category: java
 image: /assets/img/blog/2020-06-03-spring-boot-api/web-city.png
 tags: [API, Java, Spring]
@@ -351,15 +351,15 @@ This should be enough for you to know when dealing with web services, but for fu
 
 ### A little bit about REST
 
-You may have noticed I barely speak about REST in this article, and that's because I think it is a term misused too often when speaking about APIs and web services.
+You may have noticed I barely speak about REST in this article, and that's because I think it is a term misused too often.
 
-Representational state transfer (REST) is an architectural style that defines a set of constraints that can be followed when creating web services, which recommend using many of the conventions of the web. It was proposed by Roy Fielding in his doctoral dissertation in 2000.
+Representational state transfer (REST) is an architectural style that defines a set of constraints that can be followed when creating web services, which recommends using many of the conventions of the web. It was proposed by Roy Fielding in his doctoral dissertation in 2000.
 
-I recommend reading [this Stack Overflow thread on "What is Restful Programming"](https://stackoverflow.com/questions/671118/what-exactly-is-restful-programming) to understand more about it, and you can see some of the diversity of opinions on what it is a REST API "in the wild".
+I recommend reading [this Stack Overflow thread on "What is Restful Programming"](https://stackoverflow.com/questions/671118/what-exactly-is-restful-programming) to understand more about it, and you can see some of the diversity of opinions on what a REST API is "in the wild".
 
 If you build web services with a framework like Spring Boot, you follow some of the conventions of restful API design by default, but some would consider it a HTTP-based web service, rather than a restful web service. It gets murky quickly when people talk about how restful a web application is by comparing it to the academic definition, I don't think it is a productive endeavour to do so.
 
-One of the constraints of REST is to use [Hypermedia as the Engine of Application State (HATEOS)](http://restcookbook.com/Basics/hateoas/), which can be done in Spring Boot if you use the _Spring Data Rest_ starter dependency. In practice, most APIs do not follow this constraint, and this leads some people to say, "well, it is not a rest API then". 😅 There is merit in following the constraint, but for clients to use takes more work, and I guess that's why people tend not to use that often.
+One of the constraints of REST is to use [Hypermedia as the Engine of Application State (HATEOS)](http://restcookbook.com/Basics/hateoas/), which can be done in Spring Boot if you use the _Spring Data Rest_ starter dependency. In practice, most APIs do not follow this constraint, and this leads some people to say, "well, it is not a rest API then". 😅 There is merit in following this constraint, but for a clients to use HATEOAS properly takes more work, and I guess that's why people tend to avoid it.
 
 For me, the key part is to be pragmatic when making web services, make them intuitive to use, and easy to extend. What most people tend to agree on, and follow, is to arrange an application into _resources_, we do this in our Model, and leverage HTTP methods to implement functionality on a resource. The convention is to use an uniform path for a resource such as `/users`, which is the pluralized version of the name of the resource. This is an exceptional post about [pragmatic restful API design](https://www.vinaysahni.com/best-practices-for-a-pragmatic-restful-api), if you want to understand the conventions well.
 

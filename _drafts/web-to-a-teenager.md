@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "How to explain Web technologies to a 12-year old 💻"
+title: "How to explain Web technologies to a teenager 💻"
 category: programming
 tags: [CSS, Javascript, HTML, teaching]
 published: false
