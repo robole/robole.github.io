@@ -19,11 +19,11 @@ Spring MVC provides good support for testing your RESTful web services. The ```s
 
 I should mention that people have variations on how they use these libraries, and have some different preferences on how they like to test. So, you may see some different approaches, and contradictory opinions! The goal is to find a way that you understand, and are comfortable with. So, I hope this is it!
 
-# What am I testing?
+# What kind of testing should we do?
 
 We can define 2 broad levels of testing for our application:
-1. Unit tests: we want to test each class/unit in isolation by excluding the surrounding infrastructure, and mocking dependencies. True unit tests typically run extremely quickly.
-2. Integration testing: we test everything working together, no mocking. You may also see this referred to as end-to-end testing, but some testing strategies consider end-to-end testing as a more complete testing stage.
+1. Unit tests: We want to test each class/unit in isolation by excluding the surrounding infrastructure, and mocking dependencies. True unit tests typically run extremely quickly.
+2. Integration testing: We test everything working together, no mocking. You may also see this referred to as end-to-end testing, but some testing strategies consider end-to-end testing as a more complete testing stage.
 
 I summarised how I define them in more detail below:
 
@@ -33,7 +33,7 @@ I summarised how I define them in more detail below:
 <th>Integration test</th>
 </tr>
 <tr>
-<td>A single class/unit is tested in isolation</td>
+<td>A single unit is tested in isolation</td>
 <td>We test everything together.</td>
 </tr>
 <tr>
@@ -61,6 +61,7 @@ I summarised how I define them in more detail below:
 <td>Integration tests in an enterprise application can last for hours.</td>
 </tr>
 </tbody></table>
+
 
 # Example Application
 

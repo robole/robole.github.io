@@ -534,19 +534,26 @@ For example, we navigate to [http://localhost:8080/users/2](http://localhost:808
 
 We put the variable name within curly brackets as part of our `@GetMapping` annotation, and we declare it using the `@PathVariable` annotation in our method signature. We search through our `ArrayList` to find the first user with that id.
 
+If an user is found, we return an *OK* status (200). If the user is not found, we return a *Not Found* Status (404).
+
 ```java
 @GetMapping(value="/{id}")
-public User getUsersById(@PathVariable("id") long id){
-     User found = null;
+public ResponseEntity getUsersById(@PathVariable("id") long id){
+    User userFound = null;
 
-     for(User user: users){
-         if(user.getId() == id){
-              found = user;
-              break;
-         }
-     }
+    for(User user: users){
+        if(user.getId() == id){
+            userFound = user;
+            break;
+        }
+    }
 
-     return found;
+    if (userFound == null) {
+        return new ResponseEntity(HttpStatus.NOT_FOUND);
+    }
+
+    //found
+    return new ResponseEntity(userFound, HttpStatus.OK);
 }
 ```
 
@@ -568,9 +575,11 @@ We need to add `params` to our `@GetMapping` annotation to specify the parameter
 
 We specify `@RequestParam` in our method signature, so we can use this variable inside our method to search for the user with that name. We use `equalsIgnoreCase()` to accept whatever mix of big and small letters we get from the client.
 
+We return a status depending on if the user was found or not.
+
 ```java
 @GetMapping(params = "name")
-public List<User> getUsersByName(@RequestParam(value="name") String name){
+public ResponseEntity getUsersByName(@RequestParam(value="name") String name){
     List<User> filteredUsers = new ArrayList<User>();
 
     for(User user: users){
@@ -579,7 +588,12 @@ public List<User> getUsersByName(@RequestParam(value="name") String name){
         }
     }
 
-    return filteredUsers;
+    if (filteredUsers.isEmpty() == true) {
+        return new ResponseEntity(HttpStatus.NOT_FOUND);
+    }
+
+    //found
+    return new ResponseEntity(filteredUsers, HttpStatus.OK);
 }
 ```
 
@@ -639,7 +653,7 @@ We remove the user from our `ArrayList`, and return a status code to indicate if
 
 ```java
 @DeleteMapping(value="/{id}")
-public ResponseEntity delete(@PathVariable("id")long id) {
+public ResponseEntity delete(@PathVariable("id") long id) {
     boolean found = false;
 
     for(User user: users){
@@ -685,4 +699,4 @@ Let me know if you are interested in a follow-up article regarding one of the to
 
 Happy coding! 👩‍💻🙌
 
-<p style="font-size:.5em">Attribution for Icons from the Noun Project: Mobile by Rainbow Designs, Cloud by James Kopina, Database by Kimmi Studios, User by Adrian Coquet, Twitter by Acid Beast.</p>
+<p style="font-size:.5em">Icons for diagrams are from the Noun Project: Mobile by Rainbow Designs, Cloud by James Kopina, Database by Kimmi Studios, User by Adrian Coquet, Twitter by Acid Beast.</p>

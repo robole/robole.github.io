@@ -3,6 +3,7 @@ layout: post
 title: "Shall I enumerate the ways you drink me? Java enumerations 🤤☕"
 category: programming
 description: "Learn about enumerations in Java. An Enumeration (enum) is a data type with a list of related constants that limit its permitted values."
+image: /assets/img/blog/2018-04-25-java-enums/banner.jpg
 tags: [java, enumeration, enum]
 published: true
 ---
