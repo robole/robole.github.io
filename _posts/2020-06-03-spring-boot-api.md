@@ -1,5 +1,5 @@
 ---
-layout: scrollable_post
+layout: post
 title: "From 'A' to 'Web App': Build an API in Java 🕸☕"
 description: "Understand the core concepts behind a building an API, and build a realistic API in Java with Spring Boot"
 category: java
@@ -534,7 +534,7 @@ For example, we navigate to [http://localhost:8080/users/2](http://localhost:808
 
 We put the variable name within curly brackets as part of our `@GetMapping` annotation, and we declare it using the `@PathVariable` annotation in our method signature. We search through our `ArrayList` to find the first user with that id.
 
-If an user is found, we return an *OK* status (200). If the user is not found, we return a *Not Found* Status (404).
+If an user is found, we return an _OK_ status (200). If the user is not found, we return a _Not Found_ Status (404).
 
 ```java
 @GetMapping(value="/{id}")
