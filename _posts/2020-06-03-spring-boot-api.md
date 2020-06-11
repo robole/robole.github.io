@@ -8,7 +8,7 @@ tags: [API, Java, Spring]
 published: true
 ---
 
-<img src="/assets/img/blog/2020-06-03-spring-boot-api/web-city.png" alt="web city!"/>
+<img style="width:100%;max-width1280px;margin:0 auto;display:block" src="/assets/img/blog/2020-06-03-spring-boot-api/web-city.png" alt="web city!"/>
 
 - [What is an API?](#what-is-an-api)
 - [Twitter API Example](#twitter-api-example)
@@ -68,7 +68,7 @@ Let's take an example of using the API, say we want to get all of the tweets fro
 
 Looking through the list of methods, [GET statuses/user_timeline](https://developer.twitter.com/en/docs/tweets/timelines/api-reference/get-statuses-user_timeline) appears to be the method that matches what we want. This is the method description:
 
-<img src="/assets/img/blog/2020-06-03-spring-boot-api/twitter-user-timeline-endpoint.png" alt="Twitter API user timeline request and response" style="display:block;border:1px black solid" loading="lazy"/>
+<img src="/assets/img/blog/2020-06-03-spring-boot-api/twitter-user-timeline-endpoint.png" alt="Twitter API user timeline request and response" style="display:block;border:1px black solid;max-width:1047px;" loading="lazy"/>
 
 We need to have a client application to execute the methods. I like to use [Insomnia](https://insomnia.rest/), but other popular applications are: [cURL](https://curl.haxx.se/) (a command-line tool), [Postman](https://www.postman.com/) (a collaboration platform for API Development), and [Postwoman](https://postwoman.io/) (a minimal open-source alternative to Postman).
 
