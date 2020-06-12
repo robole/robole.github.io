@@ -20,6 +20,12 @@ published: true
 
 <img style="width:100%;max-width1280px;margin:0 auto;display:block" src="/assets/img/blog/2020-06-03-spring-boot-api/web-city.png" alt="web city!"/>
 
+I'm writing this tutorial to fill a void that I have noticed. Building web applications is a top priority for people learning backend development, but I haven't seen any Java or Spring Boot tutorials that provide a clear path to get you there quickly with the least amount of friction. Tutorials are either too trivial ([Hello World API](http://spring.io/guides/gs/rest-service/)) to help you understand what you need to know; or they overwhelm beginners and assume too much about what you already know!
+
+The only thing you should know already is Java, to an intermediate level, everything else I will cover along the way. If you are familiar with a topic already, you can skip ahead. This way, you know that there are no gaps in your knowledge, or blindspots in your learning path.
+
+I will build a simple Web API with Spring Boot, which is a big step towards what you would build for an enterprise-grade application.
+
 - [What is an API?](#what-is-an-api)
 - [Twitter API Example](#twitter-api-example)
 - [What is Spring and Spring Boot?](#what-is-spring-and-spring-boot)
@@ -49,12 +55,6 @@ published: true
 - [How to test your application](#how-to-test-your-application)
 - [Source code](#source-code)
 - [Next Steps](#next-steps)
-
-I'm writing this tutorial to fill a void that I have noticed. Building web applications is a top priority for people learning backend development, but I haven't seen any Java/Spring Boot tutorials that provide a clear path to get you there quickly with the least amount of friction. Tutorials are either too trivial ([Hello World API](http://spring.io/guides/gs/rest-service/)) to help you understand what you need to know; or they overwhelm beginners and assume too much about what you already know!
-
-The only thing you should know already is Java, to an intermediate level, everything else I will cover along the way. If you are familiar with a topic already, you can skip ahead. This way, you know that there are no gaps in your knowledge, or blindspots in your learning path.
-
-I will build a simple Web API with Spring Boot, which is a big step towards what you would build for an enterprise-grade application.
 
 ## What is an API?
 
