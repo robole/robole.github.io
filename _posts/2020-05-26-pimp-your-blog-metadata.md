@@ -7,6 +7,21 @@ image: "/assets/img/blog/2020-05-26-pimp-your-blog-metadata/banner.jpg"
 tags: [HTML, metadata]
 ---
 
+<style>
+.overflow-wrapper{
+  overflow-x:auto;
+  width: 100%;
+}
+
+.open-graph-table td:nth-child(2), .open-graph-table th:nth-child(2){
+  min-width:200px;
+}
+
+.open-graph-table td:nth-child(3), .open-graph-table th:nth-child(3){
+  min-width:300px;
+}
+</style>
+
 <img src="/assets/img/blog/2020-05-26-pimp-your-blog-metadata/banner.jpg" alt="social sharing" style="width:98%;max-width:1280px;margin:0 auto;"/>
 
 Rich snippets are summaries of the content of a webpage, usually it shows: a headline, an image, a description, and the link to your webpage.
@@ -100,7 +115,8 @@ Open Graph is used by the following Social Media platforms:
 
 Open Graph specifies the use of the _property_ and _content_ attributes, which deviates from the HTML standard of using _name_ and _content_. 🙄
 
-<table>
+<div class="overflow-wrapper">
+<table class="open-graph-table">
 <caption style="visibility:hidden;">Table outlining the key Open Graph metadata properties</caption>
 <thead>
   <tr>
@@ -177,6 +193,7 @@ Open Graph specifies the use of the _property_ and _content_ attributes, which d
   </tr>
 </tbody>
 </table>
+</div>
 <br>
 
 A typical blog post can be marked as below:
@@ -223,6 +240,7 @@ Twitter calls its rich snippets _Twitter Cards_.
 
 Twitter's metadata is similar to Open Graph, it is based on the same conventions. When using Open Graph to describe data on a page, it is easy to generate a Twitter Card without duplicating the elements and data. When the Twitter card processor looks at the metadata on a page, it first checks for the Twitter-specific properties, if they are not present, it falls back to the equivalent Open Graph property.
 
+<div class="overflow-wrapper">
 <table>
 <caption style="visibility:hidden;">Table outlining the key Open Graph metadata properties</caption>
 <thead>
@@ -254,6 +272,7 @@ Twitter's metadata is similar to Open Graph, it is based on the same conventions
   </tr>
 </tbody>
 </table>
+</div>
 <br>
 
 So, if we have already provided the Open Graph metadata, the only additional metadata to add is below:
