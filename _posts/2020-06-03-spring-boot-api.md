@@ -3,7 +3,7 @@ layout: post
 title: "From 'A' to 'Web App': Build an API in Java 🕸☕"
 description: "Understand the core concepts behind a building an API, and build a realistic API in Java with Spring Boot"
 category: java
-image: /assets/img/blog/2020-06-03-spring-boot-api/web-city.png
+image: "/assets/img/blog/2020-06-03-spring-boot-api/web-city.png"
 tags: [API, Java, Spring]
 published: true
 ---

@@ -3,11 +3,12 @@ layout: post
 title: "How do you make learning new stuff fun, and stay motivated? 💪🥳"
 description: "I learn a new concept or technology, and I try to make a small, silly thing with it as quickly as I can. If I can come up with something amusing, it helps to make it more fun bringing it to life."
 category: programming
+image: "/assets/img/blog/2020-04-13-make-learning-fun/fun.jpg"
 tags: [CSS, Javascript, HTML, learning]
 published: true
 ---
 
-<img src="/assets/img/blog/2020-04-13-make-learning-fun/fun.jpg" style="width:100%;" alt="laptop glowing on textbook"/>
+<img src="/assets/img/blog/2020-04-13-make-learning-fun/fun.jpg" style="width:100%;max-width:2400px;" alt="laptop glowing on textbook"/>
 
 I learn a new concept or technology, and I try to make a small, silly thing with it as quickly as I can. If I can come up with something amusing, it helps to make it more fun bringing it to life.
 

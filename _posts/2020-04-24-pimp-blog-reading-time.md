@@ -8,7 +8,7 @@ tags: [html, css, javascript, programming]
 published: true
 ---
 
-<img src="/assets/img/blog/2020-04-24-pimp-blog-reading-time/banner.jpg" alt="overhead point of view of coder at desk with 3 screens" style="width:98%;max-width:1920px;margin:0 auto;"/>
+<img src="/assets/img/blog/2020-04-24-pimp-blog-reading-time/banner.jpg" alt="overhead point of view of coder at desk with 3 screens" style="width:100%;max-width:1920px;"/>
 
 Can we add anything to a standard blog that would enhance the reading experience?
 

@@ -2,6 +2,7 @@
 layout: post
 title: "Code Collage: Reuse, repurpose, regret! 🎃👨‍💻"
 description: "Code can be composed from various sources. Do you find yourself writing code in short spurts before needing to go on a code hunt? It's a warning sign"
+image: "/assets/img/blog/2020-04-15-code-collage/collage.jpg"
 category: programming
 tags: [programming]
 published: true

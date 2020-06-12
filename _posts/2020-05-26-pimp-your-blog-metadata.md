@@ -22,11 +22,11 @@ tags: [HTML, metadata]
 }
 </style>
 
-<img src="/assets/img/blog/2020-05-26-pimp-your-blog-metadata/banner.jpg" alt="social sharing" style="width:98%;max-width:1280px;margin:0 auto;"/>
+<img src="/assets/img/blog/2020-05-26-pimp-your-blog-metadata/banner.jpg" alt="social sharing" style="display:block;width:100%;max-width:1280px;margin:0 auto;"/>
 
 Rich snippets are summaries of the content of a webpage, usually it shows: a headline, an image, a description, and the link to your webpage.
 
-<img src="/assets/img/blog/2020-05-26-pimp-your-blog-metadata/twitter-card.jpg" alt="sharing my blog post on twitter" style="width:98%;max-width:1051px;margin:0 auto;"/>
+<img src="/assets/img/blog/2020-05-26-pimp-your-blog-metadata/twitter-card.jpg" alt="sharing my blog post on twitter" style="width:100%;max-width:1051px;margin:0 auto;"/>
 
 Social media platforms created their own metadata specifications for rich snippets with the goal of helping web creators to advertise their content better. Search Engine results are also typically populated by the metadata you provide.
 

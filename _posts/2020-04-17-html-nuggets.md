@@ -2,16 +2,17 @@
 layout: post
 title: "HTML Nuggets: Little bits that you may have forgotten, never learned, never realised, or ignored! 🔸🤓"
 description: "Improve your knowledge of HTML with little bits that you may have forgotten, never learned, never realised, or ignored!"
+image: "/assets/img/blog/2020-04-17-html-nuggets/banner.jpg"
 category: web
 tags: [html, programming]
 published: true
 ---
 
-<img src="/assets/img/blog/2020-04-17-html-nuggets/banner.jpg"  alt="code collage" style="width:100%;max-width:1920px;margin:0 auto;"/>
+<img src="/assets/img/blog/2020-04-17-html-nuggets/banner.jpg"  alt="golden fragments" style="width:100%;max-width:1920px;"/>
 
 If you learned something new from this, let me know what it is! 😊
 
-1. [No doctype, maybe no emojis 😢](#no-doctype-maybe-no-emojis-)
+1. [Don't garble your emojis 😢](#dont-garble-your-emojis-)
 1. [Optimize: Lazy loading of images and iframes with the `loading` attribute](#optimize-lazy-loading-of-images-and-iframes-with-the-loading-attribute)
 1. [Good form: You're my `type` 😘 Get the right keyboard on mobile for inputs](#good-form-youre-my-type--get-the-right-keyboard-on-mobile-for-inputs)
 1. [Good form: Restrict input by `type`](#good-form-restrict-input-by-type)
@@ -27,7 +28,7 @@ If you learned something new from this, let me know what it is! 😊
 1. [You can show/hide details in a collapsible widget](#you-can-showhide-details-in-a-collapsible-widget)
 1. [_Fernstraßenbauprivatfinanzierungsgesetz_ is a real word. Use `<wbr>`](#fernstraßenbauprivatfinanzierungsgesetz-is-a-real-word-use-wbr).
 
-## No doctype, maybe no emojis 😢
+## Don't garble your emojis 😢
 
 The doctype declares the version of HTML we use, more specifically what web standard the document follows (XHTML 1.1, HTML 4.01, HTML 5).
 
