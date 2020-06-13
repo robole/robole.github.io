@@ -8,12 +8,13 @@
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    id="svg8"
-   height="800"
-   width="800"
    version="1.1"
    viewBox="0 0 211.66666 211.66667"
-   sodipodi:docname="cost and benefit analysis of unit testing.svg"
-   inkscape:version="0.92.5 (2060ec1f9f, 2020-04-08)">
+   sodipodi:docname="cost-benefit-analysis-diagram.svg"
+   inkscape:version="0.92.5 (2060ec1f9f, 2020-04-08)"
+   inkscape:export-filename="D:\Programming\Workspace\Web\github-pages-website\robole.github.io\assets\img\blog\2020-06-14-api-testing\cost-benefit-analysis-diagram.png"
+   inkscape:export-xdpi="100"
+   inkscape:export-ydpi="100">
   <metadata
      id="metadata24">
     <rdf:RDF>
@@ -22,7 +23,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -41,8 +42,8 @@
      inkscape:window-height="837"
      id="namedview20"
      showgrid="false"
-     inkscape:zoom="0.39640625"
-     inkscape:cx="435.00567"
+     inkscape:zoom="0.5326709"
+     inkscape:cx="244.4565"
      inkscape:cy="219.90871"
      inkscape:window-x="-8"
      inkscape:window-y="-8"
@@ -51,6 +52,13 @@
   <g
      id="layer1"
      transform="translate(0 -85.333)">
+    <rect
+       style="opacity:1;fill:#ffffff;fill-opacity:0.99215686;fill-rule:evenodd;stroke:none;stroke-width:0.79374975;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:stroke fill markers"
+       id="rect4774"
+       width="211.66667"
+       height="211.66667"
+       x="-5.5158786e-17"
+       y="85.332993" />
     <rect
        style="opacity:1;fill:#ffe680;fill-opacity:1;fill-rule:evenodd;stroke:#000001;stroke-width:1.05833328;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:stroke fill markers"
        id="rect8466"

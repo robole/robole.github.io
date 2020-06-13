@@ -5,7 +5,7 @@ category: testing
 description: "There are different strategies and tools you can employ for testing web applications, I will break these down for you, and test the application from my previous post."
 tags: [Java, Spring, testing]
 image: /assets/img/blog/2020-06-14-api-testing/banner.svg
-published: false
+published: true
 ---
 
 <img src="/assets/img/blog/2020-06-14-api-testing/banner.svg" alt="a spider dropping onto someone's head">
@@ -41,6 +41,7 @@ There are different strategies and tools you can employ for testing web applicat
   - [Write a Test Suite](#write-a-test-suite)
 - [Source Code](#source-code)
 - [Final Words](#final-words)
+- [References](#references)
 
 ## What should we test?
 
@@ -70,11 +71,11 @@ One way to define what your unit of choice is, is to decide if your tests are so
 
 Sociable tests test a unit and its collaborating units together. Often, for an unit to fulfil its behaviour, it requires collaboration with other units, so this group can serve as "your logical unit" if you wish.
 
-<img src="/assets/img/blog/2020-06-14-api-testing/sociable-test.svg" alt="sociable test diagram">
+<img src="/assets/img/blog/2020-06-14-api-testing/sociable-test.svg" alt="sociable test diagram" style="max-width:600px">
 
 Solitary tests focus on an isolated unit and exclude its collaborating units. This is done by using _test doubles_ (Dummy objects, Stubs, Spies, Mocks, and similar) instead of the collaborating units.
 
-<img src="/assets/img/blog/2020-06-14-api-testing/solitary-test.svg" alt="sociable test diagram">
+<img src="/assets/img/blog/2020-06-14-api-testing/solitary-test.svg" alt="sociable test diagram" style="max-width:600px">
 
 If you want to test your system only using sociable tests, it is not always be pragmatic to do so, you may encounter situations such as asynchronous collaborations (HTTP requests) or concurrent actions (threads), which may require you use a solitary test.
 
@@ -131,7 +132,7 @@ This starter dependency combines a compatible collection of testing libraries. I
 2. [Mockito](https://site.mockito.org/): Is used for creating mock objects. It offers a simply API. You can use annotations such as `@Mock` for variables and it will create a mock object for you.
 3. [Hamcrest](https://www.petrikainulainen.net/programming/testing/junit-5-tutorial-writing-assertions-with-hamcrest/): Is used to declare "matcher" rules, which are easier to read e.g. `assertThat(Math.sqrt(-1), is(notANumber()));`.
 4. [JsonPath](https://www.baeldung.com/guide-to-jayway-jsonpath): Is used to query JSON objects using path expressions e.g. `$.name` would reference _name_ in `{name: "rob oleary, age :20}`.
-5. [JSONAssert](http://jsonassert.skyscreamer.org/): Enables you to execute assertions with JSON data in less code e.g. `JSONAssert.assertEquals(expectedJSON, actualJSON, strictMode);`.
+5. [JSONAssert](http://jsonassert.skyscreamer.org/): Enables you to execute assertions with JSON data in less code e.g. `JSONAssert.<wbr>assertEquals( expectedJSON, actualJSON, strictMode);`.
 6. [JacksonTester](https://docs.spring.io/spring-boot/docs/current/api/org/springframework/boot/test/json/JacksonTester.html): Create an object mapper to transform objects to and from JSON.
 
 You will see that different people prefer some libraries and styles over another, or they may mix and match them. So, don't be intimidated if you see test cases that look quite different from what you already are accustomed to, the objectives are the same.
@@ -220,7 +221,7 @@ public class UserTest {
 
 ```
 
-The test cases are quite simple and shouldn't require explanation. You can choose a [naming convention for your methods](https://dzone.com/articles/7-popular-unit-test-naming) if you want to, I loosely follow the convention of _MethodName_StateUnderTest_ExpectedBehavior_.
+The test cases are quite simple and shouldn't require explanation. You can choose a [naming convention for your methods](https://dzone.com/articles/7-popular-unit-test-naming) if you want to, I loosely follow the convention of _MethodName<wbr>\_StateUnderTest<wbr>\_ExpectedBehavior_.
 
 In most IDEs you can run your tests in the same way as you run a class, and it will show a test runner which shows the execution of the various test.
 
@@ -228,7 +229,7 @@ In most IDEs you can run your tests in the same way as you run a class, and it w
 
 **The execution time is 371ms for 9 tests.** The picture below is what the tester runner looks like in IntelliJ.
 
-![intellij test runner](/assets/img/blog/2020-06-14-api-testing/test-runner-intellij.jpg)
+<img src="/assets/img/blog/2020-06-14-api-testing/test-runner-intellij.jpg" alt="intellij test runner" style="max-width:100%">
 
 ### Unit test for UserController
 
@@ -292,7 +293,7 @@ public void getUsers_2UsersExist_ReturnOK() throws Exception{
 ```
 
 - Preparation: We write a helper method `addUsers` to create Users to setup data.
-- Execution: Static imports are used to allow us to call the static methods for making requests. For example, `static import org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;` enables us to create a mock GET request using `get()`. We chain methods to shorten our code.
+- Execution: Static imports are used to allow us to call the static methods for making requests. For example, `static import org.<wbr>springframework.test.<wbr>web.servlet<wbr>.request.<wbr>MockMvcRequestBuilders.<wbr>get;` enables us to create a mock GET request using `get()`. We chain methods to shorten our code.
 - Verify: I use the Hamcrest matchers for the assertions. I build the expected result string using `JacksonTester`.
 
 Alternatively, some people using `JsonPath` for assertions when dealing with JSON, I use `JacksonTester` because Spring uses Jackson for the transformation functionality, so it a bit closer to the real functionality.
@@ -350,7 +351,7 @@ We cover each method under test with similar test cases.
 
 **The execution time for the 14 test cases in `UserControllerTest` is 12 seconds**. As you can see below most of the time is taken on the first test case, subsequent test cases benefit from caching, which makes them run in 100ms or so.
 
-![test runner usercontrollertest](/assets/img/blog/2020-06-14-api-testing/test-runner-usercontrollertest.jpg)
+<img src="/assets/img/blog/2020-06-14-api-testing/test-runner-usercontrollertest.jpg" alt="test usercontrollertest" style="max-width:100%">
 
 ### Integration Test for UserController
 
@@ -488,13 +489,11 @@ I hope this gives a more nuanced explanation of testing a web application. I fou
 
 When you have a web application with more layers, such as a persistence layer and service layer, you need to do a bit more with your tests, but it is just variation on what we have done already mostly. Discussing it with a complete application is the most illuminating way to learn about it.
 
-Give a ❤ if you enjoyed the article or found it helpful. If you have questions or feedback, be sure to let me know! 🙂
-
 Happy coding! 👩‍💻🙌
 
 <p style="font-size:0.75em">Two images were used to create the banner image, they were made by <a href="https://www.flaticon.com/authors/freepik">Freepik</a> from <a href="https://www.flaticon.com/"> www.flaticon.com</a>.</p>
 
-<h3>References</h3>
+## References
 
 <ol style="display:block;">
     <li><a id="ref1" href="https://dev.to/scottshipp/why-test-pojos-1lfb">Why test POJOs? by Scott Shipp</a>: Why test POJOs?</li>

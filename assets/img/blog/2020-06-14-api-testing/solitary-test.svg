@@ -9,13 +9,14 @@
    xmlns="http://www.w3.org/2000/svg"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   width="800"
-   height="800"
    viewBox="0 0 800 800"
    version="1.1"
    id="svg4845"
    inkscape:version="0.92.5 (2060ec1f9f, 2020-04-08)"
-   sodipodi:docname="solitary-test.svg">
+   sodipodi:docname="solitary-test.svg"
+   inkscape:export-filename="D:\Programming\Workspace\Web\github-pages-website\robole.github.io\assets\img\blog\2020-06-14-api-testing\solitary-test.png"
+   inkscape:export-xdpi="100"
+   inkscape:export-ydpi="100">
   <defs
      id="defs4839" />
   <sodipodi:namedview
@@ -25,18 +26,22 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.44687906"
-     inkscape:cx="298.05474"
-     inkscape:cy="382.53732"
+     inkscape:zoom="0.2710725"
+     inkscape:cx="291.03792"
+     inkscape:cy="-61.273387"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
-     showgrid="false"
+     showgrid="true"
      units="px"
      inkscape:window-width="1600"
      inkscape:window-height="837"
      inkscape:window-x="-8"
      inkscape:window-y="-8"
-     inkscape:window-maximized="1" />
+     inkscape:window-maximized="1">
+    <inkscape:grid
+       type="xygrid"
+       id="grid4767" />
+  </sodipodi:namedview>
   <metadata
      id="metadata4842">
     <rdf:RDF>
@@ -54,6 +59,13 @@
      inkscape:groupmode="layer"
      id="layer1"
      transform="translate(0,-85.333316)">
+    <rect
+       style="opacity:1;fill:#ffffff;fill-opacity:0.99215686;fill-rule:evenodd;stroke:none;stroke-width:11.90127563;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:stroke fill markers"
+       id="rect4766"
+       width="800"
+       height="800"
+       x="0"
+       y="85.333328" />
     <path
        style="opacity:1;fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:5.00031519;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:stroke fill markers"
        d="M 184.36623,515.3742 457.29609,514.58304"
@@ -119,7 +131,7 @@
          x="188.8085"
          y="164.53598">Solitary Test</tspan></text>
     <rect
-       style="opacity:1;fill:#9e0009;fill-opacity:0.775;fill-rule:evenodd;stroke:#000001;stroke-width:4.81599998;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:4.81599998, 14.44799995;stroke-dashoffset:0;stroke-opacity:1;paint-order:stroke fill markers"
+       style="opacity:1;fill:#0546b0;fill-opacity:1;fill-rule:evenodd;stroke:#000001;stroke-width:4.81599998;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:4.81599998, 14.44799994999999981;stroke-dashoffset:0;stroke-opacity:1;paint-order:stroke fill markers"
        id="rect9327-9"
        width="95.183929"
        height="95.183922"
@@ -132,7 +144,7 @@
        inkscape:connector-curvature="0"
        sodipodi:nodetypes="cc" />
     <rect
-       style="opacity:1;fill:#9e0009;fill-opacity:0.775;fill-rule:evenodd;stroke:#000001;stroke-width:4.81599998;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:4.81599998, 14.44799995;stroke-dashoffset:0;stroke-opacity:1;paint-order:stroke fill markers"
+       style="opacity:1;fill:#0546b0;fill-opacity:1;fill-rule:evenodd;stroke:#000001;stroke-width:4.81599998;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:4.81599998, 14.44799994999999981;stroke-dashoffset:0;stroke-opacity:1;paint-order:stroke fill markers"
        id="rect9327-9-2"
        width="95.183929"
        height="95.183922"
@@ -148,12 +160,12 @@
     <text
        xml:space="preserve"
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:26.66666603px;line-height:60px;font-family:Roboto;-inkscape-font-specification:'Roboto, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;opacity:1;fill:#0546b0;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:3;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:stroke fill markers"
-       x="154.9225"
+       x="148.9225"
        y="866.33881"
        id="text4781"><tspan
          sodipodi:role="line"
          id="tspan4779"
-         x="154.9225"
+         x="148.9225"
          y="866.33881">Test</tspan></text>
     <rect
        style="opacity:1;fill:#9e0009;fill-opacity:0.99215686;fill-rule:evenodd;stroke:#fffefc;stroke-width:1.44482243;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:stroke fill markers"
@@ -165,13 +177,13 @@
     <text
        xml:space="preserve"
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:26.66666603px;line-height:60px;font-family:Roboto;-inkscape-font-specification:'Roboto, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;opacity:1;fill:#9e0008;fill-opacity:0.99215686;fill-rule:evenodd;stroke:none;stroke-width:3;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:stroke fill markers"
-       x="261.15762"
-       y="866.18738"
+       x="258.85196"
+       y="865.41528"
        id="text4781-9"><tspan
          sodipodi:role="line"
          id="tspan4779-8"
-         x="261.15762"
-         y="866.18738">Code</tspan></text>
+         x="258.85196"
+         y="865.41528">Code</tspan></text>
     <ellipse
        style="opacity:1;fill:none;fill-opacity:1;fill-rule:evenodd;stroke:#0546b0;stroke-width:3;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:3, 9;stroke-dashoffset:0;stroke-opacity:1;paint-order:stroke fill markers"
        id="path4762"
@@ -179,5 +191,22 @@
        cy="514.34137"
        rx="78.264236"
        ry="78.264229" />
+    <rect
+       style="opacity:1;fill:#0546b0;fill-opacity:1;fill-rule:evenodd;stroke:#000001;stroke-width:1.44480097;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:1.44480101, 4.33440304;stroke-dashoffset:0;stroke-opacity:1;paint-order:stroke fill markers"
+       id="rect9327-9-2-6"
+       width="28.555199"
+       height="28.555197"
+       x="335"
+       y="840.33331" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:26.66666603px;line-height:60px;font-family:Roboto;-inkscape-font-specification:'Roboto, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;opacity:1;fill:#0546b0;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:3;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:stroke fill markers"
+       x="368.36578"
+       y="864.88123"
+       id="text4781-6"><tspan
+         sodipodi:role="line"
+         id="tspan4779-4"
+         x="368.36578"
+         y="864.88123">Test Double</tspan></text>
   </g>
 </svg>
