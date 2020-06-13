@@ -5,13 +5,11 @@ description: "What if you gathered all of your digital 'things' together, all of
 category: tools
 image: "/assets/img/blog/2020-06-12-language-spark-joy/banner-small.jpg"
 tags: [programming, tools]
-published: false
+published: true
 ---
 
 <figure>
-<img src="/assets/img/blog/2020-06-12-language-spark-joy/banner-small.jpg"
-    srcset="/assets/img/blog/2020-06-12-language-spark-joy/banner-small.jpg 640vw, /assets/img/blog/2020-06-12-language-spark-joy/banner-700.jpg 700w"
-    sizes="(max-width: 640px) 640px, (min-width: 641px) 100vw">
+<img src="/assets/img/blog/2020-06-12-language-spark-joy/banner-960.jpg" style="width:100%;max-width:960px;object-fit: contain;">
 <figcaption>Photo by MI PHAM on Unsplash</figcaption>
 </figure>
 <br>
