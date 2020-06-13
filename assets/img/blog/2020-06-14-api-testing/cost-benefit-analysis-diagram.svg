@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   id="svg8"
+   height="800"
+   width="800"
+   version="1.1"
+   viewBox="0 0 211.66666 211.66667"
+   sodipodi:docname="cost and benefit analysis of unit testing.svg"
+   inkscape:version="0.92.5 (2060ec1f9f, 2020-04-08)">
+  <metadata
+     id="metadata24">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <defs
+     id="defs22" />
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="1600"
+     inkscape:window-height="837"
+     id="namedview20"
+     showgrid="false"
+     inkscape:zoom="0.39640625"
+     inkscape:cx="435.00567"
+     inkscape:cy="219.90871"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1" />
+  <g
+     id="layer1"
+     transform="translate(0 -85.333)">
+    <rect
+       style="opacity:1;fill:#ffe680;fill-opacity:1;fill-rule:evenodd;stroke:#000001;stroke-width:1.05833328;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:stroke fill markers"
+       id="rect8466"
+       width="77.528511"
+       height="77.528511"
+       x="45.781403"
+       y="100.73611" />
+    <rect
+       style="opacity:1;fill:#ffe680;fill-opacity:1;fill-rule:evenodd;stroke:#000001;stroke-width:1.05833328;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:stroke fill markers"
+       id="rect8466-3"
+       width="77.528511"
+       height="77.528511"
+       x="123.30989"
+       y="100.73611" />
+    <text
+       id="text8464"
+       style="font-size:10.58300018px;line-height:1.25;font-family:Roboto;letter-spacing:0px;word-spacing:0px;fill:#000000"
+       xml:space="preserve"
+       font-size="10.583px"
+       line-height="1.25"
+       y="137.75159"
+       x="126.24976"><tspan
+         id="tspan8462"
+         y="137.75159"
+         x="126.24976"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:7.05555534px;font-family:Roboto;-inkscape-font-specification:'Roboto, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;stroke-width:0.26458001">Complicated Code that</tspan></text>
+    <text
+       id="text8464-2"
+       style="font-size:10.58300018px;line-height:1.25;font-family:Roboto;letter-spacing:0px;word-spacing:0px;fill:#000000;stroke-width:1"
+       xml:space="preserve"
+       font-size="10.583px"
+       line-height="1.25"
+       y="147.10931"
+       x="131.44511"><tspan
+         id="tspan8462-0"
+         y="147.10931"
+         x="131.44511"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:7.05555534px;font-family:Roboto;-inkscape-font-specification:'Roboto, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;stroke-width:0.26458001">requires refactoring</tspan></text>
+    <text
+       id="text8464-4"
+       style="font-size:10.58300018px;line-height:1.25;font-family:Roboto;letter-spacing:0px;word-spacing:0px;fill:#000000;stroke-width:1"
+       xml:space="preserve"
+       font-size="10.583px"
+       line-height="1.25"
+       y="138.11362"
+       x="66.88504"><tspan
+         id="tspan8462-9"
+         y="138.11362"
+         x="66.88504"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:7.05555534px;font-family:Roboto;-inkscape-font-specification:'Roboto, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;stroke-width:0.26458001">Algorithms</tspan></text>
+    <rect
+       style="opacity:1;fill:#ffe680;fill-opacity:1;fill-rule:evenodd;stroke:#000001;stroke-width:1.05833328;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:stroke fill markers"
+       id="rect8466-5"
+       width="77.528511"
+       height="77.528511"
+       x="45.781403"
+       y="178.26462" />
+    <rect
+       style="opacity:1;fill:#ffe680;fill-opacity:1;fill-rule:evenodd;stroke:#000001;stroke-width:1.05833328;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:stroke fill markers"
+       id="rect8466-3-5"
+       width="77.528511"
+       height="77.528511"
+       x="123.30989"
+       y="178.26462" />
+    <text
+       id="text8464-0"
+       style="font-size:10.58300018px;line-height:1.25;font-family:Roboto;letter-spacing:0px;word-spacing:0px;fill:#000000;stroke-width:1"
+       xml:space="preserve"
+       font-size="10.583px"
+       line-height="1.25"
+       y="216.61501"
+       x="142.60222"><tspan
+         id="tspan8462-2"
+         y="216.61501"
+         x="142.60222"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:7.05555534px;font-family:Roboto;-inkscape-font-specification:'Roboto, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;stroke-width:0.26458001">Coordinators</tspan></text>
+    <text
+       id="text8464-4-6"
+       style="font-size:10.58300018px;line-height:1.25;font-family:Roboto;letter-spacing:0px;word-spacing:0px;fill:#000000;stroke-width:1"
+       xml:space="preserve"
+       font-size="10.583px"
+       line-height="1.25"
+       y="216.30957"
+       x="64.54895"><tspan
+         id="tspan8462-9-7"
+         y="216.30957"
+         x="64.54895"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:7.05555534px;font-family:Roboto;-inkscape-font-specification:'Roboto, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;stroke-width:0.26458001">Trivial Code</tspan></text>
+    <text
+       id="text8464-4-6-4"
+       style="font-size:10.58300018px;line-height:1.25;font-family:Roboto;letter-spacing:0px;word-spacing:0px;fill:#000000;stroke-width:1"
+       xml:space="preserve"
+       font-size="10.583px"
+       line-height="1.25"
+       y="264.94299"
+       x="76.182465"><tspan
+         id="tspan8462-9-7-5"
+         y="264.94299"
+         x="76.182465"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:7.05555534px;font-family:Roboto;-inkscape-font-specification:'Roboto, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;stroke-width:0.26458001">LOW</tspan></text>
+    <text
+       id="text8464-4-6-4-4"
+       style="font-size:10.58300018px;line-height:1.25;font-family:Roboto;letter-spacing:0px;word-spacing:0px;fill:#000000;stroke-width:1"
+       xml:space="preserve"
+       font-size="10.583px"
+       line-height="1.25"
+       y="216.74329"
+       x="26.365005"><tspan
+         id="tspan8462-9-7-5-4"
+         y="216.74329"
+         x="26.365005"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:7.05555534px;font-family:Roboto;-inkscape-font-specification:'Roboto, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;stroke-width:0.26458001">LOW</tspan></text>
+    <text
+       id="text8464-4-6-4-9"
+       style="font-size:10.58300018px;line-height:1.25;font-family:Roboto;letter-spacing:0px;word-spacing:0px;fill:#000000;stroke-width:1"
+       xml:space="preserve"
+       font-size="10.583px"
+       line-height="1.25"
+       y="265.4675"
+       x="156.1848"><tspan
+         id="tspan8462-9-7-5-45"
+         y="265.4675"
+         x="156.1848"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:7.05555534px;font-family:Roboto;-inkscape-font-specification:'Roboto, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;stroke-width:0.26458001">HIGH</tspan></text>
+    <text
+       id="text8464-4-6-4-9-4"
+       style="font-size:10.58300018px;line-height:1.25;font-family:Roboto;letter-spacing:0px;word-spacing:0px;fill:#000000;stroke-width:1"
+       xml:space="preserve"
+       font-size="10.583px"
+       line-height="1.25"
+       y="138.98476"
+       x="23.828199"><tspan
+         id="tspan8462-9-7-5-45-7"
+         y="138.98476"
+         x="23.828199"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:7.05555534px;font-family:Roboto;-inkscape-font-specification:'Roboto, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;stroke-width:0.26458001">HIGH</tspan></text>
+    <text
+       id="text8491-8-6"
+       style="font-size:10.58300018px;line-height:1.25;font-family:Roboto;letter-spacing:0px;word-spacing:0px;fill:#000000;stroke-width:1"
+       xml:space="preserve"
+       font-size="10.583px"
+       line-height="1.25"
+       y="186.28812"
+       x="2.3728764"><tspan
+         id="tspan8489-7-3"
+         font-size="4.9389px"
+         y="186.28812"
+         x="2.3728764"
+         style="font-size:4.93889999px;stroke-width:0.26458001">~ Complexity</tspan></text>
+    <text
+       id="text8464-4-6-3"
+       style="font-size:10.58300018px;line-height:1.25;font-family:Roboto;letter-spacing:0px;word-spacing:0px;fill:#000000;stroke-width:1"
+       xml:space="preserve"
+       font-size="10.583px"
+       line-height="1.25"
+       y="281.24417"
+       x="115.64211"><tspan
+         id="tspan8462-9-7-7"
+         y="281.24417"
+         x="115.64211"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:7.05555534px;font-family:Roboto;-inkscape-font-specification:'Roboto, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;stroke-width:0.26458001">Cost</tspan></text>
+    <text
+       id="text8464-4-6-3-3"
+       style="font-size:10.58300018px;line-height:1.25;font-family:Roboto;letter-spacing:0px;word-spacing:0px;fill:#000000;stroke-width:1"
+       xml:space="preserve"
+       font-size="10.583px"
+       line-height="1.25"
+       y="178.68544"
+       x="6.8208055"><tspan
+         id="tspan8462-9-7-7-3"
+         y="178.68544"
+         x="6.8208055"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:7.05555534px;font-family:Roboto;-inkscape-font-specification:'Roboto, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;stroke-width:0.26458001">Benefit</tspan></text>
+    <text
+       id="text8491-8-6-5"
+       style="font-size:10.58300018px;line-height:1.25;font-family:Roboto;letter-spacing:0px;word-spacing:0px;fill:#000000;stroke-width:1"
+       xml:space="preserve"
+       font-size="10.583px"
+       line-height="1.25"
+       y="288.44257"
+       x="96.397858"><tspan
+         id="tspan8489-7-3-2"
+         font-size="4.9389px"
+         y="288.44257"
+         x="96.397858"
+         style="font-size:4.93889999px;stroke-width:0.26458001">~ Number of dependencies</tspan></text>
+  </g>
+</svg>
