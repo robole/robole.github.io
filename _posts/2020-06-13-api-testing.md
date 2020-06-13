@@ -5,7 +5,7 @@ category: testing
 description: "There are different strategies and tools you can employ for testing web applications, I will break these down for you, and test the application from my previous post."
 tags: [Java, Spring, testing]
 image: /assets/img/blog/2020-06-14-api-testing/banner.svg
-published: true
+published: false
 ---
 
 <img src="/assets/img/blog/2020-06-14-api-testing/banner.svg" alt="a spider dropping onto someone's head">
