@@ -5,7 +5,7 @@ category: testing
 description: "There are different strategies and tools you can employ for testing web applications, I will break these down for you, and test the application from my previous post."
 tags: [Java, Spring, testing]
 image: /assets/img/blog/2020-06-14-api-testing/banner.svg
-published: false
+published: true
 ---
 
 <img src="/assets/img/blog/2020-06-14-api-testing/banner.svg" alt="a spider dropping onto someone's head">
@@ -15,7 +15,7 @@ Bugs are an inevitable, unwelcome part of programming. By testing and code in ta
 There are different strategies and tools you can employ for testing web applications, I will break these down for you, and test the application from my previous post. Although, I am testing a Spring Boot application, a lot of what I discuss can be applied to any web application written in Java, which you wish to test.
 
 - [What should we test?](#what-should-we-test)
-- [Unit tests](#unit-tests)
+- [Unit Tests](#unit-tests)
   - [What is a unit?](#what-is-a-unit)
   - [Sociable or Solitary?](#sociable-or-solitary)
 - [Integration Tests](#integration-tests)
@@ -24,19 +24,17 @@ There are different strategies and tools you can employ for testing web applicat
 - [Testing the application](#testing-the-application)
   - [How to Write Test Cases](#how-to-write-test-cases)
   - [Unit Test for User](#unit-test-for-user)
-    - [Should I test POJOs](#should-i-test-pojos)
+    - [Should I Test POJOs?](#should-i-test-pojos)
     - [Writing the Test Class](#writing-the-test-class)
     - [Execution Time for UserTest](#execution-time-for-usertest)
-  - [Unit Test for UserController](#unit-test-for-usercontroller)
+  - [Unit test for UserController](#unit-test-for-usercontroller)
     - [Test Cases for UserController](#test-cases-for-usercontroller)
       - [getUsers (happy path)](#getusers-happy-path)
       - [getUsers (unhappy path)](#getusers-unhappy-path)
-    - [Execution Time for UserControllerTest](#execution-time-for-usercontrollertest)
+  - [Execution Time for UserControllerTest](#execution-time-for-usercontrollertest)
   - [Integration Test for UserController](#integration-test-for-usercontroller)
     - [Writing the Integration Test with a real server](#writing-the-integration-test-with-a-real-server)
-    - [Test Cases for UserControllerIT](#test-cases-for-usercontrollerit)
-      - [getUsers (happy path)](#getusers-happy-path-it)
-      - [getUsers (unhappy path)](#getusers-unhappy-path-it)
+    - [Test Cases](#test-cases)
     - [Execution Time for UserControllerIT](#execution-time-for-usercontrollerit)
   - [Write a Test Suite](#write-a-test-suite)
 - [Source Code](#source-code)
@@ -98,11 +96,11 @@ Something you should consider with your integration tests is configuration, you 
 
 Conventional wisdom was to write mostly unit tests and fewer integration tests. Generally, the more tests you have, the better the chances you have of catching bugs, but it is a case of diminishing returns as you get towards 100% code coverage.
 
-You have to decide how much of your code you will cover with tests based on the various constraints of the project, weighting up the costs and benefits. Steve Sanderson <a href="#ref3">[^3]</a> advocates selective unit testing based on the complexity of the code and the cost of testing it, which is summarised in the diagram below.
+You have to decide how much of your code you will cover with tests based on the various constraints of the project, weighting up the costs and benefits. Steve Sanderson <a href="#ref3">[3]</a> advocates selective unit testing based on the complexity of the code and the cost of testing it, which is summarised in the diagram below.
 
-<img src="/assets/img/blog/2020-06-14-api-testing/cost-benefit-analysis-diagram.svg" alt="cost and benefits of selective unit testing"/>
+<img src="/assets/img/blog/2020-06-14-api-testing/cost-benefit-analysis-diagram.svg" alt="cost and benefits of selective unit testing" style="max-width:600px;"/>
 
-Kent Beck advocates writing not too many tests, and for most test to be integration tests <a href="#ref4">[^4]</a>.
+Kent Beck advocates writing not too many tests, and for most test to be integration tests <a href="#ref4">[4]</a>.
 
 I tend to agree with Kent Beck, and try to write more integration tests, but I prioritise features, and look to make the right trade-offs between speed and accuracy when deciding to write unit tests or integration tests.
 
@@ -145,9 +143,9 @@ I have made one change to the code from the previous post, I have removed the du
 
 Every test case should have some form of the following three steps:
 
-1.  Preparation: Set up all data required to execute a method under test.
-2.  Execution: Execute the actual method under test.
-3.  Verification: Compare the actual behaviour of the method under test to the expected behaviour.
+1. Preparation: Set up all data required to execute a method under test.
+2. Execution: Execute the actual method under test.
+3. Verification: Compare the actual behaviour of the method under test to the expected behaviour.
 
 Try to write a test case for every method, covering the [happy path](https://en.wikipedia.org/wiki/Happy_path) (the most common, error-free scenario), and some exceptional scenarios.
 
@@ -165,7 +163,7 @@ Opinions vary on whether you should test POJOs. The argument against testing the
 >
 > My personal rule is that I'll write a test for any function that makes a decision, or makes more than a trivial calculation. I won't write a test for `i+1`, but I probably will for `if (i<0)...` and definitely will for `(-b + Math.sqrt(b*b - 4*a*c))/(2*a)`
 
-The argument for testing POJOs is that you should test the interface; not the implementation. You shouldn't base tests on what the decisions are made within a test, and writing tests for them are a way to ensure [method contracts](https://en.wikipedia.org/wiki/Design_by_contract) are fulfilled. <a href="#ref1">^1</a> Some people want to have high test coverage, so they will test almost everything.
+The argument for testing POJOs is that you should test the interface; not the implementation. You shouldn't base tests on what the decisions are made within a test, and writing tests for them are a way to ensure [method contracts](https://en.wikipedia.org/wiki/Design_by_contract) are fulfilled. <a href="#ref1">[1]</a> Some people want to have high test coverage, so they will test almost everything.
 
 You can decide for yourself whether you want to unit test POJOs.
 
@@ -358,10 +356,10 @@ We cover each method under test with similar test cases.
 There are a few strategies for creating integration tests depending on how you define the scope of an integration test.
 
 1. If you use the annotation `@ExtendWith(SpringExtension.class)`, **you can use use an application context**. It is similar to the unit test, but you have the option of _autowiring_ objects.
-2. If you use the annotation `@SpringBootTest` without parameters, or `@SpringBootTest(webEnvironment = WebEnvironment.MOCK)`, **you can use an application context **. It is similar to the unit test, but you have the option of _autowiring_ objects. This is a tricky approach to get right and is not advisable.
+2. If you use the annotation `@SpringBootTest` without parameters, or `@SpringBootTest(webEnvironment = WebEnvironment.MOCK)`, **you can use an application context**. It is similar to the unit test, but you have the option of _autowiring_ objects. This is a tricky approach to get right and is not advisable.
 3. You can use the annotations `@SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)` or `@SpringBootTest(webEnvironment = WebEnvironment.DEFINED_PORT)` **to use a real HTTP server**. In this case, you need to use a `RestTemplate` or `TestRestTemplate` to execute requests as it is an external test.
 
-You can read the Guide to Testing Controllers in Spring Boot <a href="#ref2">[^2]</a> for a more in-depth look at these strategies. I will use strategy 3.
+You can read the Guide to Testing Controllers in Spring Boot <a href="#ref2">[2]</a> for a more in-depth look at these strategies. I will use strategy 3.
 
 #### Writing the Integration Test with a real server
 
@@ -481,7 +479,7 @@ You can run your test suite with Gradle, Maven, or the [console launcher](https:
 
 ## Source Code
 
-The code is available in a [branch of the orginal github repository called 'with-tests'](https://github.com/robole/spring-boot-api-for-beginners/tree/with-tests).
+The code is available in a [branch of the orginial github repository called 'with-tests'](https://github.com/robole/spring-boot-api-for-beginners/tree/with-tests).
 
 ## Final Words
 
@@ -495,9 +493,7 @@ Happy coding! 👩‍💻🙌
 
 ## References
 
-<ol style="display:block;">
-    <li><a id="ref1" href="https://dev.to/scottshipp/why-test-pojos-1lfb">Why test POJOs? by Scott Shipp</a>: Why test POJOs?</li>
-    <li><a id="ref2" href="https://thepracticaldeveloper.com/2020/06/04/guide-spring-boot-controller-tests/">Guide to Testing Controllers in Spring Boot</a>: There are different ways to test your Controller (Web or API Layer) classes in Spring Boot, you can write unit tests and others are more useful for Integration Tests.</li>
-    <li><a id="ref3" href="https://blog.stevensanderson.com/2009/11/04/selective-unit-testing-costs-and-benefits/">Selective Unit Testing – Costs and Benefits</a>: For certain types of code, unit testing works brilliantly, but for other types of code, writing unit tests consumes a huge amount of effort, doesn’t meaningfully aid design or reduce defects at all.</li>
-    <li><a id="ref4" href="https://kentcdodds.com/blog/write-tests">Write tests. Not too many. Mostly integration by Kent Dodds</a>: Discusses testing strategy and advocates writing mostly integrations tests.</li>
-</ol>
+- \[1\] <a id="ref1" href="https://dev.to/scottshipp/why-test-pojos-1lfb">Why test POJOs? by Scott Shipp</a>: Scott is in favour of testing POJOs.
+- \[2\] <a id="ref2" href="https://thepracticaldeveloper.com/2020/06/04/guide-spring-boot-controller-tests/">Guide to Testing Controllers in Spring Boot</a>: There are different ways to test your Controller (Web or API Layer) classes in Spring Boot, you can write unit tests and others are more useful for Integration Tests.
+- \[3\] <a id="ref3" href="https://blog.stevensanderson.com/2009/11/04/selective-unit-testing-costs-and-benefits/">Selective Unit Testing – Costs and Benefits</a>: For certain types of code, unit testing works brilliantly, but for other types of code, writing unit tests consumes a huge amount of effort, doesn’t meaningfully aid design or reduce defects at all.
+- \[4\] <a id="ref4" href="https://kentcdodds.com/blog/write-tests">Write tests. Not too many. Mostly integration by Kent Dodds</a>: Discusses testing strategy and advocates writing mostly integrations tests.

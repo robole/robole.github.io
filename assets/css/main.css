@@ -92,7 +92,7 @@ h6 {
 }
 
 *[id]:before {
-  display: block;
+  display: inline-block;
   content: " ";
   margin-top: -85px;
   height: 85px;
@@ -163,7 +163,7 @@ a.navbar-logo {
   }
 
   .navbar-inverse {
-    padding-right: .5em;
+    padding-right: 0.5em;
   }
 
   #navbar-collapse-1 {
