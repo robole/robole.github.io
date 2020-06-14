@@ -4,11 +4,10 @@ title: "From 'A' to 'Web App': Test an API in Java 🕸☕"
 category: testing
 description: "There are different strategies and tools you can employ for testing web applications, I will break these down for you, and test the application from my previous post."
 tags: [Java, Spring, testing]
-image: /assets/img/blog/2020-06-14-api-testing/banner.svg
+image: /assets/img/blog/2020-06-15-api-testing/banner.png
 published: true
 ---
-
-<img src="/assets/img/blog/2020-06-14-api-testing/banner.svg" alt="a spider dropping onto someone's head">
+<img src="/assets/img/blog/2020-06-15-api-testing/banner.svg" alt="a spider dropping onto someone's head">
 
 Bugs are an inevitable, unwelcome part of programming. By testing and code in tandem, you can eradicate a lot of bugs, and have more confidence in your code.
 
@@ -69,11 +68,11 @@ One way to define what your unit of choice is, is to decide if your tests are so
 
 Sociable tests test a unit and its collaborating units together. Often, for an unit to fulfil its behaviour, it requires collaboration with other units, so this group can serve as "your logical unit" if you wish.
 
-<img src="/assets/img/blog/2020-06-14-api-testing/sociable-test.svg" alt="sociable test diagram" style="max-width:600px">
+<img src="/assets/img/blog/2020-06-15-api-testing/sociable-test.svg" alt="sociable test diagram" style="width:100%;max-width:600px">
 
 Solitary tests focus on an isolated unit and exclude its collaborating units. This is done by using _test doubles_ (Dummy objects, Stubs, Spies, Mocks, and similar) instead of the collaborating units.
 
-<img src="/assets/img/blog/2020-06-14-api-testing/solitary-test.svg" alt="sociable test diagram" style="max-width:600px">
+<img src="/assets/img/blog/2020-06-15-api-testing/solitary-test.svg" alt="sociable test diagram" style="width:100%;max-width:600px">
 
 If you want to test your system only using sociable tests, it is not always be pragmatic to do so, you may encounter situations such as asynchronous collaborations (HTTP requests) or concurrent actions (threads), which may require you use a solitary test.
 
@@ -98,7 +97,7 @@ Conventional wisdom was to write mostly unit tests and fewer integration tests. 
 
 You have to decide how much of your code you will cover with tests based on the various constraints of the project, weighting up the costs and benefits. Steve Sanderson <a href="#ref3">[3]</a> advocates selective unit testing based on the complexity of the code and the cost of testing it, which is summarised in the diagram below.
 
-<img src="/assets/img/blog/2020-06-14-api-testing/cost-benefit-analysis-diagram.svg" alt="cost and benefits of selective unit testing" style="max-width:600px;"/>
+<img src="/assets/img/blog/2020-06-15-api-testing/cost-benefit-analysis-diagram.svg" alt="cost and benefits of selective unit testing" style="width:100%;max-width:600px;"/>
 
 Kent Beck advocates writing not too many tests, and for most test to be integration tests <a href="#ref4">[4]</a>.
 
@@ -112,15 +111,15 @@ In Maven, the dependency looks like this:
 
 ```xml
 <dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-test</artifactId>
-			<scope>test</scope>
-			<exclusions>
-				<exclusion>
-					<groupId>org.junit.vintage</groupId>
-					<artifactId>junit-vintage-engine</artifactId>
-				</exclusion>
-			</exclusions>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-test</artifactId>
+    <scope>test</scope>
+    <exclusions>
+        <exclusion>
+            <groupId>org.junit.vintage</groupId>
+            <artifactId>junit-vintage-engine</artifactId>
+        </exclusion>
+    </exclusions>
 </dependency>
 ```
 
@@ -227,7 +226,7 @@ In most IDEs you can run your tests in the same way as you run a class, and it w
 
 **The execution time is 371ms for 9 tests.** The picture below is what the tester runner looks like in IntelliJ.
 
-<img src="/assets/img/blog/2020-06-14-api-testing/test-runner-intellij.jpg" alt="intellij test runner" style="max-width:100%">
+<img src="/assets/img/blog/2020-06-15-api-testing/test-runner-intellij.jpg" alt="intellij test runner" style="max-width:100%">
 
 ### Unit test for UserController
 
@@ -349,7 +348,7 @@ We cover each method under test with similar test cases.
 
 **The execution time for the 14 test cases in `UserControllerTest` is 12 seconds**. As you can see below most of the time is taken on the first test case, subsequent test cases benefit from caching, which makes them run in 100ms or so.
 
-<img src="/assets/img/blog/2020-06-14-api-testing/test-runner-usercontrollertest.jpg" alt="test usercontrollertest" style="max-width:100%">
+<img src="/assets/img/blog/2020-06-15-api-testing/test-runner-usercontrollertest.jpg" alt="test usercontrollertest" style="max-width:100%">
 
 ### Integration Test for UserController
 
@@ -449,15 +448,15 @@ Unfortunately, the test runner in JUnit 5 is not able to run your test suite (ye
 
 ```xml
 <dependency>
- <groupId>org.springframework.boot</groupId>
- <artifactId>spring-boot-starter-test</artifactId>
- <scope>test</scope>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-test</artifactId>
+    <scope>test</scope>
 </dependency>
 
 <dependency>
- <groupId>org.junit.platform</groupId>
- <artifactId>junit-platform-runner</artifactId>
- <scope>test</scope>
+    <groupId>org.junit.platform</groupId>
+    <artifactId>junit-platform-runner</artifactId>
+    <scope>test</scope>
 </dependency>
 ```
 
