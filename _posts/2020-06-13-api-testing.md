@@ -479,7 +479,7 @@ You can run your test suite with Gradle, Maven, or the [console launcher](https:
 
 ## Source Code
 
-The code is available in a [branch of the orginial github repository called 'with-tests'](https://github.com/robole/spring-boot-api-for-beginners/tree/with-tests).
+The code is available in a [branch of the original github repository called 'with-tests'](https://github.com/robole/spring-boot-api-for-beginners/tree/with-tests).
 
 ## Final Words
 
