@@ -117,7 +117,7 @@ I settled on using the following extensions:
 1. [Markdown All in One](https://marketplace.visualstudio.com/items?itemName=yzhang.markdown-all-in-one) for: GitHub-Flavored Markdown support, creation of a table of contents, section numbering, keyboard shortcuts, and autocompletions.
 2. [markdownlint](https://marketplace.visualstudio.com/items?itemName=DavidAnson.vscode-markdownlint) for linting and some formatting. I like to choose when to fix violations myself.
 3. [Prettier](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)
-   for formatting on save. This will format code blocks and not much else!
+   for formatting on save. This will format code blocks based on the language, if it is supported. And not much else!
 4. [Theme by language](https://marketplace.visualstudio.com/items?itemName=jsaulou.theme-by-language)
    to set a specific theme for markdown only.
 5. [Spell Right](https://marketplace.visualstudio.com/items?itemName=ban.spellright)
