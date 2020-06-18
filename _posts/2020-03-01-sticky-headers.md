@@ -1,13 +1,13 @@
 ---
 layout: scrollable_post
-title: Make it stick! Sticky headers in CSS 🦎🔝
+title: Animate text along a path simply with vanilla JS 🐰🎉
 category: web
 description: "CSS introduced the property `position: sticky` in 2012, one obvious application of this is for making sticky headers."
 tags: [HTML, CSS, web]
 published: true
 ---
 
-<img src="/assets/img/blog/2018-07-31-sticky-headers/banner.jpg" alt="banner image of sticky post-it" style="margin:0 auto; display:block;width:100%;max-width:1920px"/>
+<img src="/assets/img/blog/2018-07-31-sticky-headers/banner.jpg" alt="banner image of sticky post-it" style="display:block;width:100%;max-width:1920px"/>
 
 CSS introduced the property `position: sticky` in 2012, one obvious application of this is for making sticky headers.
 
@@ -42,8 +42,7 @@ One of the best Use Cases for this is for bigggg tables. That is, tables where y
 
 There is one caveat though, Chrome and Edge have a bug with using `position: sticky` on `thead`. So, the way around this is to apply it to `th` instead.
 
-<p data-height="500" data-theme-id="0" data-slug-hash="MBvLLZ" data-default-tab="result" data-user="robjoeol" data-pen-title="Table Sticky Header using position:sticky;" class="codepen">See the Pen <a href="https://codepen.io/robjoeol/pen/MBvLLZ/">Table Sticky Header using position:sticky;</a> by rob (<a href="https://codepen.io/robjoeol">@robjoeol</a>) on <a href="https://codepen.io">CodePen</a>.</p>
-<script async src="https://static.codepen.io/assets/embed/ei.js"></script>
+<iframe width="100%" height="600" src="//jsfiddle.net/robjoeol/va2gfr0d/1/embedded/result,html,css/dark" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
 
 You can use it to make sticky headers on the side and top for easy cross-referencing for big data sets, maybe you're showing scientific findings like below! So, it kind of mimics frozen rows in Excel!
 
@@ -53,19 +52,18 @@ You can use it to make sticky headers on the side and top for easy cross-referen
 
 - It is used often to make a sticky navigation bar when there is a hero section above it. The navigation bar becomes fixed when the user scrolls past the hero section.
 
-<p class="codepen" data-height="457" data-theme-id="light" data-default-tab="result" data-user="robjoeol" data-slug-hash="pojgrXz" style="height: 457px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="Sticky nav under hero (CSS only)">
-  <span>See the Pen <a href="https://codepen.io/robjoeol/pen/pojgrXz">
-  Sticky nav under hero (CSS only)</a> by Rob (<a href="https://codepen.io/robjoeol">@robjoeol</a>)
-  on <a href="https://codepen.io">CodePen</a>.</span>
-</p>
+<iframe width="100%" height="600" src="//jsfiddle.net/robjoeol/ox0hq581/1/embedded/result,html,css/dark" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
 
 - I think the example below is cool, but it **requires some JS**. A reading progress bar for a blog post. Scroll to see it in action. You can get creative with `sticky` too!
 
-<p class="codepen" data-height="439" data-theme-id="light" data-default-tab="result" data-user="robjoeol" data-slug-hash="bGVpePR" style="height: 439px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="Blog Reading Progressbar">
+<p class="codepen" data-height="600" data-theme-id="dark" data-default-tab="result" data-user="robjoeol" data-slug-hash="bGVpePR" style="height: 439px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="Blog Reading Progressbar">
   <span>See the Pen <a href="https://codepen.io/robjoeol/pen/bGVpePR">
-  Blog Reading Progressbar</a> by Rob (<a href="https://codepen.io/robjoeol">@robjoeol</a>)
+  Blog Reading Progress bar</a> by Rob (<a href="https://codepen.io/robjoeol">@robjoeol</a>)
   on <a href="https://codepen.io">CodePen</a>.</span>
 </p>
+<script async src="https://static.codepen.io/assets/embed/ei.js"></script>
+
+I wrote a [post about how I made this]({{ site.baseurl }}{% post_url 2020-04-21-pimp-blog %}) if you are interested!
 
 ## Browser Support
 

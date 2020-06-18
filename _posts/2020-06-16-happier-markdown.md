@@ -46,7 +46,7 @@ like to publish. Here are some tasks you may want to include to your workflow:
 1. **Use the same markdown syntax everywhere**. There isn't _that_ much
    difference between markdown and its related variant syntaxes, but it is good
    to be consistent between what you see in your preview, and what your target
-   platform uses under the hood. I want to use _github-flavoured markdown_
+   platform uses under the hood. I want to use _Github-flavoured markdown_
    everywhere.
 
 1. **Format on save**. You may want to use automatic formatting on your document
