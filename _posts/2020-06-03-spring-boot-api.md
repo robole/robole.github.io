@@ -7,6 +7,7 @@ image: "/assets/img/blog/2020-06-03-spring-boot-api/web-city.png"
 tags: [API, Java, Spring]
 published: true
 ---
+
 <style>
 .overflow-wrapper{
   overflow-x:auto;
@@ -27,7 +28,7 @@ The only thing you should know already is Java, to an intermediate level, everyt
 I will build a simple Web API with Spring Boot, which is a big step towards what you would build for an enterprise-grade application.
 
 - [What is an API?](#what-is-an-api)
-- [Twitter API Example](#twitter-api-example)
+  - [Twitter API Example](#twitter-api-example)
 - [What is Spring and Spring Boot?](#what-is-spring-and-spring-boot)
 - [What we will build](#what-we-will-build)
 - [Is this the latest way?](#is-this-the-latest-way)
@@ -47,14 +48,19 @@ I will build a simple Web API with Spring Boot, which is a big step towards what
 - [How to set your project up](#how-to-set-your-project-up)
 - [Write the code](#write-the-code)
   - [Get All Users](#get-all-users)
-  - [Get User by ID](#get-user-by-id)
-  - [Get User by Name](#get-user-by-name)
-  - [Add a new User](#add-a-new-user)
-  - [Update a User](#update-a-user)
-  - [Delete a User](#delete-a-user)
+    - [Create the model class](#create-the-model-class)
+    - [Create a Controller](#create-a-controller)
+      - [@RequestMapping Variants](#requestmapping-variants)
+    - [Create a class to start the application](#create-a-class-to-start-the-application)
+      - [Run the application](#run-the-application)
+  - [Get user by ID](#get-user-by-id)
+  - [Get user by name](#get-user-by-name)
+  - [Add a new user](#add-a-new-user)
+  - [Update a user](#update-a-user)
+  - [Delete a user](#delete-a-user)
 - [How to test your application](#how-to-test-your-application)
 - [Source code](#source-code)
-- [Next Steps](#next-steps)
+- [Next steps](#next-steps)
 
 ## What is an API?
 
@@ -82,7 +88,7 @@ Looking through the list of methods, [GET statuses/user_timeline](https://develo
 
 We need to have a client application to execute the methods. I like to use [Insomnia](https://insomnia.rest/), but other popular applications are: [cURL](https://curl.haxx.se/) (a command-line tool), [Postman](https://www.postman.com/) (a collaboration platform for API Development), and [Postwoman](https://postwoman.io/) (a minimal open-source alternative to Postman).
 
-If you are totally unfamiliar with HTTP, you can jump to the [HTTP Basics](#html-basics) section to get yourself up to speed. Looking at the method description, we need to provide 1 parameter in our HTTP request to get the data we want, this parameter is `screen_name`.
+If you are totally unfamiliar with HTTP, you can jump to the [HTTP Basics](#http-basics) section to get yourself up to speed. Looking at the method description, we need to provide 1 parameter in our HTTP request to get the data we want, this parameter is `screen_name`.
 
 To use Twitter's API, you have to have a Twitter account, and register an application to obtain developer keys. When you interact with the API, you provide these developer keys to authenticate your identity. This ensures that only you can only perform actions on your own account data, and generally that you use the platform in a fair way.
 
