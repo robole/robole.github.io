@@ -1,15 +1,13 @@
 ---
 layout: post
-title: "VS Code: You don't need that extension because.."
+title: "VS Code: You don't need that extension"
 description: "I was digging deeper in VS Code recently and made some interesting discoveries. There are quite a few features and settings that ably do the work of many popular extensions."
 category: vscode
 image: /assets/img/blog/2020-08-05-dont-need-extensions/banner.png
 tags: [vscode]
 published: true
 ---
-# VS Code: You don't need that extension because..
-
-<img src="/assets/img/blog/2020-08-05-dont-need-extensions/banner.png" style="width:100%;max-width:1600px;"/>
+<img src="/assets/img/blog/2020-08-05-dont-need-extensions/banner.png" style="width:100%;max-width:1200px;"/>
 
 I was digging deeper in VS Code recently and made some interesting discoveries. There are quite a few features and settings that ably do the work of many popular extensions.
 
@@ -142,4 +140,6 @@ You can enable Emmet for more languages if you wish, for example to include Emme
 
 ## Conclusion
 
-VS Code is evolving all the time and adding new features on a regular basis, the release cycle is monthly, even since I start using VS Code I see the benefit from some enhancements. If I find some more of these along the way, I will update this article. If you have found anything similar, let me know! 🙂
+VS Code is evolving all the time and adding new features on a regular basis, the release cycle is monthly. I have seen the benefit from some of the enhancements in the last few months.
+
+If I find some more of these along the way, I will update this article. If you have found anything similar, let me know! 🙂
