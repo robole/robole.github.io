@@ -12,21 +12,25 @@ published: true
 
 If you learned something new from this, let me know what it is! 😊
 
-1. [Don't garble your emojis 😢](#dont-garble-your-emojis-)
-1. [Optimize: Lazy loading of images and iframes with the `loading` attribute](#optimize-lazy-loading-of-images-and-iframes-with-the-loading-attribute)
-1. [Good form: You're my `type` 😘 Get the right keyboard on mobile for inputs](#good-form-youre-my-type--get-the-right-keyboard-on-mobile-for-inputs)
-1. [Good form: Restrict input by `type`](#good-form-restrict-input-by-type)
-1. [Good form: Validate input easily](#good-form-validate-input-easily)
-1. [Good form: Validate input with regex](#good-form-validate-input-with-regex)
-1. [Good form: `<label>` and `<input>` are like wine and cheese, good for clicking and accessibility](#good-form-label-and-input-are-like-wine-and-cheese-good-for-clicking-and-accessibility)
-1. [Good form: reset a form](#good-form-reset-a-form)
-1. [Good form: spellcheck](#good-form-spellcheck)
-1. [Make the content of any element editable 😮](#make-the-content-of-any-element-editable-)
-1. [Show the progress of something with `<progress>`](#show-the-progress-of-something-with-progress)
-1. [Responsive: Want a responsive webpage? Not without`<meta>` !](#responsive-want-a-responsive-webpage-not-without-meta-)
-1. [Responsive: Responsive images with`srcset`. Look mom, no media queries! 🤔](#responsive-responsive-images-withsrcset-look-mom-no-media-queries-)
-1. [You can show/hide details in a collapsible widget](#you-can-showhide-details-in-a-collapsible-widget)
-1. [_Fernstraßenbauprivatfinanzierungsgesetz_ is a real word. Use `<wbr>`](#fernstraßenbauprivatfinanzierungsgesetz-is-a-real-word-use-wbr).
+- [Don't garble your emojis 😢](#dont-garble-your-emojis-)
+- [Optimize: Lazy loading of images and iframes with the `loading` attribute](#optimize-lazy-loading-of-images-and-iframes-with-the-loading-attribute)
+  - [How do I support more Browsers?](#how-do-i-support-more-browsers)
+- [Good form: You're my `type` 😘 Get the right keyboard on mobile for inputs](#good-form-youre-my-type--get-the-right-keyboard-on-mobile-for-inputs)
+- [Good form: Restrict input by `type`](#good-form-restrict-input-by-type)
+- [Good form: Validate input easily](#good-form-validate-input-easily)
+- [Good form: Validate input with regex](#good-form-validate-input-with-regex)
+- [Good form: `<label>` and `<input>` are like wine and cheese, good for clicking and accessibility](#good-form-label-and-input-are-like-wine-and-cheese-good-for-clicking-and-accessibility)
+- [Good form: reset a form](#good-form-reset-a-form)
+- [Good form: spellcheck](#good-form-spellcheck)
+- [Make the content of any element editable 😮](#make-the-content-of-any-element-editable-)
+- [Show the progress of something with `<progress>`](#show-the-progress-of-something-with-progress)
+- [Responsive: Want a responsive webpage? Not without `<meta>` !](#responsive-want-a-responsive-webpage-not-without-meta-)
+- [Responsive: Responsive images with`srcset`. Look mom, no media queries! 🤔](#responsive-responsive-images-withsrcset-look-mom-no-media-queries-)
+  - [Why don't you want to use CSS or JS?](#why-dont-you-want-to-use-css-or-js)
+  - [Anything else to know?](#anything-else-to-know)
+- [You can show/hide details in a collapsible widget](#you-can-showhide-details-in-a-collapsible-widget)
+- [_Fernstraßenbauprivatfinanzierungsgesetz_ is a real word. Use `<wbr>`](#fernstraßenbauprivatfinanzierungsgesetz-is-a-real-word-use-wbr)
+- [The End](#the-end)
 
 ## Don't garble your emojis 😢
 
