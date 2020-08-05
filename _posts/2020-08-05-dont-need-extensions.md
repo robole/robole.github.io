@@ -11,15 +11,18 @@ published: true
 
 I was digging deeper in VS Code recently and made some interesting discoveries. There are quite a few features and settings that ably do the work of many popular extensions.
 
-## 1. Auto renaming tags
+## 1. Auto renaming and closing tags
 
-Rename HTML and XML tag pairs with a single edit.
+Rename HTML tag pairs with a single edit. Automatically add a closing tag. Automatically add a closing tag when adding a new tag.
 
 ![rename tag pairs](/assets/img/blog/2020-08-05-dont-need-extensions/rename.gif)
+
+Support is for HTML files, there is an [open issue](https://github.com/microsoft/vscode/issues/85707) to add this for JSX.
 
 ### Extension
 
 - [Auto Rename Tag](https://marketplace.visualstudio.com/items?itemName=formulahendry.auto-rename-tag) (3.3M downloads): "Automatically rename paired HTML/XML tag, same as Visual Studio IDE does."
+- [Auto Close Tag](https://marketplace.visualstudio.com/items?itemName=formulahendry.auto-close-tag) (3.1M downloads): "Automatically add HTML/XML close tag, same as Visual Studio IDE or Sublime Text."
 
 ### Setting
 
@@ -55,7 +58,7 @@ You synchronise using a Microsoft or GitHub account.
 
 ## 3. Auto import modules
 
-Automatically import JavaScript and TypeScript modules based on your code.
+Automatically import JavaScript and TypeScript modules based on your code. Automatically update the import statements when you move a file.
 
 ### Extensions
 
@@ -65,10 +68,10 @@ Automatically import JavaScript and TypeScript modules based on your code.
 
 ### Settings
 
-- `JavaScript > Suggest: Auto Imports` : Enable/disable auto import suggestions. Requires using Typescript 2.6.1 or newer in workspace. Default value is `true`.
-- `TypeScript > Suggest: Auto Imports`: Enable/disable auto import suggestions. Requires using Typescript 2.6.1 or newer in workspace. Default value is `true`.
-- `JavaScript > Update Imports on File Move: Enabled`: Enable/disable automatic updating of import paths when you rename or move a file in VS Code. Require using TypeScript 2.9 or newer in the workspace. Default value is `"prompt"`.
-- `TypeScript > Update Imports on File Move: Enabled`: Enable/disable automatic updating of import paths when you rename or move a file in VS Code. Require using TypeScript 2.9 or newer in the workspace. Default value is `"prompt"`.
+- `JavaScript > Suggest: Auto Imports` : "Enable/disable auto import suggestions. Requires using Typescript 2.6.1 or newer in workspace." Default value is `true`.
+- `TypeScript > Suggest: Auto Imports`: "Enable/disable auto import suggestions. Requires using Typescript 2.6.1 or newer in workspace." Default value is `true`.
+- `JavaScript > Update Imports on File Move: Enabled`: "Enable/disable automatic updating of import paths when you rename or move a file in VS Code. Require using TypeScript 2.9 or newer in the workspace." Default value is `"prompt"`.
+- `TypeScript > Update Imports on File Move: Enabled`: "Enable/disable automatic updating of import paths when you rename or move a file in VS Code. Require using TypeScript 2.9 or newer in the workspace." Default value is `"prompt"`.
 
 #### settings.json
 
@@ -79,25 +82,65 @@ Automatically import JavaScript and TypeScript modules based on your code.
 "typescript.updateImportsOnFileMove.enabled": "always",
 ```
 
-## 4. Autotrimming
-
-Remove trailing whitespace automatically.
-
-The setting I suggest is not an exact like-for-like replacement: the extension trims whitespace while you edit; whereas the setting will perform the trimming on save.
-
-### Extension
-
-- [Autotrim](https://marketplace.visualstudio.com/items?itemName=NathanRidley.autotrim) (15K downloads): "Trailing whitespace often exists after editing lines of code, deleting trailing words and so forth. This extension tracks the line numbers where a cursor is active, and removes trailing tabs and spaces from those lines when they no longer have an active cursor."
-
-### Settings
-
-- `Files : Trim Trailing Whitespace`: "When enabled, will trim trailing whitespace when saving a file." The default value is `false`.
-
-#### settings.json
+Also, if you would like your imports to be organised when you save, you can add the setting below. It will remove unused import statements, and arrange import statements with absolute paths on top. I am a big fan of these kind of set-and-forget tasks.
 
 ```json
- "files.trimTrailingWhitespace": true
- ```
+"editor.codeActionsOnSave": {
+    "source.organizeImports": true
+}
+```
+
+## 4. Snippets for HTML and CSS
+
+You may want to create some boilerplate for files to get started quickly, add code chunks to save you keystrokes, or have expansions to complete a block for what you're typing. These similar but slightly different needs are addressed below.
+
+## Extension
+
+- [HTML Snippets](https://marketplace.visualstudio.com/items?itemName=abusaidm.html-snippets) (3.8M downloads): "Full HTML tags including HTML5 Snippets."
+- [HTML Boilerplate](https://marketplace.visualstudio.com/items?itemName=sidthesloth.html5-boilerplate) (684K downloads): "A basic HTML5 boilerplate snippet generator."
+- [CSS Snippets](https://marketplace.visualstudio.com/items?itemName=joy-yu.css-snippets) (22K downloads): "Shorthand snippets for css."
+
+## Feature
+
+[Emmet](https://www.emmet.io/) is built into VS Code. Emmet offers abbreviation and snippet expansions for HTML and CSS. Emmet is enabled by default for html, haml, pug, slim, jsx, xml, xsl, css, scss, sass, less and stylus files. You can read the [VS Code User Guide](https://code.visualstudio.com/docs/editor/emmet) for more info.
+
+To create a boilerplate for HTML, you type "!" and hit tab.
+
+![html boilerplate](/assets/img/blog/2020-08-05-dont-need-extensions/html-boilerplate.gif)
+
+There are abbreviations which use CSS style selectors such as:
+
+```html
+ul>li*5
+```
+
+which produces this:
+
+```html
+<ul>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+</ul>
+```
+
+Expansions like typing "a" and hitting tab will produce `<a href="">` and will place your cursor is inside the quotations, ready for you to fill in the *href*.
+
+That's just a quick overview of what you can for HTML, it offers similar capabilities for CSS, my favourite is adding [vendor-prefixes automatically](https://docs.emmet.io/css-abbreviations/vendor-prefixes/). Check out the [Emmet Docs](https://docs.emmet.io/) for more info, and the [cheatsheet](https://docs.emmet.io/cheat-sheet/) for future reference.
+
+You can [customise or create your own snippets](https://code.visualstudio.com/docs/editor/emmet#_using-custom-emmet-snippets) by adding them to a json file named `snippets.json` too.
+
+You can enable Emmet for more languages if you wish, for example to include Emmet support for Vue, add the following to `settings.json`:
+
+```json
+"emmet.includeLanguages": {
+  "vue-html": "html"
+}
+```
+
+I'm a big fan of Emmet, you can write and edit HTML and CSS lightning fast when you habitually use the snippets.
 
 ## 5. Fake text (Dummy text)
 
@@ -109,7 +152,7 @@ You may want to insert some fake text to fill out a webpage to see how your UI l
 
 ### Feature
 
-Emmet is built into VS Code and has a [_lorem_ abbreviation](https://docs.emmet.io/abbreviations/lorem-ipsum/). Emmet abbreviation and snippet expansions are enabled by default in html, haml, pug, slim, jsx, xml, xsl, css, scss, sass, less and stylus files.
+As mentioned in number 4 above, Emmet is built into VS Code, it has a [_lorem_ abbreviation](https://docs.emmet.io/abbreviations/lorem-ipsum/). Emmet is enabled by default for html, haml, pug, slim, jsx, xml, xsl, css, scss, sass, less and stylus files.
 
 Type "lorem" and hit tab, and it will generate a 30-word dummy paragraph.
 
@@ -130,16 +173,31 @@ You can use it to generate multiple blocks of any kind. For example, "p\*2>lorem
 </p>
 ```
 
-You can enable Emmet for more languages if you wish, for example to include Emmet support for Vue, add the following to settings.json:
+## 6. Autotrimming
+
+Remove trailing whitespace automatically.
+
+The setting I suggest is not an exact like-for-like replacement: the extension trims whitespace while you edit; whereas the setting will perform the trimming on save.
+
+### Extension
+
+- [Autotrim](https://marketplace.visualstudio.com/items?itemName=NathanRidley.autotrim) (15K downloads): "Trailing whitespace often exists after editing lines of code, deleting trailing words and so forth. This extension tracks the line numbers where a cursor is active, and removes trailing tabs and spaces from those lines when they no longer have an active cursor."
+
+### Settings
+
+- `Files : Trim Trailing Whitespace`: "When enabled, will trim trailing whitespace when saving a file." The default value is `false`.
+
+#### settings.json
+
+I exclude Markdown from this because if you want a [hard line-break](https://spec.commonmark.org/0.29/#hard-line-breaks) (`<br>`) in the output, you need to put two or more spaces at the end of a line. It's not something you would do often, or at all really IMO, but why prevent it when it is part of [CommonMark](https://commonmark.org/)?
 
 ```json
-"emmet.includeLanguages": {
-  "vue-html": "html"
-}
-```
+"files.trimTrailingWhitespace": true,
+"[markdown]": {
+   "files.trimTrailingWhitespace": false
+},
+ ```
 
 ## Conclusion
-
-VS Code is evolving all the time and adding new features on a regular basis, the release cycle is monthly. I have seen the benefit from some of the enhancements in the last few months.
 
 If I find some more of these along the way, I will update this article. If you have found anything similar, let me know! 🙂
