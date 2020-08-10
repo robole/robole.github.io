@@ -9,9 +9,7 @@ published: true
 ---
 <img src="/assets/img/blog/2020-08-09-vscode-font-theme/banner.png" alt="banner" style="display:block;max-width:1200px;width:100%;"/>
 
-For *X* hours a week, your vision is filled with a collage of illuminated dots, you manipulate these dots to your bidding (hopefully). It is a lot of time to look at something!
-
-Spending some time to personalise the look and feel of your editor can give your digital life a more homely feeling. It can give you a glow of satisfaction when you open some code you are proud of. It can make the horror of of a messy codebase feels slightly less horrific.
+Spending some time to personalise the look and feel of your editor can give your digital life a more homely feeling. It can give you a glow of satisfaction when you open some code you are proud of. It can make the horror of a messy codebase feels slightly less horrific.
 
 That would be the marketing pitch to sell you on the idea! I'm not sure about the real benefits, but I do think it is worthy of a little bit of your time to make your virtual workspace more pleasant to trigger happy thoughts!
 

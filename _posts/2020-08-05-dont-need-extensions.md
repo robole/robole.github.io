@@ -35,9 +35,12 @@ Rename HTML tag pairs with a single edit. Automatically add a closing tag when a
 
 ### 1.2. Setting
 
-The naming of this setting is a bit vague and obscure, this is probably why many people never find this!
+The naming of `Editor: Rename on Type` is a bit vague and obscure, this is probably why many people never find the setting for auto renaming! Auto closing of tags is enabled by default.
 
-- `Editor: Rename on Type`: "Controls whether the editor auto renames on type." Default is `false`.
+- `Editor: Rename on Type`: "Controls whether the editor auto renames on type." Default is `false`. This controls auto rename.
+- `HTML: Auto Closing Tags`: Default is `true`.
+- `JavaScript: Auto Closing Tags`: "Enable/disable automatic closing of JSX tags. Requires using TypeScript 3.0 or newer in workspace". Default is `true`.
+- `TypeScript: Auto Closing Tags`: "Enable/disable automatic closing of JSX tags. Requires using TypeScript 3.0 or newer in workspace". Default is `true`.
 
 Support is for HTML files only at the moment. There is an [open issue](https://github.com/microsoft/vscode/issues/85707) to add this for JSX files.
 
@@ -46,7 +49,10 @@ It is unlikely that this will be added for Vue files, it is more likely to be pi
 #### 1.2.1. settings.json
 
 ```json
-  "editor.renameOnType": true
+  "editor.renameOnType": true,
+  "html.autoClosingTags": true.
+  "javascript.autoClosingTags": true,
+  "typescript.autoClosingTags": true
 ```
 
 ## 2. Synchronizing Settings
@@ -115,9 +121,9 @@ You may want to create a HTML boilerplate to get started quickly, add code chunk
 
 ### 4.8. Feature
 
-[Emmet](https://www.emmet.io/) is built into VS Code. Emmet offers abbreviation and snippet expansions for HTML and CSS, and secretly JavaScript. 🤫 You can read the [VS Code User Guide](https://code.visualstudio.com/docs/editor/emmet) for more info. 
+[Emmet](https://www.emmet.io/) is built into VS Code. Emmet offers abbreviation and snippet expansions for HTML and CSS. 🤫 You can read the [VS Code User Guide](https://code.visualstudio.com/docs/editor/emmet) for more info. 
 
-Emmet is enabled by default for html, haml, pug, slim, jsx, xml, xsl, css, scss, sass, less and stylus files. 
+Emmet is enabled by default for html, haml, pug, slim, jsx, xml, xsl, css, scss, sass, less and stylus files.
 
 To create a boilerplate for HTML, you type "!" and hit tab.
 
@@ -145,7 +151,7 @@ Expansions like typing "a" and hitting tab will produce `<a href="">` and will p
 
 That's just a quick overview of what you can for HTML, it offers similar capabilities for CSS, my favourite is adding [vendor-prefixes automatically](https://docs.emmet.io/css-abbreviations/vendor-prefixes/). Check out the [Emmet Docs](https://docs.emmet.io/) for more info, and the [cheatsheet](https://docs.emmet.io/cheat-sheet/) for future reference.
 
-To find the secret default JavaScript snippets, you can look in this file on Windows: `Microsoft VS Code\resources\app\extensions\javascript\snippets\javascript.code-snippets`. There are not that many included.
+Secretly, there are default JavaScript snippets included in VS Code also. To find the buried treasure, you can look in this file on Windows: `Microsoft VS Code\resources\app\extensions\javascript\snippets\javascript.code-snippets`.
 
 You can [customise or create your own snippets](https://code.visualstudio.com/docs/editor/emmet#_using-custom-emmet-snippets) by adding them to a json file named `snippets.json`. 
 
