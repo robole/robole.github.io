@@ -32,6 +32,7 @@ Rename HTML tag pairs with a single edit. Automatically add a closing tag when a
 
 - [Auto Rename Tag](https://marketplace.visualstudio.com/items?itemName=formulahendry.auto-rename-tag) (3.3M downloads): "Automatically rename paired HTML/XML tag, same as Visual Studio IDE does."
 - [Auto Close Tag](https://marketplace.visualstudio.com/items?itemName=formulahendry.auto-close-tag) (3.1M downloads): "Automatically add HTML/XML close tag, same as Visual Studio IDE or Sublime Text."
+- [Close HTML/XML tag](https://marketplace.visualstudio.com/items?itemName=Compulim.compulim-vscode-closetag): "Quickly close last opened HTML/XML tag."
 
 ### 1.2. Setting
 
@@ -190,7 +191,7 @@ You may want to insert some fake text to fill out a webpage to see how your UI l
 
 ### 5.10. Feature
 
-As mentioned in number 4 above, Emmet is built into VS Code, it has a [_lorem_ abbreviation](https://docs.emmet.io/abbreviations/lorem-ipsum/). Emmet is enabled by default for html, haml, pug, slim, jsx, xml, xsl, css, scss, sass, less and stylus files.
+As mentioned in number 4 above, Emmet is built into VS Code, it has a [_lorem_ abbreviation](https://docs.emmet.io/abbreviations/lorem-ipsum/).
 
 Type "lorem" and hit tab, and it will generate a 30-word dummy paragraph.
 
