@@ -12,14 +12,14 @@ published: true
 I was digging deeper in VS Code recently and made some interesting discoveries. There are quite a few features and settings that ably do the work of many popular extensions.
 
 <!-- TOC -->
+**Table of Contents**
 - [1. Auto renaming and closing tags](#1-auto-renaming-and-closing-tags)
 - [2. Synchronizing Settings](#2-synchronizing-settings)
 - [3. Auto import modules](#3-auto-import-modules)
-- [4. Snippets for HTML, CSS, and JS](#4-snippets-for-html-css-and-js)
+- [4. Snippets for HTML and CSS](#4-snippets-for-html-and-css)
 - [5. Fake text (Dummy text)](#5-fake-text-dummy-text)
 - [6. Autotrimming](#6-autotrimming)
-- [7. Running tasks (NPM and others)](#7-running-tasks-npm-and-others)
-- [8. Conclusion](#8-conclusion)
+- [7. Conclusion](#7-conclusion)
 <!-- /TOC -->
 
 ## 1. Auto renaming and closing tags
@@ -58,9 +58,9 @@ It is unlikely that this will be added for Vue files, it is more likely to be pi
 
 ## 2. Synchronizing Settings
 
-VS Code now supports synchronizing VS Code settings across different machines, this feature is available for preview in [VS Code Insiders](https://code.visualstudio.com/insiders/) right now. It should reach the standard version very soon.
+VS Code now supports synchronizing VS Code settings across different machines, this feature is available for preview since [v1.48](https://code.visualstudio.com/updates/v1_48#_settings-sync) (July 2020 release).
 
-I am trying it out at the moment, and so far, so good.
+I am trying it out at the moment, and I have had no issues.
 
 ### 2.3. Extensions
 
@@ -68,11 +68,11 @@ I am trying it out at the moment, and so far, so good.
 
 ### 2.4. Feature and Settings
 
-You read all about this feature in the [User Guide](https://code.visualstudio.com/docs/editor/settings-sync). Below is what the Settings look like.
+You can read all about this feature in the [User Guide](https://code.visualstudio.com/docs/editor/settings-sync). Below is what the Settings look like.
 
 ![sync settings](/assets/img/blog/2020-08-05-dont-need-extensions/sync.jpg)
 
-You synchronise using a Microsoft or GitHub account.
+You can use a Microsoft or GitHub account, and select what exactly you want to sync.
 
 ![sync initialisation options](/assets/img/blog/2020-08-05-dont-need-extensions/sync-options.jpg)
 
@@ -110,7 +110,7 @@ Also, if you would like your imports to be organised when you save, you can add 
 }
 ```
 
-## 4. Snippets for HTML, CSS, and JS
+## 4. Snippets for HTML and CSS
 
 You may want to create a HTML boilerplate to get started quickly, add code chunks to save you keystrokes, or have expansions to complete a block for what you're typing. These similar but slightly different needs are addressed below.
 
@@ -122,7 +122,7 @@ You may want to create a HTML boilerplate to get started quickly, add code chunk
 
 ### 4.8. Feature
 
-[Emmet](https://www.emmet.io/) is built into VS Code. Emmet offers abbreviation and snippet expansions for HTML and CSS. 🤫 You can read the [VS Code User Guide](https://code.visualstudio.com/docs/editor/emmet) for more info. 
+[Emmet](https://www.emmet.io/) is built into VS Code. Emmet offers abbreviation and snippet expansions for HTML and CSS. 🤫 You can read the [VS Code User Guide](https://code.visualstudio.com/docs/editor/emmet) for more info.
 
 Emmet is enabled by default for html, haml, pug, slim, jsx, xml, xsl, css, scss, sass, less and stylus files.
 
@@ -238,35 +238,7 @@ I exclude Markdown from this because if you want a [hard line-break](https://spe
 },
  ```
 
-## 7. Running tasks (NPM and others)
-
-Most projects requires some tasks to be run like linting, building, packaging, testing, and deploying. Depending on the project type, you may use different tools to do this such as NPM, Grunt, Gulp, Make, and so on.
-
-### 7.13. Extensions
-
-- [NPM](https://marketplace.visualstudio.com/items?itemName=eg2.vscode-npm-script) (2.7M downloads): "This extension supports running npm scripts defined in the package.json file and validating the installed modules against the dependencies defined in the package.json."
-- [Gulp Tasks](https://marketplace.visualstudio.com/items?itemName=nickdodd79.gulptasks) (39K downloads): "A gulp task visualization and execution extension for Visual Studio Code."
-- [Make](https://marketplace.visualstudio.com/items?itemName=technosophos.vscode-make) (31K downloads): "Run Make easily."
-
-### 7.14. Feature
-
-Maybe, you prefer to do it all from the command-line, then you probably haven't reached for an extension anyway!
-
-There is another way to run tasks in VS Code, it has a *Tasks* feature. Tasks can be configured to run whatever scripts and commands you want inside VS Code, and you don't need to jump into the terminal or write new code.
-
-**I will show you briefly how you can run NPM tasks**. VS Code auto-detects NPM tasks from your `package.json`.
-
-If you open the *Go to file* bar (found in the main menu through "Go > Go to File .." or with the command `Ctrl + P` on Windows), you can type "task", hit `space`, and a dropdown will give you the options for running tasks as below. Pick "npm".
-
-![tasks](/assets/img/blog/2020-08-05-dont-need-extensions/tasks.jpg)
-
-Pick your npm script and that's it!
-
-![npm tasks](/assets/img/blog/2020-08-05-dont-need-extensions/npm-tasks.jpg)
-
-You can read the [user guide on Tasks](https://code.visualstudio.com/docs/editor/tasks#vscode) to learn more.
-
-## 8. Conclusion
+## 7. Conclusion
 
 Before you reach for an extension, see if VS Code can do it already. It sounds like an obvious move, but we are all probably guilty of doing it this some time. VS Code is adding features regularly, so it is worth checking the changelog every so often.
 
