@@ -7,7 +7,7 @@ image: /assets/img/blog/2020-08-05-dont-need-extensions/banner.png
 tags: [vscode]
 published: true
 ---
-<img src="/assets/img/blog/2020-08-05-dont-need-extensions/banner.png" style="width:100%;max-width:1200px;"/>
+<img src="/assets/img/blog/2020-08-05-dont-need-extensions/banner.png" alt="1up VS Code banner" style="width:100%;max-width:1200px;"/>
 
 I was digging deeper in VS Code recently and made some interesting discoveries. There are quite a few features and settings that ably do the work of many popular extensions.
 
@@ -26,7 +26,8 @@ I was digging deeper in VS Code recently and made some interesting discoveries. 
 
 Rename HTML tag pairs with a single edit. Automatically add a closing tag when adding a new tag.
 
-![rename tag pairs](/assets/img/blog/2020-08-05-dont-need-extensions/rename.gif)
+<img src="/assets/img/blog/2020-08-05-dont-need-extensions/rename.gif" alt="rename tag pairs" style="width:100%;max-width:485px;"/>
+
 
 ### 1.1. Extension
 
@@ -43,7 +44,7 @@ The naming of `Editor: Rename on Type` is a bit vague and obscure, this is proba
 - `JavaScript: Auto Closing Tags`: "Enable/disable automatic closing of JSX tags. Requires using TypeScript 3.0 or newer in workspace". Default is `true`.
 - `TypeScript: Auto Closing Tags`: "Enable/disable automatic closing of JSX tags. Requires using TypeScript 3.0 or newer in workspace". Default is `true`.
 
-Support is for HTML files only at the moment. There is an [open issue](https://github.com/microsoft/vscode/issues/85707) to add this for JSX files.
+Auto-renaming is supported in HTML files only at the moment. There is an [open issue](https://github.com/microsoft/vscode/issues/85707) to add this for JSX files.
 
 It is unlikely that this will be added for Vue files, it is more likely to be picked up by the Vetur extension, which has a [long-standing issue](https://github.com/vuejs/vetur/issues/565) open for this.
 
@@ -51,7 +52,7 @@ It is unlikely that this will be added for Vue files, it is more likely to be pi
 
 ```json
   "editor.renameOnType": true,
-  "html.autoClosingTags": true.
+  "html.autoClosingTags": true,
   "javascript.autoClosingTags": true,
   "typescript.autoClosingTags": true
 ```
@@ -60,7 +61,7 @@ It is unlikely that this will be added for Vue files, it is more likely to be pi
 
 VS Code now supports synchronizing VS Code settings across different machines, this feature is available for preview since [v1.48](https://code.visualstudio.com/updates/v1_48#_settings-sync) (July 2020 release).
 
-I am trying it out at the moment, and I have had no issues.
+I am trying it out at the moment, and it looks good.
 
 ### 2.3. Extensions
 
@@ -70,11 +71,12 @@ I am trying it out at the moment, and I have had no issues.
 
 You can read all about this feature in the [User Guide](https://code.visualstudio.com/docs/editor/settings-sync). Below is what the Settings look like.
 
-![sync settings](/assets/img/blog/2020-08-05-dont-need-extensions/sync.jpg)
+<img src="/assets/img/blog/2020-08-05-dont-need-extensions/sync.jpg" alt="sync settings" style="width:100%;max-width:653px;"/>
 
 You can use a Microsoft or GitHub account, and select what exactly you want to sync.
 
-![sync initialisation options](/assets/img/blog/2020-08-05-dont-need-extensions/sync-options.jpg)
+<img src="/assets/img/blog/2020-08-05-dont-need-extensions/sync-options.jpg" 
+alt="sync initialisation option" style="width:100%;max-width:605px;"/>
 
 ## 3. Auto import modules
 
@@ -128,7 +130,8 @@ Emmet is enabled by default for html, haml, pug, slim, jsx, xml, xsl, css, scss,
 
 To create a boilerplate for HTML, you type "!" and hit tab.
 
-![html boilerplate](/assets/img/blog/2020-08-05-dont-need-extensions/html-boilerplate.gif)
+<img src="/assets/img/blog/2020-08-05-dont-need-extensions/html-boilerplate.gif" 
+alt="HTML Boilerplate" style="display:block;width:100%;max-width:584px;"/>
 
 There are abbreviations which use CSS style selectors such as:
 
@@ -152,8 +155,6 @@ Expansions like typing "a" and hitting tab will produce `<a href="">` and will p
 
 That's just a quick overview of what you can for HTML, it offers similar capabilities for CSS, my favourite is adding [vendor-prefixes automatically](https://docs.emmet.io/css-abbreviations/vendor-prefixes/). Check out the [Emmet Docs](https://docs.emmet.io/) for more info, and the [cheatsheet](https://docs.emmet.io/cheat-sheet/) for future reference.
 
-Secretly, there are default JavaScript snippets included in VS Code also. To find the buried treasure, you can look in this file on Windows: `Microsoft VS Code\resources\app\extensions\javascript\snippets\javascript.code-snippets`.
-
 You can [customise or create your own snippets](https://code.visualstudio.com/docs/editor/emmet#_using-custom-emmet-snippets) by adding them to a json file named `snippets.json`. 
 
 You can [enable Emmet for more languages](https://code.visualstudio.com/docs/editor/emmet#_emmet-configuration) For example, to include Emmet support for Vue and JavaScript, add the following to `settings.json`:
@@ -165,7 +166,7 @@ You can [enable Emmet for more languages](https://code.visualstudio.com/docs/edi
 }
 ```
 
-There is a gotcha ([bug?](https://github.com/microsoft/vscode/issues/104259)) for including Emmet support for markdown, you must also ensure that the excluded language list is empty, as per snippet below. This workaround is discussed in [this stack overflow question](https://stackoverflow.com/questions/49956963/markdown-not-using-emmet).
+There is a [bug](https://github.com/microsoft/vscode/issues/104259) for including Emmet support for markdown, you must also ensure that the excluded language list is empty, as per snippet below. This workaround is discussed in [this stack overflow question](https://stackoverflow.com/questions/49956963/markdown-not-using-emmet).
 
 ```json
 "emmet.excludeLanguages": [],
@@ -195,7 +196,7 @@ As mentioned in number 4 above, Emmet is built into VS Code, it has a [_lorem_ a
 
 Type "lorem" and hit tab, and it will generate a 30-word dummy paragraph.
 
-![lorem abbreviation](/assets/img/blog/2020-08-05-dont-need-extensions/lorem.jpg)
+<img src="/assets/img/blog/2020-08-05-dont-need-extensions/lorem.jpg" alt="lorem abbreviation" style="display:block;width:100%;max-width:513px;"/>
 
 You can use it to generate multiple blocks of any kind. For example, "p\*2>lorem" abbreviation would generate something like this:
 
@@ -229,7 +230,7 @@ The setting I suggest is not an exact like-for-like replacement: the extensions 
 
 #### 6.12.3. settings.json
 
-I exclude Markdown from this because if you want a [hard line-break](https://spec.commonmark.org/0.29/#hard-line-breaks) (`<br>`) in the output, you need to put two or more spaces at the end of a line. It's not something you would do often, or at all really IMO, but why prevent it when it is part of [CommonMark](https://commonmark.org/)?
+I exclude Markdown from this because if you want a [hard line-break](https://spec.commonmark.org/0.29/#hard-line-breaks) (`<br>`) in the output, you need to put two or more spaces at the end of a line. It is a part of [CommonMark](https://commonmark.org/), so I don't want to prevent it.
 
 ```json
 "files.trimTrailingWhitespace": true,
@@ -243,3 +244,5 @@ I exclude Markdown from this because if you want a [hard line-break](https://spe
 Before you reach for an extension, see if VS Code can do it already. It sounds like an obvious move, but we are all probably guilty of doing it this some time. VS Code is adding features regularly, so it is worth checking the changelog every so often.
 
 Recently, I wrote an extension called [Marky Markdown](https://marketplace.visualstudio.com/items?itemName=robole.marky-markdown), if you want some cool markdown features which are not found in VS Code 😉, check it out! 😊
+
+<a href="https://marketplace.visualstudio.com/items?itemName=robole.marky-markdown"><img src="/assets/img/blog/2020-08-05-dont-need-extensions/marky1280x640.png" alt="marky markdown extensions" style="display:block;width:100%;max-wdith:1280px"></a>
