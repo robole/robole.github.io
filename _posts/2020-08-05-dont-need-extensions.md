@@ -13,36 +13,31 @@ I was digging deeper in VS Code recently and made some interesting discoveries. 
 
 <!-- TOC -->
 **Table of Contents**
-- [1. Auto renaming and closing tags](#1-auto-renaming-and-closing-tags)
-- [2. Synchronizing Settings](#2-synchronizing-settings)
-- [3. Auto import modules](#3-auto-import-modules)
-- [4. Snippets for HTML and CSS](#4-snippets-for-html-and-css)
-- [5. Fake text (Dummy text)](#5-fake-text-dummy-text)
-- [6. Autotrimming](#6-autotrimming)
-- [7. Conclusion](#7-conclusion)
+- [1. Auto renaming HTML tags](#1-auto-renaming-html-tags)
+- [2. Auto closing HTML tags](#2-auto-closing-html-tags)
+- [3. Synchronizing Settings](#3-synchronizing-settings)
+- [4. Auto import modules](#4-auto-import-modules)
+- [5. Snippets for HTML and CSS](#5-snippets-for-html-and-css)
+- [6. Fake text (Dummy text)](#6-fake-text-dummy-text)
+- [7. Autotrimming](#7-autotrimming)
+- [8. Conclusion](#8-conclusion)
 <!-- /TOC -->
 
-## 1. Auto renaming and closing tags
+## 1. Auto renaming HTML tags
 
-Rename HTML tag pairs with a single edit. Automatically add a closing tag when adding a new tag.
+Rename HTML tag pairs with a single edit. 
 
 <img src="/assets/img/blog/2020-08-05-dont-need-extensions/rename.gif" alt="rename tag pairs" style="width:100%;max-width:485px;"/>
-
 
 ### 1.1. Extension
 
 - [Auto Rename Tag](https://marketplace.visualstudio.com/items?itemName=formulahendry.auto-rename-tag) (3.3M downloads): "Automatically rename paired HTML/XML tag, same as Visual Studio IDE does."
-- [Auto Close Tag](https://marketplace.visualstudio.com/items?itemName=formulahendry.auto-close-tag) (3.1M downloads): "Automatically add HTML/XML close tag, same as Visual Studio IDE or Sublime Text."
-- [Close HTML/XML tag](https://marketplace.visualstudio.com/items?itemName=Compulim.compulim-vscode-closetag): "Quickly close last opened HTML/XML tag."
 
 ### 1.2. Setting
 
-The naming of `Editor: Rename on Type` is a bit vague and obscure, this is probably why many people never find the setting for auto renaming! Auto closing of tags is enabled by default.
+The naming of `Editor: Rename on Type` is a bit vague and obscure, this is probably why many people never find the setting for auto renaming!
 
 - `Editor: Rename on Type`: "Controls whether the editor auto renames on type." Default is `false`. This controls auto rename.
-- `HTML: Auto Closing Tags`: Default is `true`.
-- `JavaScript: Auto Closing Tags`: "Enable/disable automatic closing of JSX tags. Requires using TypeScript 3.0 or newer in workspace". Default is `true`.
-- `TypeScript: Auto Closing Tags`: "Enable/disable automatic closing of JSX tags. Requires using TypeScript 3.0 or newer in workspace". Default is `true`.
 
 Auto-renaming is supported in HTML files only at the moment. There is an [open issue](https://github.com/microsoft/vscode/issues/85707) to add this for JSX files.
 
@@ -57,17 +52,40 @@ It is unlikely that this will be added for Vue files, it is more likely to be pi
   "typescript.autoClosingTags": true
 ```
 
-## 2. Synchronizing Settings
+## 2. Auto closing HTML tags
+
+When you add a new HTML tag, the closing tag is added automatically.
+
+### 2.3. Extension
+
+- [Auto Close Tag](https://marketplace.visualstudio.com/items?itemName=formulahendry.auto-close-tag) (3.1M downloads): "Automatically add HTML/XML close tag, same as Visual Studio IDE or Sublime Text."
+- [Close HTML/XML tag](https://marketplace.visualstudio.com/items?itemName=Compulim.compulim-vscode-closetag): "Quickly close last opened HTML/XML tag."
+
+### 2.4. Settings
+
+- `HTML: Auto Closing Tags`: Default is `true`.
+- `JavaScript: Auto Closing Tags`: "Enable/disable automatic closing of JSX tags. Requires using TypeScript 3.0 or newer in workspace". Default is `true`.
+- `TypeScript: Auto Closing Tags`: "Enable/disable automatic closing of JSX tags. Requires using TypeScript 3.0 or newer in workspace". Default is `true`.
+
+#### 2.4.2. settings.json
+
+```json
+  "html.autoClosingTags": true,
+  "javascript.autoClosingTags": true,
+  "typescript.autoClosingTags": true
+```
+
+## 3. Synchronizing Settings
 
 VS Code now supports synchronizing VS Code settings across different machines, this feature is available for preview since [v1.48](https://code.visualstudio.com/updates/v1_48#_settings-sync) (July 2020 release).
 
 I am trying it out at the moment, and it looks good.
 
-### 2.3. Extensions
+### 3.5. Extensions
 
 - [Settings Sync](https://marketplace.visualstudio.com/items?itemName=Shan.code-settings-sync) (1.8M downloads): Syncs your settings, keybindings, snippets, extensions, and launch files to a GitHub Gist.
 
-### 2.4. Feature and Settings
+### 3.6. Feature and Settings
 
 You can read all about this feature in the [User Guide](https://code.visualstudio.com/docs/editor/settings-sync). Below is what the Settings look like.
 
@@ -78,24 +96,24 @@ You can use a Microsoft or GitHub account, and select what exactly you want to s
 <img src="/assets/img/blog/2020-08-05-dont-need-extensions/sync-options.jpg" 
 alt="sync initialisation option" style="width:100%;max-width:605px;"/>
 
-## 3. Auto import modules
+## 4. Auto import modules
 
 Managing imports for JavaScript and TypeScript modules can become a pain, especially when you want to re-organise your project, or refactor your code.It's desirable to automate this if possible!
 
-### 3.5. Extensions
+### 4.7. Extensions
 
 - [Auto import](https://marketplace.visualstudio.com/items?itemName=steoates.autoimport) (1.1M downloads): Automatically finds, parses and provides code actions and code completion for all available imports. Works with Typescript and TSX.
 - [Move TS - Move TypeScript files and update relative imports](https://marketplace.visualstudio.com/items?itemName=stringham.move-ts) (308K downloads): Supports moving typescript files and updating relative imports within the workspace.
 - [Auto Import - ES6, TS, JSX, TSX](https://marketplace.visualstudio.com/items?itemName=NuclleaR.vscode-extension-auto-import) (157K downloads)
 
-### 3.6. Settings
+### 4.8. Settings
 
 - `JavaScript > Suggest: Auto Imports` : "Enable/disable auto import suggestions. Requires using Typescript 2.6.1 or newer in workspace." Default value is `true`.
 - `TypeScript > Suggest: Auto Imports`: "Enable/disable auto import suggestions. Requires using Typescript 2.6.1 or newer in workspace." Default value is `true`.
 - `JavaScript > Update Imports on File Move: Enabled`: "Enable/disable automatic updating of import paths when you rename or move a file in VS Code. Require using TypeScript 2.9 or newer in the workspace." Default value is `"prompt"`.
 - `TypeScript > Update Imports on File Move: Enabled`: "Enable/disable automatic updating of import paths when you rename or move a file in VS Code. Require using TypeScript 2.9 or newer in the workspace." Default value is `"prompt"`.
 
-#### 3.6.2. settings.json
+#### 4.8.3. settings.json
 
 ```json
 "javascript.suggest.autoImports": true,
@@ -112,17 +130,17 @@ Also, if you would like your imports to be organised when you save, you can add 
 }
 ```
 
-## 4. Snippets for HTML and CSS
+## 5. Snippets for HTML and CSS
 
 You may want to create a HTML boilerplate to get started quickly, add code chunks to save you keystrokes, or have expansions to complete a block for what you're typing. These similar but slightly different needs are addressed below.
 
-### 4.7. Extension
+### 5.9. Extension
 
 - [HTML Snippets](https://marketplace.visualstudio.com/items?itemName=abusaidm.html-snippets) (3.8M downloads): "Full HTML tags including HTML5 Snippets."
 - [HTML Boilerplate](https://marketplace.visualstudio.com/items?itemName=sidthesloth.html5-boilerplate) (684K downloads): "A basic HTML5 boilerplate snippet generator."
 - [CSS Snippets](https://marketplace.visualstudio.com/items?itemName=joy-yu.css-snippets) (22K downloads): "Shorthand snippets for css."
 
-### 4.8. Feature
+### 5.10. Feature
 
 [Emmet](https://www.emmet.io/) is built into VS Code. Emmet offers abbreviation and snippet expansions for HTML and CSS. 🤫 You can read the [VS Code User Guide](https://code.visualstudio.com/docs/editor/emmet) for more info.
 
@@ -182,15 +200,15 @@ There is a [bug](https://github.com/microsoft/vscode/issues/104259) for includin
 }
 ```
 
-## 5. Fake text (Dummy text)
+## 6. Fake text (Dummy text)
 
 You may want to insert some fake text to fill out a webpage to see how your UI looks. You are probably familiar with "lorem ipsum" text generators.
 
-### 5.9. Extension
+### 6.11. Extension
 
 - [Lorem Ipsum](https://marketplace.visualstudio.com/items?itemName=Tyriar.lorem-ipsum) (168K Downloads)
 
-### 5.10. Feature
+### 6.12. Feature
 
 As mentioned in number 4 above, Emmet is built into VS Code, it has a [_lorem_ abbreviation](https://docs.emmet.io/abbreviations/lorem-ipsum/).
 
@@ -213,22 +231,22 @@ You can use it to generate multiple blocks of any kind. For example, "p\*2>lorem
 </p>
 ```
 
-## 6. Autotrimming
+## 7. Autotrimming
 
 Remove trailing whitespace automatically.
 
 The setting I suggest is not an exact like-for-like replacement: the extensions trim whitespace while you edit or via a command; whereas the setting will perform the trimming on save.
 
-### 6.11. Extension
+### 7.13. Extension
 
 - [Trailing Spaces](https://marketplace.visualstudio.com/items?itemName=shardulm94.trailing-spaces) (447K downloads) : "Highlight trailing spaces and delete them in a flash!"
 - [Autotrim](https://marketplace.visualstudio.com/items?itemName=NathanRidley.autotrim) (15K downloads): "Trailing whitespace often exists after editing lines of code, deleting trailing words and so forth. This extension tracks the line numbers where a cursor is active, and removes trailing tabs and spaces from those lines when they no longer have an active cursor."
 
-### 6.12. Settings
+### 7.14. Settings
 
 - `Files : Trim Trailing Whitespace`: "When enabled, will trim trailing whitespace when saving a file." The default value is `false`.
 
-#### 6.12.3. settings.json
+#### 7.14.4. settings.json
 
 I exclude Markdown from this because if you want a [hard line-break](https://spec.commonmark.org/0.29/#hard-line-breaks) (`<br>`) in the output, you need to put two or more spaces at the end of a line. It is a part of [CommonMark](https://commonmark.org/), so I don't want to prevent it.
 
@@ -239,9 +257,9 @@ I exclude Markdown from this because if you want a [hard line-break](https://spe
 },
  ```
 
-## 7. Conclusion
+## 8. Conclusion
 
-Before you reach for an extension, see if VS Code can do it already. It sounds like an obvious move, but we are all probably guilty of doing it this some time. VS Code is adding features regularly, so it is worth checking the changelog every so often.
+Before you reach for an extension, see if VS Code can do it already. It sounds like an obvious move, but we are all probably guilty of doing it some time. VS Code is adding features regularly, so it is worth checking the changelog every so often.
 
 Recently, I wrote an extension called [Marky Markdown](https://marketplace.visualstudio.com/items?itemName=robole.marky-markdown), if you want some cool markdown features which are not found in VS Code 😉, check it out! 😊
 
