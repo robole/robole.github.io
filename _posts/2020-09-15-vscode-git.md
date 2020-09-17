@@ -15,7 +15,6 @@ Do you use *VS Code* as your default Git Editor, or as your Git Diff Tool? Shoul
 Let's look at the potential benefits of using *VS Code* as a fully-fledged Git partner, and how you can do it.
 
 <!-- TOC -->
-**Table of Contents**
 - [TLDR](#tldr)
 - [Why should you make *VS Code* your default Git Editor, Diff Tool, or Merge Tool?](#why-should-you-make-vs-code-your-default-git-editor-diff-tool-or-merge-tool)
 - [Prerequisite](#prerequisite)
@@ -29,7 +28,7 @@ Let's look at the potential benefits of using *VS Code* as a fully-fledged Git p
 
 To make *VS Code* your default for everything git-related, first you need to ensure you can run *VS Code* from the command-line as outlined in the [Prerequisite](#prerequisite) section.
 
-Then, run the command `git config --global --e` to edit the global config, and add the following:
+Then, run the command `git config --global -e` to edit the global config, and add the following:
 
 ```
 [core]
