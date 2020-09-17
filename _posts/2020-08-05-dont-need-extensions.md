@@ -9,10 +9,11 @@ published: true
 ---
 <img src="/assets/img/blog/2020-08-05-dont-need-extensions/banner.png" alt="1up VS Code banner" style="width:100%;max-width:1200px;"/>
 
+Translation in [Japanese (日本語)](<https://coliss.com/articles/build-websites/operation/work/vs-code-dont-need-extensions.html>).
+
 I was digging deeper in VS Code recently and made some interesting discoveries. There are quite a few features and settings that ably do the work of many popular extensions.
 
 <!-- TOC -->
-**Table of Contents**
 - [1. Auto renaming HTML tags](#1-auto-renaming-html-tags)
 - [2. Auto closing HTML tags](#2-auto-closing-html-tags)
 - [3. Synchronizing Settings](#3-synchronizing-settings)
