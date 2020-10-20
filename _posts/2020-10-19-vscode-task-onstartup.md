@@ -1,19 +1,24 @@
 ---
 layout: post
-title: "How to run a task automatically in VS Code when you open a project"
-description: "It would be great to have webpack launch when I open a JavaScript project that uses webpack, so I don't forget! VS Code has *tasks* built-in for this very thing. Here is how you can configure it yourself."
+title: "How to Run a Command Automatically in VS Code When You Open a Project"
+description: "It would be great to have webpack launch when I open a JavaScript project, so I don't forget to! VS Code has *tasks* built-in for this very thing. Here is how you can configure it yourself."
 category: vscode
 image: /assets/img/blog/2020-10-19-vscode-task-onstartup/banner.jpg
 tags: [vscode]
 published: true
 ---
+<figure>
 <img src="/assets/img/blog/2020-10-19-vscode-task-onstartup/banner.jpg" alt="select a task to configure" style="display:block;width:100%;max-width:800px;margin:0 auto;">
+<figcaption style="text-align:center">Photo by <a href="https://unsplash.com/@relentlessjpg?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">William Moreland</a>.</figcaption>
+</figure>
 
-Sometimes, I trip myself up by forgetting to run the webpack when I open a JavaScript project. My default setup is have webpack watching for edits and automatically triggering bundling. Usually it's when I'm groggy in the morning and I get to a point where I expect some output to have changed, and nothing is happening. It takes me a minute to orientate myself and have that *doh!* moment, and realise that I haven't spun up webpack yet. 🤦‍♂️
+Sometimes, I trip myself up by forgetting to run webpack when I open a JavaScript project. Usually it's when I'm groggy in the morning and I get to a point where I expect some output to have changed, and nothing is happening. It takes me a minute to orientate myself and have that *doh!* moment, and realise that I haven't spun up webpack yet. 🤦‍♂️
 
-So, to spare myself this ignominy again, it would be great to have webpack launch when I open a JavaScript project that uses webpack. VS Code has *tasks* built-in for this very thing. You can check out the [Tasks User Guide](https://code.visualstudio.com/docs/editor/tasks) for the full skinny. I will just show you to tackle my use case.
+So, to spare myself this ignominy again, it would be great to have webpack launch when I open a JavaScript project that uses webpack. 
 
-I want to execute one of my npm scripts from my `package.json` , from the command-line it is `npm run webpack` that I run.
+VS Code has *tasks* built-in for this very thing. You can check out the [Tasks User Guide](https://code.visualstudio.com/docs/editor/tasks) for the full skinny. I will just show you to tackle my use case.
+
+I want to execute one of my npm scripts from my `package.json`. From the command-line, I run `npm run webpack`. You can run whatever command you wish as a task.
 
 ```json
  {
@@ -92,15 +97,15 @@ Here is a list of the most important task properties:
 - **windows**: Windows specific properties. This will be used instead of the default properties when the command is executed on the Windows operating system. This also has a `command` property, I don't know if it is necessary to specify your command in here again if you are Windows user. I guess it depends on your particular command. I added it anyway.
 - **presentation**: This defines how the task output is handled in the terminal. It offers the following properties:
   - **reveal**: Controls whether the Integrated Terminal panel is brought to front. Valid values are:
-    - *always* - The panel is always brought to front. This is the default. I prefer to see the command running on startup, so this option is what I want!
-    - *never* - The user must explicitly bring the terminal panel to the front themselves.
-    - *silent* - The terminal panel is brought to front only if the output is not scanned for errors and warnings.
-   - **panel**: Controls whether the terminal instance is shared between task runs. Possible values are:
-      - *shared*: The terminal is shared and the output of other task runs are added to the same terminal.
-      - *dedicated*: The terminal is dedicated to a specific task. If that task is executed again, the terminal is reused. However, the  output of a different task is presented in a different terminal.
-      - *new*: Every execution of that task is using a new clean terminal. A clean panel is preferable. Check this!
+    - `always` - The panel is always brought to front. This is the default. I prefer to see the command running on startup, so this option is what I want!
+    - `never` - The user must explicitly bring the terminal panel to the front themselves.
+    - `silent` - The terminal panel is brought to front only if the output is not scanned for errors and warnings.
+   - **panel**: Controls whether the terminal instance is shared between task runs. Valid values are:
+      - `shared`: The terminal is shared and the output of other task runs are added to the same terminal.
+      - `dedicated`: The terminal is dedicated to a specific task. If that task is executed again, the terminal is reused. However, the  output of a different task is presented in a different terminal.
+      - `new`: Every execution of that task is using a new clean terminal. A clean panel is preferable. Check this!
 - **runOptions**: Defines when and how a task is run.  It has the property:
-  - **runOn**: Specifies when a task is run.
+  - **runOn**: Specifies when a task is run. Valid values are:
     - `default`: The task will only be run when executed through the **Run Task** command.
     - `folderOpen`: The task will be run when the containing folder is opened.  **This is what we want!**
 
@@ -127,7 +132,7 @@ This is what did the trick for me:
 }
 ```
 
-The first time you open a project that contains a task runs on "folderOpen", you get a prompt asking if you want to allow tasks to run automatically in that folder. I didn't get this.
+The first time you open a project that contains a task that runs on "folderOpen", you *should* get a prompt asking if you want to allow tasks to run automatically in that folder. I didn't get this prompt!
 
 You can enable automatic tasks yourself by running the command **Tasks: Allow Automatic Tasks in Folder**.
 
@@ -141,5 +146,4 @@ Next time you open your project, you will see your task running automatically li
 
 Hurrah! One less thing to think about! 😅
 
----
-<small>Banner Photo by <a href="https://unsplash.com/@relentlessjpg?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">William Moreland</a> on Unsplash.</small>
+
