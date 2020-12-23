@@ -1,10 +1,10 @@
 ---
 layout: post
-title: "How to Make an Awesome Horizontal Parallax Animation"
+title: "How to make an awesome horizontal parallax animation"
 description: "The parallax effect creates a greater perception of depth. It is used mostly to boost the asethetic quality of scrolling animations. I'm going to deconstruct how you can create the parallax effect with a very visual, interactive example."
 category: css
 image: /assets/img/blog/2020-11-17-parallax-animation/deconstruction-animation.gif
-tags: [parallax]
+tags: [animation, parallax]
 published: true
 ---
 <img src="/assets/img/blog/2020-11-17-parallax-animation/deconstruction-animation.gif" alt="select a task to configure" style="display:block;width:100%;max-width:800px;">
