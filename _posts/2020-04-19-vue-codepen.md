@@ -12,7 +12,11 @@ You can now write Single-File Vue Components in Codepen! 🥳 You get a single V
 
 <img src="/assets/img/blog/2020-04-19-vue-codepen/vue-editor.png"  alt="code collage" style="display:block;width:100%; max-width:1015px;margin:0 auto;"/>
 
-It does not appear to be an option from the main menu yet, you can use the following URL to create a Vue-themed Pen: [https://codepen.io/pen/editor/vue](https://codepen.io/pen/editor/vue).
+You can find the option in the "Create" section of the main menu on the homepage. It is a sub-option under "Pen".
+
+<img src="/assets/img/blog/2020-04-19-vue-codepen/new-vue-codepen.png"  alt="code collage" style="display:block;width:100%; max-width:187px;margin:0 auto;"/>
+
+Or you can use the direct URL: [https://codepen.io/pen/editor/vue](https://codepen.io/pen/editor/vue).
 
 <p class="codepen" data-height="452" data-theme-id="light" data-default-tab="result" data-user="robjoeol" data-slug-hash="VwvXeWq" style="height: 452px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="Vue Weather Card">
   <span>See the Pen <a href="https://codepen.io/robjoeol/pen/VwvXeWq">

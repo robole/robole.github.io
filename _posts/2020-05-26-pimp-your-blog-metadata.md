@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Pimp your blog: Create eye-catching rich snippets"
+title: "Create Eye-Catching Rich Snippets for your Blog Posts"
 category: web
 description: "Learn how to improve the metadata of your website to create eye-catching rich snippets"
 image: "/assets/img/blog/2020-05-26-pimp-your-blog-metadata/banner.jpg"

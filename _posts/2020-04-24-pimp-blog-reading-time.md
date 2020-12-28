@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Pimp your Blog: Calculate the 'reading time' ⏱🦉"
+title: "Calculate the 'reading time' for your Blog Post ⏱🦉"
 description: "Can we add anything to a standard blog that would enhance the reading experience? How about the estimated reading time?"
 category: programming
 image: "/assets/img/blog/2020-04-24-pimp-blog-reading-time/banner.jpg"
