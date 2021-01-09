@@ -83,7 +83,8 @@ h3,
 h4,
 h5,
 h6 {
-  color: #0e3054;
+  color: #000000;
+  font-weight: bold;
 }
 
 .row {
@@ -124,7 +125,6 @@ h6 {
   transition: 0.1s all linear;
   height: 100%;
 }
-
 
 .navbar-toggle.collapsed .icon-bar:hover,
 .navbar-toggle.collapsed .icon-bar:focus {
