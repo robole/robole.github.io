@@ -14,6 +14,7 @@ Translation in [Japanese (日本語)](<https://coliss.com/articles/build-website
 I was digging deeper in VS Code recently and made some interesting discoveries. There are quite a few features and settings that ably do the work of many popular extensions.
 
 <!-- TOC -->
+**Table of Contents**
 - [1. Auto renaming HTML tags](#1-auto-renaming-html-tags)
 - [2. Auto closing HTML tags](#2-auto-closing-html-tags)
 - [3. Synchronizing Settings](#3-synchronizing-settings)
@@ -36,21 +37,18 @@ Rename HTML tag pairs with a single edit.
 
 ### 1.2. Setting
 
-The naming of `Editor: Rename on Type` is a bit vague and obscure, this is probably why many people never find the setting for auto renaming!
+- `Editor: Linked Editing`: "Controls whether the editor has linked editing enabled. Depending on the language, related symbols, e.g. HTML tags, are updated while editing." Default is `false`.
 
-- `Editor: Rename on Type`: "Controls whether the editor auto renames on type." Default is `false`. This controls auto rename.
+> Update 09/01/21 - `editor.renameOnType` is deprecated and is replaced by `editor.linkedEditing`.
 
 Auto-renaming is supported in HTML files only at the moment. There is an [open issue](https://github.com/microsoft/vscode/issues/85707) to add this for JSX files.
 
-It is unlikely that this will be added for Vue files, it is more likely to be picked up by the Vetur extension, which has a [long-standing issue](https://github.com/vuejs/vetur/issues/565) open for this.
+The Vetur extension has a [long-standing issue](https://github.com/vuejs/vetur/issues/565) open to add this.
 
 #### 1.2.1. settings.json
 
 ```json
-  "editor.renameOnType": true,
-  "html.autoClosingTags": true,
-  "javascript.autoClosingTags": true,
-  "typescript.autoClosingTags": true
+  "editor.linkedEditing": true
 ```
 
 ## 2. Auto closing HTML tags

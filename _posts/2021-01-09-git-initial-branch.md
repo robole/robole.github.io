@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Correct the default branch name between Git and Github/GitLab (master | main)"
+title: "Get Git and Github/GitLab in sync on default branch naming (master | main)"
 description: "Last July, GitHub and other Git hosting platforms changed the default initial branch name to `main` (from `master`). However, Git did not! How can we fix this?"
 image: /assets/img/blog/2021-01-09-git-initial-branch/cover.jpg
 tags: [git]
@@ -10,9 +10,9 @@ published: true
 
 Last July, some of the git hosting platforms (GitHub, GitLab, and Bitbucket) changed the default branch name to `main` (from `master`). However, Git did not! 🤦
 
-It's disappointing that they didn't act in unison to make the same change. Putting the motivation behind the change aside, the result is that they have created a bit of work for users. I hate meddling with configuration!
+It's disappointing that everyone didn't act in unison to make the same change, because it has created some work for users. The focus of this post is on how this impacts maintenance of public repositories, and nothing else.  I hate meddling with configuration, so that is where my disappointment lies!
 
-I managed to avoid this altogether until now. It was only creating a new repo on GitHub this week that it surfaced again. I forgot that this was a thing! So, time to set things up to avoid this in future.
+I managed to avoid this altogether until now. It was only creating a new repo on GitHub this week that it surfaced again. So, it's time to set things up to avoid this in future.
 
 ## How can I fix this for new repos?
 
@@ -36,15 +36,16 @@ Now, you can update the default branch name.
  git config --global init.defaultBranch main
  ```
 
-### Change default branch name in GitHub
+### Change default branch name in GitHub/GitLab
 
-See [GitHub Docs - Managing the default branch name for your repositories](https://docs.github.com/en/free-pro-team@latest/github/setting-up-and-managing-your-github-user-account/managing-the-default-branch-name-for-your-repositories)
+- See [GitHub Docs - Managing the default branch name for your repositories](https://docs.github.com/en/free-pro-team@latest/github/setting-up-and-managing-your-github-user-account/managing-the-default-branch-name-for-your-repositories).
+- See [GitLab Docs - Custom initial branch name](https://docs.gitlab.com/ee/user/project/repository/branches/#custom-initial-branch-name).
 
-## And what about exisiting repos?
+## And what about existing repos?
 
 For existing repos, you can still push and pull without needing to rename the default branch. So, option 1 is to do nothing!
 
-Option 2 is to rename. You need to consider what other people are doing before you go ahead, it will piss people off if they have existing PRs and you don't let them know! You're forcing clones to rename also.
+Option 2 is to rename. You need to consider what other people are doing before you go ahead, it will annoy people if they have existing PRs and you don't let them know!
 
 ### Shortest way (?)
 
@@ -55,21 +56,17 @@ The shortest set of steps is probably:
 1. Fetch latest (if in doubt).
 1. Rename the branch to `main`. This preserves history.
 1. Push changes and update upstream remote link (`git push -u origin main`).
+	```bash
+	git checkout master
+	git fetch
+	git branch -m master main
+	git push -u origin main
+	```
 1. Go to the Settings on GitHub (Settings > Branches > Default Branch)or GitLab (Settings > Repository > Default Branch) and change the default branch to `main`.
 1. Delete remote `master` branch.
-
-```bash
-git checkout master
-git fetch
-git branch -m master main
-git push -u origin main
-```
-
-Go to the Settings on GitHub or GitLab and change the default branch to `main`. Then, you can delete `master` remotely.
-
-```bash
-git push origin --delete master
-```
+	```bash
+	git push origin --delete master
+	```
 
 ## Don't forget to update related CI/CD configurations
 
